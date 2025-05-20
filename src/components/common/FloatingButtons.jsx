@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FloatingButtons = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isHovered, setIsHovered] = useState(null);
+  
+  // Fix for first click issue - use useCallback instead of useRef
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -18,13 +26,6 @@ const FloatingButtons = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
   
   const buttonVariants = {
     hidden: { 
@@ -45,8 +46,8 @@ const FloatingButtons = () => {
       scale: 1.05,
       transition: {
         type: "spring",
-        stiffness: 300,
-        damping: 15
+        stiffness: 400,
+        damping: 30
       }
     },
     tap: {
@@ -68,8 +69,17 @@ const FloatingButtons = () => {
       width: "auto",
       x: 0,
       transition: { 
-        duration: 0.2, 
+        duration: 0.3, 
         ease: "easeOut" 
+      }
+    },
+    exit: {
+      opacity: 0,
+      width: 0,
+      x: -5,
+      transition: {
+        duration: 0.2,
+        ease: "easeIn"
       }
     }
   };
@@ -87,7 +97,7 @@ const FloatingButtons = () => {
         {showBackToTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed right-5 bottom-20 z-50 rounded-full p-3.5 bg-neutral-900/70 backdrop-blur-md text-white shadow-md border border-white/5 transition-all duration-500 overflow-hidden"
+            className="fixed right-5 bottom-20 z-50 rounded-full p-3.5 bg-neutral-900/70 backdrop-blur-md text-white shadow-md border border-white/5 transition-colors duration-300 overflow-hidden"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -102,12 +112,13 @@ const FloatingButtons = () => {
             <div className="relative flex items-center justify-center overflow-hidden">
               <motion.div 
                 className="absolute inset-0 rounded-full bg-primary-500/10 opacity-0"
+                initial={{ opacity: 0, scale: 1 }}
                 animate={{
                   opacity: isHovered === 'top' ? 0.3 : 0,
                   scale: isHovered === 'top' ? 1.2 : 1
                 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.25,
                   ease: "easeOut"
                 }}
               />
@@ -125,13 +136,13 @@ const FloatingButtons = () => {
                   d="M5 10l7-7m0 0l7 7m-7-7v18" 
                 />
               </svg>
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {isHovered === 'top' && (
                   <motion.span 
                     variants={textVariants}
                     initial="hidden"
                     animate="visible"
-                    exit="hidden"
+                    exit="exit"
                     className="ml-1.5 text-sm font-medium whitespace-nowrap overflow-hidden"
                   >
                     Top
@@ -157,18 +168,19 @@ const FloatingButtons = () => {
         <Link 
           to="/contact" 
           aria-label="Contact us"
-          className="flex items-center justify-center rounded-full p-3.5 bg-neutral-900/70 backdrop-blur-md text-white shadow-md border border-white/5 transition-all duration-500 overflow-hidden"
+          className="flex items-center justify-center rounded-full p-3.5 bg-neutral-900/70 backdrop-blur-md text-white shadow-md border border-white/5 transition-colors duration-300 overflow-hidden"
           style={noiseTexture}
         >
           <div className="relative flex items-center justify-center overflow-hidden">
             <motion.div 
               className="absolute inset-0 rounded-full bg-secondary-500/10 opacity-0"
+              initial={{ opacity: 0, scale: 1 }}
               animate={{
                 opacity: isHovered === 'contact' ? 0.3 : 0,
                 scale: isHovered === 'contact' ? 1.2 : 1
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.25,
                 ease: "easeOut"
               }}
             />
@@ -186,13 +198,13 @@ const FloatingButtons = () => {
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
               />
             </svg>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               {isHovered === 'contact' && (
                 <motion.span 
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  exit="hidden"
+                  exit="exit"
                   className="ml-1.5 text-sm font-medium whitespace-nowrap overflow-hidden"
                 >
                   Contact

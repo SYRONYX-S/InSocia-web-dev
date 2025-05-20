@@ -99,8 +99,8 @@ const FeaturedProjects = () => {
             variants={itemVariants}
             className="lg:col-span-8 row-span-1 md:row-span-2"
           >
-            <div className="h-full flex flex-col backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
-              <div className="h-64 sm:h-80 md:h-96 overflow-hidden">
+            <div className="h-full backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
+              <div className="h-48 md:h-52 overflow-hidden">
                 <img 
                   src={projects[0].image} 
                   alt={projects[0].title} 
@@ -108,12 +108,12 @@ const FeaturedProjects = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5 flex-grow">
+              <div className="p-4">
                 <span className="inline-block px-3 py-1 mb-2 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
                   {projects[0].category}
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-2">{projects[0].title}</h3>
-                <p className="text-neutral-200 mb-4">{projects[0].description}</p>
+                <p className="text-neutral-200 mb-3">{projects[0].description}</p>
                 <Link 
                   to={projects[0].link} 
                   className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-700/70 backdrop-blur-sm rounded-lg hover:bg-primary-600/80 transition-all duration-300 hover:translate-x-1"
@@ -135,7 +135,7 @@ const FeaturedProjects = () => {
               variants={itemVariants}
               className="lg:col-span-4"
             >
-              <div className="h-full flex flex-col backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
+              <div className="h-full backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={project.image} 
@@ -144,7 +144,7 @@ const FeaturedProjects = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-5 flex-grow">
+                <div className="p-5">
                   <span className="inline-block px-3 py-1 mb-2 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
                     {project.category}
                   </span>

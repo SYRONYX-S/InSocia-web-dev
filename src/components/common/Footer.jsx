@@ -6,9 +6,11 @@ const Footer = () => {
   
   return (
     <footer className="relative bg-black text-white">
-      {/* Background gradient overlay with subtle pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 to-black opacity-90"></div>
-      <div className="absolute inset-0 opacity-5 noise-texture"></div>
+      {/* Enhanced background with grainy gradient texture */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-primary-950/20 to-neutral-950 opacity-90"></div>
+      
+      {/* Improved grainy texture overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjgiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHR5cGU9ImZyYWN0YWxOb2lzZSIgbnVtT2N0YXZlcz0iNCIgc2VlZD0iMTIzIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPjxmZURpZmZ1c2VMaWdodGluZyBpbj0idHVyYnVsZW5jZSIgbGlnaHRpbmdDb2xvcj0iIzY2NiIgc3VyZmFjZVNjYWxlPSIxLjUiIHJlc3VsdD0ibGlnaHQiPjwvZmVEaWZmdXNlTGlnaHRpbmc+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiPjwvcmVjdD48L3N2Zz4=')] mix-blend-overlay opacity-30"></div>
       
       {/* Accent line at top with glowing effect */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-500/70 to-transparent"></div>
@@ -52,86 +54,92 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Column 2: Links with enhanced styling */}
+          {/* Column 2: Quick Links - Changed dots to hyphens */}
           <div className="lg:col-span-1">
             <h3 className="text-white font-heading font-semibold text-lg mb-4 pb-2 border-b border-primary-500/20">Quick Links</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Home
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   About Us
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Services
                 </Link>
               </li>
               <li>
                 <Link to="/focus-areas" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Focus Areas
                 </Link>
               </li>
               <li>
                 <Link to="/projects" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Projects
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
-                  Contact
                 </Link>
               </li>
             </ul>
           </div>
           
-          {/* Column 3: More Links with enhanced styling */}
+          {/* Column 3: Resources - Changed dots to hyphens */}
           <div className="lg:col-span-1">
             <h3 className="text-white font-heading font-semibold text-lg mb-4 pb-2 border-b border-primary-500/20">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/news" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
-                  News & Insights
-                </Link>
-              </li>
-              <li>
                 <Link to="/resources" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
-                  Resources
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                  Knowledge Hub
                 </Link>
               </li>
               <li>
-                <Link to="/partnerships" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
-                  Partnerships
+                <Link to="/resources/data-repository" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                  Data Repository
+                </Link>
+              </li>
+              <li>
+                <Link to="/resources/methodology-center" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                  Methodology Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/resources/policy-lab" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                  Policy Innovation Lab
+                </Link>
+              </li>
+              <li>
+                <Link to="/resources/training" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                  Training Resources
                 </Link>
               </li>
               <li>
                 <Link to="/careers" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Careers
                 </Link>
               </li>
               <li>
                 <Link to="/privacy-policy" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link to="/terms-of-use" className="text-neutral-400 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 opacity-70"></span>
+                  <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                   Terms of Use
                 </Link>
               </li>
@@ -142,7 +150,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="text-white font-heading font-semibold text-lg mb-4 pb-2 border-b border-primary-500/20">Get in Touch</h3>
             <div className="space-y-4">
-              <a href="mailto:info@insocia.org" className="flex group">
+              <a href="mailto:info@insocia.in" className="flex group">
                 <div className="mr-3 mt-1 w-9 h-9 flex-shrink-0 rounded-full bg-neutral-800/80 group-hover:bg-primary-600 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_10px_rgba(99,102,241,0.5)]">
                   <svg className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -150,7 +158,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium">Email Us</p>
-                  <p className="text-neutral-400 group-hover:text-primary-400 transition-colors duration-300">info@insocia.org</p>
+                  <p className="text-neutral-400 group-hover:text-primary-400 transition-colors duration-300">info@insocia.in</p>
                 </div>
               </a>
               

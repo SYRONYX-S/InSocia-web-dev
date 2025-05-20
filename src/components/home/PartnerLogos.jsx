@@ -3,7 +3,7 @@ import SectionLayout from '../../layouts/SectionLayout';
 import { motion } from 'framer-motion';
 
 const PartnerLogos = () => {
-  // Placeholder logos - replace with actual partner logos
+  // Updated to use actual partner logos from images/partners directory
   const partners = [
     {
       id: 'partner1',
@@ -13,14 +13,14 @@ const PartnerLogos = () => {
     },
     {
       id: 'partner2',
-      name: 'ID Log',
-      logo: '/images/partners/mssrf.png',
+      name: 'CIGI',
+      logo: '/images/partners/cigi.png',
       type: 'Research Institute'
     },
     {
       id: 'partner3',
-      name: 'CIGI',
-      logo: '/images/partners/cigi.png',
+      name: 'MSSRF',
+      logo: '/images/partners/mssrf.png',
       type: 'Government'
     },
     {
@@ -28,19 +28,7 @@ const PartnerLogos = () => {
       name: 'People\'s Foundation',
       logo: '/images/partners/peoples-foundation.png',
       type: 'NGO'
-    },
-    // {
-    //   id: 'partner5',
-    //   name: 'Globex',
-    //   logo: '/images/partners/globex.png',
-    //   type: 'Private Sector'
-    // },
-    // {
-    //   id: 'partner6',
-    //   name: 'GreenLife',
-    //   logo: '/images/partners/greenlife.png',
-    //   type: 'NGO'
-    // }
+    }
   ];
 
   // Animation variants
@@ -106,12 +94,12 @@ const PartnerLogos = () => {
               {partners.map((partner) => (
                 <div 
                   key={partner.id}
-                  className="grayscale hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
+                  className="grayscale-[30%] hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
                 >
                   <img 
                     src={partner.logo} 
                     alt={partner.name} 
-                    className="h-10 md:h-14"
+                    className="h-10 md:h-14 brightness-125"
                     loading="lazy"
                   />
                 </div>
