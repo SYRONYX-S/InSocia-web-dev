@@ -130,7 +130,7 @@ const Hero = () => {
               className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
               variants={itemVariants}
             >
-              Advancing <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Equitable</span> Social <br className="hidden md:block" />Policies
+              Advancing <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Equitable</span> Social Policies
             </motion.h1>
             
             <motion.p 
