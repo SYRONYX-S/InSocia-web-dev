@@ -1,104 +1,80 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import Preloader from '../components/common/Preloader';
 import FloatingButtons from '../components/common/FloatingButtons';
 import AOS from 'aos';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const MainLayout = ({ children }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     // Reinitialize AOS on component mount
     AOS.refresh();
-
-    // Add smooth scroll behavior
-    const handleLinkClick = (e) => {
-      const isHashLink = e.target.hash && e.target.origin === window.location.origin;
-      if (isHashLink) {
-        e.preventDefault();
-        const targetId = e.target.hash.substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 100,
-            behavior: 'smooth'
-          });
-          
-          // Update URL hash without scrolling
-          window.history.pushState(null, null, e.target.hash);
-        }
-      }
-    };
-
-    document.addEventListener('click', handleLinkClick);
-    return () => document.removeEventListener('click', handleLinkClick);
   }, []);
 
   return (
-    <AnimatePresence>
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col min-h-screen relative"
-      >
-        {/* Global fixed background (hero-style background) */}
-        <div className="fixed inset-0 -z-10 overflow-hidden">
-          {/* Dark gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 to-neutral-950"></div>
+    <div className="flex flex-col min-h-screen relative">
+      {/* Global fixed background (hero-style background) */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        {/* Base dark background */}
+        <div className="absolute inset-0 bg-neutral-950"></div>
+        
+        {/* Random gradient spots for more dynamic, less linear look */}
+        <div className="absolute inset-0" style={{
+          transform: 'skewY(-5deg) scale(1.5)',
+          transformOrigin: 'top left'
+        }}>
+          {/* Main tilted gradient with more vibrant colors and position */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-neutral-900 to-primary-800/30"></div>
           
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/40 to-neutral-950/60 opacity-80"></div>
+          {/* Purple/violet accent in top right */}
+          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-radial from-secondary-800/30 to-transparent blur-3xl"></div>
           
-          {/* Orbs/blobs with parallax effect */}
-          <div className="absolute -top-[20%] -right-[5%] w-[60%] h-[60%] rounded-full bg-gradient-radial from-secondary-500/20 to-transparent blur-3xl parallax-bg" data-speed="0.1"></div>
-          <div className="absolute top-[30%] -left-[5%] w-[40%] h-[40%] rounded-full bg-gradient-radial from-primary-500/20 to-transparent blur-3xl parallax-bg" data-speed="0.05"></div>
-          <div className="absolute bottom-[10%] right-[15%] w-[25%] h-[25%] rounded-full bg-gradient-radial from-primary-600/15 to-transparent blur-3xl parallax-bg" data-speed="0.15"></div>
-          <div className="absolute top-[60%] right-[25%] w-[15%] h-[15%] rounded-full bg-gradient-radial from-secondary-600/10 to-transparent blur-2xl parallax-bg" data-speed="0.2"></div>
+          {/* Blue accent in bottom left */}
+          <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-radial from-primary-700/25 to-transparent blur-3xl"></div>
           
-          {/* Subtle sparkling stars effect */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="stars-container absolute inset-0 opacity-30 parallax-bg" data-speed="0.07">
-              {/* Star layers */}
-              <div className="stars-small"></div>
-              <div className="stars-medium"></div>
-              <div className="stars-large"></div>
-            </div>
-          </div>
+          {/* Additional purple accent for variance */}
+          <div className="absolute top-[40%] left-[25%] w-[30%] h-[30%] rounded-full bg-gradient-radial from-secondary-600/15 to-transparent blur-2xl"></div>
           
-          {/* Bottom gradient */}
-          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-neutral-950 to-transparent"></div>
-          
-          {/* Grain texture */}
-          <div className="absolute inset-0 mix-blend-overlay opacity-30" style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundSize: '200px 200px',
-          }}></div>
-
-          {/* Animated grid pattern with parallax effect */}
-          <div className="absolute inset-0 opacity-5 parallax-bg" data-speed="0.03">
-            <div className="absolute inset-0" style={{ 
-              backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
-              backgroundSize: '40px 40px' 
-            }}></div>
-          </div>
+          {/* Light color highlights */}
+          <div className="absolute top-[15%] right-[35%] w-[10%] h-[10%] rounded-full bg-gradient-radial from-white/5 to-transparent blur-xl"></div>
+          <div className="absolute bottom-[35%] right-[15%] w-[8%] h-[8%] rounded-full bg-gradient-radial from-white/7 to-transparent blur-lg"></div>
+          <div className="absolute top-[60%] left-[10%] w-[6%] h-[6%] rounded-full bg-gradient-radial from-white/4 to-transparent blur-lg"></div>
         </div>
         
-        <Preloader />
-        <Navbar />
+        {/* Extra grainy texture for ultra grainy look */}
+        <div className="absolute inset-0 mix-blend-overlay opacity-70" style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '100px 100px',
+        }}></div>
         
-        <main className="flex-grow relative z-10">
-          {children}
-        </main>
+        {/* Second grain layer for ultra grainy effect */}
+        <div className="absolute inset-0 mix-blend-soft-light opacity-40" style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px',
+        }}></div>
         
-        {/* Floating action buttons */}
-        <FloatingButtons />
+        {/* Bottom gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-neutral-950 to-transparent"></div>
         
-        <Footer />
-      </motion.div>
-    </AnimatePresence>
+        {/* Grid pattern - MOVED TO TOP LAYER above all gradients */}
+        <div className="absolute inset-0 opacity-15 z-10">
+          <div className="absolute inset-0" style={{ 
+            backgroundImage: `linear-gradient(to right, #4b5563 1px, transparent 1px), linear-gradient(to bottom, #4b5563 1px, transparent 1px)`,
+            backgroundSize: '40px 40px' 
+          }}></div>
+        </div>
+      </div>
+      
+      <Preloader />
+      <Navbar />
+      
+      <main className="flex-grow relative z-10">
+        {children}
+      </main>
+      
+      <FloatingButtons />
+      <Footer />
+    </div>
   );
 };
 

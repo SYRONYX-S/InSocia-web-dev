@@ -4,6 +4,7 @@ import Hero from '../components/home/Hero';
 import MissionStatement from '../components/home/MissionStatement';
 import FocusAreas from '../components/home/FocusAreas';
 import FeaturedProjects from '../components/home/FeaturedProjects';
+import Testimonials from '../components/home/Testimonials';
 import PartnerLogos from '../components/home/PartnerLogos';
 
 const HomePage = () => {
@@ -37,6 +38,7 @@ const HomePage = () => {
       <MissionStatement />
       <FocusAreas />
       <FeaturedProjects />
+      <Testimonials />
       <PartnerLogos />
     </>
    );

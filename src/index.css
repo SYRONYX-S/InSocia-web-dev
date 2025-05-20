@@ -8,12 +8,6 @@
   --scrollbar-track: #1f2937;
   --scrollbar-thumb: #4b5563;
   --scrollbar-thumb-hover: #6b7280;
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Simplified smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }
 
 html {
@@ -23,8 +17,6 @@ html {
 @layer base {
   body {
     @apply font-body text-white bg-neutral-900 antialiased overflow-x-hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
   
   /* Typography Base Styles */
@@ -61,10 +53,10 @@ html {
   }
 }
 
-/* Optimized Scrollbar */
+/* Normal scrollbar without smooth scrolling */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -80,12 +72,6 @@ html {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Animation Utility Classes - simplified */
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-500 { animation-delay: 500ms; }
-
 /* Glass Morphism Effects - simplified for better performance */
 .glass-card {
   @apply bg-neutral-800/95 border border-neutral-700;
@@ -93,31 +79,9 @@ html {
 
 /* Custom Transitions - simplified */
 .transition-custom {
-  transition-property: all;
+  transition-property: transform, opacity;
   transition-timing-function: ease-out;
   transition-duration: 300ms;
-}
-
-/* Simplified noise texture */
-.noise-texture {
-  position: relative;
-}
-
-.noise-texture::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.03;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Text Effects - simplified */
-.text-gradient {
-  @apply text-primary-400;
 }
 
 /* Button Base Styles */
@@ -138,11 +102,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Performance-optimized background stars */
-.stars-container {
-  display: none; /* Disable for better performance */
-}
-
 /* Properly contrast text */
 .text-on-dark {
   @apply text-neutral-200;
@@ -156,23 +115,4 @@ code {
   @apply text-white;
 }
 
-/* Typewriter animation for preloader - simplified */
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.animate-typewriter {
-  width: 0;
-  animation: typewriter 2s steps(30) forwards;
-}
-
-/* Optimized Marquee animation for partner logos */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-  
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
+/* Floating Buttons styles are defined in the component */

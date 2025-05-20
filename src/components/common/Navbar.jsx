@@ -104,6 +104,7 @@ const Navbar = () => {
     visible: { 
       opacity: 1, 
       height: 'auto',
+      y: 0,
       transition: { 
         duration: 0.3, 
         ease: "easeOut" 
@@ -112,6 +113,7 @@ const Navbar = () => {
     hidden: { 
       opacity: 0, 
       height: 0,
+      y: -20,
       transition: { 
         duration: 0.3, 
         ease: "easeIn" 
@@ -144,16 +146,16 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col font-['Playfair_Display',ui-serif,Georgia,serif]">
       {/* Top Contact Bar */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {showTopBar && (
           <motion.div
             ref={topBarRef}
             key="top-bar"
-            initial="visible"
+            initial="hidden"
             animate="visible"
             exit="hidden"
             variants={topBarVariants}
-            className="bg-gradient-to-r from-neutral-900/90 to-neutral-950/90 backdrop-blur-md text-white shadow-md w-full border-b border-white/5"
+            className="bg-gradient-to-r from-neutral-900/90 to-neutral-950/90 backdrop-blur-md text-white shadow-md w-full border-b border-white/5 overflow-hidden"
           >
             <div className="container mx-auto px-6 py-2 flex justify-between items-center">
               <div className="flex items-center space-x-6 text-sm">
@@ -231,7 +233,7 @@ const Navbar = () => {
             {/* Logo - white for dark background, with glow effect */}
             <Link to="/" className="flex items-center z-10 group">
               <span 
-                className="text-2xl font-bold tracking-tight text-white"
+                className="text-3xl font-bold tracking-tight text-white"
                 style={brandingGradientStyle}
                 onMouseEnter={(e) => {
                   Object.assign(e.target.style, hoverBrandingGradientStyle);
