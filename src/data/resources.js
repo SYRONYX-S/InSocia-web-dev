@@ -1,0 +1,122 @@
+export const resources = [
+  {
+    id: 1,
+    title: 'Social Development Indicators Framework',
+    type: 'Publication',
+    category: 'Research',
+    date: '2023-06-15',
+    author: 'Dr. Sarah Johnson, Michael Chen',
+    description: 'A comprehensive framework for measuring and evaluating social development outcomes across multiple sectors and contexts.',
+    image: 'framework-cover.jpg',
+    file: 'social-development-indicators-framework.pdf',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Innovative Approaches to Rural Education',
+    type: 'Report',
+    category: 'Education',
+    date: '2022-11-30',
+    author: 'InSocia Research Team',
+    description: 'A detailed analysis of innovative approaches to improving educational outcomes in rural and underserved areas, with case studies and best practices.',
+    image: 'education-report.jpg',
+    file: 'innovative-approaches-rural-education.pdf',
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Community Health Systems Strengthening',
+    type: 'Toolkit',
+    category: 'Health',
+    date: '2023-02-10',
+    author: 'Dr. Aisha Owusu, Health Program Team',
+    description: 'A practical toolkit for strengthening community health systems, including assessment tools, implementation guidelines, and monitoring frameworks.',
+    image: 'health-toolkit.jpg',
+    file: 'community-health-systems-toolkit.pdf',
+    featured: false
+  },
+  {
+    id: 4,
+    title: 'Policy Brief: Climate-Resilient Agriculture',
+    type: 'Policy Brief',
+    category: 'Environment',
+    date: '2023-04-22',
+    author: 'Climate Program Team',
+    description: 'A concise policy brief outlining strategies for promoting climate-resilient agricultural practices and policies.',
+    image: 'policy-brief.jpg',
+    file: 'climate-resilient-agriculture-policy-brief.pdf',
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'Women\'s Economic Empowerment: Lessons from the Field',
+    type: 'Case Study',
+    category: 'Gender',
+    date: '2022-09-18',
+    author: 'Gender Program Team',
+    description: 'A compilation of case studies highlighting successful approaches to women\'s economic empowerment across different contexts.',
+    image: 'women-empowerment.jpg',
+    file: 'women-economic-empowerment-case-studies.pdf',
+    featured: true
+  },
+  {
+    id: 6,
+    title: 'Participatory Monitoring and Evaluation Guide',
+    type: 'Methodology Guide',
+    category: 'M&E',
+    date: '2023-01-25',
+    author: 'Priya Sharma, M&E Team',
+    description: 'A comprehensive guide to implementing participatory monitoring and evaluation approaches in development programs.',
+    image: 'me-guide.jpg',
+    file: 'participatory-me-guide.pdf',
+    featured: false
+  },
+  {
+    id: 7,
+    title: 'Digital Solutions for Development Challenges',
+    type: 'White Paper',
+    category: 'Technology',
+    date: '2023-03-12',
+    author: 'Juan Martínez, Tech Team',
+    description: 'An exploration of how digital technologies can address key development challenges across various sectors.',
+    image: 'digital-solutions.jpg',
+    file: 'digital-solutions-development.pdf',
+    featured: false
+  },
+  {
+    id: 8,
+    title: 'Governance Reform: Institutional Strengthening Framework',
+    type: 'Framework',
+    category: 'Governance',
+    date: '2022-10-05',
+    author: 'Elena Morales, Governance Team',
+    description: 'A framework for institutional strengthening and governance reform, with practical tools and approaches.',
+    image: 'governance-framework.jpg',
+    file: 'governance-reform-framework.pdf',
+    featured: false
+  },
+  {
+    id: 9,
+    title: 'Youth Engagement in Development: Strategies and Approaches',
+    type: 'Research Paper',
+    category: 'Youth Development',
+    date: '2023-05-20',
+    author: 'Research Team',
+    description: 'A research paper examining effective strategies for meaningful youth engagement in development initiatives.',
+    image: 'youth-engagement.jpg',
+    file: 'youth-engagement-development.pdf',
+    featured: false
+  },
+  {
+    id: 10,
+    title: 'Financial Inclusion for Marginalized Communities',
+    type: 'Report',
+    category: 'Economic Development',
+    date: '2022-12-08',
+    author: 'Dr. Ahmed Hassan, Economic Team',
+    description: 'A comprehensive report on strategies and case studies for enhancing financial inclusion among marginalized communities.',
+    image: 'financial-inclusion.jpg',
+    file: 'financial-inclusion-report.pdf',
+    featured: true
+  }
+]; 
