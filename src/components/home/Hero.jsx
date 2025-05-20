@@ -44,33 +44,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-neutral-900 to-neutral-950 text-white min-h-screen flex items-center" style={{ marginTop: 0 }}>
-      {/* Premium animated background */}
-      <div className="absolute inset-0 z-0">
-        {/* Dark gradient overlay */}
-        <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-primary-900/40 to-neutral-950/60 opacity-80"></div>
-        
-        {/* Orbs/blobs */}
-        <div className="absolute -top-[20%] -right-[5%] w-[60%] h-[60%] rounded-full bg-gradient-radial from-secondary-500/20 to-transparent blur-3xl"></div>
-        <div className="absolute top-[30%] -left-[5%] w-[40%] h-[40%] rounded-full bg-gradient-radial from-primary-500/20 to-transparent blur-3xl"></div>
-        
-        {/* Bottom gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-neutral-950 to-transparent"></div>
-        
-        {/* Grain texture - intensified to match navbar */}
-        <div className="absolute inset-0 mix-blend-overlay opacity-30" style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
-        }}></div>
-      </div>
-      
-      {/* Animated grid pattern */}
-      <div className="absolute inset-0 z-0 opacity-5">
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
-          backgroundSize: '40px 40px' 
-        }}></div>
-      </div>
+    <section className="relative overflow-hidden text-white min-h-screen flex items-center" style={{ marginTop: 0 }}>
       
       {/* Floating elements */}
       <div className="absolute inset-0 z-5 overflow-hidden">
@@ -172,22 +146,34 @@ const Hero = () => {
             >
               <Link 
                 to="/about" 
-                className="relative inline-flex items-center justify-center px-8 py-3.5 font-bold bg-primary-600 hover:bg-primary-500 text-white rounded-md group overflow-hidden shadow-lg shadow-primary-900/30 transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-xl"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 font-bold bg-primary-600 text-white rounded-md group overflow-hidden shadow-lg shadow-primary-900/30 transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-[0_8px_20px_rgba(79,70,229,0.4)]"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-600 to-primary-700"></span>
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-500 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span className="relative z-10">Explore Our Work</span>
+                <span className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-white/20"></span>
+                <span className="relative z-10 flex items-center">
+                  Explore Our Work
+                  <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </Link>
               
               <Link 
                 to="/contact" 
-                className="relative inline-flex items-center justify-center px-8 py-3.5 font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/50 backdrop-blur-sm transform hover:translate-y-[-2px]"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/80 backdrop-blur-sm transform hover:translate-y-[-2px] hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]"
               >
                 <span className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300"></span>
-                <span className="absolute inset-0 w-full h-full opacity-0 overflow-hidden">
-                  <span className="absolute -inset-[2px] bg-gradient-to-r from-primary-500/20 via-white/20 to-secondary-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></span>
+                <span className="absolute inset-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)] opacity-0 group-hover:opacity-100">
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50 animate-gradient-x"></span>
                 </span>
-                <span className="relative">Partner With Us</span>
+                <span className="absolute inset-[1.5px] rounded-md bg-neutral-900/80 transition-all duration-300"></span>
+                <span className="relative z-10 flex items-center">
+                  Partner With Us
+                  <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </Link>
             </motion.div>
             

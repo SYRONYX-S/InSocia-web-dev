@@ -1,5 +1,4 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import ServicesList from '../components/services/ServicesList';
@@ -10,7 +9,7 @@ import SEO from '../utils/seo';
 
 const ServicesPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="Our Services | InSocia Development Consultancy"
         description="Explore the comprehensive range of professional services offered by InSocia Development Consultancy including research, policy design, program implementation, and more."
@@ -24,7 +23,7 @@ const ServicesPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="Our Services"
           title="Professional Development Services"
@@ -37,7 +36,7 @@ const ServicesPage = () => {
       <ServiceProcess />
       <ServiceDetails />
       <ServiceCTA />
-    </MainLayout>
+    </>
   );
 };
 

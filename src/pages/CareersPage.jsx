@@ -1,12 +1,11 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import SEO from '../utils/seo';
 
 const CareersPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="Careers"
         description="Explore career opportunities at InSocia Development Consultancy."
@@ -20,7 +19,7 @@ const CareersPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="Careers"
           title="Join Our Team"
@@ -31,7 +30,7 @@ const CareersPage = () => {
 
       {/* More sections will be added here as needed */}
       
-    </MainLayout>
+    </>
   );
 };
 

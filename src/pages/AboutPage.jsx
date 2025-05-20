@@ -1,5 +1,4 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import OurStory from '../components/about/OurStory';
@@ -10,7 +9,7 @@ import SEO from '../utils/seo';
 
 const AboutPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="About Us | InSocia Development Consultancy"
         description="Learn about InSocia Development Consultancy, our mission, vision, values, and the dedicated team working to create sustainable social impact."
@@ -25,7 +24,7 @@ const AboutPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="About Us"
           title="Creating Sustainable Development Impact"
@@ -38,7 +37,7 @@ const AboutPage = () => {
       <VisionMission />
       <OurValues />
       <OurTeam />
-    </MainLayout>
+    </>
   );
 };
 

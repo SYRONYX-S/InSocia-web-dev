@@ -42,26 +42,48 @@ const MainLayout = ({ children }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col min-h-screen relative bg-white noise-texture"
+        className="flex flex-col min-h-screen relative"
       >
-        {/* Premium background effects */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-          {/* Main gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white via-neutral-50/80 to-blue-50/30"></div>
+        {/* Global fixed background (hero-style background) */}
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          {/* Dark gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 to-neutral-950"></div>
           
-          {/* Subtle orbs/blobs */}
-          <div className="absolute top-0 right-0 w-[45%] h-[35%] rounded-full bg-gradient-radial from-primary-50/30 to-transparent blur-3xl opacity-50 transform translate-x-[25%] -translate-y-[30%]"></div>
-          <div className="absolute bottom-[10%] left-0 w-[40%] h-[35%] rounded-full bg-gradient-radial from-secondary-50/20 to-transparent blur-3xl opacity-40 transform -translate-x-[30%]"></div>
-          <div className="absolute top-[40%] right-[20%] w-[25%] h-[20%] rounded-full bg-gradient-radial from-purple-50/20 to-transparent blur-3xl opacity-40"></div>
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/40 to-neutral-950/60 opacity-80"></div>
           
-          {/* Subtle grid pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.015]" 
-            style={{ 
-              backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`,
-              backgroundSize: '60px 60px' 
-            }}
-          ></div>
+          {/* Orbs/blobs with parallax effect */}
+          <div className="absolute -top-[20%] -right-[5%] w-[60%] h-[60%] rounded-full bg-gradient-radial from-secondary-500/20 to-transparent blur-3xl parallax-bg" data-speed="0.1"></div>
+          <div className="absolute top-[30%] -left-[5%] w-[40%] h-[40%] rounded-full bg-gradient-radial from-primary-500/20 to-transparent blur-3xl parallax-bg" data-speed="0.05"></div>
+          <div className="absolute bottom-[10%] right-[15%] w-[25%] h-[25%] rounded-full bg-gradient-radial from-primary-600/15 to-transparent blur-3xl parallax-bg" data-speed="0.15"></div>
+          <div className="absolute top-[60%] right-[25%] w-[15%] h-[15%] rounded-full bg-gradient-radial from-secondary-600/10 to-transparent blur-2xl parallax-bg" data-speed="0.2"></div>
+          
+          {/* Subtle sparkling stars effect */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="stars-container absolute inset-0 opacity-30 parallax-bg" data-speed="0.07">
+              {/* Star layers */}
+              <div className="stars-small"></div>
+              <div className="stars-medium"></div>
+              <div className="stars-large"></div>
+            </div>
+          </div>
+          
+          {/* Bottom gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-neutral-950 to-transparent"></div>
+          
+          {/* Grain texture */}
+          <div className="absolute inset-0 mix-blend-overlay opacity-30" style={{ 
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: '200px 200px',
+          }}></div>
+
+          {/* Animated grid pattern with parallax effect */}
+          <div className="absolute inset-0 opacity-5 parallax-bg" data-speed="0.03">
+            <div className="absolute inset-0" style={{ 
+              backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+              backgroundSize: '40px 40px' 
+            }}></div>
+          </div>
         </div>
         
         <Preloader />

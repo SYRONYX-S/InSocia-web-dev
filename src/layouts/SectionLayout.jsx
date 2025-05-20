@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SectionLayout = ({ 
   children, 
   className = '', 
-  bgColor = 'bg-white',
+  bgColor = 'bg-transparent',
   containerClass = '',
   id
 }) => {

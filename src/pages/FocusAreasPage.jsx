@@ -1,5 +1,4 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import SEO from '../utils/seo';
@@ -9,7 +8,7 @@ import FocusAreaCTA from '../components/focus-areas/FocusAreaCTA';
 
 const FocusAreasPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="Focus Areas | InSocia Development Consultancy"
         description="Explore our key development sectors including Education, Public Health, Climate, Governance, Economic Development and Women Empowerment."
@@ -24,7 +23,7 @@ const FocusAreasPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="Focus Areas"
           title="Our Key Development Sectors"
@@ -37,7 +36,7 @@ const FocusAreasPage = () => {
       <FocusAreaDetail />
       <FocusAreaCTA />
       
-    </MainLayout>
+    </>
   );
 };
 

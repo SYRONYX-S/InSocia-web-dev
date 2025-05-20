@@ -1,5 +1,4 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import SEO from '../utils/seo';
@@ -8,7 +7,7 @@ import PartnersCTA from '../components/partnerships/PartnersCTA';
 
 const PartnershipsPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="Partnerships | InSocia Development Consultancy"
         description="Discover our partnerships with governments, NGOs, international organizations, and private sector entities."
@@ -22,7 +21,7 @@ const PartnershipsPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="Partnerships"
           title="Our Collaborative Network"
@@ -34,7 +33,7 @@ const PartnershipsPage = () => {
       <PartnersList />
       <PartnersCTA />
       
-    </MainLayout>
+    </>
   );
 };
 

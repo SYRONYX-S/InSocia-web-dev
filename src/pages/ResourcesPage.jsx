@@ -1,12 +1,11 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import SEO from '../utils/seo';
 
 const ResourcesPage = () => {
   return (
-    <MainLayout>
+    <>
       <SEO 
         title="Resources"
         description="Access reports, publications, toolkits, and other valuable resources from InSocia Development Consultancy."
@@ -21,7 +20,7 @@ const ResourcesPage = () => {
         ]}
       />
       
-      <SectionLayout backgroundColor="bg-primary-50" className="pt-28 pb-16">
+      <SectionLayout backgroundColor="bg-transparent" className="pt-28 pb-16">
         <SectionHeading
           subtitle="Resources"
           title="Knowledge Hub"
@@ -32,7 +31,7 @@ const ResourcesPage = () => {
 
       {/* More sections will be added here as needed */}
       
-    </MainLayout>
+    </>
   );
 };
 

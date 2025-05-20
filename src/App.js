@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import SmoothScroll from './components/common/SmoothScroll';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -15,19 +17,23 @@ import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/focus-areas" element={<FocusAreasPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/partnerships" element={<PartnershipsPage />} />
-        <Route path="/resources" element={<ResourcesPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/careers" element={<CareersPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <SmoothScroll>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/focus-areas" element={<FocusAreasPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/partnerships" element={<PartnershipsPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </MainLayout>
+      </SmoothScroll>
     </Router>
   );
 }

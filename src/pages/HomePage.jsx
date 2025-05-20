@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import MainLayout from '../layouts/MainLayout';
 import Hero from '../components/home/Hero';
 import MissionStatement from '../components/home/MissionStatement';
 import FocusAreas from '../components/home/FocusAreas';
@@ -9,7 +8,7 @@ import PartnerLogos from '../components/home/PartnerLogos';
 
 const HomePage = () => {
   return (
-    <MainLayout>
+    <>
       <Helmet>
         <title>InSocia Development Consultancy | Research, Innovation, Action</title>
         <meta name="description" content="InSocia Development Consultancy partners with governments, NGOs, and international development agencies to design evidence-based solutions for sustainable social development." />
@@ -39,7 +38,7 @@ const HomePage = () => {
       <FocusAreas />
       <FeaturedProjects />
       <PartnerLogos />
-    </MainLayout>
+    </>
    );
 };
 

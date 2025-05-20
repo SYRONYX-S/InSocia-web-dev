@@ -11,20 +11,36 @@
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Global smooth scrolling for mouse wheel and trackpad */
+/* Inertial smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 html {
-  scroll-behavior: smooth;
   @apply selection:bg-primary-200 selection:text-primary-900;
 }
 
 @layer base {
   body {
-    @apply font-body text-neutral-800 antialiased overflow-x-hidden bg-white;
+    @apply font-body text-neutral-800 antialiased overflow-x-hidden;
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-    background-image: 
-      radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 300px),
-      radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 300px);
   }
   
   /* Typography Base Styles */
@@ -201,7 +217,9 @@ html {
 
 /* Floating action buttons */
 .floating-action-button {
-  @apply fixed z-40 shadow-lg rounded-full flex items-center justify-center bg-gradient-to-r from-primary-600 to-primary-500 text-white transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 hover:scale-105;
+  @apply fixed z-40 shadow-lg rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-md;
+  @apply bg-neutral-800/70 border border-neutral-700/80 text-primary-400;
+  @apply hover:bg-neutral-700/80 hover:shadow-xl hover:shadow-primary-500/10 hover:scale-105 hover:text-primary-300;
 }
 
 .back-to-top-button {
@@ -214,4 +232,214 @@ html {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Stars animation for the background */
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stars-small,
+.stars-medium,
+.stars-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars-small {
+  background-image: radial-gradient(1px 1px at 50px 100px, #fff, rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 100px 250px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 150px 350px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 200px 200px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 250px 300px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 300px 150px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 350px 400px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(1px 1px at 400px 50px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
+  background-size: 550px 550px;
+  animation: starsAnimation 150s linear infinite;
+}
+
+.stars-medium {
+  background-image: radial-gradient(1.5px 1.5px at 75px 125px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 125px 275px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 175px 375px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 225px 225px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 275px 325px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 325px 175px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 375px 425px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(1.5px 1.5px at 425px 75px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
+  background-size: 650px 650px;
+  animation: starsAnimation 100s linear infinite;
+}
+
+.stars-large {
+  background-image: radial-gradient(2px 2px at 100px 150px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 150px 300px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 200px 400px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 250px 250px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 300px 350px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 350px 200px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 400px 450px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+                   radial-gradient(2px 2px at 450px 100px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0));
+  background-size: 750px 750px;
+  animation: starsAnimation 50s linear infinite;
+}
+
+@keyframes starsAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 550px 550px;
+  }
+}
+
+/* Add radial gradient support */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Add support for parallax effect */
+.parallax-bg {
+  will-change: transform;
+}
+
+/* Scroll-triggered Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-100 {
+  transition-delay: 100ms;
+}
+
+.reveal-delay-200 {
+  transition-delay: 200ms;
+}
+
+.reveal-delay-300 {
+  transition-delay: 300ms;
+}
+
+.reveal-delay-400 {
+  transition-delay: 400ms;
+}
+
+.reveal-delay-500 {
+  transition-delay: 500ms;
+}
+
+/* Scroll-triggered Fade In Animation */
+.fade-in-on-scroll {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-on-scroll.is-inview {
+  opacity: 1;
+}
+
+/* Scroll-triggered Scale Up Animation */
+.scale-on-scroll {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scale-on-scroll.is-inview {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Scroll-triggered Slide In Animation */
+.slide-right-on-scroll {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-right-on-scroll.is-inview {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-left-on-scroll {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-left-on-scroll.is-inview {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Parallax scroll section */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Fancy scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  z-index: 100;
+}
+
+.scroll-indicator-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8));
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+
+/* Typewriter animation for preloader */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: theme('colors.primary.400'); }
+}
+
+.animate-typewriter {
+  width: 0;
+  animation: typewriter 2.5s steps(40) forwards, blink 0.7s infinite alternate;
 }

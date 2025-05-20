@@ -1,12 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import MainLayout from '../layouts/MainLayout';
 import Button from '../components/common/Button';
 
 const NotFoundPage = () => {
   return (
-    <MainLayout>
+    <>
       <Helmet>
         <title>Page Not Found | InSocia Development Consultancy</title>
         <meta name="robots" content="noindex, nofollow" />
@@ -24,7 +22,7 @@ const NotFoundPage = () => {
           </Button>
         </div>
       </div>
-    </MainLayout>
+    </>
   );
 };
 
