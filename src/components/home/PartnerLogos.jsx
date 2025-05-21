@@ -94,12 +94,12 @@ const PartnerLogos = () => {
               {partners.map((partner) => (
                 <div 
                   key={partner.id}
-                  className="grayscale-[30%] hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
+                  className="grayscale hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
                 >
                   <img 
                     src={partner.logo} 
                     alt={partner.name} 
-                    className="h-10 md:h-14 brightness-125"
+                    className="h-10 md:h-14 brightness-[2.5] hover:brightness-100 filter contrast-[0.9] hover:contrast-100 transition-all duration-500"
                     loading="lazy"
                   />
                 </div>

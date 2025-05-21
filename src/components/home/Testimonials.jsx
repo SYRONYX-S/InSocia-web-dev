@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionLayout from '../../layouts/SectionLayout';
 
@@ -31,13 +31,39 @@ const Testimonials = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const intervalRef = useRef(null);
+  
+  // Auto-slide functionality
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change slide every 5 seconds
+    
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [testimonials.length]);
+  
+  // Reset timer when manually changing slides
+  const resetInterval = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % testimonials.length);
+      }, 5000);
+    }
+  };
 
   const nextTestimonial = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    resetInterval();
   };
 
   const prevTestimonial = () => {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    resetInterval();
   };
 
   const buttonVariants = {
@@ -81,67 +107,81 @@ const Testimonials = () => {
           </div>
           
           {/* Main testimonial card with hexagonal avatar frame */}
-          <div className="backdrop-blur-md bg-neutral-800/40 rounded-2xl p-6 md:p-10 border border-neutral-700/40">
-            <div className="relative">
-              {/* Quote decorative element */}
-              <div className="absolute -top-6 -left-6 text-primary-700/30 text-7xl font-serif hidden md:block">"</div>
-              
-              <div className="md:flex items-center gap-8">
-                {/* Testimonial avatar */}
-                <div className="mb-6 md:mb-0 flex-shrink-0 mx-auto md:mx-0 relative">
-                  <div className="w-24 h-24 md:w-32 md:h-32 relative">
-                    {/* Hexagonal frame */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-secondary-600/20 rounded-full backdrop-blur-md"></div>
-                    <img 
-                      src={testimonials[activeIndex].image} 
-                      alt={testimonials[activeIndex].author} 
-                      className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full p-2 relative z-10"
-                    />
-                  </div>
+          <div className="backdrop-blur-md bg-neutral-800/40 rounded-2xl p-6 md:p-10 border border-neutral-700/40 relative">
+            
+            {/* Quote decorative element */}
+            <div className="absolute -top-6 -left-6 text-primary-700/30 text-7xl font-serif hidden md:block">"</div>
+            
+            <div className="md:flex items-center gap-8">
+              {/* Testimonial avatar - Fixed positioning and zIndex */}
+              <div className="mb-6 md:mb-0 flex-shrink-0 mx-auto md:mx-0 relative z-10">
+                <div className="w-24 h-24 md:w-32 md:h-32 relative">
+                  {/* Hexagonal frame */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-secondary-600/20 rounded-full backdrop-blur-md"></div>
+                  <img 
+                    src={testimonials[activeIndex].image} 
+                    alt={testimonials[activeIndex].author} 
+                    className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full p-2 relative z-10"
+                  />
                   
-                  {/* Organization badge */}
-                  <div className="absolute -bottom-2 -right-2 bg-primary-700/80 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm">
+                  {/* Organization badge - Improved positioning and zIndex */}
+                  <div className="absolute -bottom-2 -right-2 bg-primary-700/80 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm z-20">
                     {testimonials[activeIndex].organization}
                   </div>
                 </div>
+              </div>
+              
+              {/* Testimonial content - Added better text centering for mobile */}
+              <div className="flex-1 text-center md:text-left">
+                <motion.blockquote 
+                  key={testimonials[activeIndex].id} 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-lg md:text-xl text-white italic mb-6"
+                >
+                  "{testimonials[activeIndex].quote}"
+                </motion.blockquote>
                 
-                {/* Testimonial content */}
-                <div className="flex-1">
-                  <blockquote className="text-lg md:text-xl text-white italic mb-6">
-                    "{testimonials[activeIndex].quote}"
-                  </blockquote>
+                <div className="flex flex-col md:flex-row justify-between items-center">
+                  <motion.div
+                    key={`author-${testimonials[activeIndex].id}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.3 }}
+                    className="mb-4 md:mb-0"
+                  >
+                    <p className="font-bold text-white">{testimonials[activeIndex].author}</p>
+                    <p className="text-neutral-300 text-sm">{testimonials[activeIndex].title}</p>
+                  </motion.div>
                   
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-bold text-white">{testimonials[activeIndex].author}</p>
-                      <p className="text-neutral-300 text-sm">{testimonials[activeIndex].title}</p>
-                    </div>
-                    
-                    {/* Navigation controls */}
-                    <div className="flex gap-2">
-                      <motion.button 
-                        onClick={prevTestimonial}
-                        className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </motion.button>
-                      <motion.button 
-                        onClick={nextTestimonial}
-                        className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </motion.button>
-                    </div>
+                  {/* Navigation controls */}
+                  <div className="flex gap-2">
+                    <motion.button 
+                      onClick={prevTestimonial}
+                      className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      aria-label="Previous testimonial"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </motion.button>
+                    <motion.button 
+                      onClick={nextTestimonial}
+                      className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      aria-label="Next testimonial"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </motion.button>
                   </div>
                 </div>
               </div>
@@ -167,7 +207,10 @@ const Testimonials = () => {
           {testimonials.map((_, index) => (
             <button
               key={`indicator-${index}`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveIndex(index);
+                resetInterval();
+              }}
               className={`w-3 h-3 mx-1 rounded-full transition-colors ${
                 index === activeIndex ? 'bg-primary-500' : 'bg-neutral-600'
               }`}
