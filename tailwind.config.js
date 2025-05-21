@@ -47,6 +47,9 @@ module.exports = {
           900: '#171717',
         },
       },
+      zIndex: {
+        '100': '100',
+      },
       fontFamily: {
         'sans': ['Source Sans Pro', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         'serif': ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],

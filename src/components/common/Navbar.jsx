@@ -131,20 +131,19 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
   };
   
-  // CSS for animated gradient effect on branding
+  // CSS for animated gradient effect on branding - Simplified to just a glow
   const brandingGradientStyle = {
     position: 'relative',
-    textShadow: '0 0 10px rgba(103, 103, 255, 0.5), 0 0 20px rgba(120, 0, 255, 0.3)',
-    transition: 'letter-spacing 0.3s ease, text-shadow 0.5s ease',
+    textShadow: '0 0 10px rgba(103, 103, 255, 0.3), 0 0 20px rgba(120, 0, 255, 0.2)',
+    transition: 'text-shadow 0.3s ease',
   };
   
   const hoverBrandingGradientStyle = {
-    letterSpacing: '2px',
     textShadow: '0 0 15px rgba(103, 103, 255, 0.7), 0 0 25px rgba(120, 0, 255, 0.5)',
   };
   
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col font-['Playfair_Display',ui-serif,Georgia,serif]">
+    <header className="fixed top-0 left-0 right-0 z-40 flex flex-col font-['Playfair_Display',ui-serif,Georgia,serif]">
       {/* Top Contact Bar */}
       <AnimatePresence initial={false}>
         {showTopBar && (
@@ -198,7 +197,7 @@ const Navbar = () => {
       >
         <nav className={`relative transition-all duration-300 ${
           scrolled ? 'py-5' : 'py-7'
-        } shadow-lg backdrop-blur-md rounded-bl-[40px] rounded-br-[40px]`}>
+        } shadow-lg backdrop-blur-md rounded-bl-[40px] rounded-br-[40px] z-10`}>
           {/* Hero-style background */}
           <div className="absolute inset-0 -z-10 overflow-hidden rounded-bl-[40px] rounded-br-[40px]">
             {/* Dark gradient background like hero */}
@@ -239,7 +238,6 @@ const Navbar = () => {
                   Object.assign(e.target.style, hoverBrandingGradientStyle);
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.letterSpacing = '';
                   e.target.style.textShadow = brandingGradientStyle.textShadow;
                 }}
               >
@@ -290,16 +288,16 @@ const Navbar = () => {
                             animate="visible"
                             exit="hidden"
                             variants={dropdownVariants}
-                            className="absolute top-full left-0 mt-1 bg-neutral-800/90 backdrop-blur-md rounded shadow-lg py-2 min-w-[200px] border border-neutral-700/50 z-20"
+                            className="absolute top-full left-0 mt-1 bg-neutral-900/95 backdrop-blur-md rounded-lg shadow-lg py-2 min-w-[200px] border border-neutral-700/50 z-20"
                           >
                             {item.dropdown.map((dropItem) => (
                               <Link
                                 key={dropItem.name}
                                 to={dropItem.path}
-                                className={`block px-4 py-2 text-sm font-medium hover:bg-neutral-700/50 relative ${
+                                className={`block px-4 py-2 text-sm font-medium hover:bg-primary-900/40 transition-colors duration-200 relative ${
                                   location.pathname === dropItem.path
                                     ? 'text-primary-300'
-                                    : 'text-neutral-200'
+                                    : 'text-neutral-200 hover:text-primary-300'
                                 }`}
                               >
                                 {dropItem.name}
@@ -421,16 +419,16 @@ const Navbar = () => {
                                   animate={{ opacity: 1, height: 'auto' }}
                                   exit={{ opacity: 0, height: 0 }}
                                   transition={{ duration: 0.2 }}
-                                  className="pl-4 mt-2 ml-4 border-l-2 border-neutral-700"
+                                  className="pl-4 mt-2 ml-4 border-l-2 border-primary-700/50 bg-primary-900/20 rounded-r-lg"
                                 >
                                   {item.dropdown.map((dropItem) => (
                                     <Link
                                       key={dropItem.name}
                                       to={dropItem.path}
-                                      className={`block px-4 py-2 text-base ${
+                                      className={`block px-4 py-2 text-base transition-colors duration-200 ${
                                         location.pathname === dropItem.path
                                           ? 'text-primary-300 font-medium'
-                                          : 'text-neutral-300'
+                                          : 'text-neutral-300 hover:text-primary-300'
                                       }`}
                                       onClick={() => setIsOpen(false)}
                                     >
