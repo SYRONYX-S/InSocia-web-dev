@@ -97,19 +97,19 @@ const FeaturedProjects = () => {
           {/* Featured project - redesigned with proper image/text balance */}
           <motion.div 
             variants={itemVariants}
-            className="lg:col-span-8 row-span-1 md:row-span-2"
+            className="lg:col-span-8 row-span-1 md:row-span-2 flex flex-col"
           >
             <div className="h-full flex flex-col backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
-              <div className="h-80 md:h-96 overflow-hidden">
+              <div className="relative w-full aspect-[16/9] overflow-hidden">
                 <img 
                   src={projects[0].image} 
                   alt={projects[0].title} 
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col">
-                <span className="inline-block px-3 py-1 mb-3 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
+                <span className="self-start px-3 py-1 mb-3 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
                   {projects[0].category}
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-3">{projects[0].title}</h3>
@@ -145,7 +145,7 @@ const FeaturedProjects = () => {
                   />
                 </div>
                 <div className="p-5 flex-grow flex flex-col">
-                  <span className="inline-block px-3 py-1 mb-2 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
+                  <span className="self-start px-3 py-1 mb-2 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
                     {project.category}
                   </span>
                   <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>

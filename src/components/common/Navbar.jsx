@@ -10,7 +10,7 @@ const Navbar = () => {
   const location = useLocation();
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
-  let lastScrollY = 0;
+  const lastScrollYRef = useRef(0);
   
   // Navigation structure grouped into dropdowns
   const navItems = [
@@ -48,27 +48,28 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const localLastScrollY = lastScrollYRef.current;
       
-      // Show/hide navbar based on scroll position
+      // Show/hide navbar background based on scroll position
       if (currentScrollY > 10) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
       
-      // Show/hide top bar based on scroll direction
-      if (currentScrollY > lastScrollY && currentScrollY > 150) {
-        // Scrolling down significantly - hide top bar
-        setShowTopBar(false);
-      } else if (currentScrollY < lastScrollY || currentScrollY < 10) {
-        // Scrolling up or at very top - show top bar
+      // Updated logic for TopBar visibility
+      if (currentScrollY <= 10) { // At the very top
         setShowTopBar(true);
-      }
+      } else if (currentScrollY > 150 && currentScrollY > localLastScrollY) { // Scrolled down past 150px
+        setShowTopBar(false);
+      } 
+      // In other cases (scrolling up but not at top, or stationary between 10 and 150), 
+      // showTopBar remains unchanged, preventing it from appearing during mid-scroll.
       
-      lastScrollY = currentScrollY;
+      lastScrollYRef.current = currentScrollY; // Update ref
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   

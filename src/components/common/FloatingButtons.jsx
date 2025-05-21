@@ -7,8 +7,13 @@ const FloatingButtons = () => {
   const buttonRef = useRef(null);
   
   // New improved scrollToTop function
-  const handleScrollToTop = () => {
-    // Prevent any default behavior
+  const handleScrollToTop = (e) => {
+    // Prevent any default behavior and stop event propagation
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
     window.scrollTo({
       top: 0,
       left: 0,
