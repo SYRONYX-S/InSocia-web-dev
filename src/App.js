@@ -1,5 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import MainLayout from './layouts/MainLayout';
 import SmoothScroll from './components/common/SmoothScroll';
 import HomePage from './pages/HomePage';
@@ -14,9 +16,31 @@ import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+// ScrollToTop component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // values from 0 to 3000, with step 50ms
+      easing: 'ease-out-cubic', // default easing for AOS animations
+      once: true, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
+  }, []);
+
   return (
     <Router>
+      <ScrollToTop />
       <SmoothScroll>
         <MainLayout>
           <Routes>

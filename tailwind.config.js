@@ -111,6 +111,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'grid-pattern': "url('/src/assets/images/grid-pattern.svg')",
       },
     },
   },

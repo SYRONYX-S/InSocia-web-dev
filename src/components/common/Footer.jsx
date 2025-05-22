@@ -79,7 +79,7 @@ const Footer = () => {
                 <div>
                   <Link to="/about" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
-                    About Us
+                    About
                   </Link>
                 </div>
                 <div>
@@ -107,6 +107,12 @@ const Footer = () => {
                   </Link>
                 </div>
                 <div>
+                  <Link to="/resources" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                    <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
+                    Resources
+                  </Link>
+                </div>
+                <div>
                   <Link to="/news" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                     News & Insights
@@ -116,12 +122,6 @@ const Footer = () => {
                   <Link to="/careers" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
                     Careers
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/resources" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
-                    <span className="inline-block w-4 h-px bg-primary-500 mr-2 opacity-70 align-middle"></span>
-                    Resources
                   </Link>
                 </div>
                 <div>
@@ -141,31 +141,31 @@ const Footer = () => {
               </h3>
               <div className="space-y-1.5">
                 <div>
-                  <Link to="/resources" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <Link to="/resources#knowledge-hub" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-secondary-500 mr-2 opacity-70 align-middle"></span>
                     Knowledge Hub
                   </Link>
                 </div>
                 <div>
-                  <Link to="/resources/data-repository" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <Link to="/resources#data-repository" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-secondary-500 mr-2 opacity-70 align-middle"></span>
                     Data Repository
                   </Link>
                 </div>
                 <div>
-                  <Link to="/resources/methodology-center" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <Link to="/resources#methodology-center" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-secondary-500 mr-2 opacity-70 align-middle"></span>
                     Methodology Center
                   </Link>
                 </div>
                 <div>
-                  <Link to="/resources/policy-lab" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <Link to="/resources#policy-lab" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-secondary-500 mr-2 opacity-70 align-middle"></span>
                     Policy Innovation Lab
                   </Link>
                 </div>
                 <div>
-                  <Link to="/resources/training" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
+                  <Link to="/resources#training" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 inline-block py-1 hover:translate-x-1">
                     <span className="inline-block w-4 h-px bg-secondary-500 mr-2 opacity-70 align-middle"></span>
                     Training Resources
                   </Link>

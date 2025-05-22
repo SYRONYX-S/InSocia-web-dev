@@ -12,36 +12,75 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const lastScrollYRef = useRef(0);
   
-  // Navigation structure grouped into dropdowns
+  // Updated navigation structure with 5 main items and more comprehensive dropdowns
   const navItems = [
     { name: 'Home', path: '/' },
     { 
-      name: 'About', 
-      path: '/about',
+      name: 'About Us', 
+      path: '/about', // Main path for About page
       dropdown: [
-        { name: 'About Us', path: '/about' },
-        { name: 'Services', path: '/services' },
-        { name: 'Focus Areas', path: '/focus-areas' }
+        { name: 'Our Story', path: '/about#our-story' },
+        { name: 'Mission & Vision', path: '/about#our-mission' },
+        { name: 'Core Values', path: '/about#our-values' },
+        { name: 'Our Team', path: '/about#our-team' },
+        { name: 'Careers', path: '/careers' }, // Moved careers here
       ]
     },
     { 
-      name: 'Work', 
-      path: '/projects',
+      name: 'Services', 
+      path: '/services',
       dropdown: [
-        { name: 'Projects', path: '/projects' },
-        { name: 'Partnerships', path: '/partnerships' }
+        { name: 'Research & Analysis', path: '/services#research-analysis' },
+        { name: 'Policy Design & Advisory', path: '/services#policy-design' },
+        { name: 'Project Management', path: '/services#project-management' },
+        { name: 'Program Implementation', path: '/services#program-implementation' },
+        { name: 'Monitoring & Evaluation', path: '/services#monitoring-evaluation' },
+        { name: 'Knowledge Management', path: '/services#knowledge-management' },
+        { name: 'NGO Incubation', path: '/services#ngo-incubation' },
+        // Added focus areas within services dropdown
+        { name: '―――― Focus Areas ――――', path: '/focus-areas', isHeading: true },
+        { name: 'Health & Wellbeing', path: '/focus-areas#health-wellbeing' },
+        { name: 'Education & Skills', path: '/focus-areas#education-skills' },
+        { name: 'Sustainable Livelihoods', path: '/focus-areas#sustainable-livelihoods' },
+        { name: 'Gender Equality', path: '/focus-areas#gender-equality' },
+        { name: 'Environmental Sustainability', path: '/focus-areas#environmental-sustainability' },
+        { name: 'Rural Development', path: '/focus-areas#rural-development' }
+      ]
+    },
+    {
+      name: 'Our Impact',
+      path: '/projects', // Default to projects page
+      dropdown: [
+        { name: 'Projects Showcase', path: '/projects' },
+        { name: 'Case Studies', path: '/projects#case-studies' },
+        { name: 'Impact Assessment', path: '/projects#impact-assessment' },
+        { name: 'Our Partnerships', path: '/partnerships' },
+        { name: 'Government Partners', path: '/partnerships#government' },
+        { name: 'Development Organizations', path: '/partnerships#development-orgs' },
+        { name: 'Civil Society Organizations', path: '/partnerships#civil-society' },
+        { name: 'Academic Institutions', path: '/partnerships#academic' },
+        { name: 'Corporate Partners', path: '/partnerships#corporate' },
       ]
     },
     { 
       name: 'Resources', 
-      path: '/resources',
+      path: '/resources', // Default to resources page
       dropdown: [
-        { name: 'Resources', path: '/resources' },
-        { name: 'News', path: '/news' }
+        { name: 'News & Insights', path: '/news' },
+        { name: 'Latest Updates', path: '/news#latest' },
+        { name: 'Events Calendar', path: '/news#events' },
+        { name: '―――― Knowledge Center ――――', path: '/resources', isHeading: true },
+        { name: 'Knowledge Hub', path: '/resources#knowledge-hub' },
+        { name: 'Data Repository', path: '/resources#data-repository' },
+        { name: 'Methodology Center', path: '/resources#methodology-center' },
+        { name: 'Policy Innovation Lab', path: '/resources#policy-lab' },
+        { name: 'Training Resources', path: '/resources#training' },
       ]
     },
-    { name: 'Careers', path: '/careers' },
-    { name: 'Contact', path: '/contact' }
+    {
+      name: 'Contact',
+      path: '/contact'
+    }
   ];
   
   // Handle scroll effect
@@ -175,7 +214,7 @@ const Navbar = () => {
                 </span>
                 <div className="flex items-center space-x-3">
                   <a href="#" aria-label="Facebook" className="text-neutral-400 hover:text-primary-400 transition-colors">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.75 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
                   </a>
                   <a href="#" aria-label="Twitter" className="text-neutral-400 hover:text-primary-400 transition-colors">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
