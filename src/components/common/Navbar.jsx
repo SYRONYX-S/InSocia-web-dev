@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [showTopBar, setShowTopBar] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
   const lastScrollYRef = useRef(0);
@@ -17,13 +18,12 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { 
       name: 'About Us', 
-      path: '/about', // Main path for About page
+      path: '/about',
       dropdown: [
-        { name: 'Our Story', path: '/about#our-story' },
-        { name: 'Mission & Vision', path: '/about#our-mission' },
+        { name: 'About InSocia', path: '/about#our-story' },
         { name: 'Core Values', path: '/about#our-values' },
         { name: 'Our Team', path: '/about#our-team' },
-        { name: 'Careers', path: '/careers' }, // Moved careers here
+        { name: 'Careers', path: '/careers' },
       ]
     },
     { 
@@ -182,6 +182,52 @@ const Navbar = () => {
     textShadow: '0 0 15px rgba(103, 103, 255, 0.7), 0 0 25px rgba(120, 0, 255, 0.5)',
   };
   
+  // Helper: get header offset
+  const getHeaderOffset = () => {
+    const topBar = document.querySelector('[data-top-bar]');
+    const navbar = document.querySelector('[data-navbar]');
+    let offset = 0;
+    if (topBar && topBar.offsetHeight > 0) offset += topBar.offsetHeight;
+    if (navbar && navbar.offsetHeight > 0) offset += navbar.offsetHeight;
+    return offset;
+  };
+
+  const scrollToSectionWithOffset = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = getHeaderOffset();
+      const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  // Helper: handle hash navigation
+  const handleDropdownLink = (e, path) => {
+    if (path.includes('#')) {
+      const [base, hash] = path.split('#');
+      const currentBase = location.pathname;
+      if (base === currentBase) {
+        e.preventDefault();
+        setIsOpen(false);
+        setActiveDropdown(null);
+        setTimeout(() => {
+          scrollToSectionWithOffset(hash);
+        }, 10);
+      } else {
+        e.preventDefault();
+        navigate(base + '#' + hash);
+        setIsOpen(false);
+        setActiveDropdown(null);
+        setTimeout(() => {
+          scrollToSectionWithOffset(hash);
+        }, 400);
+      }
+    } else {
+      setIsOpen(false);
+      setActiveDropdown(null);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-40 flex flex-col font-['Playfair_Display',ui-serif,Georgia,serif]">
       {/* Top Contact Bar */}
@@ -195,6 +241,7 @@ const Navbar = () => {
             exit="hidden"
             variants={topBarVariants}
             className="bg-gradient-to-r from-neutral-900/90 to-neutral-950/90 backdrop-blur-md text-white shadow-md w-full border-b border-white/5 overflow-hidden"
+            data-top-bar
           >
             <div className="container mx-auto px-6 py-2 flex justify-between items-center">
               <div className="flex items-center space-x-6 text-sm">
@@ -234,6 +281,7 @@ const Navbar = () => {
         ref={navbarRef} 
         className="top-0 w-full sticky transition-all duration-300"
         style={{ marginTop: showTopBar ? '0' : '0' }}
+        data-navbar
       >
         <nav className={`relative transition-all duration-300 ${
           scrolled ? 'py-5' : 'py-7'
@@ -330,22 +378,29 @@ const Navbar = () => {
                             variants={dropdownVariants}
                             className="absolute top-full left-0 mt-1 bg-neutral-900/95 backdrop-blur-md rounded-lg shadow-lg py-2 min-w-[200px] border border-neutral-700/50 z-20"
                           >
-                            {item.dropdown.map((dropItem) => (
-                              <Link
-                                key={dropItem.name}
-                                to={dropItem.path}
-                                className={`block px-4 py-2 text-sm font-medium hover:bg-primary-900/40 transition-colors duration-200 relative ${
-                                  location.pathname === dropItem.path
-                                    ? 'text-primary-300'
-                                    : 'text-neutral-200 hover:text-primary-300'
-                                }`}
-                              >
-                                {dropItem.name}
-                                {/* Active indicator for dropdown item */}
-                                {location.pathname === dropItem.path && (
-                                  <span className="absolute left-0 top-1/2 w-1 h-4 bg-primary-400 transform -translate-y-1/2"></span>
-                                )}
-                              </Link>
+                            {item.dropdown.map((dropItem, idx) => (
+                              dropItem.isHeading ? (
+                                <div key={dropItem.name} className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-400 bg-neutral-800/70 border-t border-neutral-700/40 first:border-t-0 cursor-default select-none">
+                                  {dropItem.name.replace(/[-―]/g, '').trim()}
+                                </div>
+                              ) : (
+                                <Link
+                                  key={dropItem.name}
+                                  to={dropItem.path}
+                                  className={`block px-4 py-2 text-sm font-medium hover:bg-primary-900/40 transition-colors duration-200 relative ${
+                                    location.pathname === dropItem.path
+                                      ? 'text-primary-300'
+                                      : 'text-neutral-200 hover:text-primary-300'
+                                  }`}
+                                  onClick={(e) => handleDropdownLink(e, dropItem.path)}
+                                >
+                                  {dropItem.name}
+                                  {/* Active indicator for dropdown item */}
+                                  {location.pathname === dropItem.path && (
+                                    <span className="absolute left-0 top-1/2 w-1 h-4 bg-primary-400 transform -translate-y-1/2"></span>
+                                  )}
+                                </Link>
+                              )
                             ))}
                           </motion.div>
                         )}
@@ -461,19 +516,25 @@ const Navbar = () => {
                                   transition={{ duration: 0.2 }}
                                   className="pl-4 mt-2 ml-4 border-l-2 border-primary-700/50 bg-primary-900/20 rounded-r-lg"
                                 >
-                                  {item.dropdown.map((dropItem) => (
-                                    <Link
-                                      key={dropItem.name}
-                                      to={dropItem.path}
-                                      className={`block px-4 py-2 text-base transition-colors duration-200 ${
-                                        location.pathname === dropItem.path
-                                          ? 'text-primary-300 font-medium'
-                                          : 'text-neutral-300 hover:text-primary-300'
-                                      }`}
-                                      onClick={() => setIsOpen(false)}
-                                    >
-                                      {dropItem.name}
-                                    </Link>
+                                  {item.dropdown.map((dropItem, idx) => (
+                                    dropItem.isHeading ? (
+                                      <div key={dropItem.name} className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-400 bg-neutral-800/70 border-t border-neutral-700/40 first:border-t-0 cursor-default select-none">
+                                        {dropItem.name.replace(/[-―]/g, '').trim()}
+                                      </div>
+                                    ) : (
+                                      <Link
+                                        key={dropItem.name}
+                                        to={dropItem.path}
+                                        className={`block px-4 py-2 text-base transition-colors duration-200 ${
+                                          location.pathname === dropItem.path
+                                            ? 'text-primary-300 font-medium'
+                                            : 'text-neutral-300 hover:text-primary-300'
+                                        }`}
+                                        onClick={(e) => handleDropdownLink(e, dropItem.path)}
+                                      >
+                                        {dropItem.name}
+                                      </Link>
+                                    )
                                   ))}
                                 </motion.div>
                               )}

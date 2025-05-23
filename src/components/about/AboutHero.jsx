@@ -136,9 +136,6 @@ const AboutHero = () => {
           </div>
         </div>
       </div>
-      
-      {/* Decorative bottom divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-neutral-950/50 to-transparent"></div>
     </SectionLayout>
   );
 };
