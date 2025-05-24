@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionLayout from '../../layouts/SectionLayout';
-import { FiFileText, FiUsers, FiBox, FiRefreshCw, FiTrendingUp } from 'react-icons/fi';
+import { FiFileText, FiUsers, FiBox, FiRefreshCw, FiTrendingUp, FiHeart } from 'react-icons/fi';
 
 const OurValues = () => {
   const values = [
@@ -63,11 +63,14 @@ const OurValues = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <p className="text-base uppercase tracking-wider text-primary-400 mb-3 font-semibold">Our Guiding Principles</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">
-            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-300">Core Values</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiHeart className="w-4 h-4 text-primary-400" />
+            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our Guiding Principles</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Core Values</span>
           </h2>
-          <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
             These are the fundamental principles that shape our culture, drive our approach, and guide our commitment to creating a more equitable and sustainable world.
           </p>
         </div>

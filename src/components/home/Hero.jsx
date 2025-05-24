@@ -62,11 +62,11 @@ const Hero = () => {
               Advancing <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Equitable</span> Social Policies
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed max-w-2xl">
+            <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed max-w-2xl">
               We partner with governments, NGOs, and international agencies to design evidence-based solutions for sustainable social development.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/about" 
                 className="relative inline-flex items-center justify-center px-8 py-3.5 font-medium rounded-lg transition-colors duration-300 group overflow-hidden bg-primary-600/90 hover:bg-primary-500/90"
@@ -92,36 +92,36 @@ const Hero = () => {
               </Link>
             </div>
             
-            {/* Stats - Static */}
-            <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8">
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-4 py-5 relative overflow-hidden">
+            {/* Stats - Optimized for better fit */}
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-3 py-4 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 opacity-50"></div>
                 <div className="relative z-10">
-                  <p className="text-3xl font-bold text-white">25+</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-white">25+</p>
                   <p className="text-sm text-white/70 mt-1">Projects</p>
                 </div>
               </div>
               
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-4 py-5 relative overflow-hidden">
+              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-3 py-4 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-secondary-500 opacity-50"></div>
                 <div className="relative z-10">
-                  <p className="text-3xl font-bold text-white">18</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-white">18</p>
                   <p className="text-sm text-white/70 mt-1">Countries</p>
                 </div>
               </div>
               
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-4 py-5 relative overflow-hidden">
+              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-3 py-4 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-primary-500 opacity-50"></div>
                 <div className="relative z-10">
-                  <p className="text-3xl font-bold text-white">40+</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-white">40+</p>
                   <p className="text-sm text-white/70 mt-1">Partners</p>
                 </div>
               </div>
               
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-4 py-5 relative overflow-hidden">
+              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-lg px-3 py-4 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-secondary-400 opacity-50"></div>
                 <div className="relative z-10">
-                  <p className="text-3xl font-bold text-white">100K+</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-white">100K+</p>
                   <p className="text-sm text-white/70 mt-1">Lives Impacted</p>
                 </div>
               </div>

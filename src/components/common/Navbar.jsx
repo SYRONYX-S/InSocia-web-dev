@@ -12,74 +12,80 @@ const Navbar = () => {
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
   const lastScrollYRef = useRef(0);
+
+  // Check if we're in preview mode
+  const urlParams = new URLSearchParams(location.search);
+  const isPreviewMode = urlParams.get('preview') === 'insocia2024' || 
+                       location.pathname.startsWith('/preview');
+  
+  // Helper function to get the correct path based on preview mode
+  const getPath = (path) => {
+    if (!isPreviewMode) return path;
+    if (path === '/') return '/preview';
+    return path.startsWith('/') ? `/preview${path}` : `/preview/${path}`;
+  };
   
   // Updated navigation structure with 5 main items and more comprehensive dropdowns
   const navItems = [
-    { name: 'Home', path: '/' },
+    { name: 'Home', path: getPath('/') },
     { 
       name: 'About Us', 
-      path: '/about',
+      path: getPath('/about'),
       dropdown: [
-        { name: 'About InSocia', path: '/about#our-story' },
-        { name: 'Core Values', path: '/about#our-values' },
-        { name: 'Our Team', path: '/about#our-team' },
-        { name: 'Careers', path: '/careers' },
+        { name: 'About InSocia', path: getPath('/about#our-story') },
+        { name: 'Core Values', path: getPath('/about#our-values') },
+        { name: 'Our Team', path: getPath('/about#our-team') },
+        { name: 'Careers', path: getPath('/careers') },
       ]
     },
     { 
       name: 'Services', 
-      path: '/services',
+      path: getPath('/services'),
       dropdown: [
-        { name: 'Research & Analysis', path: '/services#research-analysis' },
-        { name: 'Policy Design & Advisory', path: '/services#policy-design' },
-        { name: 'Project Management', path: '/services#project-management' },
-        { name: 'Program Implementation', path: '/services#program-implementation' },
-        { name: 'Monitoring & Evaluation', path: '/services#monitoring-evaluation' },
-        { name: 'Knowledge Management', path: '/services#knowledge-management' },
-        { name: 'NGO Incubation', path: '/services#ngo-incubation' },
-        // Added focus areas within services dropdown
-        { name: '―――― Focus Areas ――――', path: '/focus-areas', isHeading: true },
-        { name: 'Health & Wellbeing', path: '/focus-areas#health-wellbeing' },
-        { name: 'Education & Skills', path: '/focus-areas#education-skills' },
-        { name: 'Sustainable Livelihoods', path: '/focus-areas#sustainable-livelihoods' },
-        { name: 'Gender Equality', path: '/focus-areas#gender-equality' },
-        { name: 'Environmental Sustainability', path: '/focus-areas#environmental-sustainability' },
-        { name: 'Rural Development', path: '/focus-areas#rural-development' }
+        { name: 'Services Overview', path: getPath('/services#services-overview') },
+        { name: 'Our Process', path: getPath('/services#our-process') },
+        { name: 'Service Details', path: getPath('/services#service-details') },
+        { name: 'Get Started', path: getPath('/services#get-started') },
+        { name: '―――― Focus Areas ――――', path: getPath('/focus-areas'), isHeading: true },
+        { name: 'Health & Wellbeing', path: getPath('/focus-areas#health-wellbeing') },
+        { name: 'Education & Skills', path: getPath('/focus-areas#education-skills') },
+        { name: 'Sustainable Livelihoods', path: getPath('/focus-areas#sustainable-livelihoods') },
+        { name: 'Gender Equality', path: getPath('/focus-areas#gender-equality') },
+        { name: 'Environmental Sustainability', path: getPath('/focus-areas#environmental-sustainability') },
+        { name: 'Rural Development', path: getPath('/focus-areas#rural-development') }
       ]
     },
     {
       name: 'Our Impact',
-      path: '/projects', // Default to projects page
+      path: getPath('/projects'), // Default to projects page
       dropdown: [
-        { name: 'Projects Showcase', path: '/projects' },
-        { name: 'Case Studies', path: '/projects#case-studies' },
-        { name: 'Impact Assessment', path: '/projects#impact-assessment' },
-        { name: 'Our Partnerships', path: '/partnerships' },
-        { name: 'Government Partners', path: '/partnerships#government' },
-        { name: 'Development Organizations', path: '/partnerships#development-orgs' },
-        { name: 'Civil Society Organizations', path: '/partnerships#civil-society' },
-        { name: 'Academic Institutions', path: '/partnerships#academic' },
-        { name: 'Corporate Partners', path: '/partnerships#corporate' },
+        { name: 'Projects Showcase', path: getPath('/projects') },
+        { name: '―――― Our Partnerships ――――', path: getPath('/partnerships'), isHeading: true },
+        { name: 'Government Partners', path: getPath('/partnerships#government') },
+        { name: 'Development Organizations', path: getPath('/partnerships#development-orgs') },
+        { name: 'Civil Society Organizations', path: getPath('/partnerships#civil-society') },
+        { name: 'Academic Institutions', path: getPath('/partnerships#academic') },
+        { name: 'Corporate Partners', path: getPath('/partnerships#corporate') },
       ]
     },
     { 
       name: 'Resources', 
-      path: '/resources', // Default to resources page
+      path: getPath('/resources'), // Default to resources page
       dropdown: [
-        { name: 'News & Insights', path: '/news' },
-        { name: 'Latest Updates', path: '/news#latest' },
-        { name: 'Events Calendar', path: '/news#events' },
-        { name: '―――― Knowledge Center ――――', path: '/resources', isHeading: true },
-        { name: 'Knowledge Hub', path: '/resources#knowledge-hub' },
-        { name: 'Data Repository', path: '/resources#data-repository' },
-        { name: 'Methodology Center', path: '/resources#methodology-center' },
-        { name: 'Policy Innovation Lab', path: '/resources#policy-lab' },
-        { name: 'Training Resources', path: '/resources#training' },
+        { name: 'News & Insights', path: getPath('/news') },
+        { name: 'Latest Updates', path: getPath('/news#latest') },
+        { name: 'Events Calendar', path: getPath('/news#events') },
+        { name: '―――― Knowledge Center ――――', path: getPath('/resources'), isHeading: true },
+        { name: 'Knowledge Hub', path: getPath('/resources#knowledge-hub') },
+        { name: 'Data Repository', path: getPath('/resources#data-repository') },
+        { name: 'Methodology Center', path: getPath('/resources#methodology-center') },
+        { name: 'Policy Innovation Lab', path: getPath('/resources#policy-lab') },
+        { name: 'Training Resources', path: getPath('/resources#training') },
       ]
     },
     {
       name: 'Contact',
-      path: '/contact'
+      path: getPath('/contact')
     }
   ];
   

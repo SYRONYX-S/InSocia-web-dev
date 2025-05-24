@@ -1,57 +1,144 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { defaultAnimations, getStaggeredAnimation } from '../../utils/animations';
 import { services } from '../../data/services';
+import { 
+  FiSearch, 
+  FiUsers, 
+  FiTrendingUp, 
+  FiBox, 
+  FiClipboard, 
+  FiActivity, 
+  FiCheckCircle, 
+  FiBarChart2, 
+  FiArrowRight,
+  FiFileText,
+  FiSettings,
+  FiBookOpen,
+  FiZap,
+  FiTarget,
+  FiGlobe
+} from 'react-icons/fi';
+
+const iconMap = {
+  research: <FiSearch className="w-8 h-8 text-primary-400" />,
+  policy: <FiFileText className="w-8 h-8 text-primary-400" />,
+  project: <FiTarget className="w-8 h-8 text-primary-400" />,
+  implementation: <FiSettings className="w-8 h-8 text-primary-400" />,
+  monitoring: <FiBarChart2 className="w-8 h-8 text-primary-400" />,
+  knowledge: <FiBookOpen className="w-8 h-8 text-primary-400" />,
+  incubation: <FiZap className="w-8 h-8 text-primary-400" />,
+};
+
+// Helper function to generate anchor IDs from service titles
+const generateAnchorId = (title) => {
+  return title.toLowerCase()
+    .replace(/\s+&\s+/g, '-')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '');
+};
 
 const ServicesList = () => {
-  return (
-    <section className="py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <h2 
-            className="text-3xl md:text-4xl font-bold mb-6 text-white"
-            {...defaultAnimations.fadeIn}
-          >
-            Our Services
-          </h2>
-          <p 
-            className="text-xl text-neutral-300"
-            {...defaultAnimations.fadeIn}
-          >
-            Comprehensive development services tailored to your needs
-          </p>
-        </div>
+  const [hoveredService, setHoveredService] = useState(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className="group relative"
-              {...getStaggeredAnimation(index)}
-            >
-              <div className="relative bg-neutral-800/30 backdrop-blur-sm rounded-xl p-8 border border-neutral-700/30 hover:border-primary-500/30 transition-all duration-300">
-                <div className="w-16 h-16 bg-primary-500/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <i className={`${service.icon} text-2xl text-primary-400`}></i>
-                </div>
-                <h3 className="text-2xl font-semibold text-white group-hover:text-primary-400 transition-colors mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-neutral-300 mb-6">
-                  {service.shortDescription}
-                </p>
-                <Link 
-                  to={`/services/${service.id}`}
-                  className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
-                >
-                  Learn More
-                  <i className="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </Link>
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div
+          key={service.id}
+          id={generateAnchorId(service.title)}
+          className="group relative scroll-mt-32"
+          {...getStaggeredAnimation(index)}
+          onMouseEnter={() => setHoveredService(service.id)}
+          onMouseLeave={() => setHoveredService(null)}
+        >
+          {/* Premium Card Design */}
+          <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-primary-400/30 transition-all duration-500 h-full group-hover:shadow-2xl group-hover:shadow-primary-500/10">
+            
+            {/* Subtle background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-secondary-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Icon Container */}
+            <div className="relative z-10 flex items-center justify-between mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 border border-primary-400/20">
+                {iconMap[service.icon] || <FiActivity className="w-8 h-8 text-primary-400" />}
+              </div>
+              <div className="text-right">
+                <span className="text-xs font-medium text-primary-400/60 uppercase tracking-wider">Service</span>
+                <div className="text-sm font-semibold text-white/60">#{service.id.toString().padStart(2, '0')}</div>
               </div>
             </div>
-          ))}
+
+            {/* Title */}
+            <h3 className="relative z-10 text-xl lg:text-2xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300 mb-4 leading-tight">
+              {service.title}
+            </h3>
+
+            {/* Short Description */}
+            <p className="relative z-10 text-neutral-300 group-hover:text-neutral-200 transition-colors duration-300 mb-6 leading-relaxed text-sm lg:text-base">
+              {service.shortDescription}
+            </p>
+
+            {/* Features Preview */}
+            {service.features && (
+              <div className="relative z-10 mb-6">
+                <div className="grid grid-cols-1 gap-2">
+                  {service.features.slice(0, 3).map((feature, idx) => (
+                    <div 
+                      key={idx} 
+                      className="flex items-center gap-2 text-xs text-neutral-400 group-hover:text-neutral-300 transition-colors duration-300"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-400/60"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Hover Details */}
+            <div className={`relative z-10 overflow-hidden transition-all duration-500 ${
+              hoveredService === service.id ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+              <div className="border-t border-white/10 pt-4 mb-4">
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  {service.description.length > 120 
+                    ? `${service.description.substring(0, 120)}...` 
+                    : service.description
+                  }
+                </p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="relative z-10 flex items-center justify-between mt-auto pt-4">
+              <Link 
+                to={`/services/${service.id}`}
+                className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-all duration-300 font-medium text-sm group/link"
+              >
+                <span>Explore Service</span>
+                <FiArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
+              </Link>
+              
+              {/* Service indicator */}
+              <div className="flex items-center gap-1">
+                {Array.from({ length: 3 }).map((_, idx) => (
+                  <div 
+                    key={idx}
+                    className="w-1 h-1 rounded-full bg-primary-400/40 group-hover:bg-primary-400/80 transition-colors duration-300"
+                  ></div>
+                ))}
+              </div>
+            </div>
+
+            {/* Animated border effect */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-400/0 via-primary-400/20 to-primary-400/0 blur-sm"></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 

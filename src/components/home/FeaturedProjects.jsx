@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionLayout from '../../layouts/SectionLayout';
+import { FiFolder } from 'react-icons/fi';
 
 const FeaturedProjects = () => {
   // Projects data
@@ -82,12 +83,16 @@ const FeaturedProjects = () => {
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
       >
-        {/* Section header with fixed contrast */}
-        <motion.div variants={itemVariants} className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-white">
-            <span className="text-white">Featured</span> <span className="text-primary-400">Projects</span>
+        {/* Premium Section Title */}
+        <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiFolder className="w-4 h-4 text-primary-400" />
+            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Featured Projects</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+            Impactful <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Initiatives</span> in Action
           </h2>
-          <p className="text-lg text-neutral-200 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
             Explore some of our impactful initiatives across different focus areas
           </p>
         </motion.div>

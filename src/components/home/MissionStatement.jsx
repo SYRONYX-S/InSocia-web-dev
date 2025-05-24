@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionLayout from '../../layouts/SectionLayout';
+import { FiTarget, FiHeart } from 'react-icons/fi';
 
 const MissionStatement = () => {
   // Simpler animation variants with improved performance
@@ -32,12 +33,16 @@ const MissionStatement = () => {
         viewport={{ once: true, margin: "-50px" }}
         variants={container}
       >
-        {/* Main heading with improved contrast and semantic structure */}
-        <motion.div variants={item} className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-white">
-            Our <span className="text-primary-400">Mission</span>
+        {/* Premium Section Title */}
+        <motion.div variants={item} className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiHeart className="w-4 h-4 text-primary-400" />
+            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our Mission</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+            Creating <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Equitable</span> Societies
           </h2>
-          <p className="text-lg md:text-xl text-neutral-200 mx-auto">
+          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
             At InSocia Development Consultancy, we create equitable societies through innovative policy approaches and rigorous research.
           </p>
         </motion.div>
@@ -80,12 +85,15 @@ const MissionStatement = () => {
         
         {/* Strategic objectives section - added for SEO and content improvement */}
         <div className="mb-14">
-          <motion.h3 
-            variants={item} 
-            className="text-2xl md:text-3xl font-semibold mb-8 text-center text-white"
-          >
-            Our Strategic <span className="text-primary-400">Objectives</span>
-          </motion.h3>
+          <motion.div variants={item} className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+              <FiTarget className="w-4 h-4 text-primary-400" />
+              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Strategic Objectives</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white leading-tight">
+              Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Approach</span> to Change
+            </h3>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 

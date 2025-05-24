@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionLayout from '../../layouts/SectionLayout';
+import { FiGrid } from 'react-icons/fi';
 
 const FocusAreas = () => {
   const areas = [
@@ -129,12 +130,16 @@ const FocusAreas = () => {
         viewport={{ once: true, margin: "-50px" }}
         variants={container}
       >
-        {/* Section header with improved contrast */}
-        <motion.div variants={item} className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-white">
-            Our <span className="text-primary-400">Focus Areas</span>
+        {/* Premium Section Title */}
+        <motion.div variants={item} className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiGrid className="w-4 h-4 text-primary-400" />
+            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our Focus Areas</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+            Driving <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Holistic</span> Social Impact
           </h2>
-          <p className="text-lg text-neutral-200 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
             We develop evidence-based solutions across these key domains to create holistic social impact
           </p>
         </motion.div>

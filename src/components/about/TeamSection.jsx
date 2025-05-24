@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SectionLayout from '../../layouts/SectionLayout';
 import { teamData } from '../../data/teamData';
-import { FiLinkedin, FiTwitter, FiInstagram, FiMessageCircle, FiChevronDown, FiChevronUp, FiBriefcase } from 'react-icons/fi';
+import { FiLinkedin, FiTwitter, FiInstagram, FiMessageCircle, FiChevronDown, FiChevronUp, FiBriefcase, FiUsers } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const TeamMemberCard = ({ member }) => {
@@ -125,11 +125,14 @@ const TeamSection = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <p className="text-sm uppercase tracking-wider text-primary-400 mb-2 font-medium">Our People</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-heading mb-4">
-            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 to-secondary-300">Team</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiUsers className="w-4 h-4 text-primary-400" />
+            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our People</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+            Meet Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Team</span>
           </h2>
-          <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
             Meet the dedicated experts driving our mission through expertise, passion, and commitment to social impact.
           </p>
         </div>

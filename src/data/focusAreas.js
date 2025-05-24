@@ -1,92 +1,98 @@
 export const focusAreas = [
   {
     id: 1,
-    title: 'Education & Skill Development',
-    icon: 'education',
-    shortDescription: 'Enhancing access to quality education and developing market-relevant skills.',
-    description: 'We work towards improving access to quality education and developing market-relevant skills for all segments of society. Our initiatives span formal education systems, vocational training, digital literacy, and lifelong learning approaches.',
-    keyInitiatives: [
-      'Quality Education Enhancement Program',
-      'Vocational Skills for Youth',
-      'Digital Literacy Program',
-      'Teacher Training and Development',
-      'Educational Infrastructure Support'
-    ],
-    image: 'education.jpg'
-  },
-  {
-    id: 2,
-    title: 'Public Health & Nutrition',
+    title: 'Health & Wellbeing',
     icon: 'health',
-    shortDescription: 'Promoting health awareness, accessibility, and nutritional security.',
-    description: 'Our public health initiatives focus on increasing awareness, improving accessibility to healthcare, and ensuring nutritional security. We design and implement programs targeting maternal and child health, communicable and non-communicable diseases, and community health systems.',
+    shortDescription: 'Strengthening health systems and improving health outcomes for vulnerable populations.',
+    description: 'InSocia works to strengthen health systems and improve health outcomes for vulnerable populations through universal health coverage policy research, maternal and child health program evaluations, community health worker effectiveness studies, health financing and equity analyses, healthcare access interventions for marginalized communities, and mental health policy development.',
     keyInitiatives: [
-      'Maternal and Child Health Program',
-      'Community Health Worker Training',
-      'Disease Prevention and Control',
-      'Nutritional Security for Children',
-      'Healthcare Access Enhancement'
+      'Universal Health Coverage Policy Research',
+      'Maternal and Child Health Program Evaluations',
+      'Community Health Worker Effectiveness Studies',
+      'Health Financing and Equity Analyses',
+      'Healthcare Access Interventions for Marginalized Communities',
+      'Mental Health Policy Development'
     ],
     image: 'health.jpg'
   },
   {
-    id: 3,
-    title: 'Climate & Environment',
-    icon: 'climate',
-    shortDescription: 'Developing sustainable solutions to environmental challenges.',
-    description: 'We develop and implement sustainable solutions to environmental challenges, focusing on climate adaptation, renewable energy, waste management, biodiversity conservation, and sustainable resource management practices.',
+    id: 2,
+    title: 'Education & Skills Development',
+    icon: 'education',
+    shortDescription: 'Improving educational access, quality, and outcomes through evidence-based approaches.',
+    description: 'We focus on improving educational access, quality, and outcomes through education policy reform support, school effectiveness evaluations, teacher training program development, EdTech implementation research, skills development for youth employment, and education equity assessments.',
     keyInitiatives: [
-      'Climate Adaptation for Communities',
-      'Renewable Energy Access Program',
-      'Sustainable Waste Management',
-      'Biodiversity Conservation',
-      'Water Resource Management'
+      'Education Policy Reform Support',
+      'School Effectiveness Evaluations',
+      'Teacher Training Program Development',
+      'EdTech Implementation Research',
+      'Skills Development for Youth Employment',
+      'Education Equity Assessments'
     ],
-    image: 'climate.jpg'
+    image: 'education.jpg'
+  },
+  {
+    id: 3,
+    title: 'Sustainable Livelihoods',
+    icon: 'livelihoods',
+    shortDescription: 'Promoting economic opportunities that are inclusive and sustainable for communities.',
+    description: 'Our work promotes economic opportunities that are inclusive and sustainable through financial inclusion program design, entrepreneurship support systems, value chain development and analysis, labor market interventions, social protection mechanism evaluations, and cooperative and community enterprise models.',
+    keyInitiatives: [
+      'Financial Inclusion Program Design',
+      'Entrepreneurship Support Systems',
+      'Value Chain Development and Analysis',
+      'Labor Market Interventions',
+      'Social Protection Mechanism Evaluations',
+      'Cooperative and Community Enterprise Models'
+    ],
+    image: 'livelihoods.jpg'
   },
   {
     id: 4,
-    title: 'Governance & Public Policy',
-    icon: 'governance',
-    shortDescription: 'Strengthening institutions and fostering transparent governance.',
-    description: 'We work to strengthen institutions and foster transparent governance through policy research, stakeholder engagement, capacity building of government officials, and promoting citizen participation in governance processes.',
+    title: 'Gender Equality & Inclusion',
+    icon: 'gender',
+    shortDescription: 'Advancing gender-responsive policies and programs for equitable development.',
+    description: 'InSocia advances gender-responsive policies and programs through gender-based policy analysis, women\'s economic empowerment research, gender-responsive budgeting support, prevention of gender-based violence, women\'s leadership program development, and inclusive policy design for marginalized groups.',
     keyInitiatives: [
-      'Policy Research and Advisory',
-      'Public Institution Capacity Building',
-      'Transparency and Accountability Frameworks',
-      'Citizen Engagement in Governance',
-      'Evidence-Based Policy Design'
+      'Gender-Based Policy Analysis',
+      'Women\'s Economic Empowerment Research',
+      'Gender-Responsive Budgeting Support',
+      'Prevention of Gender-Based Violence',
+      'Women\'s Leadership Program Development',
+      'Inclusive Policy Design for Marginalized Groups'
     ],
-    image: 'governance.jpg'
+    image: 'gender.jpg'
   },
   {
     id: 5,
-    title: 'Economic Development',
-    icon: 'economic',
-    shortDescription: 'Creating economic opportunities and fostering inclusive growth.',
-    description: 'Our economic development focus creates opportunities and fosters inclusive growth through entrepreneurship support, financial inclusion, market access, sustainable livelihoods, and value chain development.',
+    title: 'Environmental Sustainability',
+    icon: 'environment',
+    shortDescription: 'Integrating environmental considerations into social policy for sustainable development.',
+    description: 'We integrate environmental considerations into social policy through climate adaptation policy research, renewable energy access programs, sustainable agriculture promotion, water resource management, environmental justice initiatives, and ecosystem services valuation.',
     keyInitiatives: [
-      'Entrepreneurship Ecosystem Development',
-      'Financial Inclusion for Marginalized Groups',
-      'Market Access Enhancement',
-      'Sustainable Livelihood Promotion',
-      'Value Chain Development'
+      'Climate Adaptation Policy Research',
+      'Renewable Energy Access Programs',
+      'Sustainable Agriculture Promotion',
+      'Water Resource Management',
+      'Environmental Justice Initiatives',
+      'Ecosystem Services Valuation'
     ],
-    image: 'economic.jpg'
+    image: 'environment.jpg'
   },
   {
     id: 6,
-    title: 'Women Empowerment',
-    icon: 'women',
-    shortDescription: 'Advancing gender equality and promoting women\'s leadership.',
-    description: 'We advance gender equality and promote women\'s leadership through economic empowerment initiatives, education and skill development, health and wellbeing programs, and advocacy for gender-responsive policies.',
+    title: 'Rural Development & Agriculture',
+    icon: 'rural',
+    shortDescription: 'Strengthening rural communities and agricultural systems for sustainable growth.',
+    description: 'Our rural development focus strengthens communities and agricultural systems through smallholder farmer support programs, agricultural technology adoption research, rural infrastructure development, market linkage facilitation, cooperative farming promotion, and rural-urban migration studies.',
     keyInitiatives: [
-      'Women\'s Economic Empowerment',
-      'Girls\' Education and Skill Development',
-      'Women\'s Health and Wellbeing',
-      'Gender-Based Violence Prevention',
-      'Gender-Responsive Policy Advocacy'
+      'Smallholder Farmer Support Programs',
+      'Agricultural Technology Adoption Research',
+      'Rural Infrastructure Development',
+      'Market Linkage Facilitation',
+      'Cooperative Farming Promotion',
+      'Rural-Urban Migration Studies'
     ],
-    image: 'women.jpg'
+    image: 'rural.jpg'
   }
 ]; 
