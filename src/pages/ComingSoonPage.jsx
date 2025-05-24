@@ -52,20 +52,30 @@ const ComingSoonPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden py-4">
-        {/* Enhanced animated background */}
+        {/* Static grainy gradient background */}
         <div className="absolute inset-0 pointer-events-none select-none">
-          {/* Primary gradient orbs */}
-          <div className="absolute w-[800px] h-[800px] -top-40 -left-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute w-[600px] h-[600px] top-1/4 -right-40 bg-gradient-to-bl from-purple-500/15 to-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute w-[500px] h-[500px] bottom-0 left-1/3 bg-gradient-to-tr from-emerald-500/15 to-teal-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/15 to-cyan-900/20"></div>
           
-          {/* Secondary floating elements */}
-          <div className="absolute w-32 h-32 top-1/6 left-1/4 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-xl animate-bounce" style={{animationDuration: '3s'}}></div>
-          <div className="absolute w-24 h-24 top-2/3 right-1/4 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-xl animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
-          <div className="absolute w-20 h-20 bottom-1/4 left-1/6 bg-gradient-to-r from-emerald-400/10 to-teal-400/10 rounded-full blur-xl animate-bounce" style={{animationDuration: '3.5s', animationDelay: '2s'}}></div>
+          {/* Subtle static gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-neutral-800/30 via-transparent to-blue-800/20"></div>
+          
+          {/* Grain texture for premium feel */}
+          <div 
+            className="absolute inset-0 opacity-40 mix-blend-soft-light"
+            style={{ 
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+              backgroundSize: '150px 150px'
+            }}
+          ></div>
+          
+          {/* Subtle radial highlights */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-cyan-500/5 rounded-full"></div>
         </div>
 
-                {/* Main content */}        <div className="relative z-10 min-h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-16">
+        {/* Main content */}
+        <div className="relative z-10 min-h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-16">
           <div className="max-w-6xl mx-auto text-center">
             {/* Brand area */}
             <div className="mb-8">
@@ -83,7 +93,7 @@ const ComingSoonPage = () => {
               </div>
               
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Something <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 animate-gradient-x">Amazing</span> is Coming
+                Something <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400">Amazing</span> is Coming
               </h2>
               
               <p className="text-xl md:text-2xl text-neutral-200 mb-8 leading-relaxed max-w-4xl mx-auto">
