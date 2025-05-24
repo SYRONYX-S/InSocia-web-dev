@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import { Link } from 'react-router-dom';
-import { FiUsers, FiHeart, FiTrendingUp, FiGlobe, FiAward, FiBook, FiTarget, FiStar, FiMail, FiBell, FiCheckCircle, FiClock, FiMapPin, FiArrowRight } from 'react-icons/fi';
+import { FiUsers, FiHeart, FiTrendingUp, FiGlobe, FiAward, FiBook, FiTarget, FiStar, FiMail, FiBell, FiCheckCircle, FiClock, FiMapPin, FiArrowRight, FiBriefcase } from 'react-icons/fi';
 
 const CareersPage = () => {
   const careersSchema = {
@@ -123,23 +123,23 @@ const CareersPage = () => {
 
       {/* Premium Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-24 pb-16">
-        {/* Enhanced background effects */}
+        {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[700px] h-[700px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute w-[500px] h-[500px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute w-[300px] h-[300px] top-1/3 left-1/3 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
+          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
         </div>
 
         <div className="w-full px-4 md:px-8 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
             {/* Premium badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
-              <FiUsers className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Join Our Mission</span>
+              <FiBriefcase className="w-4 h-4 text-primary-400" />
+              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Join Our Team</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Shape the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 animate-gradient-x">Future</span> of Social Development
+              Shape the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400">Future</span> of Social Development
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">

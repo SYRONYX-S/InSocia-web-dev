@@ -9,8 +9,8 @@ const Footer = () => {
       {/* Enhanced background with animated gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-primary-900/10 to-neutral-950 opacity-80"></div>
       
-      {/* Improved grainy texture overlay with animation */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjgiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHR5cGU9ImZyYWN0YWxOb2lzZSIgbnVtT2N0YXZlcz0iNCIgc2VlZD0iMTIzIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPjxmZURpZmZ1c2VMaWdodGluZyBpbj0idHVyYnVsZW5jZSIgbGlnaHRpbmdDb2xvcj0iIzY2NiIgc3VyZmFjZVNjYWxlPSIxLjUiIHJlc3VsdD0ibGlnaHQiPjwvZmVEaWZmdXNlTGlnaHRpbmc+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiPjwvcmVjdD48L3N2Zz4=')] mix-blend-overlay opacity-40 animate-subtle-drift"></div>
+      {/* Static grainy texture overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjgiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHR5cGU9ImZyYWN0YWxOb2lzZSIgbnVtT2N0YXZlcz0iNCIgc2VlZD0iMTIzIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPjxmZURpZmZ1c2VMaWdodGluZyBpbj0idHVyYnVsZW5jZSIgbGlnaHRpbmdDb2xvcj0iIzY2NiIgc3VyZmFjZVNjYWxlPSIxLjUiIHJlc3VsdD0ibGlnaHQiPjwvZmVEaWZmdXNlTGlnaHRpbmc+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiPjwvcmVjdD48L3N2Zz4=')] mix-blend-overlay opacity-40"></div>
       
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-80"></div>
@@ -254,14 +254,6 @@ const Footer = () => {
       
       {/* Add animation keyframes */}
       <style jsx>{`
-        @keyframes subtle-drift {
-          0% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
-          50% { transform: translate(2px, 2px) rotate(0.5deg); opacity: 0.5; }
-          100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
-        }
-        .animate-subtle-drift {
-          animation: subtle-drift 8s ease-in-out infinite;
-        }
         .bg-radial-gradient {
           background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
         }

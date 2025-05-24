@@ -41,10 +41,10 @@ const ServicesPage = () => {
 
       {/* Premium Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-24 pb-16">
-        {/* Enhanced background effects */}
+        {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[800px] h-[800px] -top-40 -left-40 bg-gradient-to-br from-primary-500/20 to-secondary-500/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute w-[600px] h-[600px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/20 to-primary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute w-[800px] h-[800px] -top-40 -left-40 bg-gradient-to-br from-primary-500/20 to-secondary-500/15 rounded-full blur-3xl"></div>
+          <div className="absolute w-[600px] h-[600px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/20 to-primary-500/10 rounded-full blur-3xl"></div>
           <div className="absolute w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/10 to-secondary-600/10 rounded-full blur-2xl"></div>
         </div>
 
@@ -58,7 +58,7 @@ const ServicesPage = () => {
             </div>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Transform <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 animate-gradient-x">Social Development</span> Through Collaboration
+              Transform <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400">Social Development</span> Through Collaboration
             </h1>
             
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">

@@ -141,10 +141,10 @@ const ProjectsPage = () => {
 
       {/* Premium Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden">
-        {/* Enhanced background effects */}
+        {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl"></div>
           <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
         </div>
 
@@ -157,7 +157,7 @@ const ProjectsPage = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 animate-gradient-x">Future</span> of Development
+              Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400">Future</span> of Development
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">
@@ -167,7 +167,7 @@ const ProjectsPage = () => {
             {/* Current status highlight */}
             <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-full px-6 py-3 mb-8">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
                 <span className="text-sm font-medium text-amber-300">Projects launching soon</span>
               </div>
               <div className="w-px h-4 bg-amber-400/30"></div>

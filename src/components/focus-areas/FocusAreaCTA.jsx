@@ -6,10 +6,10 @@ import { FiArrowRight, FiUsers, FiTarget, FiGlobe, FiTrendingUp, FiGrid, FiAward
 const FocusAreaCTA = () => {
   return (
     <div className="relative">
-      {/* Enhanced background effects */}
+      {/* Static background decoratives */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute w-[600px] h-[600px] -top-20 -left-20 bg-gradient-to-br from-secondary-500/10 to-primary-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-primary-500/10 to-secondary-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute w-[400px] h-[400px] -top-20 -left-20 bg-gradient-to-br from-secondary-500/8 to-primary-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute w-[300px] h-[300px] bottom-0 right-0 bg-gradient-to-tl from-primary-500/8 to-secondary-500/5 rounded-full blur-3xl"></div>
       </div>
 
       <motion.div
@@ -34,11 +34,10 @@ const FocusAreaCTA = () => {
               <span className="text-sm font-semibold text-secondary-300 uppercase tracking-wider">Ready to Create Impact</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white leading-tight">
-              Partner with Us to Transform 
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 via-primary-400 to-secondary-400 animate-gradient-x">
-                Communities Worldwide
-              </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              Ready to <span className="block bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 via-primary-400 to-secondary-400">
+                Transform Communities
+              </span> Together?
             </h2>
             
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed">

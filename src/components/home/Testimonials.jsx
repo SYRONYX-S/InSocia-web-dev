@@ -75,7 +75,7 @@ const Testimonials = () => {
     <SectionLayout bgColor="bg-transparent" className="relative z-10 py-20">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1] opacity-30">
-        <div className="absolute top-40 left-10 w-80 h-80 rounded-full border border-primary-600/20 animate-pulse"></div>
+        <div className="absolute top-40 left-10 w-80 h-80 rounded-full border border-primary-600/20"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full border border-secondary-600/20"></div>
         <div className="absolute top-20 right-20 w-60 h-60 rounded-full border-2 border-primary-600/10"></div>
       </div>

@@ -437,7 +437,7 @@ const Navbar = () => {
                 
                 {/* Animated gradient border on hover */}
                 <span className="absolute inset-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)] opacity-0 group-hover:opacity-100">
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50 animate-gradient-x"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50"></span>
                 </span>
                 
                 {/* Inner background */}
@@ -578,7 +578,7 @@ const Navbar = () => {
                       
                       {/* Animated gradient border on hover */}
                       <span className="absolute inset-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)] opacity-0 group-hover:opacity-100">
-                        <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50 animate-gradient-x"></span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50"></span>
                       </span>
                       
                       {/* Inner background */}

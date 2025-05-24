@@ -14,10 +14,10 @@ const FocusAreaDetail = () => {
 
   return (
     <div className="relative space-y-32">
-      {/* Enhanced background effects */}
+      {/* Static background decoratives */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute w-[600px] h-[600px] top-1/4 -left-32 bg-gradient-to-br from-secondary-500/3 to-primary-500/2 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute w-[400px] h-[400px] bottom-1/4 -right-32 bg-gradient-to-tl from-primary-500/3 to-secondary-500/2 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute w-[400px] h-[400px] -top-20 -left-20 bg-gradient-to-br from-secondary-500/8 to-primary-500/2 rounded-full blur-3xl"></div>
+        <div className="absolute w-[300px] h-[300px] bottom-0 right-0 bg-gradient-to-tl from-primary-500/8 to-secondary-500/2 rounded-full blur-3xl"></div>
       </div>
 
       {focusAreas.map((area, index) => {
