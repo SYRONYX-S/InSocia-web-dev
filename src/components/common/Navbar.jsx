@@ -11,7 +11,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
-  const lastScrollYRef = useRef(0);
 
   // Check if we're in preview mode
   const urlParams = new URLSearchParams(location.search);
@@ -89,29 +88,20 @@ const Navbar = () => {
     }
   ];
   
-  // Handle scroll effect
+  // Handle scroll effect - simplified logic
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const localLastScrollY = lastScrollYRef.current;
       
-      // Show/hide navbar background based on scroll position
-      if (currentScrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-      
-      // Updated logic for TopBar visibility
-      if (currentScrollY <= 10) { // At the very top
+      // Simple logic: show/hide top bar based on scroll position
+      // Top bar visible at very top, hidden after scrolling down a bit
+      if (currentScrollY <= 50) {
         setShowTopBar(true);
-      } else if (currentScrollY > 150 && currentScrollY > localLastScrollY) { // Scrolled down past 150px
+        setScrolled(false);
+      } else {
         setShowTopBar(false);
-      } 
-      // In other cases (scrolling up but not at top, or stationary between 10 and 150), 
-      // showTopBar remains unchanged, preventing it from appearing during mid-scroll.
-      
-      lastScrollYRef.current = currentScrollY; // Update ref
+        setScrolled(true);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -187,51 +177,12 @@ const Navbar = () => {
   const hoverBrandingGradientStyle = {
     textShadow: '0 0 15px rgba(103, 103, 255, 0.7), 0 0 25px rgba(120, 0, 255, 0.5)',
   };
-  
-  // Helper: get header offset
-  const getHeaderOffset = () => {
-    const topBar = document.querySelector('[data-top-bar]');
-    const navbar = document.querySelector('[data-navbar]');
-    let offset = 0;
-    if (topBar && topBar.offsetHeight > 0) offset += topBar.offsetHeight;
-    if (navbar && navbar.offsetHeight > 0) offset += navbar.offsetHeight;
-    return offset;
-  };
 
-  const scrollToSectionWithOffset = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = getHeaderOffset();
-      const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
-  // Helper: handle hash navigation
+  // Simple dropdown link handler - no scroll interference
   const handleDropdownLink = (e, path) => {
-    if (path.includes('#')) {
-      const [base, hash] = path.split('#');
-      const currentBase = location.pathname;
-      if (base === currentBase) {
-        e.preventDefault();
-        setIsOpen(false);
-        setActiveDropdown(null);
-        setTimeout(() => {
-          scrollToSectionWithOffset(hash);
-        }, 10);
-      } else {
-        e.preventDefault();
-        navigate(base + '#' + hash);
-        setIsOpen(false);
-        setActiveDropdown(null);
-        setTimeout(() => {
-          scrollToSectionWithOffset(hash);
-        }, 400);
-      }
-    } else {
-      setIsOpen(false);
-      setActiveDropdown(null);
-    }
+    setIsOpen(false);
+    setActiveDropdown(null);
+    // Let React Router handle navigation naturally
   };
 
   return (
@@ -285,8 +236,7 @@ const Navbar = () => {
       {/* Main Navbar with hero-style dark background */}
       <div
         ref={navbarRef} 
-        className="top-0 w-full sticky transition-all duration-300"
-        style={{ marginTop: showTopBar ? '0' : '0' }}
+        className="w-full sticky top-0 transition-all duration-300"
         data-navbar
       >
         <nav className={`relative transition-all duration-300 ${
