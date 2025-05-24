@@ -1,88 +1,87 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SectionLayout from '../../layouts/SectionLayout';
-import Button from '../common/Button';
+import { defaultAnimations } from '../../utils/animations';
 
 const ServiceCTA = () => {
   return (
-    <SectionLayout>
+    <section className="py-32">
       <div className="container mx-auto px-4">
-        <div 
-          className="relative overflow-hidden rounded-2xl"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-900 to-secondary-900 opacity-95"></div>
-            
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-white/10 to-transparent opacity-20"></div>
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-radial from-white/10 to-transparent opacity-20"></div>
-            
-            {/* Animated grid pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{ 
-                backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
-                backgroundSize: '40px 40px' 
-              }}></div>
-            </div>
-          </div>
-          
-          <div className="relative z-10 px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-white">
-              Ready to Transform Your Social Impact?
-            </h2>
-            
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10">
-              Partner with InSocia Development Consultancy to design and implement effective solutions to complex social challenges
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-5 justify-center">
-              <Button 
-                to="/contact" 
-                size="lg" 
-                className="bg-white text-primary-900 hover:bg-primary-50 hover:text-primary-800 shadow-lg shadow-primary-900/30 group"
-              >
-                <span className="relative z-10 flex items-center">
-                  Request a Consultation
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </Button>
-              
-              <Button 
-                to="/projects" 
-                variant="outline" 
-                size="lg" 
-                className="border-white text-white hover:bg-white/10"
-              >
-                View Our Projects
-              </Button>
-            </div>
-            
-            {/* Feature badges */}
-            <div className="mt-16 flex flex-wrap justify-center gap-4">
-              <div className="glass-effect rounded-full px-6 py-3 text-white/90 font-medium text-sm">
-                Evidence-Based Approach
-              </div>
-              <div className="glass-effect rounded-full px-6 py-3 text-white/90 font-medium text-sm">
-                Tailored Solutions
-              </div>
-              <div className="glass-effect rounded-full px-6 py-3 text-white/90 font-medium text-sm">
-                Impact Measurement
-              </div>
-              <div className="glass-effect rounded-full px-6 py-3 text-white/90 font-medium text-sm">
-                Innovative Methodologies
-              </div>
-              <div className="glass-effect rounded-full px-6 py-3 text-white/90 font-medium text-sm">
-                Sustainable Outcomes
+        <div className="relative">
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary-500/10 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+          <div className="relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl blur opacity-25"></div>
+            <div className="relative bg-neutral-800/50 backdrop-blur-sm rounded-2xl p-12 border border-neutral-700/50">
+              <div className="max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h2 
+                      className="text-3xl md:text-4xl font-bold mb-6 text-white"
+                      {...defaultAnimations.fadeIn}
+                    >
+                      Transform Your Development Initiatives
+                    </h2>
+                    <p 
+                      className="text-xl text-neutral-300 mb-8"
+                      {...defaultAnimations.fadeIn}
+                    >
+                      Partner with us to create sustainable impact and drive positive change in your community. Our comprehensive services and proven methodologies ensure successful outcomes.
+                    </p>
+                    <div 
+                      className="space-y-4"
+                      {...defaultAnimations.fadeIn}
+                    >
+                      <div className="flex items-center gap-3 text-neutral-300">
+                        <div className="w-6 h-6 rounded-full bg-primary-500/10 flex items-center justify-center">
+                          <i className="fas fa-check text-xs text-primary-400"></i>
+                        </div>
+                        <span>Expert consultation and strategic planning</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-neutral-300">
+                        <div className="w-6 h-6 rounded-full bg-primary-500/10 flex items-center justify-center">
+                          <i className="fas fa-check text-xs text-primary-400"></i>
+                        </div>
+                        <span>Data-driven decision making</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-neutral-300">
+                        <div className="w-6 h-6 rounded-full bg-primary-500/10 flex items-center justify-center">
+                          <i className="fas fa-check text-xs text-primary-400"></i>
+                        </div>
+                        <span>Proven track record of success</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl blur opacity-25"></div>
+                    <div className="relative bg-neutral-800/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-700/50">
+                      <h3 className="text-2xl font-semibold text-white mb-6">Get Started Today</h3>
+                      <div className="space-y-4">
+                        <a
+                          href="/contact"
+                          className="w-full inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-500 rounded-xl hover:bg-primary-600 transition-colors duration-300 group"
+                        >
+                          Schedule a Consultation
+                          <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a
+                          href="/about"
+                          className="w-full inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-neutral-700/50 rounded-xl hover:bg-neutral-700 transition-colors duration-300 group"
+                        >
+                          Learn More About Us
+                          <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </SectionLayout>
+    </section>
   );
 };
 

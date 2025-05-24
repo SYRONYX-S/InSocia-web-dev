@@ -1,77 +1,115 @@
 import React from 'react';
-import SectionLayout from '../../layouts/SectionLayout';
-import { services } from '../../data/services';
+import { defaultAnimations, getStaggeredAnimation } from '../../utils/animations';
 
 const ServiceDetails = () => {
+  const details = [
+    {
+      title: 'Research & Analysis',
+      description: 'Comprehensive research and data analysis to inform decision-making and strategy development.',
+      icon: 'fas fa-search',
+      features: [
+        'Needs assessment',
+        'Stakeholder analysis',
+        'Market research',
+        'Impact evaluation'
+      ]
+    },
+    {
+      title: 'Program Design',
+      description: 'Development of evidence-based programs and interventions tailored to specific contexts and needs.',
+      icon: 'fas fa-pencil-ruler',
+      features: [
+        'Theory of change',
+        'Logic framework',
+        'Implementation plan',
+        'Resource allocation'
+      ]
+    },
+    {
+      title: 'Implementation Support',
+      description: 'Hands-on support and guidance throughout the implementation process to ensure successful execution.',
+      icon: 'fas fa-tasks',
+      features: [
+        'Project management',
+        'Capacity building',
+        'Technical assistance',
+        'Quality assurance'
+      ]
+    },
+    {
+      title: 'Monitoring & Evaluation',
+      description: 'Robust monitoring and evaluation systems to track progress and measure impact.',
+      icon: 'fas fa-chart-line',
+      features: [
+        'Performance indicators',
+        'Data collection',
+        'Impact assessment',
+        'Learning systems'
+      ]
+    }
+  ];
+
   return (
-    <div className="py-16 bg-neutral-50">
-      {services.map((service) => (
-        <div 
-          key={service.id} 
-          id={service.id} 
-          className="py-16 scroll-mt-20"
-        >
-          <SectionLayout>
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                  <div className="inline-flex items-center px-4 py-2 rounded-full backdrop-blur-md bg-primary-50 border border-primary-100 text-sm font-semibold text-primary-700 mb-6">
-                    Service {service.id}
-                  </div>
-                  
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-neutral-800">
-                    {service.title}
-                  </h2>
-                  
-                  <p className="text-lg text-neutral-700 mb-8 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  <div className="bg-white rounded-xl p-6 shadow-md">
-                    <h3 className="text-xl font-semibold mb-4 font-heading text-neutral-800">
-                      Key Benefits
+    <section className="py-32">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <h2 
+            className="text-3xl md:text-4xl font-bold mb-6 text-white"
+            {...defaultAnimations.fadeIn}
+          >
+            Service Details
+          </h2>
+          <p 
+            className="text-xl text-neutral-300"
+            {...defaultAnimations.fadeIn}
+          >
+            Comprehensive services tailored to your development needs
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {details.map((detail, index) => (
+            <div
+              key={detail.title}
+              className="group relative"
+              {...getStaggeredAnimation(index)}
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-neutral-800/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-700/50 group-hover:border-primary-500/50 transition-all duration-300 h-full">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 bg-primary-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <i className={`${detail.icon} text-3xl text-primary-400`}></i>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white group-hover:text-primary-400 transition-colors">
+                      {detail.title}
                     </h3>
-                    <ul className="space-y-3">
-                      {service.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="flex-shrink-0 h-6 w-6 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </span>
-                          <span className="text-neutral-700">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                
-                <div 
-                  className="relative"
-                  data-aos="fade-left"
-                  data-aos-delay="100"
-                >
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-gradient">
-                    <img
-                      src={`/images/services/service-${service.id}.jpg`}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80";
-                      }}
-                    />
                   </div>
                   
-                  {/* Decorative elements */}
-                  <div className="absolute -z-10 -top-8 -left-8 w-64 h-64 rounded-full bg-gradient-radial from-primary-500/10 to-transparent blur-3xl"></div>
-                  <div className="absolute -z-10 -bottom-8 -right-8 w-64 h-64 rounded-full bg-gradient-radial from-secondary-500/10 to-transparent blur-3xl"></div>
+                  <p className="text-neutral-300 mb-8 flex-grow">{detail.description}</p>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    {detail.features.map((feature, featureIndex) => (
+                      <div 
+                        key={feature}
+                        className="flex items-center gap-3 text-neutral-300 group/feature"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-primary-500/10 flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300">
+                          <i className="fas fa-check text-xs text-primary-400"></i>
+                        </div>
+                        <span className="group-hover/feature:text-white transition-colors">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </SectionLayout>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 };
 
