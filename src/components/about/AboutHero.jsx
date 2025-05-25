@@ -6,7 +6,7 @@ const AboutHero = () => {
   return (
     <SectionLayout 
       bgColor="bg-transparent"
-      className="relative overflow-hidden text-white h-screen flex items-center pt-28 pb-0 border-b border-neutral-800/30"
+      className="relative overflow-hidden text-white h-screen flex items-center pt-28 pb-0 border-b border-neutral-800/30 "
       id="our-story"
     >
       {/* Abstract background pattern */}

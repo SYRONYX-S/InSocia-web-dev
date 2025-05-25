@@ -140,7 +140,7 @@ const ProjectsPage = () => {
       </Helmet>
 
       {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden mt-24 sm:mt-0">
         {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
