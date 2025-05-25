@@ -46,8 +46,8 @@ const FocusAreasPage = () => {
           <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
         </div>
 
-        <div className="w-full px-4 md:px-8 relative z-10 flex items-center min-h-screen mt-16 sm:mt-0">
-          <div className="max-w-6xl mx-auto text-center w-full">
+        <div className="w-full px-4 md:px-6 relative z-10 flex items-center min-h-screen mt-16 sm:mt-0">
+          <div className="max-w-[1500px] mx-auto text-center w-full">
             {/* Premium badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
               <FiTarget className="w-4 h-4 text-primary-400" />
