@@ -7,8 +7,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
 
@@ -24,15 +24,14 @@ const Navbar = () => {
     return path.startsWith('/') ? `/preview${path}` : `/preview/${path}`;
   };
   
-  // Updated navigation structure with 5 main items and more comprehensive dropdowns
+  // Navigation structure with dropdowns - 5 main items with all pages covered
   const navItems = [
     { name: 'Home', path: getPath('/') },
     { 
       name: 'About Us', 
       path: getPath('/about'),
       dropdown: [
-        { name: 'About InSocia', path: getPath('/about#our-story') },
-        { name: 'Core Values', path: getPath('/about#our-values') },
+        { name: 'About InSocia', path: getPath('/about') },
         { name: 'Our Team', path: getPath('/about#our-team') },
         { name: 'Careers', path: getPath('/careers') },
       ]
@@ -41,40 +40,23 @@ const Navbar = () => {
       name: 'Services', 
       path: getPath('/services'),
       dropdown: [
-        { name: 'Services Overview', path: getPath('/services#services-overview') },
-        { name: 'Our Process', path: getPath('/services#our-process') },
-        { name: 'Service Details', path: getPath('/services#service-details') },
-        { name: 'Get Started', path: getPath('/services#get-started') },
-        { name: '―――― Focus Areas ――――', path: getPath('/focus-areas'), isHeading: true },
-        { name: 'Health & Wellbeing', path: getPath('/focus-areas#health-wellbeing') },
-        { name: 'Education & Skills', path: getPath('/focus-areas#education-skills') },
-        { name: 'Sustainable Livelihoods', path: getPath('/focus-areas#sustainable-livelihoods') },
-        { name: 'Gender Equality', path: getPath('/focus-areas#gender-equality') },
-        { name: 'Environmental Sustainability', path: getPath('/focus-areas#environmental-sustainability') },
-        { name: 'Rural Development', path: getPath('/focus-areas#rural-development') }
+        { name: 'Services Overview', path: getPath('/services') },
+        { name: 'Focus Areas', path: getPath('/focus-areas') },
       ]
     },
     {
-      name: 'Our Impact',
-      path: getPath('/projects'), // Default to projects page
+      name: 'Our Work',
+      path: getPath('/projects'),
       dropdown: [
-        { name: 'Projects Showcase', path: getPath('/projects') },
-        { name: '―――― Our Partnerships ――――', path: getPath('/partnerships'), isHeading: true },
-        { name: 'Government Partners', path: getPath('/partnerships#government') },
-        { name: 'Development Organizations', path: getPath('/partnerships#development-orgs') },
-        { name: 'Civil Society Organizations', path: getPath('/partnerships#civil-society') },
-        { name: 'Academic Institutions', path: getPath('/partnerships#academic') },
-        { name: 'Corporate Partners', path: getPath('/partnerships#corporate') },
+        { name: 'Projects', path: getPath('/projects') },
+        { name: 'News & Insights', path: getPath('/news') },
       ]
     },
     { 
       name: 'Resources', 
-      path: getPath('/resources'), // Default to resources page
+      path: getPath('/resources'),
       dropdown: [
-        { name: 'News & Insights', path: getPath('/news') },
-        { name: 'Latest Updates', path: getPath('/news#latest') },
-        { name: 'Events Calendar', path: getPath('/news#events') },
-        { name: '―――― Knowledge Center ――――', path: getPath('/resources'), isHeading: true },
+        { name: 'Resources Overview', path: getPath('/resources') },
         { name: 'Knowledge Hub', path: getPath('/resources#knowledge-hub') },
         { name: 'Data Repository', path: getPath('/resources#data-repository') },
         { name: 'Methodology Center', path: getPath('/resources#methodology-center') },
@@ -82,10 +64,7 @@ const Navbar = () => {
         { name: 'Training Resources', path: getPath('/resources#training') },
       ]
     },
-    {
-      name: 'Contact',
-      path: getPath('/contact')
-    }
+    { name: 'Contact', path: getPath('/contact') }
   ];
   
   // Handle scroll effect - simplified logic
@@ -93,8 +72,6 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Simple logic: show/hide top bar based on scroll position
-      // Top bar visible at very top, hidden after scrolling down a bit
       if (currentScrollY <= 50) {
         setShowTopBar(true);
         setScrolled(false);
@@ -112,9 +89,10 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
+    setMobileActiveDropdown(null);
   }, [location]);
   
-  // Handle dropdown toggle
+  // Handle desktop dropdown toggle
   const toggleDropdown = (index) => {
     if (activeDropdown === index) {
       setActiveDropdown(null);
@@ -123,10 +101,19 @@ const Navbar = () => {
     }
   };
 
+  // Handle mobile dropdown toggle
+  const toggleMobileDropdown = (index) => {
+    if (mobileActiveDropdown === index) {
+      setMobileActiveDropdown(null);
+    } else {
+      setMobileActiveDropdown(index);
+    }
+  };
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (activeDropdown !== null && !event.target.closest('.dropdown-toggle')) {
+      if (activeDropdown !== null && !event.target.closest('.dropdown-container')) {
         setActiveDropdown(null);
       }
     };
@@ -135,39 +122,28 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [activeDropdown]);
   
-  // Animation variants
+  // Animation variants - optimized for performance
   const topBarVariants = {
     visible: { 
       opacity: 1, 
       height: 'auto',
       y: 0,
-      transition: { 
-        duration: 0.3, 
-        ease: "easeOut" 
-      } 
+      transition: { duration: 0.2, ease: "easeOut" } 
     },
     hidden: { 
       opacity: 0, 
       height: 0,
-      y: -20,
-      transition: { 
-        duration: 0.3, 
-        ease: "easeIn" 
-      } 
+      y: -10,
+      transition: { duration: 0.2, ease: "easeIn" } 
     }
   };
   
   const mobileMenuVariants = {
-    hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
-    visible: { opacity: 1, height: 'auto', transition: { duration: 0.4 } }
-  };
-
-  const dropdownVariants = {
-    hidden: { opacity: 0, y: -5, transition: { duration: 0.2 } },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+    hidden: { opacity: 0, height: 0, transition: { duration: 0.2 } },
+    visible: { opacity: 1, height: 'auto', transition: { duration: 0.2 } }
   };
   
-  // CSS for animated gradient effect on branding - Simplified to just a glow
+  // CSS for animated gradient effect on branding
   const brandingGradientStyle = {
     position: 'relative',
     textShadow: '0 0 10px rgba(103, 103, 255, 0.3), 0 0 20px rgba(120, 0, 255, 0.2)',
@@ -176,13 +152,6 @@ const Navbar = () => {
   
   const hoverBrandingGradientStyle = {
     textShadow: '0 0 15px rgba(103, 103, 255, 0.7), 0 0 25px rgba(120, 0, 255, 0.5)',
-  };
-
-  // Simple dropdown link handler - no scroll interference
-  const handleDropdownLink = (e, path) => {
-    setIsOpen(false);
-    setActiveDropdown(null);
-    // Let React Router handle navigation naturally
   };
 
   return (
@@ -198,7 +167,6 @@ const Navbar = () => {
             exit="hidden"
             variants={topBarVariants}
             className="bg-gradient-to-r from-neutral-900/90 to-neutral-950/90 backdrop-blur-md text-white shadow-md w-full border-b border-white/5 overflow-hidden"
-            data-top-bar
           >
             <div className="container mx-auto px-6 py-2 flex justify-between items-center">
               <div className="flex items-center space-x-6 text-sm">
@@ -224,7 +192,7 @@ const Navbar = () => {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
                   </a>
                   <a href="#" aria-label="LinkedIn" className="text-neutral-400 hover:text-primary-400 transition-colors">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
                   </a>
                 </div>
               </div>
@@ -233,50 +201,36 @@ const Navbar = () => {
         )}
       </AnimatePresence>
       
-      {/* Main Navbar with hero-style dark background */}
+      {/* Main Navbar - Increased size and consistent sizing */}
       <div
         ref={navbarRef} 
         className="w-full sticky top-0 transition-all duration-300"
-        data-navbar
       >
-        <nav className={`relative transition-all duration-300 ${
-          scrolled ? 'py-5' : 'py-7'
-        } shadow-lg backdrop-blur-md rounded-bl-[40px] rounded-br-[40px] z-10`}>
+        <nav className="relative py-6 shadow-lg backdrop-blur-md rounded-bl-[40px] rounded-br-[40px] z-10">
           {/* Hero-style background */}
           <div className="absolute inset-0 -z-10 overflow-hidden rounded-bl-[40px] rounded-br-[40px]">
-            {/* Dark gradient background like hero */}
             <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/80 to-neutral-950/80"></div>
-            
-            {/* Dark gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary-900/30 to-neutral-950/50 opacity-80"></div>
-            
-            {/* Decorative orbs/blobs */}
             <div className="absolute -top-[100%] -right-[10%] w-[50%] h-[100%] rounded-full bg-gradient-radial from-secondary-500/20 to-transparent blur-3xl"></div>
             <div className="absolute top-[50%] -left-[20%] w-[40%] h-[100%] rounded-full bg-gradient-radial from-primary-500/20 to-transparent blur-3xl"></div>
-            
-            {/* Grain texture - matching hero section */}
             <div className="absolute inset-0 mix-blend-overlay opacity-30" style={{ 
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
               backgroundSize: '200px 200px',
             }}></div>
-            
-            {/* Optional grid pattern from hero (reduced opacity) */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{ 
                 backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
                 backgroundSize: '40px 40px' 
               }}></div>
             </div>
-            
-            {/* Bottom highlight/glow */}
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-400/50 to-transparent"></div>
           </div>
           
           <div className="container mx-auto px-6 flex justify-between items-center">
-            {/* Logo - white for dark background, with glow effect */}
+            {/* Logo - Larger */}
             <Link to="/" className="flex items-center z-10 group">
               <span 
-                className="text-3xl font-bold tracking-tight text-white"
+                className="text-4xl font-bold tracking-tight text-white"
                 style={brandingGradientStyle}
                 onMouseEnter={(e) => {
                   Object.assign(e.target.style, hoverBrandingGradientStyle);
@@ -292,14 +246,14 @@ const Navbar = () => {
               </span>
             </Link>
             
-            {/* Desktop Navigation with Dropdowns - light text for dark background */}
+            {/* Desktop Navigation with Dropdowns - Larger links */}
             <div className="hidden lg:flex items-center space-x-2 z-10">
               {navItems.map((item, index) => (
-                <div key={item.name} className="relative">
+                <div key={item.name} className="relative dropdown-container">
                   {item.dropdown ? (
                     <>
                       <button
-                        className={`dropdown-toggle px-3 py-2 text-base font-semibold transition-colors duration-200 flex items-center relative ${
+                        className={`px-4 py-3 text-base font-medium transition-colors duration-200 flex items-center relative ${
                           location.pathname === item.path || 
                           (item.dropdown && item.dropdown.some(dropItem => dropItem.path === location.pathname))
                             ? 'text-primary-300' 
@@ -311,15 +265,12 @@ const Navbar = () => {
                         }}
                       >
                         {item.name}
-                        {/* Premium dropdown icon */}
                         <svg 
-                          className={`ml-1 w-3.5 h-3.5 transition-transform duration-300 opacity-70 ${activeDropdown === index ? 'rotate-180 opacity-100' : ''}`} 
+                          className={`ml-1.5 w-4 h-4 transition-transform duration-200 ${activeDropdown === index ? 'rotate-180' : ''}`} 
                           viewBox="0 0 24 24" 
                           fill="none" 
                           stroke="currentColor" 
-                          strokeWidth="1.5" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round"
+                          strokeWidth="2"
                         >
                           <path d="M6 9l6 6 6-6" />
                         </svg>
@@ -328,35 +279,25 @@ const Navbar = () => {
                       <AnimatePresence>
                         {activeDropdown === index && (
                           <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                            variants={dropdownVariants}
-                            className="absolute top-full left-0 mt-1 bg-neutral-900/95 backdrop-blur-md rounded-lg shadow-lg py-2 min-w-[200px] border border-neutral-700/50 z-20"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute top-full left-0 mt-2 w-52 bg-neutral-900/95 backdrop-blur-md rounded-lg shadow-xl border border-white/10 overflow-hidden"
                           >
                             {item.dropdown.map((dropItem, idx) => (
-                              dropItem.isHeading ? (
-                                <div key={dropItem.name} className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-400 bg-neutral-800/70 border-t border-neutral-700/40 first:border-t-0 cursor-default select-none">
-                                  {dropItem.name.replace(/[-―]/g, '').trim()}
-                                </div>
-                              ) : (
-                                <Link
-                                  key={dropItem.name}
-                                  to={dropItem.path}
-                                  className={`block px-4 py-2 text-sm font-medium hover:bg-primary-900/40 transition-colors duration-200 relative ${
-                                    location.pathname === dropItem.path
-                                      ? 'text-primary-300'
-                                      : 'text-neutral-200 hover:text-primary-300'
-                                  }`}
-                                  onClick={(e) => handleDropdownLink(e, dropItem.path)}
-                                >
-                                  {dropItem.name}
-                                  {/* Active indicator for dropdown item */}
-                                  {location.pathname === dropItem.path && (
-                                    <span className="absolute left-0 top-1/2 w-1 h-4 bg-primary-400 transform -translate-y-1/2"></span>
-                                  )}
-                                </Link>
-                              )
+                              <Link
+                                key={dropItem.name}
+                                to={dropItem.path}
+                                className={`block px-5 py-3 text-sm transition-colors duration-200 ${
+                                  location.pathname === dropItem.path
+                                    ? 'text-primary-300 bg-primary-500/10'
+                                    : 'text-neutral-200 hover:text-primary-300 hover:bg-white/5'
+                                }`}
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {dropItem.name}
+                              </Link>
                             ))}
                           </motion.div>
                         )}
@@ -365,7 +306,7 @@ const Navbar = () => {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`px-3 py-2 text-base font-semibold transition-colors duration-200 relative ${
+                      className={`px-4 py-3 text-base font-medium transition-colors duration-200 relative ${
                         location.pathname === item.path 
                           ? 'text-primary-300' 
                           : 'text-white hover:text-primary-300'
@@ -377,23 +318,16 @@ const Navbar = () => {
                 </div>
               ))}
               
-              {/* CTA Button - matching hero "Partner With Us" */}
+              {/* CTA Button - Larger */}
               <Link
                 to="/contact"
-                className="ml-2 px-5 py-2 text-sm font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/80 backdrop-blur-sm transform hover:translate-y-[-2px] hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]"
+                className="ml-6 px-6 py-3 text-base font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/80 backdrop-blur-sm transform hover:translate-y-[-2px] hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]"
               >
-                {/* Background hover effect */}
                 <span className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300"></span>
-                
-                {/* Animated gradient border on hover */}
                 <span className="absolute inset-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)] opacity-0 group-hover:opacity-100">
                   <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50"></span>
                 </span>
-                
-                {/* Inner background */}
                 <span className="absolute inset-[1.5px] rounded-md bg-neutral-900/80 transition-all duration-300"></span>
-                
-                {/* Button text with arrow */}
                 <span className="relative z-10 flex items-center">
                   Get in Touch
                   <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -403,7 +337,7 @@ const Navbar = () => {
               </Link>
             </div>
             
-            {/* Mobile menu button - white for dark background */}
+            {/* Mobile menu button */}
             <button
               className="lg:hidden focus:outline-none text-white z-10"
               onClick={() => setIsOpen(!isOpen)}
@@ -417,7 +351,7 @@ const Navbar = () => {
             </button>
           </div>
           
-          {/* Mobile Navigation - styled for dark theme */}
+          {/* Mobile Navigation with Fixed Dropdowns */}
           <AnimatePresence>
             {isOpen && (
               <motion.div 
@@ -427,70 +361,75 @@ const Navbar = () => {
                 exit="hidden"
                 className="lg:hidden overflow-hidden z-10"
               >
-                <div className="container mx-auto px-4 py-3 bg-neutral-800/90 backdrop-blur-md rounded mt-2 shadow-lg">
-                  <div className="flex flex-col divide-y divide-neutral-700/50">
+                <div className="container mx-auto px-4 py-3 mt-2 shadow-lg relative">
+                  {/* Mobile menu background */}
+                  <div className="absolute inset-0 -z-10 overflow-hidden rounded-xl">
+                    <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/95 to-neutral-950/95"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-900/40 to-neutral-950/60 opacity-80"></div>
+                    <div className="absolute -top-[50%] -right-[10%] w-[40%] h-[80%] rounded-full bg-gradient-radial from-secondary-500/15 to-transparent blur-2xl"></div>
+                    <div className="absolute top-[30%] -left-[20%] w-[35%] h-[60%] rounded-full bg-gradient-radial from-primary-500/15 to-transparent blur-2xl"></div>
+                    <div className="absolute inset-0 mix-blend-overlay opacity-20" style={{ 
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                      backgroundSize: '150px 150px',
+                    }}></div>
+                    <div className="absolute inset-0 border border-primary-400/20 rounded-xl"></div>
+                  </div>
+                  
+                  <div className="flex flex-col divide-y divide-primary-400/20 relative z-10">
                     {navItems.map((item, index) => (
-                      <div key={item.name} className="py-2">
+                      <div key={item.name} className="py-1">
                         {item.dropdown ? (
                           <div>
                             <button
-                              className={`w-full text-left px-4 py-3 text-base font-semibold flex justify-between items-center relative ${
+                              className={`w-full text-left px-4 py-4 text-lg font-semibold flex justify-between items-center relative ${
                                 location.pathname === item.path || 
                                 (item.dropdown && item.dropdown.some(dropItem => dropItem.path === location.pathname))
                                   ? 'text-primary-300' 
                                   : 'text-white'
                               }`}
-                              onClick={() => toggleDropdown(index)}
+                              onClick={() => toggleMobileDropdown(index)}
                             >
                               {item.name}
-                              {/* Premium dropdown icon */}
                               <svg 
-                                className={`ml-1.5 w-4 h-4 transition-transform duration-300 opacity-70 ${activeDropdown === index ? 'rotate-180 opacity-100' : ''}`} 
+                                className={`w-5 h-5 transition-transform duration-200 ${mobileActiveDropdown === index ? 'rotate-180' : ''}`} 
                                 viewBox="0 0 24 24" 
                                 fill="none" 
                                 stroke="currentColor" 
-                                strokeWidth="1.5" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
+                                strokeWidth="2"
                               >
                                 <path d="M6 9l6 6 6-6" />
                               </svg>
-                              
-                              {/* Active indicator (left border) */}
                               {(location.pathname === item.path || 
                                 (item.dropdown && item.dropdown.some(dropItem => dropItem.path === location.pathname))) && (
-                                <span className="absolute left-0 top-1/2 w-1 h-6 bg-primary-400 transform -translate-y-1/2"></span>
+                                <span className="absolute left-0 top-1/2 w-1 h-8 bg-primary-400 transform -translate-y-1/2"></span>
                               )}
                             </button>
                             
                             <AnimatePresence>
-                              {activeDropdown === index && (
+                              {mobileActiveDropdown === index && (
                                 <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
                                   exit={{ opacity: 0, height: 0 }}
                                   transition={{ duration: 0.2 }}
-                                  className="pl-4 mt-2 ml-4 border-l-2 border-primary-700/50 bg-primary-900/20 rounded-r-lg"
+                                  className="ml-4 mt-2 border-l-2 border-primary-500/40 bg-primary-900/20 rounded-r-lg overflow-hidden"
                                 >
                                   {item.dropdown.map((dropItem, idx) => (
-                                    dropItem.isHeading ? (
-                                      <div key={dropItem.name} className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-400 bg-neutral-800/70 border-t border-neutral-700/40 first:border-t-0 cursor-default select-none">
-                                        {dropItem.name.replace(/[-―]/g, '').trim()}
-                                      </div>
-                                    ) : (
-                                      <Link
-                                        key={dropItem.name}
-                                        to={dropItem.path}
-                                        className={`block px-4 py-2 text-base transition-colors duration-200 ${
-                                          location.pathname === dropItem.path
-                                            ? 'text-primary-300 font-medium'
-                                            : 'text-neutral-300 hover:text-primary-300'
-                                        }`}
-                                        onClick={(e) => handleDropdownLink(e, dropItem.path)}
-                                      >
-                                        {dropItem.name}
-                                      </Link>
-                                    )
+                                    <Link
+                                      key={dropItem.name}
+                                      to={dropItem.path}
+                                      className={`block px-5 py-3 text-base transition-colors duration-200 ${
+                                        location.pathname === dropItem.path
+                                          ? 'text-primary-300 font-medium'
+                                          : 'text-neutral-200 hover:text-primary-300'
+                                      }`}
+                                      onClick={() => {
+                                        setIsOpen(false);
+                                        setMobileActiveDropdown(null);
+                                      }}
+                                    >
+                                      {dropItem.name}
+                                    </Link>
                                   ))}
                                 </motion.div>
                               )}
@@ -499,7 +438,7 @@ const Navbar = () => {
                         ) : (
                           <Link
                             to={item.path}
-                            className={`block px-4 py-3 text-base font-semibold relative ${
+                            className={`block px-4 py-4 text-lg font-semibold relative ${
                               location.pathname === item.path
                                 ? 'text-primary-300' 
                                 : 'text-white'
@@ -507,34 +446,25 @@ const Navbar = () => {
                             onClick={() => setIsOpen(false)}
                           >
                             {item.name}
-                            {/* Active indicator (left border) */}
                             {location.pathname === item.path && (
-                              <span className="absolute left-0 top-1/2 w-1 h-6 bg-primary-400 transform -translate-y-1/2"></span>
+                              <span className="absolute left-0 top-1/2 w-1 h-8 bg-primary-400 transform -translate-y-1/2"></span>
                             )}
                           </Link>
                         )}
                       </div>
                     ))}
                   </div>
-                  <div className="pt-3 pb-2 mt-2 border-t border-neutral-700/50">
-                    {/* CTA Button for mobile - matching the desktop version */}
+                  <div className="pt-4 pb-2 mt-3 border-t border-primary-400/20">
                     <Link
                       to="/contact"
                       onClick={() => setIsOpen(false)}
-                      className="block w-full text-center px-4 py-3 font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/80 backdrop-blur-sm"
+                      className="block w-full text-center px-4 py-4 font-bold border border-white/30 text-white rounded-md overflow-hidden group transition-all duration-300 hover:border-white/80 backdrop-blur-sm"
                     >
-                      {/* Background hover effect */}
                       <span className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300"></span>
-                      
-                      {/* Animated gradient border on hover */}
                       <span className="absolute inset-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)] opacity-0 group-hover:opacity-100">
                         <span className="absolute inset-0 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500 rounded-md opacity-50"></span>
                       </span>
-                      
-                      {/* Inner background */}
                       <span className="absolute inset-[1.5px] rounded-md bg-neutral-900/80 transition-all duration-300"></span>
-                      
-                      {/* Button text with arrow */}
                       <span className="relative z-10 flex items-center justify-center">
                         Get in Touch
                         <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

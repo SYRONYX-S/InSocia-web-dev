@@ -125,3 +125,87 @@ code {
 }
 
 /* Floating Buttons styles are defined in the component */
+
+/* Navbar offset for hero sections - Simple and reliable approach */
+.hero-section {
+  /* Desktop: comfortable padding to account for navbar */
+  padding-top: 0; /* Remove padding since we're using flexbox centering */
+  min-height: 100vh; /* Full viewport height */
+  /* Use flexbox to center content naturally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px; /* Account for navbar height on desktop */
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    /* Mobile: account for smaller navbar */
+    margin-top: 70px; /* Account for mobile navbar height */
+    min-height: calc(100vh - 70px); /* Adjust min-height for mobile navbar */
+  }
+}
+
+/* Safari warning banner adjustments */
+body.safari-warning-visible {
+  padding-top: 60px; /* Account for safari warning banner */
+}
+
+body.safari-warning-visible .hero-section {
+  margin-top: 140px; /* Account for both navbar and safari warning on desktop */
+}
+
+@media (max-width: 768px) {
+  body.safari-warning-visible .hero-section {
+    margin-top: 130px; /* Account for both navbar and safari warning on mobile */
+    min-height: calc(100vh - 130px);
+  }
+}
+
+/* Alternative class for pages that need more space */
+.hero-section-lg {
+  padding-top: 8rem; /* 128px for desktop */
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section-lg {
+    padding-top: 70px; /* Same strict mobile padding */
+    min-height: 100vh;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Extra padding utility - simplified */
+.hero-section-extra {
+  padding-top: 9rem; /* 144px for desktop */
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section-extra {
+    padding-top: 70px; /* Same strict mobile padding */
+    min-height: 100vh;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Ensure hero content can grow and doesn't get cropped */
+.hero-section > * {
+  flex-shrink: 0; /* Prevent content from shrinking */
+  width: 100%; /* Ensure full width */
+}
+
+/* For hero sections with flex already applied in components */
+.hero-section.flex {
+  align-items: center; /* Center content vertically */
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .hero-section.flex {
+    margin-top: 70px; /* Mobile override */
+  }
+}

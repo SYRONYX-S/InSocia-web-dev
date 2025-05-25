@@ -215,7 +215,7 @@ const NewsPage = () => {
       </Helmet>
 
       {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-24 pb-16">
+      <section className="relative bg-transparent overflow-hidden hero-section min-h-screen">
         {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
@@ -223,8 +223,8 @@ const NewsPage = () => {
           <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
         </div>
 
-        <div className="w-full px-4 md:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto text-center">
+        <div className="w-full px-4 md:px-8 relative z-10 flex items-center min-h-screen mt-16 sm:mt-0">
+          <div className="max-w-6xl mx-auto text-center w-full">
             {/* Premium badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
               <FiFileText className="w-4 h-4 text-primary-400" />

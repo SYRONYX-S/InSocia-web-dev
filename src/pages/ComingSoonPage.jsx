@@ -221,7 +221,7 @@ const ComingSoonPage = () => {
                 © 2024 InSocia Development Consultancy. All rights reserved.
               </p>
               <p className="text-neutral-500 text-xs">
-                Designed by <span className="text-blue-400 font-medium">EdotStudio</span>
+                Designed by <a href="https://edot.studio" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 font-medium transition-colors hover:underline">EdotStudio</a>
               </p>
             </div>
           </div>

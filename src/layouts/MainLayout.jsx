@@ -3,6 +3,7 @@ import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import Preloader from '../components/common/Preloader';
 import FloatingButtons from '../components/common/FloatingButtons';
+import SafariBrowserWarning from '../components/common/SafariBrowserWarning';
 import AOS from 'aos';
 
 const MainLayout = ({ children }) => {
@@ -66,6 +67,7 @@ const MainLayout = ({ children }) => {
       </div>
       
       <Preloader />
+      <SafariBrowserWarning />
       <Navbar />
       
       <main className="flex-grow relative z-10">

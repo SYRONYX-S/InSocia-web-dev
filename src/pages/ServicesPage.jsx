@@ -40,7 +40,7 @@ const ServicesPage = () => {
       </Helmet>
 
       {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-24 pb-16">
+      <section className="relative bg-transparent overflow-hidden hero-section min-h-screen">
         {/* Static background effects */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="absolute w-[800px] h-[800px] -top-40 -left-40 bg-gradient-to-br from-primary-500/20 to-secondary-500/15 rounded-full blur-3xl"></div>
@@ -48,9 +48,9 @@ const ServicesPage = () => {
           <div className="absolute w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/10 to-secondary-600/10 rounded-full blur-2xl"></div>
         </div>
 
-        <div className="w-full px-4 md:px-8 relative z-10">
+        <div className="w-full px-4 md:px-8 relative z-10 flex items-center min-h-screen mt-16 sm:mt-0">
           {/* Centered Content - Full width like other sections */}
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center w-full">
             {/* Premium badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-4 py-2 mb-6">
               <FiAward className="w-4 h-4 text-primary-400" />
