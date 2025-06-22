@@ -1,151 +1,150 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { projects } from '../../data/projects';
-import { motion } from 'framer-motion';
-import SectionLayout from '../../layouts/SectionLayout';
+import { FiArrowRight, FiMapPin, FiCalendar, FiTarget, FiTrendingUp } from 'react-icons/fi';
 
 const FeaturedProjects = () => {
-  const featuredProjects = projects.filter(project => project.featured);
+  // Get first 3 projects as featured
+  const featuredProjects = projects.slice(0, 3);
 
   return (
-    <SectionLayout backgroundColor="bg-primary-900">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <span className="inline-block px-4 py-2 rounded-full backdrop-blur-md border border-white/20 text-sm font-semibold text-white/90 mb-4 bg-white/5">
-            FEATURED PROJECTS
-          </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-white">
-            Transformative Impact in Action
-          </h2>
-          <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Explore our showcase projects that demonstrate our approach to creating sustainable social impact
-          </p>
+    <div className="space-y-8">
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-6">
+          <FiTarget className="w-4 h-4 text-primary-600" />
+          <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Featured Work</span>
         </div>
-        
-        {/* Grid layout for featured projects */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
-          {featuredProjects.slice(0, 3).map((project, index) => {
-            // First project takes full width on mobile, 8 columns on desktop
-            if (index === 0) {
-              return (
-                <motion.div 
-                  key={project.id}
-                  className="md:col-span-8 relative group rounded-2xl overflow-hidden shadow-2xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={`/images/projects/${project.image}`} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1559036376-f4b29c27c0f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/60 to-transparent z-10"></div>
-                    
-                    <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-10">
-                      <div className="flex flex-wrap gap-3 mb-4">
-                        <span className="px-3 py-1 bg-white/90 text-primary-700 text-xs font-medium rounded-full">
-                          {project.category}
-                        </span>
-                        <span className="px-3 py-1 bg-primary-500/90 text-white text-xs font-medium rounded-full">
-                          {project.focusArea}
-                        </span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 leading-tight">
+          Transforming Communities Through <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Evidence-Based Action</span>
+        </h2>
+        <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+          Explore our impactful projects that demonstrate our commitment to sustainable development and community empowerment across diverse contexts.
+        </p>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredProjects.map((project, index) => (
+          <div
+            key={project.id}
+            className="group relative overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            {/* Premium Card Design with light theme */}
+            <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full">
+              
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Image Section */}
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={project.image || "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/20 to-transparent"></div>
+                
+                {/* Project badge */}
+                <div className="absolute top-4 right-4 backdrop-blur-md bg-white/90 rounded-lg px-3 py-2 border border-neutral-200/50">
+                  <span className="text-xs font-medium text-neutral-700">Project #{project.id}</span>
+                </div>
+                
+                {/* Title overlay */}
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary-300 transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.focusArea && (
+                    <span className="text-xs text-primary-300 font-medium">
+                      {project.focusArea}
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              {/* Content Section */}
+              <div className="relative z-10 p-6">
+                {/* Description */}
+                <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 mb-4 leading-relaxed text-sm">
+                  {project.shortDescription || project.description?.substring(0, 120) + '...'}
+                </p>
+                
+                {/* Meta Info */}
+                <div className="space-y-2 mb-4">
+                  {project.location && (
+                    <div className="flex items-center gap-2 text-xs text-neutral-500">
+                      <FiMapPin className="w-3 h-3 text-primary-600" />
+                      <span>{project.location}</span>
+                    </div>
+                  )}
+                  {project.duration && (
+                    <div className="flex items-center gap-2 text-xs text-neutral-500">
+                      <FiCalendar className="w-3 h-3 text-primary-600" />
+                      <span>{project.duration}</span>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Impact Preview */}
+                {project.impact && (
+                  <div className="mb-4">
+                    <div className="backdrop-blur-sm bg-primary-50/80 rounded-lg p-3 border border-primary-200/50">
+                      <div className="flex items-center gap-2 mb-2">
+                        <FiTrendingUp className="w-3 h-3 text-primary-600" />
+                        <span className="text-xs font-medium text-primary-700 uppercase tracking-wider">Impact</span>
                       </div>
-                      
-                      <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 text-white">
-                        {project.title}
-                      </h3>
-                      
-                      <p className="text-white/80 mb-5 max-w-2xl">
-                        {project.shortDescription}
+                      <p className="text-xs text-neutral-700 leading-relaxed">
+                        {Array.isArray(project.impact) ? project.impact[0] : project.impact}
                       </p>
-                      
-                      <a 
-                        href={`#project-${project.id}`} 
-                        className="inline-flex items-center font-semibold text-white hover:text-primary-300 transition-colors"
-                      >
-                        View Details
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </a>
                     </div>
                   </div>
-                </motion.div>
-              );
-            }
-            
-            // Other featured projects take 4 columns each
-            return (
-              <motion.div 
-                key={project.id}
-                className="md:col-span-4 relative group rounded-2xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <div className="relative aspect-[9/16] md:aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={`/images/projects/${project.image}`} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    onError={(e) => {
-                      e.target.src = "https://images.unsplash.com/photo-1559036376-f4b29c27c0f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/60 to-transparent z-10"></div>
+                )}
+                
+                {/* CTA */}
+                <div className="flex items-center justify-between pt-3 border-t border-neutral-200/50">
+                  <Link 
+                    to={`/projects/${project.id}`}
+                    className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-all duration-300 font-medium text-sm group/link"
+                  >
+                    <span>Learn More</span>
+                    <FiArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform duration-300" />
+                  </Link>
                   
-                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
-                    <div>
-                      <span className="px-3 py-1 bg-white/90 text-primary-700 text-xs font-medium rounded-full">
-                        {project.category}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-xl md:text-2xl font-heading font-bold my-3 text-white">
-                      {project.title}
-                    </h3>
-                    
-                    <a 
-                      href={`#project-${project.id}`} 
-                      className="inline-flex items-center font-semibold text-white hover:text-primary-300 transition-colors"
-                    >
-                      View Details
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </a>
+                  {/* Project indicators */}
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: 3 }).map((_, idx) => (
+                      <div 
+                        key={idx}
+                        className="w-1 h-1 rounded-full bg-primary-500/50 group-hover:bg-primary-500/80 transition-colors duration-300"
+                      ></div>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
-        
-        {/* Stats section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="200">
-          <div className="glass-effect rounded-xl p-6 text-center">
-            <p className="text-4xl font-bold text-white mb-2">{projects.length}+</p>
-            <p className="text-white/70">Projects Completed</p>
+              </div>
+
+              {/* Animated border effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+              </div>
+            </div>
           </div>
-          <div className="glass-effect rounded-xl p-6 text-center">
-            <p className="text-4xl font-bold text-white mb-2">6</p>
-            <p className="text-white/70">Focus Areas</p>
-          </div>
-          <div className="glass-effect rounded-xl p-6 text-center">
-            <p className="text-4xl font-bold text-white mb-2">18</p>
-            <p className="text-white/70">Countries</p>
-          </div>
-          <div className="glass-effect rounded-xl p-6 text-center">
-            <p className="text-4xl font-bold text-white mb-2">100K+</p>
-            <p className="text-white/70">Lives Impacted</p>
-          </div>
-        </div>
+        ))}
       </div>
-    </SectionLayout>
+
+      {/* View All CTA */}
+      <div className="text-center pt-8">
+        <Link 
+          to="/projects"
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 group transform hover:scale-105"
+        >
+          <span>View All Projects</span>
+          <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+        </Link>
+      </div>
+    </div>
   );
 };
 

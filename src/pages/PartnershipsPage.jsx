@@ -24,7 +24,7 @@ const PartnershipsPage = () => {
       id: 'development-orgs',
       icon: FiGlobe,
       title: 'Development Organizations',
-      description: 'InSocia works with international development agencies and multilateral organizations to advance evidence-based approaches.',
+      description: 'Insocia works with international development agencies and multilateral organizations to advance evidence-based approaches.',
       features: [
         'Program design and evaluation',
         'Capacity building initiatives',
@@ -88,7 +88,7 @@ const PartnershipsPage = () => {
   return (
     <>
       <SEO 
-        title="Partnerships | InSocia Development Consultancy"
+        title="Partnerships | Insocia Consultancy"
         description="Discover our partnerships with governments, NGOs, international organizations, and private sector entities working together to create sustainable social impact."
         keywords={[
           'partnerships',

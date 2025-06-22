@@ -16,8 +16,8 @@ const FocusAreas = () => {
       ),
       description: 'Strengthening health systems and improving health outcomes for vulnerable populations.',
       link: '/focus-areas/health-wellbeing',
-      iconColor: 'text-rose-400',
-      borderColor: 'border-rose-700/30'
+      iconColor: 'text-rose-600',
+      borderColor: 'border-rose-300/50'
     },
     {
       id: 'education',
@@ -31,8 +31,8 @@ const FocusAreas = () => {
       ),
       description: 'Improving educational access, quality, and outcomes through evidence-based approaches.',
       link: '/focus-areas/education-skills',
-      iconColor: 'text-blue-400',
-      borderColor: 'border-blue-700/30'
+      iconColor: 'text-blue-600',
+      borderColor: 'border-blue-300/50'
     },
     {
       id: 'livelihoods',
@@ -44,8 +44,8 @@ const FocusAreas = () => {
       ),
       description: 'Promoting economic opportunities that are inclusive and sustainable for communities.',
       link: '/focus-areas/sustainable-livelihoods',
-      iconColor: 'text-emerald-400',
-      borderColor: 'border-emerald-700/30'
+      iconColor: 'text-emerald-600',
+      borderColor: 'border-emerald-300/50'
     },
     {
       id: 'gender',
@@ -57,8 +57,8 @@ const FocusAreas = () => {
       ),
       description: 'Advancing gender-responsive policies and programs for equitable development.',
       link: '/focus-areas/gender-equality',
-      iconColor: 'text-purple-400',
-      borderColor: 'border-purple-700/30'
+      iconColor: 'text-purple-600',
+      borderColor: 'border-purple-300/50'
     },
     {
       id: 'environment',
@@ -70,8 +70,8 @@ const FocusAreas = () => {
       ),
       description: 'Integrating environmental considerations into social policy for sustainable development.',
       link: '/focus-areas/environmental-sustainability',
-      iconColor: 'text-green-400',
-      borderColor: 'border-green-700/30'
+      iconColor: 'text-green-600',
+      borderColor: 'border-green-300/50'
     },
     {
       id: 'rural',
@@ -83,8 +83,8 @@ const FocusAreas = () => {
       ),
       description: 'Strengthening rural communities and agricultural systems for sustainable growth.',
       link: '/focus-areas/rural-development',
-      iconColor: 'text-amber-400',
-      borderColor: 'border-amber-700/30'
+      iconColor: 'text-amber-600',
+      borderColor: 'border-amber-300/50'
     }
   ];
   
@@ -120,7 +120,7 @@ const FocusAreas = () => {
           "position": index + 1,
           "name": area.title,
           "description": area.description,
-          "url": `https://insocia.org${area.link}`
+          "url": `https://insocia.in${area.link}`
         }))
       })}} />
       
@@ -132,14 +132,14 @@ const FocusAreas = () => {
       >
         {/* Premium Section Title */}
         <motion.div variants={item} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiGrid className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our Focus Areas</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 border border-primary-500/20 rounded-full px-6 py-3 mb-8">
+            <FiGrid className="w-4 h-4 text-primary-600" />
+            <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Our Focus Areas</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Driving <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Holistic</span> Social Impact
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+            Driving <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Holistic</span> Social Impact
           </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             We develop evidence-based solutions across these key domains to create holistic social impact
           </p>
         </motion.div>
@@ -154,20 +154,20 @@ const FocusAreas = () => {
             >
               <Link 
                 to={area.link} 
-                className={`block h-full backdrop-blur-md bg-neutral-800/30 rounded-xl border ${area.borderColor} overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-black/30 hover:border-neutral-600`}
+                className={`block h-full backdrop-blur-md bg-white/70 rounded-xl border border-neutral-200/50 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/30 hover:border-primary-300/40`}
                 aria-label={`Learn more about ${area.title}`}
               >
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex mb-4">
-                    <div className={`w-12 h-12 shrink-0 ${area.iconColor} bg-neutral-900/60 rounded-lg flex items-center justify-center`}>
+                    <div className={`w-12 h-12 shrink-0 ${area.iconColor} bg-white/80 border border-neutral-200/50 rounded-lg flex items-center justify-center`}>
                       {area.icon}
                     </div>
-                    <h3 className="text-xl font-semibold ml-4 text-white">{area.title}</h3>
+                    <h3 className="text-xl font-semibold ml-4 text-neutral-900">{area.title}</h3>
                   </div>
                   
-                  <p className="text-neutral-200 mb-4">{area.description}</p>
+                  <p className="text-neutral-600 mb-4">{area.description}</p>
                   
-                  <div className="mt-auto inline-flex items-center text-sm font-medium text-white/80 hover:text-white transition-colors">
+                  <div className="mt-auto inline-flex items-center text-sm font-medium text-neutral-700 hover:text-primary-600 transition-colors">
                     Learn more
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -182,11 +182,11 @@ const FocusAreas = () => {
         {/* Added summary section with glassmorphism for SEO and content value */}
         <motion.div 
           variants={item}
-          className="mt-14 backdrop-blur-md bg-neutral-800/30 rounded-xl p-6 md:p-8 border border-neutral-700/40"
+          className="mt-14 backdrop-blur-md bg-white/70 rounded-xl p-6 md:p-8 border border-neutral-200/50"
         >
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">Our Integrated Approach</h3>
-            <p className="text-neutral-200 mb-5">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-neutral-900">Our Integrated Approach</h3>
+            <p className="text-neutral-600 mb-5">
               At InSocia, we recognize that sustainable development challenges are interconnected. Our cross-cutting 
               approach integrates expertise across focus areas, creating synergistic solutions that address multiple 
               dimensions of social development simultaneously.
@@ -195,7 +195,7 @@ const FocusAreas = () => {
             <div className="flex justify-center">
               <Link 
                 to="/focus-areas" 
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700/70 backdrop-blur-sm rounded-lg hover:bg-primary-600/80 transition-colors duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 backdrop-blur-sm rounded-lg transition-colors duration-300"
               >
                 Explore All Focus Areas
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">

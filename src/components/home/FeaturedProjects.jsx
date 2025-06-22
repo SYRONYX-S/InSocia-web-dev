@@ -71,7 +71,7 @@ const FeaturedProjects = () => {
             "@type": "Article",
             "name": project.title,
             "description": project.description,
-            "url": `https://insocia.org${project.link}`,
+            "url": `https://insocia.in${project.link}`,
             "image": project.image
           }
         }))
@@ -85,14 +85,14 @@ const FeaturedProjects = () => {
       >
         {/* Premium Section Title */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiFolder className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Featured Projects</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 border border-primary-500/20 rounded-full px-6 py-3 mb-8">
+            <FiFolder className="w-4 h-4 text-primary-600" />
+            <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Featured Projects</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Impactful <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Initiatives</span> in Action
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+            Impactful <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Initiatives</span> in Action
           </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Explore some of our impactful initiatives across different focus areas
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ const FeaturedProjects = () => {
             variants={itemVariants}
             className="lg:col-span-8 row-span-1 md:row-span-2 flex flex-col"
           >
-            <div className="h-full flex flex-col backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
+                        <div className="h-full flex flex-col backdrop-blur-md bg-white/70 rounded-xl overflow-hidden border border-neutral-200/50 group hover:shadow-lg hover:shadow-primary-200/30 transition-all duration-300">
               <div className="relative w-full aspect-[16/9] overflow-hidden">
                 <img 
                   src={projects[0].image} 
@@ -114,23 +114,23 @@ const FeaturedProjects = () => {
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col">
-                <span className="self-start px-3 py-1 mb-3 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
+                <span className="self-start px-3 py-1 mb-3 text-xs font-medium bg-primary-100/80 text-primary-700 rounded-full">
                   {projects[0].category}
                 </span>
-                <h3 className="text-2xl font-bold text-white mb-3">{projects[0].title}</h3>
-                <p className="text-neutral-200 mb-4 flex-grow">{projects[0].description}</p>
+                <h3 className="text-2xl font-bold text-neutral-900 mb-3">{projects[0].title}</h3>
+                <p className="text-neutral-600 mb-4 flex-grow">{projects[0].description}</p>
                 <Link 
                   to={projects[0].link} 
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-700/70 backdrop-blur-sm rounded-lg hover:bg-primary-600/80 transition-all duration-300 hover:translate-x-1 self-start mt-auto"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 backdrop-blur-sm rounded-lg transition-all duration-300 hover:translate-x-1 self-start mt-auto"
                   aria-label={`View details about ${projects[0].title}`}
                 >
                   View Project
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Link>
+                    </svg>
+                  </Link>
+                </div>
               </div>
-            </div>
           </motion.div>
           
           {/* Standard sized projects with matching glassmorphism */}
@@ -140,7 +140,7 @@ const FeaturedProjects = () => {
               variants={itemVariants}
               className="lg:col-span-4"
             >
-              <div className="h-full flex flex-col backdrop-blur-md bg-neutral-800/30 rounded-xl overflow-hidden border border-neutral-700/50 group hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-300">
+              <div className="h-full flex flex-col backdrop-blur-md bg-white/70 rounded-xl overflow-hidden border border-neutral-200/50 group hover:shadow-lg hover:shadow-primary-200/30 transition-all duration-300">
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={project.image} 
@@ -150,14 +150,14 @@ const FeaturedProjects = () => {
                   />
                 </div>
                 <div className="p-5 flex-grow flex flex-col">
-                  <span className="self-start px-3 py-1 mb-2 text-xs font-medium bg-primary-900/60 text-primary-300 rounded-full">
+                  <span className="self-start px-3 py-1 mb-2 text-xs font-medium bg-primary-100/80 text-primary-700 rounded-full">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
-                  <p className="text-neutral-300 mb-4 text-sm flex-grow">{project.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-neutral-900">{project.title}</h3>
+                  <p className="text-neutral-600 mb-4 text-sm flex-grow">{project.description}</p>
                   <Link 
                     to={project.link} 
-                    className="inline-flex items-center text-primary-400 hover:text-primary-300 text-sm font-medium transition-all duration-300 hover:translate-x-1 self-start mt-auto"
+                    className="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium transition-all duration-300 hover:translate-x-1 self-start mt-auto"
                     aria-label={`View details about ${project.title}`}
                   >
                     View Project
@@ -180,43 +180,43 @@ const FeaturedProjects = () => {
           <motion.div 
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="backdrop-blur-md bg-neutral-800/30 border border-neutral-700/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-900/20 transition-all duration-300"
+            className="backdrop-blur-md bg-white/70 border border-neutral-200/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-200/40 transition-all duration-300"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 opacity-70"></div>
             <div className="relative z-10">
-              <div className="text-3xl font-bold text-primary-400 mb-2 group-hover:text-primary-300 transition-colors duration-300">15+</div>
-              <div className="text-lg font-semibold text-white mb-1">Projects</div>
-              <p className="text-neutral-300 text-sm">Successfully implemented across focus areas</p>
+              <div className="text-3xl font-bold text-primary-600 mb-2 group-hover:text-primary-700 transition-colors duration-300">15+</div>
+              <div className="text-lg font-semibold text-neutral-900 mb-1">Projects</div>
+              <p className="text-neutral-600 text-sm">Successfully implemented across focus areas</p>
             </div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-primary-600/10 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 bg-primary-200/30 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
           </motion.div>
           
           <motion.div 
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="backdrop-blur-md bg-neutral-800/30 border border-neutral-700/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-900/20 transition-all duration-300"
+            className="backdrop-blur-md bg-white/70 border border-neutral-200/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-200/40 transition-all duration-300"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-secondary-500 opacity-70"></div>
             <div className="relative z-10">
-              <div className="text-3xl font-bold text-primary-400 mb-2 group-hover:text-primary-300 transition-colors duration-300">50,000+</div>
-              <div className="text-lg font-semibold text-white mb-1">Beneficiaries</div>
-              <p className="text-neutral-300 text-sm">Directly impacted by our interventions</p>
+              <div className="text-3xl font-bold text-primary-600 mb-2 group-hover:text-primary-700 transition-colors duration-300">50,000+</div>
+              <div className="text-lg font-semibold text-neutral-900 mb-1">Beneficiaries</div>
+              <p className="text-neutral-600 text-sm">Directly impacted by our interventions</p>
             </div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-secondary-600/10 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 bg-secondary-200/30 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
           </motion.div>
           
           <motion.div 
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="backdrop-blur-md bg-neutral-800/30 border border-neutral-700/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-900/20 transition-all duration-300"
+            className="backdrop-blur-md bg-white/70 border border-neutral-200/50 rounded-xl p-6 relative overflow-hidden group hover:shadow-lg hover:shadow-primary-200/40 transition-all duration-300"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-primary-400 opacity-70"></div>
             <div className="relative z-10">
-              <div className="text-3xl font-bold text-primary-400 mb-2 group-hover:text-primary-300 transition-colors duration-300">8</div>
-              <div className="text-lg font-semibold text-white mb-1">Partner States</div>
-              <p className="text-neutral-300 text-sm">Working across diverse geographies</p>
+              <div className="text-3xl font-bold text-primary-600 mb-2 group-hover:text-primary-700 transition-colors duration-300">8</div>
+              <div className="text-lg font-semibold text-neutral-900 mb-1">Partner States</div>
+              <p className="text-neutral-600 text-sm">Working across diverse geographies</p>
             </div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-primary-500/10 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 bg-primary-200/30 rounded-full -mr-5 -mb-5 blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
           </motion.div>
         </motion.div>
         

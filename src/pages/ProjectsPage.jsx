@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import SectionLayout from '../layouts/SectionLayout';
 import { Link } from 'react-router-dom';
 import { FiTarget, FiTrendingUp, FiUsers, FiGlobe, FiArrowRight, FiStar, FiHeart, FiZap, FiCheckCircle, FiCalendar, FiMapPin, FiAward, FiCompass, FiBriefcase } from 'react-icons/fi';
+import SEO from '../components/SEO';
 
 const ProjectsPage = () => {
   const projectsSchema = {
@@ -139,238 +140,224 @@ const ProjectsPage = () => {
         </script>
       </Helmet>
 
-      {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden mt-24 sm:mt-0">
-        {/* Static background effects */}
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
-        </div>
+      <SEO 
+        title="Our Projects"
+        description="Explore InSocia's upcoming development projects and initiatives across health, education, livelihoods, and governance to create meaningful social impact."
+        keywords="development projects, social impact initiatives, community development, healthcare projects, education programs"
+      />
 
-        <div className="w-full px-4 md:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
-              <FiTarget className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our Projects</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400">Future</span> of Development
-            </h1>
+      <SectionLayout bgColor="bg-transparent" className="min-h-screen">
+        {/* Hero Section */}
+        <div className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-              We're preparing comprehensive development initiatives that will transform communities across multiple sectors. Our projects will showcase the power of evidence-based interventions and collaborative innovation.
-            </p>
-
-            {/* Current status highlight */}
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-full px-6 py-3 mb-8">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                <span className="text-sm font-medium text-amber-300">Projects launching soon</span>
+            {/* Header */}
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiTarget className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Our Projects</span>
               </div>
-              <div className="w-px h-4 bg-amber-400/30"></div>
-              <span className="text-sm text-amber-200">Currently in preparation phase</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+                Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Future</span> of Development
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                We're preparing comprehensive development initiatives that will transform communities across multiple sectors through evidence-based interventions.
+              </p>
             </div>
 
-            {/* Impact preview */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {/* Current Status */}
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100/80 to-orange-100/80 border border-amber-300/50 rounded-full px-6 py-3 mb-8 backdrop-blur-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span className="text-sm font-medium text-amber-700">Projects launching soon</span>
+                </div>
+                <div className="w-px h-4 bg-amber-400/30"></div>
+                <span className="text-sm text-amber-600">Currently in preparation phase</span>
+              </div>
+            </div>
+
+            {/* Impact Preview Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
               {stats.map((stat, index) => (
-                <div key={index} className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.number}</div>
-                  <div className="text-sm font-medium text-white/90 mb-1">{stat.label}</div>
-                  <div className="text-xs text-white/60">{stat.subtitle}</div>
+                <div key={index} className="backdrop-blur-md bg-white/80 border border-neutral-200/50 rounded-xl p-6 text-center hover:bg-primary-50/50 transition-all duration-300 group">
+                  <div className="text-3xl font-bold text-neutral-900 mb-2">{stat.number}</div>
+                  <div className="text-sm font-medium text-neutral-700 mb-1">{stat.label}</div>
+                  <div className="text-xs text-neutral-500">{stat.subtitle}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Upcoming Project Initiatives */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiZap className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Upcoming Initiatives</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Transformative <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Development</span> Programs
-          </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
-            Our upcoming projects span across six key focus areas, each designed to create sustainable impact and meaningful change in communities.
-          </p>
-        </div>
+        {/* Upcoming Project Initiatives */}
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiZap className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Upcoming Initiatives</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
+                Transformative <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development</span> Programs
+              </h2>
+              <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                Our upcoming projects span six critical development sectors, each designed to create sustainable impact and transform communities through innovative approaches.
+              </p>
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {upcomingProjectTypes.map((project, index) => (
-            <div key={project.id} className={`bg-gradient-to-br ${project.color}/10 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 group overflow-hidden`}>
-              <div className="p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${project.color}/30 rounded-xl flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300`}>
-                    <project.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm font-medium text-white/70 mb-1">Expected Impact</div>
-                    <div className="text-lg font-bold text-white">{project.expectedImpact}</div>
-                  </div>
-                </div>
-
-                <span className="inline-block px-3 py-1 text-xs font-medium bg-white/10 text-white/80 rounded-full mb-4">
-                  {project.focusArea}
-                </span>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary-300 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-neutral-200 leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-3 text-sm text-neutral-300">
-                    <FiCalendar className="w-4 h-4 text-primary-400" />
-                    <span><strong>Duration:</strong> {project.duration}</span>
-                  </div>
-                  <div className="flex items-start gap-3 text-sm text-neutral-300">
-                    <FiTarget className="w-4 h-4 text-primary-400 mt-0.5" />
-                    <div>
-                      <strong>Key Sectors:</strong>
-                      <div className="flex flex-wrap gap-1 mt-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {upcomingProjectTypes.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="group relative overflow-hidden"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full">
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10 p-8 flex flex-col h-full">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-xl flex items-center justify-center border border-primary-200/50 group-hover:scale-110 transition-transform duration-300">
+                          <project.icon className="w-7 h-7 text-primary-600" />
+                        </div>
+                        <span className="text-xs font-medium text-primary-800 bg-primary-50/80 px-3 py-1 rounded-full border border-primary-200/50">
+                          {project.focusArea}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-4">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed mb-6 flex-grow">
+                        {project.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {project.sectors.map((sector, idx) => (
-                          <span key={idx} className="inline-block px-2 py-1 text-xs bg-white/10 text-white/70 rounded">
+                          <span key={idx} className="text-xs bg-neutral-100 text-neutral-700 px-2 py-1 rounded-full border border-neutral-200/50">
                             {sector}
                           </span>
                         ))}
                       </div>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t border-neutral-200/50">
+                        <div>
+                          <div className="text-sm font-semibold text-neutral-900">{project.expectedImpact}</div>
+                          <div className="text-xs text-neutral-500">Expected Impact</div>
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-neutral-900">{project.duration}</div>
+                          <div className="text-xs text-neutral-500">Duration</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Animated border effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
                     </div>
                   </div>
                 </div>
-
-                <div className="pt-4 border-t border-white/10">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-amber-500/20 text-amber-300 rounded-full">
-                      In Development
-                    </span>
-                    <button className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 text-sm font-medium transition-colors">
-                      Learn More <FiArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </SectionLayout>
-
-      {/* Preparation Phase */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary-500/20 to-cyan-500/20 border border-secondary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiCheckCircle className="w-4 h-4 text-secondary-400" />
-            <span className="text-sm font-semibold text-secondary-300 uppercase tracking-wider">Current Phase</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Building <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 to-cyan-400">Strong</span> Foundations
-          </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
-            We're currently in the strategic preparation phase, laying the groundwork for impactful and sustainable development initiatives.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {preparationPhases.map((phase, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-secondary-400/30 transition-all duration-300 group p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-secondary-500/30 to-cyan-500/30 rounded-lg flex items-center justify-center border border-secondary-400/20 group-hover:scale-110 transition-transform duration-300">
-                  <phase.icon className="w-5 h-5 text-secondary-400" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-secondary-300 transition-colors">
-                      {phase.phase}
-                    </h3>
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-green-500/20 text-green-300 rounded-full">
-                      {phase.status}
-                    </span>
-                  </div>
-                  <p className="text-neutral-300 text-sm leading-relaxed">
-                    {phase.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Progress Timeline */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-secondary-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl border border-secondary-500/20 p-8">
-            <h3 className="text-2xl font-bold text-white mb-4">Project Launch Timeline</h3>
-            <p className="text-neutral-200 mb-6 max-w-2xl mx-auto">
-              We're targeting to launch our first set of pilot projects in Q2 2024, with full-scale implementation beginning in Q4 2024.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
-                <span className="text-sm font-medium text-amber-300">Current Phase: Preparation</span>
-              </div>
-              <div className="hidden sm:block w-8 h-px bg-white/20"></div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <span className="text-sm font-medium text-green-300">Next: Pilot Launch (Q2 2024)</span>
-              </div>
-              <div className="hidden sm:block w-8 h-px bg-white/20"></div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-primary-400 rounded-full"></div>
-                <span className="text-sm font-medium text-primary-300">Full Implementation (Q4 2024)</span>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </SectionLayout>
 
-      {/* Stay Updated CTA */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-primary-500/10 to-secondary-500/10 backdrop-blur-sm rounded-2xl border border-primary-500/20 p-8 max-w-4xl mx-auto">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary-500/30 to-secondary-500/30 rounded-xl flex items-center justify-center mx-auto mb-6 border border-primary-400/20">
-              <FiAward className="w-8 h-8 text-primary-400" />
+        {/* Preparation Progress */}
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiCheckCircle className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Preparation Progress</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
+                Getting Ready for <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Launch</span>
+              </h2>
+              <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+                We're actively working across multiple preparation phases to ensure our projects deliver maximum impact from day one.
+              </p>
             </div>
-            
-            <h3 className="text-3xl font-bold text-white mb-4">Be Part of Our Journey</h3>
-            <p className="text-neutral-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Stay updated on our project developments, partnership opportunities, and impact stories. Be among the first to know when our transformative initiatives launch.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto mb-6">
-              <input
-                type="email"
-                placeholder="Enter your email for updates"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-primary-400/50 focus:ring-1 focus:ring-primary-400/25 transition-colors"
-              />
-              <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                Subscribe
-              </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {preparationPhases.map((phase, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full p-6">
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10 text-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-xl flex items-center justify-center mx-auto mb-4 border border-primary-200/50 group-hover:scale-110 transition-transform duration-300">
+                        <phase.icon className="w-6 h-6 text-primary-600" />
+                      </div>
+                      
+                      <div className="inline-flex items-center gap-2 bg-green-50/80 border border-green-200/50 rounded-full px-3 py-1 mb-4">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-xs font-medium text-green-700">{phase.status}</span>
+                      </div>
+                      
+                      <h3 className="text-lg font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-3">
+                        {phase.phase}
+                      </h3>
+                      
+                      <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed text-sm">
+                        {phase.description}
+                      </p>
+                    </div>
+
+                    {/* Animated border effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link 
-                to="/partnerships" 
-                className="inline-flex items-center gap-2 bg-secondary-600/20 hover:bg-secondary-600/30 border border-secondary-400/30 hover:border-secondary-400/50 rounded-full px-6 py-3 text-secondary-300 hover:text-secondary-200 transition-all duration-300"
-              >
-                <span className="text-sm font-medium">Partnership Opportunities</span>
-                <FiArrowRight className="w-4 h-4" />
-              </Link>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-2 bg-primary-600/20 hover:bg-primary-600/30 border border-primary-400/30 hover:border-primary-400/50 rounded-full px-6 py-3 text-primary-300 hover:text-primary-200 transition-all duration-300"
-              >
-                <span className="text-sm font-medium">Get Involved</span>
-                <FiArrowRight className="w-4 h-4" />
-              </Link>
+          </div>
+        </div>
+
+        {/* Partnership & Collaboration */}
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center" data-aos="fade-up">
+              <div className="backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 p-8 shadow-xl shadow-primary-200/20">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-6">
+                  <FiUsers className="w-4 h-4 text-primary-600" />
+                  <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Join Our Mission</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+                  Partner with Us for <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Impact</span>
+                </h2>
+                <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                  Whether you're a development organization, government agency, or funding partner, we invite you to collaborate with us in creating transformative change.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link 
+                    to="/partnerships"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 group transform hover:scale-105"
+                  >
+                    <span>Explore Partnerships</span>
+                    <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                  <Link 
+                    to="/contact"
+                    className="inline-flex items-center gap-3 bg-white hover:bg-neutral-50 text-neutral-900 font-semibold px-8 py-4 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    <span>Get in Touch</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

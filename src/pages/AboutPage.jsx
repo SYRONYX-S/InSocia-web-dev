@@ -1,31 +1,126 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { 
+  FiSearch, 
+  FiTarget, 
+  FiBarChart2, 
+  FiHeart, 
+  FiBriefcase, 
+  FiUsers, 
+  FiTrendingUp, 
+  FiGlobe, 
+  FiMic,
+  FiArrowRight,
+  FiCheckCircle
+} from 'react-icons/fi';
 import AboutHero from '../components/about/AboutHero';
 import OurValues from '../components/about/OurValues';
 import TeamSection from '../components/about/TeamSection';
+import SectionLayout from '../layouts/SectionLayout';
 // AOS for animations will be initialized in App.js globally
 
 const AboutPage = () => {
+  const services = [
+    {
+      id: 1,
+      title: "Policy Research & Analysis",
+      description: "Comprehensive research and sectoral analysis, delivering actionable insights into complex policy landscapes with regulatory assessments and strategic forecasting.",
+      icon: FiSearch,
+      features: ["Regulatory assessments", "Risk analysis", "Strategic forecasting"],
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      id: 2,
+      title: "CSR Impact Evaluation",
+      description: "Systematic evaluation of Corporate Social Responsibility initiatives to measure effectiveness and maximize social return on investment.",
+      icon: FiTarget,
+      features: ["CSR program assessment", "Impact measurement frameworks", "ROI analysis"],
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      id: 3,
+      title: "ESG Evaluation and Rating",
+      description: "Comprehensive ESG reporting and ratings using trusted methodologies to support better financial decisions and sustainability goals.",
+      icon: FiBarChart2,
+      features: ["ESG reporting", "Performance assessment", "Sustainability ratings"],
+      color: "from-purple-500 to-indigo-500"
+    },
+    {
+      id: 4,
+      title: "Philanthropic Program Assessment",
+      description: "Evaluation of philanthropic funds and programs to ensure optimal resource allocation and maximum community benefit.",
+      icon: FiHeart,
+      features: ["Grant program review", "Beneficiary assessment", "Resource optimization"],
+      color: "from-pink-500 to-rose-500"
+    },
+    {
+      id: 5,
+      title: "Government Project Evaluation",
+      description: "Independent evaluation of government projects and initiatives to assess effectiveness, efficiency, and social impact.",
+      icon: FiBriefcase,
+      features: ["Performance evaluation", "Cost-benefit analysis", "Policy recommendations"],
+      color: "from-orange-500 to-amber-500"
+    },
+    {
+      id: 6,
+      title: "Project Management Services",
+      description: "End-to-end management for social initiatives, from program design to execution with strategic planning and risk management.",
+      icon: FiUsers,
+      features: ["Project planning", "Implementation management", "Progress monitoring"],
+      color: "from-teal-500 to-cyan-500"
+    },
+    {
+      id: 7,
+      title: "Monitoring & Evaluation (M&E)",
+      description: "Robust M&E frameworks and reporting tools supporting real-time progress tracking and evidence-based program improvement.",
+      icon: FiTrendingUp,
+      features: ["M&E framework design", "Data collection systems", "Impact measurement"],
+      color: "from-violet-500 to-purple-500"
+    },
+    {
+      id: 8,
+      title: "Social Impact Research",
+      description: "Rigorous social research including Insocia FR (Field Research) and Insocia GR (Ground Research) methodologies for evidence-based insights.",
+      icon: FiGlobe,
+      features: ["Baseline studies", "Community needs analysis", "Impact assessments"],
+      color: "from-blue-500 to-indigo-500"
+    },
+    {
+      id: 9,
+      title: "Advocacy & Policy Development",
+      description: "Strategic advocacy campaigns and policy reform initiatives with roadmap development, policy briefs, and coalition building.",
+      icon: FiMic,
+      features: ["Advocacy strategies", "Policy brief creation", "Campaign implementation"],
+      color: "from-emerald-500 to-green-500"
+    }
+  ];
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "InSocia Development Consultancy",
-    "url": "https://insocia.org", // Replace with actual domain
-    "logo": "https://insocia.org/images/logo.png", // Replace with actual logo URL
-    "description": "InSocia Development Consultancy is dedicated to advancing equitable social policies through rigorous research, innovative solutions, and impactful action. Learn about our story, mission, vision, and the team driving social change.",
+    "name": "Insocia Consultancy",
+    "url": "https://insocia.in", // Replace with actual domain
+    "logo": "https://insocia.in/images/logo.png", // Replace with actual logo URL
+    "description": "Insocia Consultancy is dedicated to advancing equitable social policies through rigorous research, innovative solutions, and impactful action. Learn about our story, mission, vision, and the team driving social change.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Innovation Drive", // Replace with actual address
-      "addressLocality": "Kozhikode",
-      "addressRegion": "KL",
-      "postalCode": "673001", // Replace
+      "streetAddress": "AECS Layout, Sanjayanagara, Bengaluru, Karnataka 560094",
+      "addressLocality": "Bengaluru",
+      "addressRegion": "Karnataka",
+      "postalCode": "560094",
       "addressCountry": "IN"
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-701-234-5678", // Replace
-      "contactType": "customer service" // Or "general inquiries"
-    }
+      "email": "connect@insocia.in",
+      "telephone": "+91-701-234-5678",
+      "contactType": "general inquiries"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/insocia-consultancy"
+    ]
     // "sameAs": [ // Add social media links if available
     //   "https://www.facebook.com/insocia",
     //   "https://www.twitter.com/insocia",
@@ -36,14 +131,14 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | InSocia Development Consultancy</title>
+        <title>About Us | Insocia Consultancy</title>
         <meta 
           name="description" 
-          content="Discover InSocia's commitment to creating equitable societies. Explore our story, mission, vision, core values, and the dedicated team behind our impactful social development work." 
+          content="Discover Insocia's commitment to creating equitable societies. Explore our story, mission, vision, core values, and the dedicated team behind our impactful social development work." 
         />
         <meta 
           name="keywords" 
-          content="about InSocia, social development consultancy, our mission, our vision, our values, InSocia team, policy research, social impact" 
+          content="about Insocia, social development consultancy, our mission, our vision, our values, Insocia team, policy research, social impact" 
         />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
@@ -51,6 +146,132 @@ const AboutPage = () => {
       </Helmet>
 
       <AboutHero />
+      
+      {/* Services Introduction Section */}
+      <SectionLayout bgColor="bg-transparent" className="py-16 md:py-24">
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+              <FiBriefcase className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Our Services</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
+              Comprehensive Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Services</span>
+            </h2>
+            
+            <p className="text-lg md:text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed mb-12">
+              Through our comprehensive range of professional services, we are committed to fostering institutional excellence, 
+              promoting transparent governance, and building sustainable pathways for inclusive economic growth and social empowerment.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative overflow-hidden"
+            >
+              <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full p-8">
+                
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-4">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+
+                  {/* Key Features */}
+                  <div className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <FiCheckCircle className="w-4 h-4 text-primary-500 flex-shrink-0" />
+                        <span className="text-sm text-neutral-600">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Animated border effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Call-to-Action Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="backdrop-blur-md bg-gradient-to-br from-primary-50/80 to-secondary-50/80 rounded-3xl border border-primary-200/50 p-12 max-w-4xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6">
+              Ready to Create Meaningful Impact?
+            </h3>
+            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+              Partner with us to unlock greater social impact through rigorous research, independent evaluation, and strategic advocacy. 
+              Let's build evidence-based solutions that drive transformative change.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
+              >
+                <span>Explore Our Services</span>
+                <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+              
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-3 bg-white/80 hover:bg-white border border-neutral-300 hover:border-primary-400 text-neutral-700 hover:text-primary-700 font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg backdrop-blur-sm"
+              >
+                <span>Discuss Your Project</span>
+              </Link>
+            </div>
+            
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { label: "Evidence-Based", desc: "Research-driven solutions" },
+                { label: "Multidisciplinary", desc: "Expert team approach" },
+                { label: "Results-Focused", desc: "Measurable outcomes" },
+                { label: "Ethical Standards", desc: "Integrity & transparency" }
+              ].map((item, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="text-sm font-semibold text-primary-700 mb-1">{item.label}</div>
+                  <div className="text-xs text-neutral-600">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </SectionLayout>
+
       <OurValues />
       <TeamSection />
 

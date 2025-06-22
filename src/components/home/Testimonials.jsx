@@ -83,10 +83,10 @@ const Testimonials = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-white">
-            Success <span className="text-primary-400">Stories</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-neutral-900">
+            Success <span className="text-primary-600">Stories</span>
           </h2>
-          <p className="text-lg text-neutral-200 max-w-3xl mx-auto">
+          <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
             Hear from the communities and partners we've collaborated with
           </p>
         </div>
@@ -107,10 +107,10 @@ const Testimonials = () => {
           </div>
           
           {/* Main testimonial card with hexagonal avatar frame */}
-          <div className="backdrop-blur-md bg-neutral-800/40 rounded-2xl p-6 md:p-10 border border-neutral-700/40 relative">
+          <div className="backdrop-blur-md bg-white/70 rounded-2xl p-6 md:p-10 border border-neutral-200/50 relative">
             
             {/* Quote decorative element */}
-            <div className="absolute -top-6 -left-6 text-primary-700/30 text-7xl font-serif hidden md:block">"</div>
+            <div className="absolute -top-6 -left-6 text-primary-300/50 text-7xl font-serif hidden md:block">"</div>
             
             <div className="md:flex items-center gap-8">
               {/* Testimonial avatar - Fixed positioning and zIndex */}
@@ -125,7 +125,7 @@ const Testimonials = () => {
                   />
                   
                   {/* Organization badge - Improved positioning and zIndex */}
-                  <div className="absolute -bottom-2 -right-2 bg-primary-700/80 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm z-20">
+                  <div className="absolute -bottom-2 -right-2 bg-primary-600/90 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm z-20">
                     {testimonials[activeIndex].organization}
                   </div>
                 </div>
@@ -139,7 +139,7 @@ const Testimonials = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4 }}
-                  className="text-lg md:text-xl text-white italic mb-6"
+                  className="text-lg md:text-xl text-neutral-700 italic mb-6"
                 >
                   "{testimonials[activeIndex].quote}"
                 </motion.blockquote>
@@ -152,15 +152,15 @@ const Testimonials = () => {
                     transition={{ delay: 0.2, duration: 0.3 }}
                     className="mb-4 md:mb-0"
                   >
-                    <p className="font-bold text-white">{testimonials[activeIndex].author}</p>
-                    <p className="text-neutral-300 text-sm">{testimonials[activeIndex].title}</p>
+                    <p className="font-bold text-neutral-900">{testimonials[activeIndex].author}</p>
+                    <p className="text-neutral-600 text-sm">{testimonials[activeIndex].title}</p>
                   </motion.div>
                   
                   {/* Navigation controls */}
                   <div className="flex gap-2">
                     <motion.button 
                       onClick={prevTestimonial}
-                      className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
+                      className="p-2 bg-neutral-200/70 rounded-full text-neutral-700 hover:bg-primary-200/70 hover:text-primary-700 transition-colors"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
@@ -172,7 +172,7 @@ const Testimonials = () => {
                     </motion.button>
                     <motion.button 
                       onClick={nextTestimonial}
-                      className="p-2 bg-neutral-700/50 rounded-full text-white hover:bg-primary-700/50 transition-colors"
+                      className="p-2 bg-neutral-200/70 rounded-full text-neutral-700 hover:bg-primary-200/70 hover:text-primary-700 transition-colors"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
@@ -221,21 +221,21 @@ const Testimonials = () => {
         
         {/* Testimonial stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="backdrop-blur-md bg-neutral-800/30 p-4 rounded-xl border border-neutral-700/40 text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary-400">240+</div>
-            <div className="text-sm text-neutral-300">Partner Organizations</div>
+          <div className="backdrop-blur-md bg-white/70 p-4 rounded-xl border border-neutral-200/50 text-center">
+            <div className="text-2xl md:text-3xl font-bold text-primary-600">240+</div>
+            <div className="text-sm text-neutral-600">Partner Organizations</div>
           </div>
-          <div className="backdrop-blur-md bg-neutral-800/30 p-4 rounded-xl border border-neutral-700/40 text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary-400">35</div>
-            <div className="text-sm text-neutral-300">Program Countries</div>
+          <div className="backdrop-blur-md bg-white/70 p-4 rounded-xl border border-neutral-200/50 text-center">
+            <div className="text-2xl md:text-3xl font-bold text-primary-600">35</div>
+            <div className="text-sm text-neutral-600">Program Countries</div>
           </div>
-          <div className="backdrop-blur-md bg-neutral-800/30 p-4 rounded-xl border border-neutral-700/40 text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary-400">98%</div>
-            <div className="text-sm text-neutral-300">Satisfied Clients</div>
+          <div className="backdrop-blur-md bg-white/70 p-4 rounded-xl border border-neutral-200/50 text-center">
+            <div className="text-2xl md:text-3xl font-bold text-primary-600">98%</div>
+            <div className="text-sm text-neutral-600">Satisfied Clients</div>
           </div>
-          <div className="backdrop-blur-md bg-neutral-800/30 p-4 rounded-xl border border-neutral-700/40 text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary-400">12+</div>
-            <div className="text-sm text-neutral-300">Years of Experience</div>
+          <div className="backdrop-blur-md bg-white/70 p-4 rounded-xl border border-neutral-200/50 text-center">
+            <div className="text-2xl md:text-3xl font-bold text-primary-600">12+</div>
+            <div className="text-sm text-neutral-600">Years of Experience</div>
           </div>
         </div>
       </div>

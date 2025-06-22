@@ -1,7 +1,7 @@
 {
   "name": "insocia",
   "version": "1.0.0",
-  "description": "InSocia Development Consultancy Website",
+  "description": "Insocia Consultancy Website",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",

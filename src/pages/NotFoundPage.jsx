@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found | InSocia Development Consultancy</title>
+        <title>Page Not Found | Insocia Consultancy</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       

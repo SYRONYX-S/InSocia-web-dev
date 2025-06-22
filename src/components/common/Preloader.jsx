@@ -14,21 +14,21 @@ const Preloader = () => {
   if (!loading) return null;
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
       <div className="relative">
-        {/* Simple, sleek loading animation */}
-        <div className="w-12 h-12 relative">
+        {/* Loading animation */}
+        <div className="w-16 h-16 relative">
           {/* Outer ring */}
-          <div className="absolute inset-0 border-t-2 border-r-2 border-primary-500/60 rounded-full animate-spin" 
-               style={{ animationDuration: '1s' }}></div>
+          <div className="absolute inset-0 border-t-4 border-r-4 border-primary-500/70 rounded-full animate-spin" 
+               style={{ animationDuration: '1.2s' }}></div>
           
           {/* Inner ring */}
-          <div className="absolute inset-2 border-b-2 border-l-2 border-secondary-500/60 rounded-full animate-spin" 
-               style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div>
+          <div className="absolute inset-3 border-b-4 border-l-4 border-secondary-500/70 rounded-full animate-spin" 
+               style={{ animationDuration: '1.8s', animationDirection: 'reverse' }}></div>
           
           {/* Center dot */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

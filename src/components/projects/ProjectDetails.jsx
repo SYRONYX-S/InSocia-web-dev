@@ -38,7 +38,7 @@ const ProjectDetails = () => {
                   
                   <div className="p-8 lg:p-12">
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <div className="px-3 py-1 bg-primary-50 text-primary-600 text-sm font-medium rounded-full">
+                      <div className="px-3 py-1 bg-primary-50 text-primary-800 text-sm font-medium rounded-full">
                         {project.category}
                       </div>
                       <div className="px-3 py-1 bg-neutral-100 text-neutral-600 text-sm font-medium rounded-full">

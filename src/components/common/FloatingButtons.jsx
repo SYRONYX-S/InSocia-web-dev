@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FiArrowUp, FiMail } from 'react-icons/fi';
 
 const FloatingButtons = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -47,6 +48,7 @@ const FloatingButtons = () => {
     hidden: { 
       opacity: 0, 
       y: 20,
+      scale: 0.8,
       transition: {
         duration: 0.3,
         ease: "easeInOut" 
@@ -55,6 +57,7 @@ const FloatingButtons = () => {
     visible: { 
       opacity: 1, 
       y: 0,
+      scale: 1,
       transition: { 
         duration: 0.3,
         ease: "easeOut"
@@ -62,16 +65,48 @@ const FloatingButtons = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.8
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <>
-      {/* Back to top button - Completely revised implementation */}
-      <div className="fixed right-5 bottom-20 z-50">
+    <div className="fixed right-5 bottom-5 z-50">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-3"
+      >
+        {/* Back to top button */}
         <AnimatePresence mode="wait">
           {showBackToTop && (
             <motion.button
               ref={buttonRef}
               onClick={handleScrollToTop}
-              className="w-12 h-12 rounded-full bg-neutral-900/80 backdrop-blur-sm text-white shadow-md border border-white/5 flex items-center justify-center hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] focus:outline-none"
+              className="group relative w-14 h-14 rounded-full overflow-hidden backdrop-blur-md bg-white/90 border border-neutral-200/50 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
               initial="hidden"
               animate="visible"
               exit="hidden"
@@ -79,55 +114,45 @@ const FloatingButtons = () => {
               aria-label="Back to top"
               style={{ pointerEvents: 'auto' }}
             >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M5 10l7-7m0 0l7 7m-7-7v18" 
-                />
-              </svg>
+              {/* Gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+              </div>
+              
+              <FiArrowUp className="w-6 h-6 text-primary-600 group-hover:text-primary-700 transition-colors duration-300 relative z-10" />
+              
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full bg-primary-500/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150" />
             </motion.button>
           )}
         </AnimatePresence>
-      </div>
-      
-      {/* Contact button - Keep separate from back to top */}
-      <div className="fixed right-5 bottom-5 z-50">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={buttonVariants}
-        >
+        
+        {/* Contact button */}
+        <motion.div variants={itemVariants}>
           <Link 
             to="/contact" 
             aria-label="Contact us"
-            className="w-12 h-12 rounded-full bg-neutral-900/80 backdrop-blur-sm text-white shadow-md border border-white/5 flex items-center justify-center hover:shadow-[0_0_15px_rgba(124,58,237,0.5)] transition-shadow duration-300"
+            className="group relative w-14 h-14 rounded-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
-              />
-            </svg>
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+            </div>
+            
+            <FiMail className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            
+            {/* Pulse effect */}
+            <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+            
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-full bg-primary-400/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150" />
           </Link>
         </motion.div>
-      </div>
-    </>
+      </motion.div>
+    </div>
   );
 };
 

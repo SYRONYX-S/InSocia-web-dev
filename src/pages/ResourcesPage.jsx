@@ -1,27 +1,246 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SectionLayout from '../layouts/SectionLayout';
 import SectionHeading from '../components/common/SectionHeading';
 import { Link } from 'react-router-dom';
-import { FiBook, FiDatabase, FiSettings, FiLayers, FiUsers, FiDownload, FiEye, FiShare2, FiArrowRight, FiTarget, FiCheckCircle, FiGrid } from 'react-icons/fi';
+import { FiBook, FiDatabase, FiSettings, FiLayers, FiUsers, FiDownload, FiEye, FiShare2, FiArrowRight, FiTarget, FiCheckCircle, FiGrid, FiFileText, FiVideo, FiExternalLink, FiSearch, FiFilter, FiCalendar, FiUser, FiTag, FiTrendingUp, FiClock, FiHeadphones, FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ResourcesPage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedFormat, setSelectedFormat] = useState('all');
+
   const resourcesSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "provider": {
       "@type": "Organization",
-      "name": "InSocia Development Consultancy",
-      "url": "https://insocia.org"
+      "name": "Insocia Consultancy",
+              "url": "https://insocia.in"
     },
     "serviceType": "Knowledge Resources",
     "areaServed": "Global"
   };
 
+  const categories = [
+    'all',
+    'Research Papers',
+    'Policy Briefs',
+    'Case Studies',
+    'Best Practices',
+    'Toolkits',
+    'Reports'
+  ];
+
+  const formats = [
+    'all',
+    'PDF',
+    'Video',
+    'Podcast',
+    'Interactive',
+    'Infographic'
+  ];
+
+  const resources = [
+    {
+      id: 1,
+      title: "Community Health Systems Strengthening: A Comprehensive Toolkit",
+      description: "A detailed guide for implementing community-based health interventions, including assessment frameworks, implementation strategies, and monitoring tools.",
+      category: "Toolkits",
+      format: "PDF",
+      author: "InSocia Health Team",
+      publishDate: "2024-03-20",
+      downloadCount: 2847,
+      readTime: "45 min",
+      pages: 86,
+      tags: ["Healthcare", "Community Development", "Implementation"],
+      featured: true,
+      fileSize: "12.4 MB",
+      language: "English"
+    },
+    {
+      id: 2,
+      title: "Gender-Responsive Policy Implementation: Lessons from Three States",
+      description: "Analysis of gender-responsive policy implementation across three Indian states, highlighting successes, challenges, and recommendations for scale-up.",
+      category: "Research Papers",
+      format: "PDF",
+      author: "Dr. Meera Patel",
+      publishDate: "2024-03-15",
+      downloadCount: 1923,
+      readTime: "25 min",
+      pages: 45,
+      tags: ["Gender", "Policy", "Implementation"],
+      featured: true,
+      fileSize: "8.7 MB",
+      language: "English"
+    },
+    {
+      id: 3,
+      title: "Rural Livelihood Enhancement Case Study: Maharashtra Model",
+      description: "Comprehensive case study examining the Maharashtra rural livelihood enhancement program, including impact assessment and replication guidelines.",
+      category: "Case Studies",
+      format: "PDF",
+      author: "Rural Development Unit",
+      publishDate: "2024-03-10",
+      downloadCount: 1654,
+      readTime: "30 min",
+      pages: 62,
+      tags: ["Livelihoods", "Rural Development", "Case Study"],
+      featured: false,
+      fileSize: "15.2 MB",
+      language: "English"
+    },
+    {
+      id: 4,
+      title: "Digital Financial Inclusion: Policy Brief and Recommendations",
+      description: "Policy brief examining the current state of digital financial inclusion in India and providing actionable recommendations for policymakers.",
+      category: "Policy Briefs",
+      format: "PDF",
+      author: "Financial Inclusion Team",
+      publishDate: "2024-03-05",
+      downloadCount: 2156,
+      readTime: "15 min",
+      pages: 24,
+      tags: ["Financial Inclusion", "Digital", "Policy"],
+      featured: false,
+      fileSize: "5.8 MB",
+      language: "English"
+    },
+    {
+      id: 5,
+      title: "Participatory Monitoring and Evaluation: Best Practices Guide",
+      description: "Comprehensive guide to implementing participatory monitoring and evaluation systems in development programs, with practical tools and templates.",
+      category: "Best Practices",
+      format: "PDF",
+      author: "M&E Team",
+      publishDate: "2024-02-28",
+      downloadCount: 1789,
+      readTime: "35 min",
+      pages: 78,
+      tags: ["M&E", "Participation", "Best Practices"],
+      featured: false,
+      fileSize: "11.3 MB",
+      language: "English"
+    },
+    {
+      id: 6,
+      title: "Climate-Resilient Agriculture: Implementation Strategies",
+      description: "Detailed report on climate-resilient agriculture practices, implementation strategies, and impact assessment from pilot programs across multiple states.",
+      category: "Reports",
+      format: "PDF",
+      author: "Climate & Agriculture Team",
+      publishDate: "2024-02-20",
+      downloadCount: 2034,
+      readTime: "40 min",
+      pages: 94,
+      tags: ["Climate", "Agriculture", "Resilience"],
+      featured: false,
+      fileSize: "18.6 MB",
+      language: "English"
+    },
+    {
+      id: 7,
+      title: "Social Protection Systems: Video Training Series",
+      description: "Comprehensive video training series on designing and implementing effective social protection systems, featuring expert interviews and case studies.",
+      category: "Best Practices",
+      format: "Video",
+      author: "Training Team",
+      publishDate: "2024-02-15",
+      downloadCount: 956,
+      readTime: "120 min",
+      pages: null,
+      tags: ["Social Protection", "Training", "Video"],
+      featured: false,
+      fileSize: "2.1 GB",
+      language: "English"
+    },
+    {
+      id: 8,
+      title: "Development Conversations Podcast: Season 2",
+      description: "Latest season of our popular podcast featuring conversations with development practitioners, researchers, and beneficiaries about real-world challenges and solutions.",
+      category: "Best Practices",
+      format: "Podcast",
+      author: "Communications Team",
+      publishDate: "2024-02-10",
+      downloadCount: 1247,
+      readTime: "Various",
+      pages: null,
+      tags: ["Podcast", "Conversations", "Insights"],
+      featured: false,
+      fileSize: "Various",
+      language: "English"
+    }
+  ];
+
+  const featuredResources = resources.filter(resource => resource.featured);
+  
+  // All resources for search (including featured)
+  const allResources = resources;
+  
+  // Search results - only show when there's a search term
+  const searchResults = searchTerm.trim().length > 0 ? allResources.filter(resource => {
+    const matchesCategory = selectedCategory === 'all' || resource.category === selectedCategory;
+    const matchesFormat = selectedFormat === 'all' || resource.format === selectedFormat;
+    const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                         resource.author.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesFormat && matchesSearch;
+  }) : [];
+  
+  const filteredResources = resources.filter(resource => {
+    const matchesCategory = selectedCategory === 'all' || resource.category === selectedCategory;
+    const matchesFormat = selectedFormat === 'all' || resource.format === selectedFormat;
+    const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesCategory && matchesFormat && matchesSearch && !resource.featured;
+  });
+
+  // Clear search function
+  const clearSearch = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+    setSelectedFormat('all');
+  };
+
+  const getFormatIcon = (format) => {
+    switch (format) {
+      case 'PDF': return FiFileText;
+      case 'Video': return FiVideo;
+      case 'Podcast': return FiHeadphones;
+      case 'Interactive': return FiExternalLink;
+      case 'Infographic': return FiEye;
+      default: return FiBook;
+    }
+  };
+
+  const getCategoryColor = (category) => {
+    const colors = {
+      'Research Papers': 'bg-blue-100 text-blue-700 border-blue-300',
+      'Policy Briefs': 'bg-purple-100 text-purple-700 border-purple-300',
+      'Case Studies': 'bg-green-100 text-green-700 border-green-300',
+      'Best Practices': 'bg-orange-100 text-orange-700 border-orange-300',
+      'Toolkits': 'bg-pink-100 text-pink-700 border-pink-300',
+      'Reports': 'bg-indigo-100 text-indigo-700 border-indigo-300'
+    };
+    return colors[category] || 'bg-neutral-100 text-neutral-700 border-neutral-300';
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
   return (
     <>
       <Helmet>
-        <title>Resources | InSocia Development Consultancy - Knowledge Center & Development Resources</title>
+        <title>Resources | Insocia Consultancy - Knowledge Center & Development Resources</title>
         <meta 
           name="description" 
           content="Access our comprehensive Knowledge Center featuring research publications, datasets, methodologies, policy innovations, and training resources for development professionals worldwide." 
@@ -35,410 +254,510 @@ const ResourcesPage = () => {
         </script>
       </Helmet>
 
-      {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-24 pb-16">
-        {/* Static background effects */}
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
-        </div>
+      <SEO 
+        title="Resources"
+        description="Access our comprehensive collection of research papers, policy briefs, toolkits, and best practices in development and social impact."
+        keywords="development resources, research papers, policy briefs, toolkits, best practices, case studies"
+      />
 
-        <div className="w-full px-4 md:px-8 relative z-10 mt-24 sm:mt-0">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
-              <FiTarget className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Knowledge Hub</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-400 to-secondary-400">Premium Resources</span> for Development Excellence
-            </h1>
+      <SectionLayout bgColor="bg-transparent" className="min-h-screen">
+        {/* Hero Section */}
+        <div className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-              Discover our comprehensive collection of research publications, datasets, methodologies, policy innovations, and training materials designed to accelerate your development impact.
-            </p>
-
-            {/* Resource highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-secondary-500/30 to-primary-500/30 rounded-lg flex items-center justify-center mx-auto mb-3 border border-secondary-400/20">
-                  <FiTarget className="w-5 h-5 text-secondary-400" />
-                </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Evidence-Based</h3>
-                <p className="text-sm text-white/70">Rigorous research and proven methodologies</p>
+            {/* Header */}
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiBook className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Resource Library</span>
               </div>
-              
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-secondary-500/30 to-primary-500/30 rounded-lg flex items-center justify-center mx-auto mb-3 border border-secondary-400/20">
-                  <FiCheckCircle className="w-5 h-5 text-secondary-400" />
-                </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Practical Tools</h3>
-                <p className="text-sm text-white/70">Ready-to-use frameworks and templates</p>
-              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+                Knowledge <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Repository</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                Access our comprehensive collection of research papers, policy briefs, toolkits, and best practices to advance your development work.
+              </p>
+            </div>
 
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-secondary-500/30 to-primary-500/30 rounded-lg flex items-center justify-center mx-auto mb-3 border border-secondary-400/20">
-                  <FiShare2 className="w-5 h-5 text-secondary-400" />
+            {/* Search and Filters */}
+            <div className="max-w-6xl mx-auto mb-8" data-aos="fade-up">
+              <div className="backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 p-6 shadow-xl shadow-primary-200/20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FiSearch className="h-5 w-5 text-neutral-400" />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Search resources..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm"
+                    />
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FiFilter className="h-5 w-5 text-neutral-400" />
+                    </div>
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="w-full pl-10 pr-8 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm"
+                    >
+                      {categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category === 'all' ? 'All Categories' : category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FiFileText className="h-5 w-5 text-neutral-400" />
+                    </div>
+                    <select
+                      value={selectedFormat}
+                      onChange={(e) => setSelectedFormat(e.target.value)}
+                      className="w-full pl-10 pr-8 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm"
+                    >
+                      {formats.map((format) => (
+                        <option key={format} value={format}>
+                          {format === 'all' ? 'All Formats' : format}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Open Access</h3>
-                <p className="text-sm text-white/70">Free resources for development community</p>
               </div>
             </div>
 
-            {/* Enhanced Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {/* Animated Search Results Section */}
+            <AnimatePresence mode="wait">
+              {searchResults.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="max-w-6xl mx-auto mb-16"
+                >
+                  <div className="backdrop-blur-md bg-gradient-to-br from-primary-50/90 to-secondary-50/90 rounded-2xl border border-primary-200/50 shadow-xl shadow-primary-200/20 overflow-hidden">
+                    
+                    {/* Search Results Header */}
+                    <div className="flex items-center justify-between p-6 border-b border-primary-200/50">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-lg flex items-center justify-center border border-primary-200/50">
+                          <FiSearch className="w-5 h-5 text-primary-600" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-neutral-900">
+                            Search Results for "{searchTerm}"
+                          </h3>
+                          <p className="text-sm text-neutral-600">
+                            Found {searchResults.length} {searchResults.length === 1 ? 'resource' : 'resources'}
+                            {(selectedCategory !== 'all' || selectedFormat !== 'all') && (
+                              <span> (filtered)</span>
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={clearSearch}
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 bg-white/80 hover:bg-white rounded-lg border border-neutral-200/50 hover:border-neutral-300 transition-all duration-300"
+                      >
+                        <FiX className="w-4 h-4" />
+                        <span>Clear</span>
+                      </button>
+                    </div>
+
+                    {/* Search Results Grid */}
+                    <div className="p-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {searchResults.slice(0, 9).map((resource, index) => {
+                          const FormatIcon = getFormatIcon(resource.format);
+                          return (
+                            <motion.div
+                              key={resource.id}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.3, delay: index * 0.1 }}
+                              className="group relative overflow-hidden"
+                            >
+                              <div className="relative backdrop-blur-md bg-white/90 rounded-xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary-200/20 overflow-hidden h-full">
+                                
+                                <div className="relative z-10 p-5 flex flex-col h-full">
+                                  <div className="flex items-center justify-between mb-3">
+                                    <div className="flex items-center gap-2">
+                                      <span className={`text-xs font-medium px-2 py-1 rounded-full border ${getCategoryColor(resource.category)}`}>
+                                        {resource.category}
+                                      </span>
+                                      {resource.featured && (
+                                        <span className="text-xs font-medium px-2 py-1 bg-yellow-100 text-yellow-700 border border-yellow-300 rounded-full">
+                                          Featured
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="flex items-center gap-1 text-xs text-neutral-500">
+                                      <FormatIcon className="w-3 h-3" />
+                                      <span>{resource.format}</span>
+                                    </div>
+                                  </div>
+                                  
+                                  <h4 className="text-base font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-2 line-clamp-2">
+                                    {resource.title}
+                                  </h4>
+                                  
+                                  <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed mb-3 flex-grow line-clamp-2 text-sm">
+                                    {resource.description}
+                                  </p>
+                                  
+                                  <div className="flex items-center justify-between pt-3 border-t border-neutral-200/50">
+                                    <div className="text-xs text-neutral-600">
+                                      <div className="flex items-center gap-1 mb-1">
+                                        <FiUser className="w-3 h-3" />
+                                        <span>{resource.author}</span>
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        <FiDownload className="w-3 h-3" />
+                                        <span>{resource.downloadCount.toLocaleString()}</span>
+                                      </div>
+                                    </div>
+                                    
+                                    <button className="inline-flex items-center gap-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-3 py-1.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-xs">
+                                      <FiDownload className="w-3 h-3" />
+                                      <span>Download</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Show more results button */}
+                      {searchResults.length > 9 && (
+                        <div className="text-center mt-6">
+                          <button className="inline-flex items-center gap-2 bg-white/80 hover:bg-white text-neutral-900 font-medium px-6 py-3 rounded-lg border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-300 shadow-md hover:shadow-lg">
+                            <FiGrid className="w-4 h-4" />
+                            <span>View All {searchResults.length} Results</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="mb-8"></div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
               {[
-                { number: '150+', label: 'Publications', icon: FiBook },
-                { number: '50+', label: 'Datasets', icon: FiDatabase },
-                { number: '25+', label: 'Methodologies', icon: FiSettings },
-                { number: '10K+', label: 'Downloads', icon: FiDownload }
+                { number: '150+', label: 'Resources Available', icon: FiBook },
+                { number: '25K+', label: 'Total Downloads', icon: FiDownload },
+                { number: '12', label: 'Languages', icon: FiShare2 },
+                { number: '50+', label: 'Research Studies', icon: FiTrendingUp }
               ].map((stat, index) => (
-                <div key={index} className="backdrop-blur-md bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-xl p-3 text-center group hover:bg-white/15 transition-all duration-300">
-                  <stat.icon className="w-4 h-4 text-secondary-400 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
-                  <p className="text-lg lg:text-xl font-bold text-white mb-1">{stat.number}</p>
-                  <p className="text-xs text-white/70 font-medium">{stat.label}</p>
+                <div key={index} className="backdrop-blur-md bg-white/80 border border-neutral-200/50 rounded-xl p-6 text-center hover:bg-primary-50/50 transition-all duration-300 group">
+                  <stat.icon className="w-6 h-6 text-primary-600 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+                  <p className="text-2xl font-bold text-neutral-900 mb-2">{stat.number}</p>
+                  <p className="text-sm text-neutral-600 font-medium">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Knowledge Hub - Featured Resources */}
-      <SectionLayout id="knowledge-hub" bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiBook className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Knowledge Hub</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Publications</span> & Reports
-          </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
-            Access our latest research findings, policy analyses, and comprehensive reports that drive evidence-based decision making.
-          </p>
-        </div>
-
-        {/* Featured Publication - Large Format */}
-        <div className="mb-12">
-          <div className="bg-gradient-to-r from-primary-500/10 to-secondary-500/10 backdrop-blur-sm rounded-2xl border border-primary-500/20 overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-500/20 text-primary-300 rounded-full">Featured Publication</span>
-                  <span className="text-sm text-neutral-400">June 2023</span>
+        {/* Featured Resources */}
+        {featuredResources.length > 0 && searchResults.length === 0 && (
+          <div className="py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16" data-aos="fade-up">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                  <FiTrendingUp className="w-4 h-4 text-primary-600" />
+                  <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Featured</span>
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                  Social Development Indicators Framework
-                </h3>
-                <p className="text-neutral-300 text-lg leading-relaxed mb-6">
-                  A comprehensive framework for measuring and evaluating social development outcomes across multiple sectors and contexts. This publication provides practical tools for development practitioners worldwide.
-                </p>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-sm text-neutral-400">
-                    <FiEye className="w-4 h-4" />
-                    <span>2.4K views</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-neutral-400">
-                    <FiDownload className="w-4 h-4" />
-                    <span>856 downloads</span>
-                  </div>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors">
-                    <FiDownload className="w-4 h-4 mr-2" />
-                    Download PDF
-                  </button>
-                  <button className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-primary-400 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-lg transition-colors">
-                    <FiEye className="w-4 h-4 mr-2" />
-                    Preview
-                  </button>
-                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
+                  Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Resources</span>
+                </h2>
               </div>
-              <div className="bg-gradient-to-br from-primary-600/20 to-secondary-600/20 rounded-xl p-8 border border-primary-500/30">
-                <div className="h-64 bg-gradient-to-br from-primary-500/30 to-secondary-500/30 rounded-lg flex items-center justify-center border border-primary-400/20">
-                  <FiBook className="w-16 h-16 text-primary-400/60" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Recent Publications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Rural Education Innovation Study",
-              type: "Research Report",
-              date: "Nov 2022",
-              views: "1.8K",
-              downloads: "634"
-            },
-            {
-              title: "Climate-Resilient Agriculture Policy",
-              type: "Policy Brief",
-              date: "Apr 2023",
-              views: "1.2K",
-              downloads: "423"
-            },
-            {
-              title: "Women's Economic Empowerment",
-              type: "Case Study",
-              date: "Sep 2022",
-              views: "2.1K",
-              downloads: "789"
-            }
-          ].map((item, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-primary-400/50 transition-all duration-300 group">
-              <div className="flex items-start justify-between mb-4">
-                <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-500/20 text-primary-300 rounded-full">
-                  {item.type}
-                </span>
-                <span className="text-xs text-neutral-400">{item.date}</span>
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-primary-300 transition-colors">
-                {item.title}
-              </h3>
-              <div className="flex items-center gap-4 mb-4 text-xs text-neutral-400">
-                <div className="flex items-center gap-1">
-                  <FiEye className="w-3 h-3" />
-                  <span>{item.views}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FiDownload className="w-3 h-3" />
-                  <span>{item.downloads}</span>
-                </div>
-              </div>
-              <button className="text-primary-400 hover:text-primary-300 text-sm font-medium transition-colors flex items-center">
-                Access Resource
-                <FiArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </SectionLayout>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {featuredResources.map((resource, index) => {
+                  const FormatIcon = getFormatIcon(resource.format);
+                  return (
+                    <div
+                      key={resource.id}
+                      className="group relative overflow-hidden"
+                      data-aos="fade-up"
+                      data-aos-delay={index * 100}
+                    >
+                      <div className="relative backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full">
+                        
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <div className="relative z-10 p-8 flex flex-col h-full">
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                              <span className={`text-xs font-medium px-3 py-1 rounded-full border ${getCategoryColor(resource.category)}`}>
+                                {resource.category}
+                              </span>
+                              <div className="flex items-center gap-1 text-xs text-neutral-500">
+                                <FormatIcon className="w-3 h-3" />
+                                <span>{resource.format}</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4 text-sm text-neutral-500">
+                              <div className="flex items-center gap-1">
+                                <FiDownload className="w-4 h-4" />
+                                <span>{resource.downloadCount.toLocaleString()}</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-4 line-clamp-2">
+                            {resource.title}
+                          </h3>
+                          
+                          <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed mb-6 flex-grow line-clamp-3">
+                            {resource.description}
+                          </p>
+                          
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {resource.tags.slice(0, 3).map((tag, idx) => (
+                              <span key={idx} className="text-xs bg-neutral-100 text-neutral-700 px-2 py-1 rounded-full border border-neutral-200/50">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          
+                          <div className="flex items-center justify-between pt-4 border-t border-neutral-200/50">
+                            <div className="flex items-center gap-4 text-sm text-neutral-600">
+                              <div className="flex items-center gap-2">
+                                <FiUser className="w-4 h-4" />
+                                <span>{resource.author}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <FiCalendar className="w-4 h-4" />
+                                <span>{formatDate(resource.publishDate)}</span>
+                              </div>
+                              {resource.readTime && (
+                                <div className="flex items-center gap-2">
+                                  <FiClock className="w-4 h-4" />
+                                  <span>{resource.readTime}</span>
+                                </div>
+                              )}
+                            </div>
+                            
+                            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                              <FiDownload className="w-4 h-4" />
+                              <span className="text-sm">Download</span>
+                            </button>
+                          </div>
+                        </div>
 
-      {/* Data Repository - Interactive Section */}
-      <SectionLayout id="data-repository" bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary-500/20 to-cyan-500/20 border border-secondary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiDatabase className="w-4 h-4 text-secondary-400" />
-            <span className="text-sm font-semibold text-secondary-300 uppercase tracking-wider">Data Repository</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Comprehensive <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 to-cyan-400">Datasets</span> & Analytics
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Interactive Dashboard Preview */}
-          <div className="bg-gradient-to-br from-secondary-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl p-8 border border-secondary-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">Interactive Data Dashboards</h3>
-            <p className="text-neutral-300 mb-6">
-              Explore real-time visualizations of development indicators across regions and sectors.
-            </p>
-            <div className="bg-gradient-to-br from-secondary-600/20 to-cyan-600/20 rounded-xl p-6 border border-secondary-500/30 mb-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-secondary-400">85%</div>
-                  <div className="text-xs text-neutral-400">Health Coverage</div>
-                </div>
-                <div className="bg-white/5 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-cyan-400">67%</div>
-                  <div className="text-xs text-neutral-400">Education Access</div>
-                </div>
+                        {/* Animated border effect */}
+                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <button className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-secondary-600 hover:bg-secondary-700 rounded-lg transition-colors">
-              Explore Dashboards
-              <FiArrowRight className="w-4 h-4 ml-2" />
-            </button>
           </div>
+        )}
 
-          {/* Dataset Categories */}
-          <div className="space-y-4">
-            {[
-              { title: "Health Systems Database", desc: "Multi-country health system performance data", icon: "🏥" },
-              { title: "Education Indicators", desc: "Access, quality & outcome metrics", icon: "📚" },
-              { title: "Gender Equality Metrics", desc: "Real-time gender development indicators", icon: "⚖️" },
-              { title: "Environmental Data", desc: "Climate and sustainability indicators", icon: "🌱" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-secondary-400/50 transition-all duration-300 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="text-2xl">{item.icon}</div>
-                  <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-secondary-300 transition-colors">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-neutral-300">{item.desc}</p>
-                  </div>
-                  <FiArrowRight className="w-5 h-5 text-secondary-400 group-hover:translate-x-1 transition-transform" />
-                </div>
+        {/* All Resources */}
+        {searchResults.length === 0 && (
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiFileText className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">All Resources</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </SectionLayout>
-
-      {/* Methodology Center - Tool Showcase */}
-      <SectionLayout id="methodology-center" bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-6 py-3 mb-8">
-            <FiSettings className="w-4 h-4 text-green-400" />
-            <span className="text-sm font-semibold text-green-300 uppercase tracking-wider">Methodology Center</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Research <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400">Methods</span> & Tools
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "M&E Framework Builder",
-              desc: "Interactive tool for creating monitoring frameworks",
-              icon: FiTarget,
-              color: "green",
-              features: ["Template Library", "Custom Indicators", "Logic Models"]
-            },
-            {
-              title: "Research Design Toolkit",
-              desc: "Comprehensive guides for study methodology",
-              icon: FiGrid,
-              color: "emerald",
-              features: ["Study Protocols", "Sampling Methods", "Data Collection"]
-            },
-            {
-              title: "Impact Evaluation Guide",
-              desc: "Step-by-step evaluation frameworks",
-              icon: FiCheckCircle,
-              color: "teal",
-              features: ["Theory of Change", "Outcome Mapping", "Attribution Analysis"]
-            }
-          ].map((tool, index) => (
-            <div key={index} className={`bg-gradient-to-br from-${tool.color}-500/10 to-${tool.color}-600/5 backdrop-blur-sm rounded-2xl p-8 border border-${tool.color}-500/20 hover:border-${tool.color}-400/40 transition-all duration-300 group`}>
-              <div className={`w-12 h-12 bg-gradient-to-br from-${tool.color}-500/30 to-${tool.color}-600/30 rounded-xl flex items-center justify-center mb-6 border border-${tool.color}-400/20`}>
-                <tool.icon className={`w-6 h-6 text-${tool.color}-400`} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">{tool.title}</h3>
-              <p className="text-neutral-300 mb-6">{tool.desc}</p>
-              <div className="space-y-2 mb-6">
-                {tool.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm text-neutral-400">
-                    <div className={`w-1.5 h-1.5 bg-${tool.color}-400 rounded-full`}></div>
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <button className={`text-${tool.color}-400 hover:text-${tool.color}-300 text-sm font-medium transition-colors flex items-center`}>
-                Access Toolkit
-                <FiArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </SectionLayout>
-
-      {/* Policy Innovation Lab & Training - Combined Section */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Policy Innovation Lab */}
-          <div id="policy-lab">
-            <div className="mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 border border-purple-400/30 rounded-full px-6 py-3 mb-8">
-                <FiLayers className="w-4 h-4 text-purple-400" />
-                <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">Policy Innovation Lab</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-                Experimental <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400">Policy</span> Space
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
+                Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Collection</span>
               </h2>
-              <p className="text-lg text-neutral-200 leading-relaxed mb-8">
-                Collaborative platform for testing and refining policy innovations through simulation and stakeholder engagement.
-              </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20">
-                <h4 className="text-lg font-semibold text-white mb-3">Policy Sandbox</h4>
-                <p className="text-sm text-neutral-300 mb-4">Interactive simulation environment for policy testing</p>
-                <button className="text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors">
-                  Enter Sandbox →
-                </button>
-              </div>
-              
-              <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20">
-                <h4 className="text-lg font-semibold text-white mb-3">Collaboration Workshops</h4>
-                <p className="text-sm text-neutral-300 mb-4">Co-creation sessions with government partners</p>
-                <button className="text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors">
-                  View Materials →
-                </button>
-              </div>
-            </div>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredResources.map((resource, index) => {
+                const FormatIcon = getFormatIcon(resource.format);
+                return (
+                  <div
+                    key={resource.id}
+                    className="group relative overflow-hidden"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full">
+                      
+                      {/* Gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10 p-6 flex flex-col h-full">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-2">
+                            <span className={`text-xs font-medium px-3 py-1 rounded-full border ${getCategoryColor(resource.category)}`}>
+                              {resource.category}
+                            </span>
+                            <div className="flex items-center gap-1 text-xs text-neutral-500">
+                              <FormatIcon className="w-3 h-3" />
+                              <span>{resource.format}</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-neutral-500">
+                            <FiDownload className="w-3 h-3" />
+                            <span>{resource.downloadCount.toLocaleString()}</span>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-lg font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-3 line-clamp-2">
+                          {resource.title}
+                        </h3>
+                        
+                        <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed mb-4 flex-grow line-clamp-3 text-sm">
+                          {resource.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {resource.tags.slice(0, 3).map((tag, idx) => (
+                            <span key={idx} className="text-xs bg-neutral-100 text-neutral-700 px-2 py-1 rounded-full border border-neutral-200/50">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <div className="space-y-2 mb-4 text-xs text-neutral-600">
+                          <div className="flex items-center justify-between">
+                            <span>By {resource.author}</span>
+                            <span>{formatDate(resource.publishDate)}</span>
+                          </div>
+                          {resource.pages && (
+                            <div className="flex items-center justify-between">
+                              <span>{resource.pages} pages</span>
+                              <span>{resource.fileSize}</span>
+                            </div>
+                          )}
+                          {resource.readTime && (
+                            <div className="flex items-center gap-1">
+                              <FiClock className="w-3 h-3" />
+                              <span>{resource.readTime}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="flex items-center gap-3 pt-4 border-t border-neutral-200/50">
+                          <button className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <FiDownload className="w-4 h-4" />
+                            <span className="text-sm">Download</span>
+                          </button>
+                          
+                          <button className="inline-flex items-center justify-center w-10 h-10 text-neutral-600 hover:text-white border border-neutral-200 hover:border-primary-600 rounded-lg transition-all duration-300 hover:bg-primary-600">
+                            <FiEye className="w-4 h-4" />
+                          </button>
+                          
+                          <button className="inline-flex items-center justify-center w-10 h-10 text-neutral-600 hover:text-white border border-neutral-200 hover:border-primary-600 rounded-lg transition-all duration-300 hover:bg-primary-600">
+                            <FiShare2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
 
-          {/* Training Resources */}
-          <div id="training">
-            <div className="mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-full px-6 py-3 mb-8">
-                <FiUsers className="w-4 h-4 text-amber-400" />
-                <span className="text-sm font-semibold text-amber-300 uppercase tracking-wider">Training Resources</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-                Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-400">Development</span> Hub
-              </h2>
-              <p className="text-lg text-neutral-200 leading-relaxed mb-8">
-                Comprehensive training materials and capacity building resources for development professionals.
-              </p>
+                      {/* Animated border effect */}
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 backdrop-blur-sm rounded-xl p-6 border border-amber-500/20">
-                <h4 className="text-lg font-semibold text-white mb-3">Leadership Program</h4>
-                <p className="text-sm text-neutral-300 mb-4">Executive development for development sector leaders</p>
-                <button className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors">
-                  Join Program →
-                </button>
+            {/* Load More / Pagination */}
+            {filteredResources.length === 0 && (
+              <div className="text-center py-16" data-aos="fade-up">
+                <div className="backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 p-8 max-w-md mx-auto">
+                  <FiSearch className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-2">No Resources Found</h3>
+                  <p className="text-neutral-600 text-sm">Try adjusting your search criteria or browse all categories.</p>
+                </div>
               </div>
-              
-              <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 backdrop-blur-sm rounded-xl p-6 border border-amber-500/20">
-                <h4 className="text-lg font-semibold text-white mb-3">NGO Management Toolkit</h4>
-                <p className="text-sm text-neutral-300 mb-4">Practical management resources for NGOs</p>
-                <button className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors">
-                  Access Toolkit →
-                </button>
+            )}
+
+            {/* CTA Section */}
+            <div className="text-center mt-16" data-aos="fade-up">
+              <div className="backdrop-blur-md bg-gradient-to-br from-white/95 to-primary-50/90 rounded-3xl border border-primary-200/50 p-12 shadow-xl shadow-primary-200/20">
+                <div className="max-w-4xl mx-auto">
+                  <div className="inline-flex items-center gap-2 bg-primary-100/80 border border-primary-200/50 rounded-full px-6 py-3 mb-8">
+                    <FiTarget className="w-4 h-4 text-primary-600" />
+                    <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Ready to Apply These Insights?</span>
+                  </div>
+                  
+                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
+                    Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development Impact</span>
+                  </h3>
+                  <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
+                    Ready to implement evidence-based solutions? Let our expertise help you design, evaluate, and scale your development programs effectively.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
+                    >
+                      <FiArrowRight className="w-5 h-5" />
+                      <span>Start Your Project</span>
+                    </Link>
+                    
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center gap-3 bg-white/90 hover:bg-white text-neutral-900 font-semibold px-8 py-4 rounded-xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-300 shadow-lg hover:shadow-primary-500/25"
+                    >
+                      <FiGrid className="w-5 h-5" />
+                      <span>Explore Services</span>
+                    </Link>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-neutral-200/50">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-primary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <FiCheckCircle className="w-6 h-6 text-primary-600" />
+                      </div>
+                      <h4 className="font-semibold text-neutral-900 mb-2">Evidence-Based Approach</h4>
+                      <p className="text-sm text-neutral-600">Leverage proven methodologies and best practices from our resource library</p>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-secondary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <FiUsers className="w-6 h-6 text-secondary-600" />
+                      </div>
+                      <h4 className="font-semibold text-neutral-900 mb-2">Expert Team</h4>
+                      <p className="text-sm text-neutral-600">Work with researchers and practitioners who authored these resources</p>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-primary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <FiTrendingUp className="w-6 h-6 text-primary-600" />
+                      </div>
+                      <h4 className="font-semibold text-neutral-900 mb-2">Measurable Results</h4>
+                      <p className="text-sm text-neutral-600">Apply rigorous evaluation frameworks to track and improve your impact</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </SectionLayout>
-
-      {/* Premium CTA Section */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 backdrop-blur-sm rounded-2xl border border-primary-500/20"></div>
-          <div className="relative p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Unlock the Full <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Knowledge</span> Experience
-            </h2>
-            <p className="text-neutral-300 text-lg mb-8 max-w-3xl mx-auto">
-              Join our professional network to access premium content, participate in exclusive workshops, and collaborate with development leaders worldwide.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-lg transition-all duration-200 hover:scale-105"
-              >
-                Contact Our Team
-                <FiArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-              <button className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-400 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-lg transition-all duration-200">
-                Request Custom Resources
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
       </SectionLayout>
     </>
   );

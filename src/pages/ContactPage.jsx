@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import SectionLayout from '../layouts/SectionLayout';
-import SectionHeading from '../components/common/SectionHeading';
-import { FiMail, FiPhone, FiMapPin, FiClock, FiSend, FiUser, FiMessageSquare, FiBriefcase, FiLinkedin, FiTwitter, FiFacebook, FiExternalLink, FiCheckCircle, FiArrowRight } from 'react-icons/fi';
+import SEO from '../components/SEO';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiUser, FiMessageSquare, FiGlobe, FiLinkedin, FiTwitter, FiCalendar, FiClock, FiCheck, FiArrowRight, FiCheckCircle, FiTarget } from 'react-icons/fi';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -10,431 +9,596 @@ const ContactPage = () => {
     email: '',
     organization: '',
     subject: '',
-    message: '',
-    inquiryType: 'general'
+    message: ''
   });
 
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "InSocia Development Consultancy",
-    "url": "https://insocia.org",
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "telephone": "+91-701-234-5678",
-        "contactType": "customer service",
-        "email": "info@insocia.org"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Innovation Drive",
-      "addressLocality": "Kozhikode",
-      "addressRegion": "Kerala",
-      "addressCountry": "IN"
-    }
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const contactMethods = [
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setIsSubmitting(false);
+    // Reset form or show success message
+    console.log('Form submitted:', formData);
+  };
+
+  const contactInfo = [
     {
       icon: FiMail,
       title: "Email Us",
-      primary: "info@insocia.org",
-      secondary: "partnerships@insocia.org",
-      description: "Get in touch for general inquiries or partnership opportunities",
-      color: "primary"
+      details: "connect@insocia.in",
+      description: "Send us an email for general inquiries",
+      action: "mailto:connect@insocia.in"
     },
     {
       icon: FiPhone,
       title: "Call Us",
-      primary: "+91 701 234 5678",
-      secondary: "Mon-Fri: 9:00 AM - 5:00 PM IST",
-      description: "Speak directly with our team during business hours",
-      color: "secondary"
+      details: "+91 (11) 4567-8900",
+      description: "Speak directly with our team",
+      action: "tel:+911145678900"
     },
     {
       icon: FiMapPin,
-      title: "Visit Us",
-      primary: "Kozhikode, Kerala",
-      secondary: "Bangalore, Karnataka",
-      description: "Headquarters and regional office locations",
-      color: "green"
+      title: "Visit Our Office",
+      details: "Bengaluru & Kozhikode, India",
+      description: "Schedule an in-person meeting",
+      action: "#office-location"
     }
   ];
 
-  const offices = [
+  const officeLocations = [
     {
-      city: "Kozhikode",
-      type: "Headquarters",
-      address: "Innovation Drive, Kozhikode, Kerala 673001, India",
+      city: "Bengaluru",
+      address: "AECS Layout, Sanjayanagara, Bengaluru, Karnataka 560094",
       phone: "+91 701 234 5678",
-      email: "kozhikode@insocia.org",
-      hours: "Mon-Fri: 9:00 AM - 5:00 PM IST",
-      color: "primary"
+      email: "connect@insocia.in",
+      hours: "Monday - Friday: 9:00 AM - 6:00 PM"
     },
     {
-      city: "Bangalore",
-      type: "Regional Office",
-      address: "Tech Hub, Bangalore, Karnataka 560001, India",
-      phone: "+91 701 234 5679",
-      email: "bangalore@insocia.org",
-      hours: "Mon-Fri: 9:00 AM - 5:00 PM IST",
-      color: "secondary"
+      city: "Kozhikode",
+      address: "Kozhikode, Kerala - 673573",
+      phone: "+91 701 234 5678",
+      email: "connect@insocia.in",
+      hours: "Monday - Friday: 9:30 AM - 6:30 PM"
     }
-  ];
-
-  const inquiryTypes = [
-    { value: 'general', label: 'General Inquiry' },
-    { value: 'partnership', label: 'Partnership Opportunity' },
-    { value: 'research', label: 'Research Collaboration' },
-    { value: 'consulting', label: 'Consulting Services' },
-    { value: 'media', label: 'Media & Press' },
-    { value: 'careers', label: 'Career Inquiry' }
   ];
 
   const socialLinks = [
-    { icon: FiLinkedin, name: "LinkedIn", url: "#", color: "blue" },
-    { icon: FiTwitter, name: "Twitter", url: "#", color: "sky" },
-    { icon: FiFacebook, name: "Facebook", url: "#", color: "indigo" }
+    {
+      platform: "LinkedIn",
+      icon: FiLinkedin,
+      url: "https://linkedin.com/company/insocia-consultancy",
+      handle: "Insocia Consultancy"
+    },
+    {
+      platform: "Twitter",
+      icon: FiTwitter,
+      url: "https://twitter.com/insocia",
+      handle: "@insocia_dev"
+    }
   ];
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | InSocia Development Consultancy - Get in Touch</title>
-        <meta 
-          name="description" 
-          content="Connect with InSocia Development Consultancy. Reach out for partnerships, consultations, or general inquiries. Multiple ways to get in touch with our team." 
-        />
-        <meta 
-          name="keywords" 
-          content="contact InSocia, get in touch, partnerships, consulting inquiries, office locations, contact form" 
-        />
-        <script type="application/ld+json">
-          {JSON.stringify(contactSchema)}
-        </script>
-      </Helmet>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Insocia Consultancy. We're here to help with your development and social impact initiatives."
+        keywords="contact InSocia, development consultancy contact, social impact consulting"
+      />
 
-      {/* Premium Hero Section */}
-      <section className="relative bg-transparent overflow-hidden hero-section min-h-screen">
-        {/* Static background effects */}
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-[600px] h-[600px] -top-32 -left-32 bg-gradient-to-br from-primary-500/15 to-secondary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-gradient-to-tl from-secondary-500/15 to-primary-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary-600/8 to-secondary-600/8 rounded-full blur-2xl"></div>
-        </div>
-
-        <div className="w-full px-4 md:px-8 relative z-10 flex items-center min-h-screen mt-24 sm:mt-0">
-          <div className="max-w-6xl mx-auto text-center w-full">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-5 py-2 mb-6">
-              <FiMail className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Get in Touch</span>
+      <SectionLayout bgColor="bg-transparent" className="min-h-screen">
+        {/* Hero Section */}
+        <div className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Header */}
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+                <FiMail className="w-4 h-4 text-primary-600" />
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Get in Touch</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+                Let's Start a <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Conversation</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                Ready to make a meaningful impact? We'd love to hear about your project and explore how we can work together to create positive change.
+              </p>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Let's <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400">Connect</span> and Create Impact
-            </h1>
-            
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-4xl mx-auto">
-              Ready to collaborate on meaningful social development initiatives? We'd love to hear from you. Let's explore how we can work together to drive positive change.
-            </p>
+            {/* Quick Contact Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up">
+              {contactInfo.map((info, index) => (
+                <a
+                  key={index}
+                  href={info.action}
+                  className="group relative overflow-hidden"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="relative backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden h-full p-8 text-center">
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-primary-200/50">
+                        <info.icon className="w-8 h-8 text-primary-600" />
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 mb-3">
+                        {info.title}
+                      </h3>
+                      
+                      <p className="text-lg font-semibold text-primary-600 mb-2">
+                        {info.details}
+                      </p>
+                      
+                      <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300">
+                        {info.description}
+                      </p>
+                    </div>
 
-            {/* Contact highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
-              {contactMethods.map((method, index) => (
-                <div key={index} className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                  <div className={`w-10 h-10 bg-gradient-to-br from-${method.color}-500/30 to-${method.color}-600/30 rounded-lg flex items-center justify-center mx-auto mb-3 border border-${method.color}-400/20`}>
-                    <method.icon className={`w-5 h-5 text-${method.color}-400`} />
+                    {/* Animated border effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-semibold text-white mb-1">{method.title}</h3>
-                  <p className="text-sm text-white/70">{method.primary}</p>
-                </div>
+                </a>
               ))}
             </div>
-
-            {/* Quick response promise */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-4 py-2">
-              <FiCheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-sm font-medium text-green-300">We respond within 24 hours</span>
-            </div>
           </div>
         </div>
-      </section>
 
-      {/* Contact Methods - Detailed */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiPhone className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Contact Methods</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Multiple Ways to <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Reach</span> Us
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {contactMethods.map((method, index) => (
-            <div key={index} className={`bg-gradient-to-br from-${method.color}-500/10 to-${method.color}-600/5 backdrop-blur-sm rounded-2xl p-8 border border-${method.color}-500/20 hover:border-${method.color}-400/40 transition-all duration-300 group`}>
-              <div className={`w-12 h-12 bg-gradient-to-br from-${method.color}-500/30 to-${method.color}-600/30 rounded-xl flex items-center justify-center mb-6 border border-${method.color}-400/20 group-hover:scale-110 transition-transform duration-300`}>
-                <method.icon className={`w-6 h-6 text-${method.color}-400`} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">{method.title}</h3>
-              <div className="space-y-2 mb-4">
-                <p className={`text-${method.color}-300 font-medium`}>{method.primary}</p>
-                <p className="text-neutral-400 text-sm">{method.secondary}</p>
-              </div>
-              <p className="text-neutral-300 text-sm leading-relaxed">{method.description}</p>
-            </div>
-          ))}
-        </div>
-      </SectionLayout>
-
-      {/* Contact Form & Office Info */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
-          <div>
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary-500/20 to-cyan-500/20 border border-secondary-400/30 rounded-full px-6 py-3 mb-6">
-                <FiMessageSquare className="w-4 h-4 text-secondary-400" />
-                <span className="text-sm font-semibold text-secondary-300 uppercase tracking-wider">Send Message</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">
-                Drop Us a <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 to-cyan-400">Message</span>
-              </h2>
-              <p className="text-lg text-neutral-200 leading-relaxed">
-                Fill out the form below and we'll get back to you as soon as possible.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Full Name *
-                  </label>
-                  <div className="relative">
-                    <FiUser className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors"
-                      placeholder="Enter your full name"
-                    />
+        {/* Contact Form & Info */}
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              
+              {/* Contact Form */}
+              <div className="lg:col-span-2" data-aos="fade-right">
+                <div className="backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 p-8 shadow-xl shadow-primary-200/20">
+                  <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-neutral-900 mb-4">
+                      Send Us a Message
+                    </h2>
+                    <p className="text-neutral-600 leading-relaxed">
+                      Fill out the form below and we'll get back to you within 24 hours. We're excited to learn about your project!
+                    </p>
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Email Address *
-                  </label>
-                  <div className="relative">
-                    <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                </div>
-              </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-semibold text-neutral-900 mb-2">
+                          Full Name *
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <FiUser className="h-5 w-5 text-neutral-400" />
+                          </div>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm text-neutral-900"
+                            placeholder="Your full name"
+                          />
+                        </div>
+                      </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Organization
-                  </label>
-                  <div className="relative">
-                    <FiBriefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                    <input
-                      type="text"
-                      name="organization"
-                      value={formData.organization}
-                      onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors"
-                      placeholder="Your organization"
-                    />
-                  </div>
-                </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-semibold text-neutral-900 mb-2">
+                          Email Address *
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <FiMail className="h-5 w-5 text-neutral-400" />
+                          </div>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm text-neutral-900"
+                            placeholder="your.email@example.com"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Inquiry Type
-                  </label>
-                  <select
-                    name="inquiryType"
-                    value={formData.inquiryType}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors"
-                  >
-                    {inquiryTypes.map((type) => (
-                      <option key={type.value} value={type.value} className="bg-neutral-800">
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors"
-                  placeholder="Brief subject of your inquiry"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-neutral-400 focus:border-secondary-400/50 focus:ring-1 focus:ring-secondary-400/25 transition-colors resize-none"
-                  placeholder="Tell us more about your inquiry or how we can help..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-gradient-to-r from-secondary-600 to-cyan-600 hover:from-secondary-700 hover:to-cyan-700 rounded-lg transition-all duration-200 hover:scale-105"
-              >
-                <FiSend className="w-4 h-4 mr-2" />
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          {/* Office Locations */}
-          <div>
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-6 py-3 mb-6">
-                <FiMapPin className="w-4 h-4 text-green-400" />
-                <span className="text-sm font-semibold text-green-300 uppercase tracking-wider">Our Offices</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">
-                Visit Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400">Locations</span>
-              </h2>
-              <p className="text-lg text-neutral-200 leading-relaxed mb-8">
-                We have offices in key locations to better serve our partners and communities.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {offices.map((office, index) => (
-                <div key={index} className={`bg-gradient-to-br from-${office.color}-500/10 to-${office.color}-600/5 backdrop-blur-sm rounded-2xl p-6 border border-${office.color}-500/20`}>
-                  <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1">{office.city}</h3>
-                      <span className={`inline-block px-3 py-1 text-xs font-medium bg-${office.color}-500/20 text-${office.color}-300 rounded-full`}>
-                        {office.type}
-                      </span>
+                      <label htmlFor="organization" className="block text-sm font-semibold text-neutral-900 mb-2">
+                        Organization
+                      </label>
+                      <input
+                        type="text"
+                        id="organization"
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm text-neutral-900"
+                        placeholder="Your organization name"
+                      />
                     </div>
-                    <div className={`w-10 h-10 bg-gradient-to-br from-${office.color}-500/30 to-${office.color}-600/30 rounded-lg flex items-center justify-center border border-${office.color}-400/20`}>
-                      <FiMapPin className={`w-5 h-5 text-${office.color}-400`} />
+
+                    <div>
+                      <label htmlFor="subject" className="block text-sm font-semibold text-neutral-900 mb-2">
+                        Subject *
+                      </label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        required
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm text-neutral-900"
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="consulting">Consulting Services</option>
+                        <option value="research">Research Collaboration</option>
+                        <option value="partnership">Partnership Opportunities</option>
+                        <option value="training">Training & Capacity Building</option>
+                        <option value="media">Media & Press</option>
+                        <option value="careers">Career Opportunities</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-semibold text-neutral-900 mb-2">
+                        Message *
+                      </label>
+                      <div className="relative">
+                        <div className="absolute top-3 left-3 pointer-events-none">
+                          <FiMessageSquare className="h-5 w-5 text-neutral-400" />
+                        </div>
+                        <textarea
+                          id="message"
+                          name="message"
+                          required
+                          rows={6}
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors bg-white/80 backdrop-blur-sm text-neutral-900 resize-none"
+                          placeholder="Tell us about your project, goals, and how we can help..."
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 disabled:from-neutral-400 disabled:to-neutral-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 disabled:shadow-none transform hover:scale-105 disabled:scale-100"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <FiSend className="w-5 h-5" />
+                          <span>Send Message</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              {/* Contact Information Sidebar */}
+              <div className="lg:col-span-1 space-y-6" data-aos="fade-left">
+                
+                {/* Office Locations */}
+                <div className="backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 p-6 shadow-xl shadow-primary-200/20">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-lg flex items-center justify-center border border-primary-200/50">
+                      <FiMapPin className="w-5 h-5 text-primary-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-neutral-900">Our Offices</h3>
                   </div>
                   
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-start gap-3">
-                      <FiMapPin className="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0" />
-                      <p className="text-neutral-300">{office.address}</p>
+                  <div className="space-y-4">
+                    {officeLocations.map((office, index) => (
+                      <div key={index} className="border-b border-neutral-200/50 pb-4 last:border-b-0 last:pb-0">
+                        <h4 className="font-semibold text-neutral-900 mb-2">{office.city}</h4>
+                        
+                        <div className="space-y-1 text-neutral-600 text-sm">
+                          <div className="flex items-start gap-2">
+                            <FiMapPin className="w-3 h-3 text-primary-600 mt-1 flex-shrink-0" />
+                            <span>{office.address}</span>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <FiPhone className="w-3 h-3 text-primary-600 flex-shrink-0" />
+                            <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-neutral-600 hover:text-primary-700 transition-colors">
+                              {office.phone}
+                            </a>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <FiMail className="w-3 h-3 text-primary-600 flex-shrink-0" />
+                            <a href={`mailto:${office.email}`} className="text-neutral-600 hover:text-primary-700 transition-colors">
+                              {office.email}
+                            </a>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <FiClock className="w-3 h-3 text-primary-600 flex-shrink-0" />
+                            <span>{office.hours}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Social Media */}
+                <div className="backdrop-blur-md bg-white/90 rounded-2xl border border-neutral-200/50 p-6 shadow-xl shadow-primary-200/20">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-lg flex items-center justify-center border border-primary-200/50">
+                      <FiLinkedin className="w-5 h-5 text-primary-600" />
                     </div>
+                    <h3 className="text-xl font-bold text-neutral-900">Follow Us</h3>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-lg border border-neutral-200/50 hover:border-primary-400/50 hover:bg-primary-50/50 transition-all duration-300 group"
+                      >
+                        <social.icon className="w-4 h-4 text-primary-600 group-hover:scale-110 transition-transform duration-300" />
+                        <div className="flex-1">
+                          <h4 className="font-medium text-neutral-900 group-hover:text-primary-700 transition-colors text-sm">
+                            {social.platform}
+                          </h4>
+                          <p className="text-xs text-neutral-600 group-hover:text-neutral-700 transition-colors">
+                            {social.handle}
+                          </p>
+                        </div>
+                        <FiArrowRight className="w-3 h-3 text-neutral-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-300" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quick Response Promise */}
+                <div className="backdrop-blur-md bg-gradient-to-br from-green-50/90 to-emerald-50/90 rounded-2xl border border-green-200/50 p-6 shadow-xl shadow-green-200/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-100/80 to-emerald-100/80 rounded-lg flex items-center justify-center border border-green-200/50">
+                      <FiClock className="w-5 h-5 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-green-900">Quick Response</h3>
+                  </div>
+                  
+                  <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <FiPhone className="w-4 h-4 text-neutral-400" />
-                      <p className="text-neutral-300">{office.phone}</p>
+                      <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <FiCheck className="w-3 h-3 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-green-900 text-sm">24-Hour Response</h4>
+                        <p className="text-xs text-green-700">We'll get back to you within 24 hours</p>
+                      </div>
                     </div>
+                    
                     <div className="flex items-center gap-3">
-                      <FiMail className="w-4 h-4 text-neutral-400" />
-                      <p className="text-neutral-300">{office.email}</p>
+                      <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <FiCalendar className="w-3 h-3 text-blue-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-green-900 text-sm">Free Consultation</h4>
+                        <p className="text-xs text-green-700">Schedule a complimentary discussion</p>
+                      </div>
                     </div>
+                    
                     <div className="flex items-center gap-3">
-                      <FiClock className="w-4 h-4 text-neutral-400" />
-                      <p className="text-neutral-300">{office.hours}</p>
+                      <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <FiMessageSquare className="w-3 h-3 text-purple-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-green-900 text-sm">Custom Proposal</h4>
+                        <p className="text-xs text-green-700">Tailored solutions for your needs</p>
+                      </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="py-20 bg-gradient-to-br from-neutral-50 to-primary-50/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* FAQ Schema for SEO */}
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What development consulting services does InSocia offer?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "InSocia provides comprehensive development consulting including program design and evaluation, impact assessment, policy analysis, research studies, capacity building, and technical assistance across health, education, livelihood, and social protection sectors."
+                    }
+                  },
+                  {
+                    "@type": "Question", 
+                    "name": "How much do development consulting services cost in India?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Our consulting fees vary based on project scope, duration, and complexity. We offer competitive rates for program evaluations (₹50,000-₹15,00,000), research studies (₹25,000-₹10,00,000), and capacity building (₹15,000-₹5,00,000). Contact us for a customized quote."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How long does a program evaluation take to complete?", 
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Program evaluation timelines depend on scope and methodology. Quick assessments take 4-8 weeks, mid-term evaluations require 8-16 weeks, while comprehensive impact evaluations span 16-24 weeks including data collection, analysis, and reporting."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Do you work with NGOs and international development organizations?",
+                    "acceptedAnswer": {
+                      "@type": "Answer", 
+                      "text": "Yes, we collaborate with NGOs, international organizations (UN agencies, World Bank), bilateral donors (USAID, DFID), foundations, government agencies, and private sector clients across India and South Asia."
+                    }
+                  }
+                ]
+              })}
+            </script>
+            
+            <div className="text-center mb-16" data-aos="fade-up">
+              <div className="inline-flex items-center gap-2 bg-primary-100/80 border border-primary-200/50 rounded-full px-6 py-3 mb-8">
+                <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Frequently Asked Questions</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-neutral-900 leading-tight">
+                Common <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Questions</span>
+              </h2>
+              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+                Find answers to the most commonly asked questions about our development consulting services and processes.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16" data-aos="fade-up">
+              {[
+                {
+                  question: "What development consulting services does InSocia offer?",
+                  answer: "InSocia provides comprehensive development consulting including program design and evaluation, impact assessment, policy analysis, research studies, capacity building, and technical assistance across health, education, livelihood, and social protection sectors.",
+                  keywords: "development consulting, program evaluation, impact assessment"
+                },
+                {
+                  question: "How much do development consulting services cost in India?",
+                  answer: "Our consulting fees vary based on project scope, duration, and complexity. We offer competitive rates for program evaluations (₹50,000-₹15,00,000), research studies (₹25,000-₹10,00,000), and capacity building (₹15,000-₹5,00,000). Contact us for a customized quote.",
+                  keywords: "consulting fees India, development consulting cost, program evaluation cost"
+                },
+                {
+                  question: "How long does a program evaluation take to complete?",
+                  answer: "Program evaluation timelines depend on scope and methodology. Quick assessments take 4-8 weeks, mid-term evaluations require 8-16 weeks, while comprehensive impact evaluations span 16-24 weeks including data collection, analysis, and reporting.",
+                  keywords: "program evaluation timeline, impact evaluation duration"
+                },
+                {
+                  question: "Do you work with NGOs and international development organizations?",
+                  answer: "Yes, we collaborate with NGOs, international organizations (UN agencies, World Bank), bilateral donors (USAID, DFID), foundations, government agencies, and private sector clients across India and South Asia.",
+                  keywords: "NGO consulting, international development, UN agencies consulting"
+                },
+                {
+                  question: "What makes InSocia different from other development consultants?",
+                  answer: "InSocia combines rigorous academic research with practical field experience. Our team includes PhD researchers, former government officials, and grassroots practitioners, ensuring evidence-based solutions that are contextually relevant and implementable.",
+                  keywords: "best development consultants India, research-based consulting"
+                },
+                {
+                  question: "How do you ensure quality in research and evaluation studies?",
+                  answer: "We follow international evaluation standards (OECD-DAC criteria), use mixed-methods approaches, conduct peer reviews, maintain data quality protocols, and provide detailed methodology documentation with all deliverables.",
+                  keywords: "evaluation standards, research quality, OECD-DAC criteria"
+                },
+                {
+                  question: "Can you help design new development programs from scratch?",
+                  answer: "Absolutely! We provide end-to-end program design services including needs assessment, theory of change development, logical framework design, implementation strategy, monitoring systems, and risk management frameworks.",
+                  keywords: "program design, theory of change, logical framework, development program"
+                },
+                {
+                  question: "What sectors do you specialize in for development work?",
+                  answer: "Our expertise spans health systems strengthening, education and skill development, rural livelihoods and agriculture, social protection, gender equality, governance and policy, climate resilience, and digital financial inclusion.",
+                  keywords: "health systems, education development, rural livelihoods, social protection"
+                }
+              ].map((faq, index) => (
+                <div 
+                  key={index} 
+                  className="group"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 50}
+                >
+                  <div className="backdrop-blur-md bg-white/90 rounded-xl border border-neutral-200/50 hover:border-primary-300/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary-200/20 p-8 h-full">
+                    <h3 className="text-xl font-bold text-neutral-900 mb-4 leading-tight group-hover:text-primary-700 transition-colors duration-300">
+                      {faq.question}
+                    </h3>
+                    <p className="text-neutral-600 leading-relaxed group-hover:text-neutral-700 transition-colors duration-300">
+                      {faq.answer}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Social Links */}
-            <div className="mt-8 p-6 bg-gradient-to-br from-white/5 to-white/2 backdrop-blur-sm rounded-2xl border border-white/10">
-              <h3 className="text-lg font-semibold text-white mb-4">Connect With Us</h3>
-              <div className="flex items-center gap-4">
-                {socialLinks.map((social, index) => (
+            {/* Enhanced CTA Section */}
+            <div className="backdrop-blur-md bg-gradient-to-br from-white/95 to-primary-50/90 rounded-3xl border border-primary-200/50 p-12 shadow-xl shadow-primary-200/20" data-aos="fade-up">
+              <div className="max-w-4xl mx-auto text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
+                  Ready to Start Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development Project?</span>
+                </h3>
+                <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
+                  Let's discuss how our expertise can help you achieve your development goals. Get a free consultation and customized proposal for your project.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-10 h-10 bg-gradient-to-br from-${social.color}-500/30 to-${social.color}-600/30 rounded-lg flex items-center justify-center border border-${social.color}-400/20 hover:border-${social.color}-400/40 transition-all duration-300 group`}
+                                          href="mailto:connect@insocia.in"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
                   >
-                    <social.icon className={`w-5 h-5 text-${social.color}-400 group-hover:scale-110 transition-transform duration-300`} />
+                    <FiMail className="w-5 h-5" />
+                    <span>Start a Conversation</span>
                   </a>
-                ))}
+                  
+                  <div className="text-sm text-neutral-500 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span>Typically respond within 24 hours</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-200/50">
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-primary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <FiCheckCircle className="w-6 h-6 text-primary-600" />
+                    </div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Free Consultation</h4>
+                    <p className="text-sm text-neutral-600">No-cost initial discussion about your project needs</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-secondary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <FiTarget className="w-6 h-6 text-secondary-600" />
+                    </div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Customized Proposal</h4>
+                    <p className="text-sm text-neutral-600">Tailored solutions designed for your specific requirements</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-primary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <FiClock className="w-6 h-6 text-primary-600" />
+                    </div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Quick Turnaround</h4>
+                    <p className="text-sm text-neutral-600">Fast response times and efficient project delivery</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </SectionLayout>
-
-      {/* Partnership Inquiries */}
-      <SectionLayout bgColor="bg-transparent" className="py-16">
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 backdrop-blur-sm rounded-2xl border border-primary-500/20"></div>
-          <div className="relative p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Interested in <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Partnership</span>?
-            </h2>
-            <p className="text-neutral-300 text-lg mb-8 max-w-3xl mx-auto">
-              We're always looking for strategic partnerships with organizations that share our commitment to evidence-based social development. Let's explore collaboration opportunities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:partnerships@insocia.org"
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-lg transition-all duration-200 hover:scale-105"
-              >
-                <FiMail className="mr-2 w-4 h-4" />
-                partnerships@insocia.org
-              </a>
-              <button className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-400 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-lg transition-all duration-200">
-                Partnership Guidelines
-                <FiExternalLink className="ml-2 w-4 h-4" />
-              </button>
             </div>
           </div>
         </div>

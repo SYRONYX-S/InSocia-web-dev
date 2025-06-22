@@ -32,11 +32,11 @@ const FocusAreasList = () => {
           onMouseEnter={() => setHoveredArea(area.id)}
           onMouseLeave={() => setHoveredArea(null)}
         >
-          {/* Premium Card Design */}
-          <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-secondary-400/30 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-secondary-500/10 overflow-hidden">
+          {/* Premium Card Design with light theme */}
+          <div className="relative backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-200/30 overflow-hidden">
             
             {/* Gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary-600/5 to-primary-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             {/* Image Section with Overlay */}
             <div className="relative h-40 overflow-hidden">
@@ -51,8 +51,8 @@ const FocusAreasList = () => {
               />
               
               {/* Area number badge */}
-              <div className="absolute top-3 right-3 z-20 w-7 h-7 bg-gradient-to-br from-secondary-500/20 to-primary-500/20 backdrop-blur-md rounded-full flex items-center justify-center border border-secondary-400/30">
-                <span className="text-xs font-bold text-secondary-300">#{area.id.toString().padStart(2, '0')}</span>
+              <div className="absolute top-3 right-3 z-20 w-7 h-7 bg-gradient-to-br from-primary-500/30 to-secondary-500/30 backdrop-blur-md rounded-full flex items-center justify-center border border-primary-400/50">
+                <span className="text-xs font-bold text-white">#{area.id.toString().padStart(2, '0')}</span>
               </div>
             </div>
             
@@ -60,30 +60,30 @@ const FocusAreasList = () => {
             <div className="relative z-10 p-5">
               {/* Title and Icon */}
               <div className="flex items-start justify-between mb-3">
-                <h3 className="text-lg lg:text-xl font-bold text-white group-hover:text-secondary-300 transition-colors duration-300 leading-tight flex-1">
+                <h3 className="text-lg lg:text-xl font-bold text-neutral-900 group-hover:text-primary-700 transition-colors duration-300 leading-tight flex-1">
                   {area.title}
                 </h3>
-                <div className="w-8 h-8 bg-gradient-to-br from-secondary-500/20 to-primary-500/20 rounded-lg flex items-center justify-center ml-3 group-hover:scale-110 transition-all duration-300 border border-secondary-400/20">
-                  <FiTarget className="w-4 h-4 text-secondary-400" />
+                <div className="w-8 h-8 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-lg flex items-center justify-center ml-3 group-hover:scale-110 transition-all duration-300 border border-primary-200/50">
+                  <FiTarget className="w-4 h-4 text-primary-600" />
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-neutral-300 group-hover:text-neutral-200 transition-colors duration-300 mb-4 leading-relaxed text-sm flex-grow">
+              <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300 mb-4 leading-relaxed text-sm flex-grow">
                 {area.shortDescription}
               </p>
 
               {/* Impact Stats Preview */}
               <div className="grid grid-cols-2 gap-2 mb-4">
-                <div className="bg-white/5 rounded-lg p-2 border border-white/10">
-                  <FiUsers className="w-3 h-3 text-secondary-400 mb-1" />
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Impact Focus</p>
-                  <p className="text-xs font-semibold text-white">Community</p>
+                <div className="backdrop-blur-sm bg-primary-50/80 rounded-lg p-2 border border-primary-200/50">
+                  <FiUsers className="w-3 h-3 text-primary-600 mb-1" />
+                  <p className="text-xs text-neutral-500 uppercase tracking-wider">Impact Focus</p>
+                  <p className="text-xs font-semibold text-neutral-900">Community</p>
                 </div>
-                <div className="bg-white/5 rounded-lg p-2 border border-white/10">
-                  <FiTrendingUp className="w-3 h-3 text-secondary-400 mb-1" />
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Approach</p>
-                  <p className="text-xs font-semibold text-white">Sustainable</p>
+                <div className="backdrop-blur-sm bg-primary-50/80 rounded-lg p-2 border border-primary-200/50">
+                  <FiTrendingUp className="w-3 h-3 text-primary-600 mb-1" />
+                  <p className="text-xs text-neutral-500 uppercase tracking-wider">Approach</p>
+                  <p className="text-xs font-semibold text-neutral-900">Sustainable</p>
                 </div>
               </div>
 
@@ -91,8 +91,8 @@ const FocusAreasList = () => {
               <div className={`overflow-hidden transition-all duration-500 ${
                 hoveredArea === area.id ? 'max-h-24 opacity-100 mb-3' : 'max-h-0 opacity-0'
               }`}>
-                <div className="border-t border-white/10 pt-3">
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                <div className="border-t border-neutral-200/50 pt-3">
+                  <p className="text-xs text-neutral-500 leading-relaxed">
                     {area.description?.length > 80 
                       ? `${area.description.substring(0, 80)}...` 
                       : area.description || "Comprehensive approach to sustainable development in this critical sector."}
@@ -101,10 +101,10 @@ const FocusAreasList = () => {
               </div>
 
               {/* CTA */}
-              <div className="flex items-center justify-between pt-3 border-t border-white/10">
+              <div className="flex items-center justify-between pt-3 border-t border-neutral-200/50">
                 <a 
                   href={`#${generateAnchorId(area.title)}`}
-                  className="inline-flex items-center gap-2 text-secondary-400 hover:text-secondary-300 transition-all duration-300 font-medium text-sm group/link"
+                  className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-all duration-300 font-medium text-sm group/link"
                   onClick={(e) => {
                     e.preventDefault();
                     const element = document.getElementById(generateAnchorId(area.title));
@@ -122,7 +122,7 @@ const FocusAreasList = () => {
                   {Array.from({ length: 3 }).map((_, idx) => (
                     <div 
                       key={idx}
-                      className="w-1 h-1 rounded-full bg-secondary-400/40 group-hover:bg-secondary-400/80 transition-colors duration-300"
+                      className="w-1 h-1 rounded-full bg-primary-500/50 group-hover:bg-primary-500/80 transition-colors duration-300"
                     ></div>
                   ))}
                 </div>
@@ -131,7 +131,7 @@ const FocusAreasList = () => {
 
             {/* Animated border effect */}
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-secondary-400/0 via-secondary-400/20 to-secondary-400/0 blur-sm"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500/0 via-primary-500/20 to-primary-500/0 blur-sm"></div>
             </div>
           </div>
         </motion.div>

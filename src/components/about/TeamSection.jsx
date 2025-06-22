@@ -9,7 +9,7 @@ const TeamMemberCard = ({ member }) => {
 
   return (
     <div
-      className="bg-neutral-900/30 backdrop-blur-md rounded-xl overflow-hidden border border-neutral-700/30 shadow-lg hover:shadow-primary-900/20 transition-all duration-300 group h-full transform hover:-translate-y-1"
+      className="backdrop-blur-md bg-white/80 rounded-xl overflow-hidden border border-neutral-200/50 shadow-lg hover:shadow-primary-200/30 transition-all duration-300 group h-full transform hover:-translate-y-1"
       data-aos="fade-up"
     >
       <div className="relative overflow-hidden aspect-square">
@@ -35,57 +35,57 @@ const TeamMemberCard = ({ member }) => {
         </div>
       </div>
 
-      <div className="p-5 bg-neutral-800/40 flex flex-col flex-grow">
+      <div className="p-5 bg-white/70 backdrop-blur-sm flex flex-col flex-grow">
         {member.affiliation && (
-          <p className="text-xs text-neutral-400 mb-3 flex items-center">
+          <p className="text-xs text-neutral-600 mb-3 flex items-center">
             <FiBriefcase className="mr-1.5 flex-shrink-0" /> {member.affiliation}
           </p>
         )}
         {member.specialization && (
-          <p className="text-xs text-neutral-400 mb-3 flex items-center">
-            <span className="w-1.5 h-1.5 bg-primary-400 rounded-full mr-1.5 flex-shrink-0"></span>
+          <p className="text-xs text-neutral-600 mb-3 flex items-center">
+            <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-1.5 flex-shrink-0"></span>
             <span>Expertise: {member.specialization}</span>
           </p>
         )}
         {member.focus && (
-          <p className="text-xs text-neutral-400 mb-3 flex items-center">
-            <span className="w-1.5 h-1.5 bg-secondary-400 rounded-full mr-1.5 flex-shrink-0"></span>
+          <p className="text-xs text-neutral-600 mb-3 flex items-center">
+            <span className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-1.5 flex-shrink-0"></span>
             <span>Focus: {member.focus}</span>
           </p>
         )}
 
         <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-48' : 'max-h-0'}`}>
-          <p className="text-neutral-300 text-sm leading-relaxed mb-4 pt-3">
+          <p className="text-neutral-700 text-sm leading-relaxed mb-4 pt-3">
             {member.bio}
           </p>
         </div>
 
-        <div className="mt-auto pt-3 border-t border-neutral-700/30 flex justify-between items-center">
+        <div className="mt-auto pt-3 border-t border-neutral-200/50 flex justify-between items-center">
           <div className="flex space-x-3">
             {member.linkedin && (
-              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary-400 transition-colors">
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-primary-600 transition-colors">
                 <FiLinkedin className="w-4 h-4" />
               </a>
             )}
             {member.twitter && (
-              <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary-400 transition-colors">
+              <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-primary-600 transition-colors">
                 <FiTwitter className="w-4 h-4" />
               </a>
             )}
             {member.instagram && (
-              <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary-400 transition-colors">
+              <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-primary-600 transition-colors">
                 <FiInstagram className="w-4 h-4" />
               </a>
             )}
             {member.whatsapp && (
-              <a href={member.whatsapp} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary-400 transition-colors">
+              <a href={member.whatsapp} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-primary-600 transition-colors">
                 <FiMessageCircle className="w-4 h-4" />
               </a>
             )}
           </div>
           <button 
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-xs text-primary-400 hover:text-primary-300 font-medium flex items-center transition-colors"
+            className="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center transition-colors"
             aria-expanded={isExpanded}
             aria-label={isExpanded ? `Collapse details for ${member.name}` : `Expand details for ${member.name}`}
           >
@@ -112,7 +112,7 @@ const TeamSection = () => {
   return (
     <SectionLayout 
       bgColor="bg-transparent"
-      className="py-16 md:py-24 text-white"
+      className="py-16 md:py-24"
       id="our-team"
     >
       <div
@@ -125,14 +125,14 @@ const TeamSection = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
-            <FiUsers className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-semibold text-primary-300 uppercase tracking-wider">Our People</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/15 to-secondary-500/15 border border-primary-400/30 rounded-full px-6 py-3 mb-8">
+            <FiUsers className="w-4 h-4 text-primary-600" />
+            <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">Our People</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-            Meet Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Team</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
+            Meet Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Team</span>
           </h2>
-          <p className="text-xl text-neutral-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Meet the dedicated experts driving our mission through expertise, passion, and commitment to social impact.
           </p>
         </div>
@@ -144,15 +144,15 @@ const TeamSection = () => {
           data-aos-delay="200"
         >
           <div className="flex justify-center">
-            <div className="relative border-b border-neutral-800/50 flex">
+            <div className="relative border-b border-neutral-200/50 flex">
               {tabs.map((tab, index) => (
                 <button
                   key={tab.name}
                   onClick={() => setActiveTab(tab.name)}
                   className={`px-5 py-3 text-sm sm:text-base font-medium transition-all duration-300 relative ${
                     activeTab === tab.name 
-                      ? 'text-white' 
-                      : 'text-neutral-400 hover:text-neutral-200'
+                      ? 'text-neutral-900' 
+                      : 'text-neutral-500 hover:text-neutral-700'
                   }`}
                 >
                   {tab.name}
@@ -191,7 +191,7 @@ const TeamSection = () => {
               </div>
             ))
           ) : (
-            <p className="col-span-full text-center text-neutral-400 py-10"
+            <p className="col-span-full text-center text-neutral-500 py-10"
               data-aos="fade-up"
               data-aos-delay="400">
               Information for this team category is currently being updated. Please check back soon.

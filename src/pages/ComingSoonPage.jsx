@@ -39,10 +39,10 @@ const ComingSoonPage = () => {
   return (
     <>
       <Helmet>
-        <title>Coming Soon | InSocia Development Consultancy - Launching Soon</title>
+        <title>Coming Soon | Insocia Consultancy - Launching Soon</title>
         <meta 
           name="description" 
-          content="InSocia Development Consultancy is launching soon. Get ready for innovative social development solutions through research, policy design, and implementation." 
+          content="Insocia Consultancy is launching soon. Get ready for innovative social development solutions through research, policy design, and implementation." 
         />
         <meta 
           name="keywords" 
@@ -80,7 +80,7 @@ const ComingSoonPage = () => {
             {/* Brand area */}
             <div className="mb-8">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                InSocia Development Consultancy
+                Insocia Consultancy
               </h1>
               <p className="text-lg text-blue-300 font-medium">Research • Innovation • Action</p>
             </div>
@@ -149,7 +149,7 @@ const ComingSoonPage = () => {
                   <FiMail className="w-5 h-5 text-blue-400" />
                   <div className="text-left">
                     <div className="text-sm text-neutral-300">Email</div>
-                    <div className="text-white font-medium">info@insocia.org</div>
+                    <div className="text-white font-medium">connect@insocia.in</div>
                   </div>
                 </div>
                 
@@ -188,7 +188,7 @@ const ComingSoonPage = () => {
                   <FiTwitter className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:info@insocia.org"
+                                        href="mailto:connect@insocia.in"
                   className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 hover:scale-110"
                 >
                   <FiMail className="w-5 h-5" />
@@ -218,7 +218,7 @@ const ComingSoonPage = () => {
             {/* Footer */}
             <div className="mt-12 pt-8 border-t border-white/10">
               <p className="text-neutral-400 text-sm mb-2">
-                © 2024 InSocia Development Consultancy. All rights reserved.
+                                  © 2024 Insocia Consultancy. All rights reserved.
               </p>
               <p className="text-neutral-500 text-xs">
                 Designed by <a href="https://edot.studio" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 font-medium transition-colors hover:underline">EdotStudio</a>

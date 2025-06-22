@@ -5,23 +5,23 @@
 @tailwind utilities;
 
 :root {
-  --scrollbar-track: #1f2937;
-  --scrollbar-thumb: #4b5563;
-  --scrollbar-thumb-hover: #6b7280;
+  --scrollbar-track: #f5f5f5;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
 }
 
 html {
-  @apply selection:bg-primary-900 selection:text-primary-200;
+  @apply selection:bg-primary-100 selection:text-primary-800;
 }
 
 @layer base {
   body {
-    @apply font-body text-white bg-neutral-900 antialiased overflow-x-hidden;
+    @apply font-body text-neutral-800 bg-white antialiased overflow-x-hidden;
   }
   
   /* Typography Base Styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold tracking-tight text-white;
+    @apply font-heading font-bold tracking-tight text-neutral-900;
   }
   
   h1 {
@@ -45,21 +45,45 @@ html {
   }
   
   p {
-    @apply font-body leading-relaxed text-neutral-200;
+    @apply font-body leading-relaxed text-neutral-600;
   }
 
   a {
-    @apply text-primary-400 hover:text-primary-300 transition-colors duration-300;
+    @apply text-primary-600 hover:text-primary-700 transition-colors duration-300;
   }
 }
 
-/* Grid Pattern */
+/* Grid Pattern - Light theme version */
 .grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
   background-size: 40px 40px;
-  opacity: 0.1;
+}
+
+/* Light theme background with grid and gradient */
+.bg-light-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+}
+
+/* Light theme background with grid pattern */
+.bg-light-grid {
+  background: 
+    linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+/* Enhanced section background with subtle noise texture */
+.bg-section-light {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.05) 0%, transparent 50%),
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  background-size: 800px 800px, 600px 600px, 40px 40px, 40px 40px, 100% 100%;
 }
 
 /* Normal scrollbar without smooth scrolling */
@@ -81,9 +105,14 @@ html {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Glass Morphism Effects - simplified for better performance */
+/* Glass Morphism Effects - Light theme version */
 .glass-card {
-  @apply bg-neutral-800/95 border border-neutral-700;
+  @apply bg-white/90 border border-neutral-200/50 backdrop-blur-md shadow-sm;
+}
+
+/* Enhanced glass effect for hero sections */
+.glass-card-hero {
+  @apply bg-white/95 border border-neutral-200/60 backdrop-blur-lg shadow-lg;
 }
 
 /* Custom Transitions - simplified */
@@ -93,17 +122,17 @@ html {
   transition-duration: 300ms;
 }
 
-/* Button Base Styles */
+/* Button Base Styles - Light theme */
 .btn {
   @apply inline-flex items-center justify-center relative rounded-lg font-medium transition-colors duration-300;
 }
 
 .btn-primary {
-  @apply px-6 py-3 text-white bg-primary-700 hover:bg-primary-600;
+  @apply px-6 py-3 text-white bg-primary-600 hover:bg-primary-700 shadow-sm;
 }
 
 .btn-outline {
-  @apply px-6 py-3 border border-neutral-600 text-white hover:border-neutral-500;
+  @apply px-6 py-3 border border-neutral-300 text-neutral-800 hover:border-neutral-400 hover:bg-neutral-50;
 }
 
 /* Code styling */
@@ -111,22 +140,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Properly contrast text */
-.text-on-dark {
-  @apply text-neutral-200;
-}
-
+/* Properly contrast text for light theme */
 .text-on-light {
   @apply text-neutral-800;
 }
 
-.heading-on-dark {
+.text-on-dark {
   @apply text-white;
+}
+
+.heading-on-light {
+  @apply text-neutral-900;
 }
 
 /* Floating Buttons styles are defined in the component */
 
-/* Navbar offset for hero sections - Simple and reliable approach */
+/* Navbar offset for hero sections - Light theme adjustments */
 .hero-section {
   /* Desktop: comfortable padding to account for navbar */
   padding-top: 0; /* Remove padding since we're using flexbox centering */
@@ -198,14 +227,30 @@ body.safari-warning-visible .hero-section {
   width: 100%; /* Ensure full width */
 }
 
-/* For hero sections with flex already applied in components */
+/* Additional flexbox optimization for hero sections */
 .hero-section.flex {
-  align-items: center; /* Center content vertically */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 @media (max-width: 768px) {
   .hero-section.flex {
-    margin-top: 70px; /* Mobile override */
+    justify-content: flex-start;
+    padding-top: 2rem;
   }
+}
+
+/* Shimmer animation for floating buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out;
 }

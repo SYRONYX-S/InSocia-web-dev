@@ -104,8 +104,8 @@ const Header = () => {
                       className={({ isActive }) =>
                         `block py-2 px-4 text-base font-medium rounded-md transition-colors ${
                           isActive
-                            ? 'text-primary-600 bg-primary-50'
-                            : 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50'
+                            ? 'text-primary-800 bg-primary-50'
+                            : 'text-neutral-600 hover:text-primary-800 hover:bg-primary-50'
                         }`
                       }
                       onClick={toggleMenu}

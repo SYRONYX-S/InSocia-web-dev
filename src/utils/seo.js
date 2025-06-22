@@ -9,12 +9,12 @@ export const SEO = ({
   keywords = [],
   image,
   url,
-  author = 'InSocia Development Consultancy',
+  author = 'Insocia Consultancy',
   twitterUsername = '@insocia',
   children,
 }) => {
   const siteUrl = 'https://insocia.in';
-  const siteTitle = 'InSocia Development Consultancy';
+  const siteTitle = 'Insocia Consultancy';
   const siteDescription = 'Creating equitable societies through innovative policy approaches and rigorous research.';
   
   const metaDescription = description || siteDescription;
