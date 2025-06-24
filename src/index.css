@@ -48,9 +48,7 @@ html {
     @apply font-body leading-relaxed text-neutral-600;
   }
 
-  a {
-    @apply text-primary-600 hover:text-primary-700 transition-colors duration-300;
-  }
+
 }
 
 /* Grid Pattern - Light theme version */
@@ -133,6 +131,28 @@ html {
 
 .btn-outline {
   @apply px-6 py-3 border border-neutral-300 text-neutral-800 hover:border-neutral-400 hover:bg-neutral-50;
+}
+
+/* Primary Button Class - Matches current design without text color changes */
+.primary-btn {
+  @apply inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105;
+}
+
+/* Secondary Button Class - For smaller gradient buttons */
+.secondary-btn {
+  @apply inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105;
+}
+
+/* Small Button Class - For small gradient buttons */
+.small-btn {
+  @apply inline-flex items-center gap-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-3 py-1.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105;
+}
+
+/* Responsive description text for devices below 575px */
+@media (max-width: 575px) {
+  .responsive-desc {
+    font-size: 14px !important;
+  }
 }
 
 /* Code styling */

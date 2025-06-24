@@ -43,7 +43,7 @@ const MissionVision = () => {
                 </div>
                 
                 <div className="mt-6 pl-16">
-                  <p className="text-xl text-white/90 leading-relaxed">
+                  <p className="responsive-desc text-xl text-white/90 leading-relaxed">
                     A world where evidence-based social policies create equitable opportunities for all communities to thrive.
                   </p>
                   
@@ -84,7 +84,7 @@ const MissionVision = () => {
                 </div>
                 
                 <div className="mt-6 pl-16">
-                  <p className="text-xl text-white/90 leading-relaxed">
+                  <p className="responsive-desc text-xl text-white/90 leading-relaxed">
                     To transform social development through collaborative research, innovative policy design, and impact-focused implementation that addresses the needs of underserved populations.
                   </p>
                   

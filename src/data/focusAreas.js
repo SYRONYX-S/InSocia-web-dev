@@ -13,7 +13,7 @@ export const focusAreas = [
       'Healthcare Access Interventions for Marginalized Communities',
       'Mental Health Policy Development'
     ],
-    image: 'health.jpg'
+    image: 'health-and-wellbeing.webp'
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const focusAreas = [
       'Skills Development for Youth Employment',
       'Education Equity Assessments'
     ],
-    image: 'education.jpg'
+    image: 'education-and-skills-development.webp'
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ export const focusAreas = [
       'Social Protection Mechanism Evaluations',
       'Cooperative and Community Enterprise Models'
     ],
-    image: 'livelihoods.jpg'
+    image: 'sustainable-livelihoods.webp'
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ export const focusAreas = [
       'Women\'s Leadership Program Development',
       'Inclusive Policy Design for Marginalized Groups'
     ],
-    image: 'gender.jpg'
+    image: 'gender-equality-and-inclusion.webp'
   },
   {
     id: 5,
@@ -77,7 +77,7 @@ export const focusAreas = [
       'Environmental Justice Initiatives',
       'Ecosystem Services Valuation'
     ],
-    image: 'environment.jpg'
+    image: 'environmental-sustainability.webp'
   },
   {
     id: 6,
@@ -93,6 +93,6 @@ export const focusAreas = [
       'Cooperative Farming Promotion',
       'Rural-Urban Migration Studies'
     ],
-    image: 'rural.jpg'
+    image: 'rural-development-and-agriculture.webp'
   }
 ]; 

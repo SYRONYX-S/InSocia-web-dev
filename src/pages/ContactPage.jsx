@@ -112,7 +112,7 @@ const ContactPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
                 Let's Start a <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Conversation</span>
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Ready to make a meaningful impact? We'd love to hear about your project and explore how we can work together to create positive change.
               </p>
             </div>
@@ -285,7 +285,7 @@ const ContactPage = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 disabled:from-neutral-400 disabled:to-neutral-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 disabled:shadow-none transform hover:scale-105 disabled:scale-100"
+                                              className="primary-btn w-full disabled:from-neutral-400 disabled:to-neutral-500 disabled:shadow-none disabled:scale-100"
                     >
                       {isSubmitting ? (
                         <>
@@ -482,7 +482,7 @@ const ContactPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-neutral-900 leading-tight">
                 Common <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Questions</span>
               </h2>
-              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+              <p className="responsive-desc text-lg text-neutral-600 max-w-3xl mx-auto">
                 Find answers to the most commonly asked questions about our development consulting services and processes.
               </p>
             </div>
@@ -554,14 +554,14 @@ const ContactPage = () => {
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
                   Ready to Start Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development Project?</span>
                 </h3>
-                <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
+                <p className="responsive-desc text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
                   Let's discuss how our expertise can help you achieve your development goals. Get a free consultation and customized proposal for your project.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a
                                           href="mailto:connect@insocia.in"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
+                    className="primary-btn"
                   >
                     <FiMail className="w-5 h-5" />
                     <span>Start a Conversation</span>

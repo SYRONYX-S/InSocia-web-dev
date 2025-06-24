@@ -62,7 +62,7 @@ const OurValues = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Guiding Principles</span>
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                      <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Our core values center on integrity, inclusivity, innovation, and impact (4i), guiding our work to ensure that every intervention contributes to reducing inequalities, enhancing access to opportunities, strengthening democratic participation, and creating sustainable solutions to complex development challenges.
           </p>
         </div>

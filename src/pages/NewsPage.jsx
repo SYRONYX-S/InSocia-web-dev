@@ -267,7 +267,7 @@ const NewsPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
                 Latest <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Updates</span> & Insights
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Stay informed with our latest research findings, policy insights, impact stories, and upcoming events in the development sector.
               </p>
             </div>
@@ -587,14 +587,14 @@ const NewsPage = () => {
                     Let's Create <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Impact Together</span>
                   </h2>
                   
-                  <p className="text-xl text-neutral-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-10 leading-relaxed max-w-3xl mx-auto">
                     Have a project in mind or want to discuss partnership opportunities? We'd love to hear from you and explore how we can work together to drive meaningful social change.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <Link
                       to="/contact"
-                      className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
+                      className="primary-btn"
                     >
                       <FiMail className="w-5 h-5" />
                       <span>Start a Conversation</span>

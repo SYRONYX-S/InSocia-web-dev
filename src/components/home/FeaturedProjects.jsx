@@ -92,7 +92,7 @@ const FeaturedProjects = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Impactful <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Initiatives</span> in Action
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                      <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Explore some of our impactful initiatives across different focus areas
           </p>
         </motion.div>
@@ -121,7 +121,7 @@ const FeaturedProjects = () => {
                 <p className="text-neutral-600 mb-4 flex-grow">{projects[0].description}</p>
                 <Link 
                   to={projects[0].link} 
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 backdrop-blur-sm rounded-lg transition-all duration-300 hover:translate-x-1 self-start mt-auto"
+                  className="secondary-btn text-sm backdrop-blur-sm hover:translate-x-1 self-start mt-auto"
                   aria-label={`View details about ${projects[0].title}`}
                 >
                   View Project

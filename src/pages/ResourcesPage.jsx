@@ -274,7 +274,7 @@ const ResourcesPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
                 Knowledge <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Repository</span>
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Access our comprehensive collection of research papers, policy briefs, toolkits, and best practices to advance your development work.
               </p>
             </div>
@@ -425,7 +425,7 @@ const ResourcesPage = () => {
                                       </div>
                                     </div>
                                     
-                                    <button className="inline-flex items-center gap-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-3 py-1.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-xs">
+                                    <button className="small-btn text-xs">
                                       <FiDownload className="w-3 h-3" />
                                       <span>Download</span>
                                     </button>
@@ -555,7 +555,7 @@ const ResourcesPage = () => {
                               )}
                             </div>
                             
-                            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <button className="secondary-btn">
                               <FiDownload className="w-4 h-4" />
                               <span className="text-sm">Download</span>
                             </button>
@@ -657,7 +657,7 @@ const ResourcesPage = () => {
                         </div>
                         
                         <div className="flex items-center gap-3 pt-4 border-t border-neutral-200/50">
-                          <button className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                          <button className="secondary-btn flex-1">
                             <FiDownload className="w-4 h-4" />
                             <span className="text-sm">Download</span>
                           </button>
@@ -705,14 +705,14 @@ const ResourcesPage = () => {
                   <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
                     Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development Impact</span>
                   </h3>
-                  <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
+                  <p className="responsive-desc text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
                     Ready to implement evidence-based solutions? Let our expertise help you design, evaluate, and scale your development programs effectively.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                     <Link
                       to="/contact"
-                      className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 transform hover:scale-105"
+                      className="primary-btn"
                     >
                       <FiArrowRight className="w-5 h-5" />
                       <span>Start Your Project</span>

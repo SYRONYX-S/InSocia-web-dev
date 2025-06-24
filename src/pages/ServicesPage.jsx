@@ -61,7 +61,7 @@ const ServicesPage = () => {
               Transform <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600">Social Development</span> Through Collaboration
             </h1>
             
-            <p className="text-lg md:text-xl text-neutral-700 mb-8 leading-relaxed max-w-4xl mx-auto">
+                            <p className="responsive-desc text-lg md:text-xl text-neutral-700 mb-8 leading-relaxed max-w-4xl mx-auto">
               Insocia bridges the gap between academic research and on-the-ground implementation, transforming social development through collaborative research, innovative policy design, and impact-focused implementation.
             </p>
 
@@ -112,7 +112,7 @@ const ServicesPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25"
+                className="primary-btn"
               >
                 Partner With Us
               </Link>
@@ -153,7 +153,7 @@ const ServicesPage = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Comprehensive <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Solutions</span> for Social Impact
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             From rigorous research and policy design to implementation support and impact measurement - we provide end-to-end solutions tailored to drive sustainable social change.
           </p>
         </div>
@@ -190,7 +190,7 @@ const ServicesPage = () => {
                     Policy Research & <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-700">Analysis</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     We conduct comprehensive research and sectoral analysis, delivering actionable insights into complex policy landscapes. Our approach includes regulatory assessments, risk analysis, and strategic forecasting to inform robust, future-ready decision-making.
                   </p>
                   
@@ -312,7 +312,7 @@ const ServicesPage = () => {
                     CSR Impact <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-600">Evaluation</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Systematic evaluation of Corporate Social Responsibility initiatives to measure effectiveness, identify improvement opportunities, and maximize <strong>social return on investment</strong>. Our comprehensive approach ensures your CSR programs deliver meaningful, measurable impact.
                   </p>
                   
@@ -378,7 +378,7 @@ const ServicesPage = () => {
                     ESG Evaluation & <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-600 to-secondary-700">Rating</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     We provide comprehensive ESG reporting and ratings to help organizations assess their environmental, social, and governance performance. Using trusted methodologies and publicly available data, we deliver objective insights that support better financial decisions, enhance transparency, and align with long-term sustainability goals.
                   </p>
                   
@@ -496,7 +496,7 @@ const ServicesPage = () => {
                     Philanthropic Program <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-600">Assessment</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Comprehensive evaluation of philanthropic funds and programs to ensure optimal resource allocation and maximum community benefit. Our systematic approach helps philanthropic organizations enhance their impact and transparency.
                   </p>
                   
@@ -562,7 +562,7 @@ const ServicesPage = () => {
                     Government Project <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-700 to-neutral-800">Evaluation</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Independent evaluation and analysis of government projects and initiatives to assess effectiveness, efficiency, and social impact. Our objective assessments support evidence-based policy decisions and public accountability.
                   </p>
                   
@@ -685,7 +685,7 @@ const ServicesPage = () => {
                     Project Management <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-700">Services</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     We offer end-to-end management for social initiatives, from program design to execution. Our comprehensive approach includes strategic planning, risk management, stakeholder coordination, progress monitoring, and evaluation for timely, within-budget, and effective project completion.
                   </p>
                   
@@ -751,7 +751,7 @@ const ServicesPage = () => {
                     Monitoring & <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-600 to-secondary-700">Evaluation</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Insocia develops robust monitoring and evaluation frameworks and reporting tools. We support organizations in real-time progress tracking, impact assessment, adjustment for learning, and evidence-based program improvement.
                   </p>
                   
@@ -872,7 +872,7 @@ const ServicesPage = () => {
                     Social Impact <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-700">Research</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Rigorous social research and impact measurement services that provide evidence-based insights for informed decision-making. Our specialized methodologies capture authentic community realities and behavioral dynamics.
                   </p>
                   
@@ -927,7 +927,7 @@ const ServicesPage = () => {
                     Advocacy & Policy <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-600 to-secondary-700">Development</span>
                   </h3>
                   
-                  <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                  <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed">
                     Insocia crafts strategies and campaigns that advance social causes and drive policy reform. We provide advocacy roadmap development, policy briefs, coalition building, stakeholder engagement plans, and execution support for systemic change.
                   </p>
                   
@@ -1011,7 +1011,7 @@ const ServicesPage = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             A Systematic <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Approach</span> to Excellence
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Our evidence-based methodology ensures rigorous, collaborative, and adaptive approaches to deliver exceptional results for sustainable social impact.
           </p>
         </div>
@@ -1028,7 +1028,7 @@ const ServicesPage = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Tailored <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Expertise</span> for Your Needs
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Each service is designed to address specific development challenges with proven methodologies and collaborative approaches.
           </p>
         </div>

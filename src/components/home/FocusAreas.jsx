@@ -139,7 +139,7 @@ const FocusAreas = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Driving <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Holistic</span> Social Impact
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                      <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             We develop evidence-based solutions across these key domains to create holistic social impact
           </p>
         </motion.div>
@@ -195,7 +195,7 @@ const FocusAreas = () => {
             <div className="flex justify-center">
               <Link 
                 to="/focus-areas" 
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 backdrop-blur-sm rounded-lg transition-colors duration-300"
+                className="secondary-btn text-base backdrop-blur-sm px-6 py-3"
               >
                 Explore All Focus Areas
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">

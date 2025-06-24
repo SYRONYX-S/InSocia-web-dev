@@ -58,7 +58,7 @@ const FocusAreasPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
                 Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Focus Areas</span> for Maximum Impact
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 We concentrate our expertise across six strategic development sectors where evidence-based interventions can create the most sustainable and transformative impact.
               </p>
             </div>
@@ -94,7 +94,7 @@ const FocusAreasPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-16 justify-center" data-aos="fade-up">
               <Link 
                 to="/services" 
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 group"
+                className="primary-btn"
               >
                 Explore Our Services
                 <FiArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -136,7 +136,7 @@ const FocusAreasPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
                 Strategic <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development</span> Sectors
               </h2>
-              <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Each focus area represents a critical domain where targeted interventions can drive sustainable development and create lasting positive change for communities.
               </p>
             </div>
@@ -155,7 +155,7 @@ const FocusAreasPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
                 Sector <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Expertise</span> & Approach
               </h2>
-              <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Our specialized knowledge and proven methodologies across each development sector ensure effective and sustainable outcomes.
               </p>
             </div>

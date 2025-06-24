@@ -53,7 +53,7 @@ const FocusAreaDetail = () => {
                 </span>
               </h2>
               
-              <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 leading-relaxed">
                 {area.description}
               </p>
               
@@ -113,12 +113,12 @@ const FocusAreaDetail = () => {
                       e.target.src = "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/30 to-transparent"></div>
                   
                   {/* Overlay content */}
                   <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <h4 className="text-lg font-semibold mb-2">{area.title}</h4>
-                    <p className="text-sm text-white/90">
+                    <h4 className="text-lg font-semibold mb-2 text-white drop-shadow-lg">{area.title}</h4>
+                    <p className="text-sm text-white/95 drop-shadow-md">
                       {area.shortDescription?.substring(0, 80)}...
                     </p>
                   </div>

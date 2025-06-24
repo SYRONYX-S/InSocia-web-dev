@@ -42,7 +42,7 @@ const MissionStatement = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
             Creating <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Equitable</span> Societies
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                      <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             At Insocia Consultancy, we create equitable societies through innovative policy approaches and rigorous research.
           </p>
         </motion.div>

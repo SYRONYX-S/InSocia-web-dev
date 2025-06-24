@@ -80,13 +80,13 @@ const Testimonials = () => {
         <div className="absolute top-20 right-20 w-60 h-60 rounded-full border-2 border-primary-600/10"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-neutral-900">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-5 text-neutral-900">
             Success <span className="text-primary-600">Stories</span>
           </h2>
-          <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
             Hear from the communities and partners we've collaborated with
           </p>
         </div>
@@ -112,10 +112,10 @@ const Testimonials = () => {
             {/* Quote decorative element */}
             <div className="absolute -top-6 -left-6 text-primary-300/50 text-7xl font-serif hidden md:block">"</div>
             
-            <div className="md:flex items-center gap-8">
+            <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
               {/* Testimonial avatar - Fixed positioning and zIndex */}
-              <div className="mb-6 md:mb-0 flex-shrink-0 mx-auto md:mx-0 relative z-10">
-                <div className="w-24 h-24 md:w-32 md:h-32 relative">
+              <div className="flex-shrink-0 mx-auto md:mx-0 relative z-10">
+                <div className="w-24 h-24 md:w-32 md:h-32 relative mx-auto">
                   {/* Hexagonal frame */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-secondary-600/20 rounded-full backdrop-blur-md"></div>
                   <img 
@@ -124,14 +124,14 @@ const Testimonials = () => {
                     className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full p-2 relative z-10"
                   />
                   
-                  {/* Organization badge - Improved positioning and zIndex */}
-                  <div className="absolute -bottom-2 -right-2 bg-primary-600/90 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm z-20">
+                  {/* Organization badge - Improved positioning and centering */}
+                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-primary-600/90 text-white text-xs py-1.5 px-3 rounded-full backdrop-blur-sm z-20 text-center whitespace-nowrap">
                     {testimonials[activeIndex].organization}
                   </div>
                 </div>
               </div>
               
-              {/* Testimonial content - Added better text centering for mobile */}
+              {/* Testimonial content - Enhanced responsive design */}
               <div className="flex-1 text-center md:text-left">
                 <motion.blockquote 
                   key={testimonials[activeIndex].id} 
@@ -139,20 +139,20 @@ const Testimonials = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4 }}
-                  className="text-lg md:text-xl text-neutral-700 italic mb-6"
+                  className="text-base md:text-lg lg:text-xl text-neutral-700 italic mb-6 leading-relaxed"
                 >
                   "{testimonials[activeIndex].quote}"
                 </motion.blockquote>
                 
-                <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                   <motion.div
                     key={`author-${testimonials[activeIndex].id}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
-                    className="mb-4 md:mb-0"
+                    className="text-center md:text-left"
                   >
-                    <p className="font-bold text-neutral-900">{testimonials[activeIndex].author}</p>
+                    <p className="font-bold text-neutral-900 text-lg">{testimonials[activeIndex].author}</p>
                     <p className="text-neutral-600 text-sm">{testimonials[activeIndex].title}</p>
                   </motion.div>
                   

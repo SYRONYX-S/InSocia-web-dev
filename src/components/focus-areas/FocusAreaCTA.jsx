@@ -20,14 +20,14 @@ const FocusAreaCTA = () => {
             Partner with Us to Drive <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Sustainable</span> Change
           </h2>
           
-          <p className="text-lg md:text-xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                      <p className="responsive-desc text-lg md:text-xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Let's work together to create evidence-based solutions that address complex development challenges across our focus areas. Your expertise combined with our collaborative approach can make a lasting difference.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Link 
               to="/contact" 
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25"
+                              className="primary-btn"
             >
               Start Partnership
               <FiArrowRight className="ml-2 w-5 h-5" />

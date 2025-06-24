@@ -13,8 +13,8 @@ const TermsPage = () => {
     <MainLayout>
       <Helmet>
                 <title>Terms of Use | Insocia Consultancy</title>
-        <meta 
-          name="description" 
+        <meta
+          name="description"
           content="Terms of Use for Insocia Consultancy website and services. Learn about our terms and conditions for using our platform and engaging with our consultancy services." 
         />
         <meta name="keywords" content="terms of use, conditions, legal, policy, development consultancy, InSocia" />

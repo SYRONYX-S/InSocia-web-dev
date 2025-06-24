@@ -103,11 +103,11 @@ const FocusAreasList = () => {
               {/* CTA */}
               <div className="flex items-center justify-between pt-3 border-t border-neutral-200/50">
                 <a 
-                  href={`#${generateAnchorId(area.title)}`}
+                  href={`#${generateAnchorId(area.title)}-detail`}
                   className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-all duration-300 font-medium text-sm group/link"
                   onClick={(e) => {
                     e.preventDefault();
-                    const element = document.getElementById(generateAnchorId(area.title));
+                    const element = document.getElementById(`${generateAnchorId(area.title)}-detail`);
                     if (element) {
                       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }

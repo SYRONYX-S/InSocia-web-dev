@@ -18,7 +18,7 @@ const FeaturedProjects = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 leading-tight">
           Transforming Communities Through <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Evidence-Based Action</span>
         </h2>
-        <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+        <p className="responsive-desc text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
           Explore our impactful projects that demonstrate our commitment to sustainable development and community empowerment across diverse contexts.
         </p>
       </div>
@@ -138,7 +138,7 @@ const FeaturedProjects = () => {
       <div className="text-center pt-8">
         <Link 
           to="/projects"
-          className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 group transform hover:scale-105"
+          className="primary-btn"
         >
           <span>View All Projects</span>
           <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

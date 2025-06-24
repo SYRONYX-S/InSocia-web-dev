@@ -3,8 +3,8 @@ import SectionLayout from '../../layouts/SectionLayout';
 import { motion } from 'framer-motion';
 
 const PartnerLogos = () => {
-  // Updated to use actual partner logos from images/partners directory
-  const partners = [
+  // Updated to include new partner logos from images/partners directory
+  const pastCollaborations = [
     {
       id: 'partner1',
       name: 'Impact',
@@ -28,6 +28,24 @@ const PartnerLogos = () => {
       name: 'People\'s Foundation',
       logo: '/images/partners/peoples-foundation.png',
       type: 'NGO'
+    },
+    {
+      id: 'partner5',
+      name: 'IIMAD',
+      logo: '/images/partners/iimad.png',
+      type: 'Research Institute'
+    },
+    {
+      id: 'partner6',
+      name: 'Magic Bus',
+      logo: '/images/partners/magic-bus.png',
+      type: 'NGO'
+    },
+    {
+      id: 'partner7',
+      name: 'StepBeta',
+      logo: '/images/partners/stepbeta.png',
+      type: 'Private Sector'
     }
   ];
 
@@ -66,32 +84,32 @@ const PartnerLogos = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
-          {/* Section header with centered design */}
+          {/* Past Collaborations Section */}
           <motion.div variants={itemVariants} className="text-center mb-12">
             <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-100/80 backdrop-blur-sm text-primary-700 rounded-full mb-3">
               Partnerships for Impact
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-5 text-neutral-900">
-              Our <span className="text-primary-600">Partners</span> in Development
+              Past <span className="text-primary-600">Collaborations</span>
             </h2>
             <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-              We collaborate with diverse organizations to create sustainable solutions for complex social challenges.
+              We've worked with diverse organizations to create sustainable solutions for complex social challenges.
             </p>
           </motion.div>
           
-          {/* Horizontal curved band with logos - unique layout */}
+          {/* Horizontal curved band with logos - original design */}
           <motion.div 
             variants={itemVariants}
-            className="relative py-10 px-6 md:px-10 backdrop-blur-md bg-white/70 rounded-full border border-neutral-200/50 mb-12 overflow-hidden"
+            className="relative py-10 px-6 md:px-10 backdrop-blur-md bg-white/70 rounded-full border border-neutral-200/50 mb-16 overflow-hidden"
           >
             {/* Abstract decorative element */}
             <div className="absolute -top-24 right-1/4 w-48 h-48 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-24 left-1/4 w-48 h-48 bg-gradient-to-r from-secondary-500/20 to-primary-500/20 rounded-full blur-3xl"></div>
             
-            <div className="relative flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
-              {partners.map((partner) => (
+            <div className="relative flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10">
+              {pastCollaborations.map((partner) => (
                 <div 
                   key={partner.id}
                   className="grayscale hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
@@ -106,49 +124,116 @@ const PartnerLogos = () => {
               ))}
             </div>
           </motion.div>
-          
-          {/* Partner categories - tabular presentation */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <h3 className="text-xl font-semibold text-neutral-900 text-center mb-6">Partnership Types</h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="backdrop-blur-md bg-white/70 p-5 rounded-xl border border-neutral-200/50 text-center">
-                <div className="w-12 h-12 rounded-full bg-primary-100/80 flex items-center justify-center text-primary-600 mx-auto mb-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
+
+          {/* Strategic Partners Section */}
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+              Our Strategic <span className="text-primary-600">Partners</span>
+            </h2>
+            <p className="responsive-desc text-lg text-neutral-600 max-w-4xl mx-auto leading-relaxed mb-12">
+              Insocia believes in the power of collaboration to amplify social impact. We work with 
+              specialized partners who share our commitment to evidence-based solutions and 
+              community empowerment.
+            </p>
+          </motion.div>
+
+          {/* Partner Details */}
+          <motion.div variants={itemVariants} className="space-y-16">
+            {/* Partner 1: TrashTrek Ecosolutions */}
+            <div className="backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 p-8 md:p-10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-1">
+                  <h3 className="text-2xl font-bold text-neutral-900 mb-4">Partner 1: TrashTrek Ecosolutions</h3>
+                  <div className="w-full h-32 bg-neutral-100/50 rounded-xl border border-neutral-200/50 flex items-center justify-center mb-4 p-6">
+                    <img 
+                      src="/images/partners/trash-trek.webp" 
+                      alt="TrashTrek Ecosolutions" 
+                      className="h-full w-auto object-contain max-w-full"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="text-sm text-neutral-600 mb-2">
+                    <strong>Website:</strong> <a href="https://trashtrekes.com/" className="text-primary-600 hover:text-primary-700" target="_blank" rel="noopener noreferrer">https://trashtrekes.com/</a>
+                  </p>
+                  <p className="text-sm text-neutral-600 mb-4">
+                    <strong>Partnership Focus:</strong> Environmental Sustainability & Waste Management
+                  </p>
                 </div>
-                <h4 className="text-neutral-900 font-semibold mb-2">Research Institutions</h4>
-                <p className="text-neutral-600 text-sm">Academic and research organizations contributing to evidence-based approaches</p>
+                
+                <div className="lg:col-span-2 space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold text-neutral-900 mb-3">Description</h4>
+                    <p className="text-neutral-600 leading-relaxed">
+                      TrashTrek Ecosolutions (<a href="https://trashtrekes.com/" className="text-primary-600 hover:text-primary-700" target="_blank" rel="noopener noreferrer">https://trashtrekes.com/</a>) is our 
+                      environmental sustainability partner, specializing in comprehensive waste management 
+                      solutions, community engagement, and environmental awareness programs. Together 
+                      with TrashTrek, we evaluate environmental initiatives, conduct waste management 
+                      impact assessments, and develop evidence-based strategies for sustainable waste 
+                      processing systems across communities and organizations.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-lg font-semibold text-neutral-900 mb-3">Joint Services</h4>
+                    <ul className="space-y-2">
+                      {[
+                        "Environmental impact evaluation of waste management programs",
+                        "CSR assessment for corporate environmental initiatives", 
+                        "Policy research on waste management and circular economy",
+                        "Community engagement evaluation in environmental projects",
+                        "Monitoring & evaluation of sustainability programs"
+                      ].map((service, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 rounded-full bg-primary-500 mt-2 flex-shrink-0"></div>
+                          <span className="text-neutral-600">{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              
-              <div className="backdrop-blur-md bg-white/70 p-5 rounded-xl border border-neutral-200/50 text-center">
-                <div className="w-12 h-12 rounded-full bg-secondary-100/80 flex items-center justify-center text-secondary-600 mx-auto mb-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
+            </div>
+
+            {/* Partner 2: TutKiD */}
+            <div className="backdrop-blur-md bg-white/80 rounded-2xl border border-neutral-200/50 p-8 md:p-10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-1">
+                  <h3 className="text-2xl font-bold text-neutral-900 mb-4">Partner 2: TutKiD</h3>
+                  <div className="w-full h-32 bg-neutral-100/50 rounded-xl border border-neutral-200/50 flex items-center justify-center mb-4 p-6">
+                    <img 
+                      src="/images/partners/tutkid.webp" 
+                      alt="TutKiD" 
+                      className="h-full w-auto object-contain max-w-full"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="text-sm text-neutral-600 mb-4">
+                    <strong>Partnership Focus:</strong> Education & Child Development
+                  </p>
                 </div>
-                <h4 className="text-neutral-900 font-semibold mb-2">NGOs & Foundations</h4>
-                <p className="text-neutral-600 text-sm">Non-profit organizations that help implement grassroots initiatives</p>
-              </div>
-              
-              <div className="backdrop-blur-md bg-white/70 p-5 rounded-xl border border-neutral-200/50 text-center">
-                <div className="w-12 h-12 rounded-full bg-primary-100/80 flex items-center justify-center text-primary-600 mx-auto mb-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                
+                <div className="lg:col-span-2">
+                  <div>
+                    <h4 className="text-lg font-semibold text-neutral-900 mb-3">Description</h4>
+                    <p className="text-neutral-600 leading-relaxed">
+                      TutKiD is our education and child development partner, focused on 
+                      innovative learning solutions and educational program delivery. Through this strategic 
+                      partnership, we combine rigorous evaluation methodologies with practical educational 
+                      implementation to assess learning outcomes, evaluate educational interventions, and 
+                      develop evidence-based strategies that improve educational access and quality for 
+                      children.
+                    </p>
+                  </div>
                 </div>
-                <h4 className="text-neutral-900 font-semibold mb-2">Private Sector</h4>
-                <p className="text-neutral-600 text-sm">Businesses and corporations providing resources and expertise</p>
               </div>
             </div>
           </motion.div>
           
           {/* Call to action for partnership */}
-          <motion.div variants={itemVariants} className="text-center">
+          <motion.div variants={itemVariants} className="text-center mt-16">
             <a 
               href="/contact" 
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 backdrop-blur-sm rounded-lg transition-colors duration-300"
+              className="secondary-btn text-base backdrop-blur-sm px-6 py-3"
             >
               Become a Partner
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">

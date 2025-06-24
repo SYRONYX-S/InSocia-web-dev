@@ -47,7 +47,7 @@ const Hero = () => {
                 Driving Social Change Through <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Evidence-Based</span> Solutions
               </h1>
               
-              <p className="text-xl md:text-2xl text-neutral-600 mb-8 leading-relaxed max-w-2xl">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 mb-8 leading-relaxed max-w-2xl">
                 Insocia partners with corporations, governments, NGOs, and philanthropic organizations to unlock greater social impact through rigorous research, independent evaluation, and strategic advocacy.
               </p>
               
@@ -79,35 +79,35 @@ const Hero = () => {
               
               {/* Stats - Updated for light theme */}
               <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
-                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400"></div>
+                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">
-                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900">25+</p>
-                    <p className="text-sm text-neutral-600 mt-1">Projects</p>
+                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-primary-700 group-hover:scale-105">25+</p>
+                    <p className="text-sm text-neutral-600 mt-1 transition-colors duration-300 group-hover:text-neutral-700">Projects</p>
                   </div>
                 </div>
                 
-                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-secondary-500"></div>
+                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">
-                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900">18</p>
-                    <p className="text-sm text-neutral-600 mt-1">Countries</p>
+                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-primary-700 group-hover:scale-105">18</p>
+                    <p className="text-sm text-neutral-600 mt-1 transition-colors duration-300 group-hover:text-neutral-700">Countries</p>
                   </div>
                 </div>
                 
-                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-primary-500"></div>
+                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-secondary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-primary-500 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-secondary-400/30"></div>
                   <div className="relative z-10">
-                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900">40+</p>
-                    <p className="text-sm text-neutral-600 mt-1">Partners</p>
+                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-secondary-700 group-hover:scale-105">40+</p>
+                    <p className="text-sm text-neutral-600 mt-1 transition-colors duration-300 group-hover:text-neutral-700">Partners</p>
                   </div>
                 </div>
                 
-                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-secondary-400"></div>
+                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-secondary-400 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">
-                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900">100K+</p>
-                    <p className="text-sm text-neutral-600 mt-1">Lives Impacted</p>
+                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-primary-700 group-hover:scale-105">100K+</p>
+                    <p className="text-sm text-neutral-600 mt-1 transition-colors duration-300 group-hover:text-neutral-700">Lives Impacted</p>
                   </div>
                 </div>
               </div>

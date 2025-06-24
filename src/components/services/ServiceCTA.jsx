@@ -15,7 +15,7 @@ const ServiceCTA = () => {
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
           Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Impact</span> Today
         </h2>
-        <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                    <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
           Partner with us to drive meaningful social development through evidence-based solutions and collaborative innovation.
         </p>
       </div>
@@ -34,13 +34,13 @@ const ServiceCTA = () => {
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6 leading-tight">
                   Drive Sustainable Change with Expert Guidance
                 </h3>
-                <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+                <p className="responsive-desc text-lg text-neutral-600 mb-8 leading-relaxed">
                   Our comprehensive approach combines rigorous research, innovative solutions, and proven implementation strategies to create lasting social impact.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25"
+                    className="primary-btn"
                   >
                     Start Your Journey
                     <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

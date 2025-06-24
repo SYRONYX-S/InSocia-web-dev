@@ -160,7 +160,7 @@ const ProjectsPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-neutral-900 leading-tight">
                 Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Future</span> of Development
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 We're preparing comprehensive development initiatives that will transform communities across multiple sectors through evidence-based interventions.
               </p>
             </div>
@@ -201,7 +201,7 @@ const ProjectsPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
                 Transformative <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Development</span> Programs
               </h2>
-              <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
                 Our upcoming projects span six critical development sectors, each designed to create sustainable impact and transform communities through innovative approaches.
               </p>
             </div>
@@ -279,7 +279,7 @@ const ProjectsPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-neutral-900 leading-tight">
                 Getting Ready for <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Launch</span>
               </h2>
-              <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="responsive-desc text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 We're actively working across multiple preparation phases to ensure our projects deliver maximum impact from day one.
               </p>
             </div>
@@ -339,13 +339,13 @@ const ProjectsPage = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
                   Partner with Us for <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Impact</span>
                 </h2>
-                <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                <p className="responsive-desc text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
                   Whether you're a development organization, government agency, or funding partner, we invite you to collaborate with us in creating transformative change.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     to="/partnerships"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary-500/25 group transform hover:scale-105"
+                    className="primary-btn"
                   >
                     <span>Explore Partnerships</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

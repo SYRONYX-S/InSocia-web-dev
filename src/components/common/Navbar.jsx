@@ -12,16 +12,9 @@ const Navbar = () => {
   const topBarRef = useRef(null);
   const navbarRef = useRef(null);
 
-  // Check if we're in preview mode
-  const urlParams = new URLSearchParams(location.search);
-  const isPreviewMode = urlParams.get('preview') === 'insocia2024' || 
-                       location.pathname.startsWith('/preview');
-  
-  // Helper function to get the correct path based on preview mode
+  // Helper function to get the correct path
   const getPath = (path) => {
-    if (!isPreviewMode) return path;
-    if (path === '/') return '/preview';
-    return path.startsWith('/') ? `/preview${path}` : `/preview/${path}`;
+    return path;
   };
   
   // Navigation structure with dropdowns - 5 main items with all pages covered
