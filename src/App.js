@@ -14,6 +14,8 @@ import NewsPage from './pages/NewsPage';
 import CareersPage from './pages/CareersPage';
 import NotFoundPage from './pages/NotFoundPage';
 import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import AccessibilityPage from './pages/AccessibilityPage';
 
 function App() {
   return (
@@ -32,9 +34,9 @@ function App() {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy-policy" element={<TermsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPage />} />
             <Route path="/terms-of-use" element={<TermsPage />} />
-            <Route path="/accessibility" element={<TermsPage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </MainLayout>

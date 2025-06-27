@@ -154,7 +154,7 @@ const CareersPage = () => {
             </p>
 
             {/* Career highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" data-aos="fade-up">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 responsive-grid-small" data-aos="fade-up">
               <div className="backdrop-blur-md bg-white/80 border border-neutral-200/50 rounded-xl p-6 text-center hover:shadow-lg hover:shadow-primary-200/30 transition-all duration-300">
                 <div className="w-12 h-12 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-lg flex items-center justify-center mx-auto mb-4 border border-primary-200/50">
                   <FiHeart className="w-6 h-6 text-primary-600" />
@@ -181,7 +181,7 @@ const CareersPage = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 responsive-grid-small" data-aos="fade-up">
               {[
                 { number: '25+', label: 'Team Members', icon: FiUsers },
                 { number: '18', label: 'Countries', icon: FiGlobe },

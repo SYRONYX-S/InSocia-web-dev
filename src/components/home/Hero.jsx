@@ -77,8 +77,8 @@ const Hero = () => {
                 </Link>
               </div>
               
-              {/* Stats - Updated for light theme */}
-              <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+              {/* Stats - Fixed Partners card hover color */}
+              <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 hero-stats">
                 <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">
@@ -95,10 +95,10 @@ const Hero = () => {
                   </div>
                 </div>
                 
-                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-secondary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-primary-500 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-secondary-400/30"></div>
+                <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-secondary-500 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">
-                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-secondary-700 group-hover:scale-105">40+</p>
+                    <p className="text-2xl lg:text-3xl font-bold text-neutral-900 transition-all duration-300 group-hover:text-primary-700 group-hover:scale-105">40+</p>
                     <p className="text-sm text-neutral-600 mt-1 transition-colors duration-300 group-hover:text-neutral-700">Partners</p>
                   </div>
                 </div>
@@ -113,88 +113,171 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Hero Image Section - Updated for light theme */}
+            {/* Hero Visual Section - Redesigned for animation and relevance */}
             <div className="hidden lg:block lg:col-span-5">
-              <div className="relative z-10 h-[480px]">
-                {/* Main visual container */}
-                <div className="absolute right-0 h-[340px] w-[400px] overflow-hidden rounded-lg shadow-lg border border-neutral-200/50">
-                  <div className="relative h-full w-full">
-                    <img 
-                      src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1774&q=80" 
-                      alt="Policy analysis meeting" 
-                      className="h-full w-full object-cover"
-                      loading="eager"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
-                    
-                    {/* Info card - Light theme */}
-                    <div className="absolute bottom-4 left-4 right-4 glass-card-hero rounded-lg p-4 shadow-xl">
-                      <div className="flex items-center space-x-3">
-                        <div className="flex-shrink-0 w-10 h-10 bg-primary-500/10 rounded-full flex items-center justify-center">
-                          <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012 2h2a2 2 0 012-2" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-xs font-medium text-neutral-600">Professional Solutions</p>
-                          <p className="text-sm font-semibold text-neutral-900 mt-0.5">Evidence-Based Policy Design</p>
-                        </div>
-                      </div>
+              <style>
+                {`
+                  @keyframes float {
+                    0% { transform: translateY(0px); }
+                    50% { transform: translateY(-10px); }
+                    100% { transform: translateY(0px); }
+                  }
+                  .animate-float { animation: float 6s ease-in-out infinite; }
+
+                  @keyframes pulse-glow {
+                    0%, 100% { box-shadow: 0 0 30px rgba(237, 87, 43, 0.4), 0 0 60px rgba(237, 87, 43, 0.3); }
+                    50% { box-shadow: 0 0 50px rgba(237, 87, 43, 0.6), 0 0 100px rgba(237, 87, 43, 0.4); }
+                  }
+                  .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+                  @keyframes orbit-slow {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                  }
+                  .animate-orbit-slow { animation: orbit-slow 25s linear infinite; }
+
+                  @keyframes orbit-fast {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                  }
+                  .animate-orbit-fast { animation: orbit-fast 20s linear infinite; }
+
+                  @keyframes tree-grow {
+                    0% { 
+                      stroke-dasharray: 1000;
+                      stroke-dashoffset: 1000;
+                      opacity: 0;
+                    }
+                    20% {
+                      stroke-dashoffset: 800;
+                      opacity: 0.3;
+                    }
+                    50% {
+                      stroke-dashoffset: 400;
+                      opacity: 0.7;
+                    }
+                    100% { 
+                      stroke-dashoffset: 0;
+                      opacity: 1;
+                    }
+                  }
+                  
+                  .tree-growing path {
+                    stroke: #ed572b;
+                    stroke-width: 2;
+                    fill: transparent;
+                    animation: tree-grow 4s ease-out forwards;
+                  }
+                  
+                  .tree-growing path:nth-child(1) { animation-delay: 0s; }
+                  .tree-growing path:nth-child(2) { animation-delay: 0.5s; }
+                  .tree-growing path:nth-child(3) { animation-delay: 1s; }
+                  .tree-growing path:nth-child(4) { animation-delay: 1.5s; }
+                  .tree-growing path:nth-child(5) { animation-delay: 2s; }
+
+                  @keyframes fill-complete {
+                    from { fill: transparent; }
+                    to { fill: #ed572b; }
+                  }
+                  
+                  .tree-filled path {
+                    animation: fill-complete 1s ease-in forwards;
+                    animation-delay: 4s;
+                  }
+
+                  @keyframes scale-pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                  }
+                  .animate-scale-pulse { animation: scale-pulse 4s ease-in-out infinite; }
+                `}
+              </style>
+              <div className="relative w-full h-[500px] flex items-center justify-center">
+                {/* Orbit Paths - More subtle */}
+                <div className="absolute w-[380px] h-[380px] border border-primary-500/8 rounded-full animate-orbit-slow"></div>
+                <div className="absolute w-[280px] h-[280px] border border-dashed border-secondary-500/6 rounded-full animate-orbit-fast"></div>
+
+                {/* Central Core - Enhanced and Bigger */}
+                <div className="relative w-60 h-60 bg-white backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow border border-primary-500/20 transform -translate-y-8">
+                  <div className="w-52 h-52 bg-white rounded-full flex items-center justify-center shadow-inner">
+                    <div className="relative w-28 h-28">
+                      <svg 
+                        className="w-full h-full tree-growing tree-filled" 
+                        viewBox="0 0 192.4 244.81" 
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M192.4,143.35c-6.77,23.93-21.77,43.96-42.23,56.47-11.75,7.17-24.53,11.37-37.47,12.51-.41,5.93-.84,12.02-1.27,18.27-.68,9.66-.43,4.63-.95,14.21l-17.81-.95c.51-9.75.27-4.79.95-14.51,1.27-17.81,2.52-34.03,2.82-49.65-3.47.35-6.96.54-10.42.54-14.62,0-29.02-3.3-42.1-9.8C22.17,159.64,6.61,141.32,0,118.82l17.14-5.01c5.17,17.65,17.49,32.08,34.71,40.63,13.62,6.8,29.05,9.26,44.42,7.28-.49-11.42-1.71-22.74-4.11-34.33-7.55-36.3-25.39-59.99-56.2-74.53l7.63-16.13c29.62,14,49.51,35.9,60.37,66.68,9.01-25.99,12.24-53.41,9.18-79.46l17.73-2.08c4.3,36.63-2.65,75.67-19.63,110.59,3.41,20.76,3.55,40.63,2.52,61.78,9.37-1.19,18.57-4.47,27.1-9.66,16.62-10.15,28.83-26.5,34.38-46.08l17.16,4.85Z"/>
+                        <path d="M77.63,0c2.76,0,10.58,5.06,12.87,7.06,9.06,7.91,10.16,17.49,6.22,28.53-4.67,13.08-9.85,12.44-20.27,4.73-11.77-8.72-12.64-25.22-4.08-36.64C73.44,2.24,75.78,0,77.63,0Z"/>
+                        <path d="M44.85,94.89c2.7-.56,11.39,2.77,14.05,4.26,10.49,5.88,13.54,15.02,11.96,26.64-1.88,13.76-7.08,14.2-18.86,8.79-13.32-6.11-17.56-22.08-11.53-35.02.76-1.62,2.58-4.3,4.39-4.68Z"/>
+                        <path d="M43.23,216.98c-.49-2.7,3.04-11.22,4.59-13.81,6.1-10.25,15.24-13.03,26.72-11.16,13.59,2.22,13.89,7.39,8.23,18.93-6.4,13.04-22.35,16.83-35.01,10.52-1.59-.79-4.2-2.67-4.52-4.47Z"/>
+                        <path d="M149.12,129.51c1.94,1.71,4.31,10.09,4.68,12.91,1.48,11.15-3.66,18.56-13.25,23.89-11.36,6.3-14.61,2.66-17.16-9.2-2.88-13.4,6.7-25.53,19.77-28.26,1.64-.34,4.67-.48,5.96.67Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Satellite Nodes - Adjusted positions relative to centered hub */}
+                <div className="absolute top-[20px] left-[160px] animate-float" style={{animationDelay: '0s'}}>
+                  <div className="w-32 glass-card-hero p-2.5 rounded-lg shadow-lg flex items-center space-x-2 animate-scale-pulse" style={{animationDelay: '0.5s'}}>
+                    <div className="w-7 h-7 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-800">Research</p>
+                      <p className="text-xs text-neutral-600">Data-driven</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute right-[20px] top-[180px] animate-float" style={{animationDelay: '1.5s'}}>
+                  <div className="w-32 glass-card-hero p-2.5 rounded-lg shadow-lg flex items-center space-x-2 animate-scale-pulse" style={{animationDelay: '1s'}}>
+                    <div className="w-7 h-7 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                       <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012 2h2a2 2 0 012-2" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-800">Policy</p>
+                      <p className="text-xs text-neutral-600">Impactful</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-[60px] left-[160px] animate-float" style={{animationDelay: '3s'}}>
+                  <div className="w-32 glass-card-hero p-2.5 rounded-lg shadow-lg flex items-center space-x-2 animate-scale-pulse" style={{animationDelay: '1.5s'}}>
+                    <div className="w-7 h-7 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.354a1.76 1.76 0 011.17-2.148l6.355-2.147a1.76 1.76 0 012.147 1.17l.57 1.696" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-800">Advocacy</p>
+                      <p className="text-xs text-neutral-600">Strategic</p>
                     </div>
                   </div>
                 </div>
                 
-                {/* Top data card - Light theme */}
-                <div className="absolute top-0 left-0 w-64 glass-card-hero rounded-lg overflow-hidden shadow-lg">
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="text-xs font-medium text-neutral-700">Policy Impact</div>
-                      <div className="h-6 w-6 rounded-full flex items-center justify-center bg-primary-500/10">
-                        <svg className="w-3.5 h-3.5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                        </svg>
-                      </div>
+                <div className="absolute left-[20px] top-[180px] animate-float" style={{animationDelay: '4.5s'}}>
+                  <div className="w-32 glass-card-hero p-2.5 rounded-lg shadow-lg flex items-center space-x-2 animate-scale-pulse" style={{animationDelay: '2s'}}>
+                    <div className="w-7 h-7 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                     </div>
-                    
-                    <div className="space-y-3">
-                      <div className="relative w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
-                        <div className="h-full w-3/4 bg-primary-500 rounded-full"></div>
-                      </div>
-                      <div className="relative w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
-                        <div className="h-full w-2/3 bg-secondary-500 rounded-full"></div>
-                      </div>
-                      <div className="relative w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
-                        <div className="h-full w-4/5 bg-blue-500 rounded-full"></div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 grid grid-cols-3 gap-1 text-center text-[10px] text-neutral-600">
-                      <div>Research</div>
-                      <div>Analysis</div>
-                      <div>Implementation</div>
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-800">Analytics</p>
+                      <p className="text-xs text-neutral-600">Actionable</p>
                     </div>
                   </div>
                 </div>
-                
-                {/* Bottom analysis card - Light theme */}
-                <div className="absolute bottom-6 left-10 w-48 glass-card-hero rounded-lg overflow-hidden shadow-lg">
-                  <div className="p-3">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-secondary-500"></div>
-                      <div className="text-xs font-medium text-neutral-700">Project Analytics</div>
-                    </div>
-                    
-                    <div className="flex items-end h-16 mt-2 space-x-1">
-                      {[40, 65, 35, 75, 50, 80, 45].map((height, i) => (
-                        <div
-                          key={i}
-                          className={`flex-1 rounded-sm ${i % 2 === 0 ? 'bg-neutral-300/60' : 'bg-primary-500/70'}`}
-                          style={{ height: `${height}%` }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
+
+                {/* Subtle Impact Indicators - Adjusted for centered position */}
+                <div className="absolute top-[80px] right-[100px] w-8 h-8 glass-card-hero rounded-full flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
+                  <div className="w-3 h-3 bg-green-500/30 rounded-full"></div>
                 </div>
+
+                <div className="absolute bottom-[140px] right-[140px] w-6 h-6 glass-card-hero rounded-full flex items-center justify-center animate-float" style={{animationDelay: '5s'}}>
+                  <div className="w-2 h-2 bg-secondary-500/40 rounded-full"></div>
+                </div>
+
+                <div className="absolute top-[120px] left-[100px] w-7 h-7 glass-card-hero rounded-full flex items-center justify-center animate-float" style={{animationDelay: '3.5s'}}>
+                  <div className="w-2.5 h-2.5 bg-primary-500/30 rounded-full"></div>
+                </div>
+
               </div>
             </div>
           </div>

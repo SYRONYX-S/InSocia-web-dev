@@ -220,14 +220,21 @@ const Navbar = () => {
           </div>
           
           <div className="container mx-auto px-6 flex justify-between items-center">
-            {/* Logo - Colorful brand */}
+            {/* Logo - Using SVG logo */}
             <Link to="/" className="flex items-center z-10 group">
-              <span className="text-4xl font-bold tracking-tight text-neutral-800 group-hover:text-primary-700 transition-colors duration-300">
-                <span className="relative inline-block">
-                  <span className="relative z-10 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-700 bg-clip-text text-transparent">InSocia</span>
-                  <span className="absolute -inset-1 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/images/icon.svg" 
+                  alt="InSocia Logo" 
+                  className="h-10 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
+                />
+                <span className="text-3xl font-bold tracking-tight text-neutral-800 group-hover:text-primary-700 transition-colors duration-300">
+                  <span className="relative inline-block">
+                    <span className="relative z-10 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-700 bg-clip-text text-transparent">InSocia</span>
+                    <span className="absolute -inset-1 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </span>
                 </span>
-              </span>
+              </div>
             </Link>
             
             {/* Desktop Navigation with Dropdowns - Larger links */}

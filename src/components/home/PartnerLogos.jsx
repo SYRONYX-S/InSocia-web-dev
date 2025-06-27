@@ -108,7 +108,7 @@ const PartnerLogos = () => {
             <div className="absolute -top-24 right-1/4 w-48 h-48 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-24 left-1/4 w-48 h-48 bg-gradient-to-r from-secondary-500/20 to-primary-500/20 rounded-full blur-3xl"></div>
             
-            <div className="relative flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10">
+            <div className="relative flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 partner-logos-container">
               {pastCollaborations.map((partner) => (
                 <div 
                   key={partner.id}

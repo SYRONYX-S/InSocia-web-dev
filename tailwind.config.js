@@ -7,31 +7,31 @@ module.exports = {
     extend: {
       colors: {
         // Define a professional color palette suitable for a development consultancy
-        // Primary colors
+        // Primary colors - Based on logo color #ed572b
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#fef7f0',
+          100: '#feede0',
+          200: '#fdd9c1',
+          300: '#fcc297',
+          400: '#fa9f5c',
+          500: '#f87c32',
+          600: '#ed572b',
+          700: '#dc4520',
+          800: '#b8391d',
+          900: '#94301d',
         },
-        // Secondary colors
+        // Secondary colors - Complementary warm orange
         secondary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
+          50: '#fefbf0',
+          100: '#fef5e0',
+          200: '#fde8c1',
+          300: '#fbda97',
+          400: '#f9c85c',
+          500: '#f7b732',
+          600: '#e8a728',
+          700: '#c18f20',
+          800: '#9a731d',
+          900: '#7d5e1a',
         },
         // Neutral colors
         neutral: {

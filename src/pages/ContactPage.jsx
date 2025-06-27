@@ -118,7 +118,7 @@ const ContactPage = () => {
             </div>
 
             {/* Quick Contact Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 responsive-grid-small" data-aos="fade-up">
               {contactInfo.map((info, index) => (
                 <a
                   key={index}
@@ -573,7 +573,7 @@ const ContactPage = () => {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-200/50">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-200/50 responsive-grid-small">
                   <div className="text-center">
                     <div className="w-12 h-12 bg-primary-100/80 rounded-xl flex items-center justify-center mx-auto mb-3">
                       <FiCheckCircle className="w-6 h-6 text-primary-600" />

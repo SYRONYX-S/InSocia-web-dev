@@ -178,7 +178,7 @@ const ProjectsPage = () => {
             </div>
 
             {/* Impact Preview Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 responsive-grid-small" data-aos="fade-up">
               {stats.map((stat, index) => (
                 <div key={index} className="backdrop-blur-md bg-white/80 border border-neutral-200/50 rounded-xl p-6 text-center hover:bg-primary-50/50 transition-all duration-300 group">
                   <div className="text-3xl font-bold text-neutral-900 mb-2">{stat.number}</div>
@@ -284,7 +284,7 @@ const ProjectsPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 responsive-grid-small">
               {preparationPhases.map((phase, index) => (
                 <div
                   key={index}

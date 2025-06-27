@@ -50,7 +50,7 @@ const MissionStatement = () => {
         {/* Redesigned mission values layout - horizontal strip for better visual impact */}
         <motion.div 
           variants={item}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12"
+                      className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 responsive-grid-small"
         >
           <div className="backdrop-blur-md bg-white/70 p-6 rounded-xl border border-neutral-200/50 text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/40 hover:scale-[1.02] hover:border-primary-300/40 group">
             <div className="bg-primary-100/70 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-primary-600 transition-all duration-300 group-hover:bg-primary-200/80 group-hover:text-primary-700">

@@ -1,288 +1,244 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import MainLayout from '../layouts/MainLayout';
-import SectionLayout from '../layouts/SectionLayout';
-import SectionHeading from '../components/common/SectionHeading';
+import { motion } from 'framer-motion';
+import { FiFileText, FiUsers, FiShield, FiBook, FiGlobe, FiMail, FiAlertCircle } from 'react-icons/fi';
 
 const TermsPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const sections = [
+    {
+      id: 'introduction',
+      title: 'Introduction',
+      icon: FiFileText,
+      content: [
+        'Welcome to InSocia Development Consultancy LLP ("InSocia," "we," "our," or "us"). These Terms of Use govern your access to and use of our website, services, and any content provided by InSocia Development Consultancy.',
+        'By accessing or using our website and services, you agree to be bound by these Terms and our Privacy Policy. InSocia is a social development consultancy that partners with governments, NGOs, international development agencies, and academic institutions to design evidence-based solutions for sustainable social development.'
+      ]
+    },
+    {
+      id: 'definitions',
+      title: 'Key Definitions',
+      icon: FiBook,
+      content: [
+        '"Services" refers to all consulting services, research activities, policy advisory, project management, training, and digital platforms provided by InSocia.',
+        '"Client" refers to any organization, government entity, NGO, or individual that engages InSocia for consulting services.',
+        '"Content" includes all information, data, reports, methodologies, and intellectual property available through our website and services.',
+        '"Platform" refers to our website and any digital tools or systems we provide for project management and knowledge sharing.'
+      ]
+    },
+    {
+      id: 'permitted-use',
+      title: 'Permitted Use of Services',
+      icon: FiUsers,
+      content: [
+        'You may use our website and services for legitimate purposes related to social development, research, policy formulation, and organizational capacity building. Our services are intended for:',
+        '• Government agencies seeking evidence-based policy solutions',
+        '• NGOs requiring technical assistance and capacity building',
+        '• International development organizations implementing social programs',
+        '• Academic institutions conducting development research',
+        '• Corporate entities engaged in CSR and social impact initiatives'
+      ]
+    },
+    {
+      id: 'prohibited-use',
+      title: 'Prohibited Activities',
+      icon: FiAlertCircle,
+      content: [
+        'You agree not to:',
+        '• Use our services for any unlawful or unauthorized purpose',
+        '• Interfere with or disrupt the integrity or performance of our services',
+        '• Access data or materials not intended for you',
+        '• Reproduce, duplicate, copy, or sell any part of our proprietary content without authorization',
+        '• Use our services to harm vulnerable populations or undermine social development goals',
+        '• Share confidential information obtained through our services without proper authorization'
+      ]
+    },
+    {
+      id: 'intellectual-property',
+      title: 'Intellectual Property Rights',
+      icon: FiShield,
+      content: [
+        'All content, methodologies, frameworks, and materials developed by InSocia remain our intellectual property unless explicitly transferred through written agreement. This includes research methodologies, evaluation frameworks, training curricula, and analytical tools.',
+        'We respect the intellectual property rights of our clients and partners. Data, information, and materials provided by clients remain their property, though we may use aggregated, anonymized insights for research and knowledge development purposes with appropriate permissions.',
+        'InSocia is committed to contributing to the global knowledge commons. We may release certain methodologies, research findings, and tools under open source or Creative Commons licenses to advance social development practice.'
+      ]
+    },
+    {
+      id: 'professional-standards',
+      title: 'Professional Standards & Ethics',
+      icon: FiShield,
+      content: [
+        'InSocia adheres to the highest professional and ethical standards in all our work. Our services are guided by principles of:',
+        '• Evidence-based practice and rigorous methodology',
+        '• Commitment to social justice and equity',
+        '• Transparency and accountability in our processes',
+        '• Respect for local contexts and community voices',
+        '• Collaborative and participatory approaches',
+        '• Continuous learning and adaptive management'
+      ]
+    },
+    {
+      id: 'liability',
+      title: 'Disclaimers & Limitations',
+      icon: FiAlertCircle,
+      content: [
+        'While InSocia strives to provide high-quality consulting services based on best practices and evidence, we cannot guarantee specific outcomes or results from our recommendations. Social development involves complex systems and multiple variables beyond our control.',
+        'Research findings and data analysis are based on available information and methodological approaches appropriate at the time of study. Findings should be interpreted within their specific context and limitations clearly documented in our reports.',
+        'Our website may contain links to third-party resources and references to external research. We do not endorse or take responsibility for the accuracy, completeness, or reliability of third-party content.'
+      ]
+    },
+    {
+      id: 'governing-law',
+      title: 'Governing Law & Disputes',
+      icon: FiGlobe,
+      content: [
+        'These Terms are governed by the laws of India. Any disputes arising from these Terms or our services will be resolved through good faith negotiations. If necessary, disputes will be subject to the jurisdiction of courts in Kozhikode, Kerala, India.',
+        'For international clients, specific dispute resolution mechanisms may be agreed upon in individual service contracts, including mediation or arbitration under relevant international frameworks.'
+      ]
+    }
+  ];
+
   return (
-    <MainLayout>
+    <>
       <Helmet>
-                <title>Terms of Use | Insocia Consultancy</title>
+        <title>Terms of Use | InSocia Consultancy</title>
         <meta
           name="description"
-          content="Terms of Use for Insocia Consultancy website and services. Learn about our terms and conditions for using our platform and engaging with our consultancy services." 
+          content="Terms of Use for InSocia Development Consultancy website and services. Learn about our terms and conditions for using our platform and engaging with our consultancy services."
         />
         <meta name="keywords" content="terms of use, conditions, legal, policy, development consultancy, InSocia" />
         <link rel="canonical" href={`${window.location.origin}/terms`} />
       </Helmet>
 
-      <SectionLayout>
-        <div className="py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <SectionHeading
-              title="Terms of Use"
-              subtitle="Please read these terms and conditions carefully before using our website or services"
-              center
-            />
-
-            <div className="max-w-4xl mx-auto prose prose-lg prose-neutral">
-              {/* Introduction */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">1. Introduction</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  Welcome to Insocia Consultancy ("Insocia," "we," "our," or "us"). These Terms of Use ("Terms") 
-                  govern your access to and use of our website, services, and any content provided by InSocia Development 
-                  Consultancy LLP. By accessing or using our website and services, you agree to be bound by these Terms and 
-                  our Privacy Policy.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  InSocia is a social development consultancy that partners with governments, NGOs, international development 
-                  agencies, and academic institutions to design evidence-based solutions for sustainable social development 
-                  through research, policy advisory, project management, and capacity building services.
-                </p>
+      {/* Banner Section - Fixed padding for navbar */}
+      <section className="relative pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-section-light"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-gradient-radial from-secondary-500/8 to-transparent blur-3xl"></div>
+          <div className="absolute bottom-[30%] left-[15%] w-[35%] h-[35%] rounded-full bg-gradient-radial from-primary-500/6 to-transparent blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-6xl mx-auto"
+          >
+            <div className="flex justify-center mb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-3xl flex items-center justify-center shadow-xl">
+                <FiFileText className="w-10 h-10 text-white" />
               </div>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-neutral-900 mb-6 leading-tight">
+              Terms of Use
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed mb-12 responsive-desc max-w-4xl mx-auto">
+              Please read these terms and conditions carefully before using our website or engaging with our services. These terms establish a fair and transparent framework for our collaboration.
+            </p>
+            
+            <div className="flex justify-center">
+              <div className="w-32 h-1 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full"></div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-              {/* Definitions */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">2. Definitions</h2>
-                <ul className="text-neutral-600 leading-relaxed space-y-2">
-                  <li><strong>"Services"</strong> refers to all consulting services, research activities, policy advisory, project management, training, and digital platforms provided by InSocia.</li>
-                  <li><strong>"Client"</strong> refers to any organization, government entity, NGO, or individual that engages InSocia for consulting services.</li>
-                  <li><strong>"Content"</strong> includes all information, data, reports, methodologies, and intellectual property available through our website and services.</li>
-                  <li><strong>"Platform"</strong> refers to our website and any digital tools or systems we provide for project management and knowledge sharing.</li>
-                </ul>
-              </div>
+      {/* Content Sections - Wider layout */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 xl:gap-16">
+              {sections.map((section, index) => (
+                <motion.div
+                  key={section.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="h-full"
+                >
+                  <div className="bg-white/90 backdrop-blur-sm border border-neutral-200/50 rounded-3xl p-8 xl:p-10 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                    <div className="flex items-center mb-8">
+                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center mr-5 shadow-lg">
+                        <section.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <h2 className="text-2xl xl:text-3xl font-heading font-bold text-neutral-900">
+                        {section.title}
+                      </h2>
+                    </div>
+                    
+                    <div className="prose prose-lg prose-neutral max-w-none">
+                      {section.content.map((paragraph, pIndex) => (
+                        <p key={pIndex} className={`text-neutral-600 leading-relaxed responsive-desc ${paragraph === '' ? 'mb-0' : 'mb-4'} ${paragraph.startsWith('•') || paragraph.startsWith('"') ? 'ml-4' : ''}`}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-              {/* Use of Services */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">3. Use of Our Services</h2>
-                
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">3.1 Permitted Use</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  You may use our website and services for legitimate purposes related to social development, research, 
-                  policy formulation, and organizational capacity building. Our services are intended for:
-                </p>
-                <ul className="text-neutral-600 leading-relaxed mt-3 space-y-1">
-                  <li>• Government agencies seeking evidence-based policy solutions</li>
-                  <li>• NGOs requiring technical assistance and capacity building</li>
-                  <li>• International development organizations implementing social programs</li>
-                  <li>• Academic institutions conducting development research</li>
-                  <li>• Corporate entities engaged in CSR and social impact initiatives</li>
-                </ul>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">3.2 Prohibited Use</h3>
-                <p className="text-neutral-600 leading-relaxed">You agree not to:</p>
-                <ul className="text-neutral-600 leading-relaxed mt-3 space-y-1">
-                  <li>• Use our services for any unlawful or unauthorized purpose</li>
-                  <li>• Interfere with or disrupt the integrity or performance of our services</li>
-                  <li>• Access data or materials not intended for you</li>
-                  <li>• Reproduce, duplicate, copy, or sell any part of our proprietary content without authorization</li>
-                  <li>• Use our services to harm vulnerable populations or undermine social development goals</li>
-                  <li>• Share confidential information obtained through our services without proper authorization</li>
-                </ul>
-              </div>
-
-              {/* Service Agreements */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">4. Service Agreements and Consulting Engagements</h2>
-                
-                <h3 className="text-xl font-medium text-neutral-700 mb-3">4.1 Consulting Services</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Specific consulting engagements are governed by separate service agreements that detail scope of work, 
-                  deliverables, timelines, and compensation. These Terms provide a general framework but do not supersede 
-                  specific contractual arrangements.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">4.2 Research and Data Collection</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Our research activities follow strict ethical guidelines and comply with relevant data protection regulations. 
-                  When conducting research involving human subjects, we obtain necessary approvals and informed consent as required.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">4.3 Training and Capacity Building</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Training programs and capacity building services include specific learning objectives and evaluation criteria. 
-                  Participants are expected to engage constructively and respect intellectual property rights of training materials.
-                </p>
-              </div>
-
-              {/* Intellectual Property */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">5. Intellectual Property Rights</h2>
-                
-                <h3 className="text-xl font-medium text-neutral-700 mb-3">5.1 InSocia's Intellectual Property</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  All content, methodologies, frameworks, and materials developed by InSocia remain our intellectual property 
-                  unless explicitly transferred through written agreement. This includes research methodologies, evaluation 
-                  frameworks, training curricula, and analytical tools.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">5.2 Client and Partner Contributions</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  We respect the intellectual property rights of our clients and partners. Data, information, and materials 
-                  provided by clients remain their property, though we may use aggregated, anonymized insights for research 
-                  and knowledge development purposes with appropriate permissions.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">5.3 Open Source and Public Knowledge</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  InSocia is committed to contributing to the global knowledge commons. We may release certain methodologies, 
-                  research findings, and tools under open source or Creative Commons licenses to advance social development practice.
-                </p>
-              </div>
-
-              {/* Privacy and Data Protection */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">6. Privacy and Data Protection</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  InSocia takes data protection seriously and complies with applicable privacy laws and regulations. 
-                  Our handling of personal data is governed by our Privacy Policy, which forms part of these Terms. 
-                  We implement appropriate technical and organizational measures to protect data confidentiality, 
-                  integrity, and availability.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  When conducting research or evaluations involving personal data, we follow strict protocols for data 
-                  minimization, purpose limitation, and secure data handling. Sensitive data is processed only with 
-                  explicit consent and necessary legal basis.
-                </p>
-              </div>
-
-              {/* Confidentiality */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">7. Confidentiality</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  InSocia maintains strict confidentiality regarding client information, project details, and sensitive 
-                  data encountered during our engagements. We require similar confidentiality commitments from our 
-                  staff, partners, and subcontractors.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  Clients and users of our services are also expected to maintain confidentiality regarding proprietary 
-                  methodologies, unpublished research findings, and sensitive information shared during collaborations.
-                </p>
-              </div>
-
-              {/* Disclaimers and Limitations */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">8. Disclaimers and Limitations of Liability</h2>
-                
-                <h3 className="text-xl font-medium text-neutral-700 mb-3">8.1 Service Disclaimer</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  While InSocia strives to provide high-quality consulting services based on best practices and evidence, 
-                  we cannot guarantee specific outcomes or results from our recommendations. Social development involves 
-                  complex systems and multiple variables beyond our control.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">8.2 Research and Data Limitations</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Research findings and data analysis are based on available information and methodological approaches 
-                  appropriate at the time of study. Findings should be interpreted within their specific context and 
-                  limitations clearly documented in our reports.
-                </p>
-
-                <h3 className="text-xl font-medium text-neutral-700 mb-3 mt-6">8.3 Third-Party Content</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Our website may contain links to third-party resources and references to external research. We do not 
-                  endorse or take responsibility for the accuracy, completeness, or reliability of third-party content.
-                </p>
-              </div>
-
-              {/* Professional Standards */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">9. Professional Standards and Ethics</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  InSocia adheres to the highest professional and ethical standards in all our work. Our services are 
-                  guided by principles of:
-                </p>
-                <ul className="text-neutral-600 leading-relaxed mt-3 space-y-1">
-                  <li>• Evidence-based practice and rigorous methodology</li>
-                  <li>• Commitment to social justice and equity</li>
-                  <li>• Transparency and accountability in our processes</li>
-                  <li>• Respect for local contexts and community voices</li>
-                  <li>• Collaborative and participatory approaches</li>
-                  <li>• Continuous learning and adaptive management</li>
-                </ul>
-              </div>
-
-              {/* Termination */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">10. Termination</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  Either party may terminate consulting engagements according to the terms specified in individual 
-                  service agreements. We reserve the right to suspend or terminate access to our website and services 
-                  for violations of these Terms or for legitimate business reasons with appropriate notice.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  Upon termination, confidentiality obligations and intellectual property rights continue to apply as 
-                  specified in relevant agreements.
-                </p>
-              </div>
-
-              {/* Governing Law */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">11. Governing Law and Dispute Resolution</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  These Terms are governed by the laws of India. Any disputes arising from these Terms or our services 
-                  will be resolved through good faith negotiations. If necessary, disputes will be subject to the 
-                  jurisdiction of courts in Kozhikode, Kerala, India.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  For international clients, specific dispute resolution mechanisms may be agreed upon in individual 
-                  service contracts, including mediation or arbitration under relevant international frameworks.
-                </p>
-              </div>
-
-              {/* Changes to Terms */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">12. Changes to These Terms</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  InSocia reserves the right to update these Terms periodically to reflect changes in our services, 
-                  legal requirements, or business practices. We will notify users of significant changes through our 
-                  website and direct communication where appropriate.
-                </p>
-                <p className="text-neutral-600 leading-relaxed mt-4">
-                  Continued use of our services after changes to these Terms constitutes acceptance of the updated terms. 
-                  We encourage regular review of these Terms to stay informed of any modifications.
-                </p>
-              </div>
-
-              {/* Contact Information */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-semibold text-neutral-800 mb-4">13. Contact Information</h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  If you have questions about these Terms or our services, please contact us:
-                </p>
-                <div className="bg-neutral-50 p-6 rounded-lg mt-4">
-                  <p className="text-neutral-700 font-medium">Insocia Consultancy LLP</p>
-                  <p className="text-neutral-600 mt-2">
-                                          Email: connect@insocia.in<br />
-                    Website: www.insocia.in<br />
-                    Address: Kozhikode, Kerala, India
+            {/* Contact Section - Enhanced */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-20"
+            >
+              <div className="bg-gradient-to-br from-secondary-50 to-primary-50 border border-secondary-200/50 rounded-3xl p-10 xl:p-12 shadow-xl">
+                <div className="text-center mb-10">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <FiMail className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl xl:text-4xl font-heading font-bold text-neutral-900 mb-4">
+                    Questions About Terms?
+                  </h2>
+                  <p className="text-lg text-neutral-600 leading-relaxed responsive-desc max-w-2xl mx-auto">
+                    If you have questions about these Terms of Use or our services, please contact us:
                   </p>
-                  <p className="text-neutral-600 mt-4">
-                    For partnership inquiries: partnerships@insocia.in
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-white/80 rounded-2xl p-8 border border-neutral-200/50 shadow-sm">
+                    <h3 className="text-xl font-semibold text-neutral-900 mb-4">General Inquiries</h3>
+                    <p className="text-neutral-600">
+                      <strong>Email:</strong> connect@insocia.in<br />
+                      <strong>Website:</strong> www.insocia.in<br />
+                      <strong>Phone:</strong> +91 701 234 5678
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white/80 rounded-2xl p-8 border border-neutral-200/50 shadow-sm">
+                    <h3 className="text-xl font-semibold text-neutral-900 mb-4">Partnership Inquiries</h3>
+                    <p className="text-neutral-600">
+                      <strong>Email:</strong> partnerships@insocia.in<br />
+                      <strong>Address:</strong> Kozhikode, Kerala, India
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-8 border-t border-neutral-200/50 text-center">
+                  <p className="text-sm text-neutral-500">
+                    <strong>Effective Date:</strong> January 1, 2025 | <strong>Last Updated:</strong> January 1, 2025
                   </p>
                 </div>
               </div>
-
-              {/* Effective Date */}
-              <div className="border-t border-neutral-200 pt-6">
-                <p className="text-sm text-neutral-500">
-                  <strong>Effective Date:</strong> These Terms of Use are effective as of January 1, 2025.
-                </p>
-                <p className="text-sm text-neutral-500 mt-2">
-                  <strong>Last Updated:</strong> January 1, 2025
-                </p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </SectionLayout>
-    </MainLayout>
+      </section>
+    </>
   );
 };
 

@@ -61,7 +61,7 @@ html {
 
 /* Light theme background with grid and gradient */
 .bg-light-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fef7f0 50%, #feede0 100%);
 }
 
 /* Light theme background with grid pattern */
@@ -69,18 +69,18 @@ html {
   background: 
     linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px),
-    linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+    linear-gradient(135deg, #ffffff 0%, #fef7f0 50%, #feede0 100%);
   background-size: 40px 40px, 40px 40px, 100% 100%;
 }
 
 /* Enhanced section background with subtle noise texture */
 .bg-section-light {
   background: 
-    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 25% 25%, rgba(237, 87, 43, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(247, 183, 50, 0.05) 0%, transparent 50%),
     linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+    linear-gradient(135deg, #ffffff 0%, #fef7f0 50%, #feede0 100%);
   background-size: 800px 800px, 600px 600px, 40px 40px, 40px 40px, 100% 100%;
 }
 
@@ -273,4 +273,142 @@ body.safari-warning-visible .hero-section {
 
 .animate-shimmer {
   animation: shimmer 1.5s ease-in-out;
+}
+
+/* Add comprehensive responsive fixes for screens below 575px */
+@media (max-width: 575px) {
+  /* Force single column layout for all grids to prevent overflow */
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  /* Force responsive breakpoints for medium grids too */
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  /* Ensure flex layouts wrap and don't cause overflow */
+  .flex {
+    flex-wrap: wrap !important;
+  }
+  
+  /* Reduce gaps to prevent overflow */
+  .gap-4 {
+    gap: 0.75rem !important;
+  }
+  
+  .gap-5 {
+    gap: 0.75rem !important;
+  }
+  
+  .gap-6 {
+    gap: 1rem !important;
+  }
+  
+  .gap-8 {
+    gap: 1rem !important;
+  }
+  
+  .gap-12 {
+    gap: 1.5rem !important;
+  }
+  
+  /* Ensure proper padding on small screens */
+  .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Prevent text overflow */
+  .text-base {
+    font-size: 0.875rem !important;
+  }
+  
+  .text-lg {
+    font-size: 1rem !important;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem !important;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Ensure buttons don't cause overflow */
+  .flex-col.sm\:flex-row {
+    flex-direction: column !important;
+  }
+  
+  /* Fix specific responsive layout issues */
+  .responsive-grid-small {
+    display: grid !important;
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+  
+  /* Ensure partner logos wrap properly */
+  .partner-logos-container {
+    gap: 0.75rem !important;
+  }
+  
+  /* Fix hero stats layout */
+  .hero-stats {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Description text responsive sizing */
+  .responsive-desc { 
+    font-size: 14px !important; 
+  }
+  
+  /* Ensure all containers have proper max width */
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Fix specific width issues */
+  .w-5\/12,
+  .w-8\/12,
+  .md\:w-5\/12,
+  .lg\:w-\[30\%\] {
+    width: 100% !important;
+  }
+  
+  /* Ensure proper flex item sizing */
+  .flex-shrink-0 {
+    flex-shrink: 1 !important;
+  }
 }

@@ -374,7 +374,7 @@ const ResourcesPage = () => {
 
                     {/* Search Results Grid */}
                     <div className="p-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 responsive-grid-small">
                         {searchResults.slice(0, 9).map((resource, index) => {
                           const FormatIcon = getFormatIcon(resource.format);
                           return (
@@ -456,7 +456,7 @@ const ResourcesPage = () => {
             <div className="mb-8"></div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 responsive-grid-small" data-aos="fade-up">
               {[
                 { number: '150+', label: 'Resources Available', icon: FiBook },
                 { number: '25K+', label: 'Total Downloads', icon: FiDownload },

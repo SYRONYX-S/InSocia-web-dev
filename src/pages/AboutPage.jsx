@@ -172,7 +172,7 @@ const AboutPage = () => {
         </div>
 
         {/* Why Insocia Grid */}
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-8 mb-16 responsive-grid-small">
           {[
             {
               title: "Evidence-Based",
@@ -267,7 +267,7 @@ const AboutPage = () => {
         </div>
 
         {/* Target Audiences Grid */}
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-8 mb-16 responsive-grid-small">
           {[
             {
               title: "Corporates",
@@ -370,7 +370,7 @@ const AboutPage = () => {
         </div>
 
         {/* Core Competencies Grid */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16">
+        <div className="flex flex-wrap justify-center gap-6 mb-16 responsive-grid-small">
           {[
             {
               title: "Social Research Methodologies",

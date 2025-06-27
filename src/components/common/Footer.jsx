@@ -36,11 +36,20 @@ const Footer = () => {
         <div className="container mx-auto px-6 pt-20 pb-16">
           <div className="text-center mb-16">
             <Link to="/" className="inline-block mb-6 group">
-              <div className="relative">
-                <span className="text-5xl font-heading font-bold text-white bg-clip-text bg-gradient-to-r from-white via-primary-200 to-white">
-                  Insocia
-                </span>
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-[2px] bg-gradient-to-r from-transparent via-primary-400 to-transparent group-hover:via-primary-300 transition-colors duration-300"></div>
+              <div className="flex items-center justify-center space-x-4 mb-2">
+                <img 
+                  src="/images/icon.svg" 
+                  alt="InSocia Logo" 
+                  className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="relative">
+                  <span className="text-5xl font-heading font-bold text-white bg-clip-text bg-gradient-to-r from-white via-primary-200 to-white">
+                    Insocia
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-primary-400 to-transparent group-hover:via-primary-300 transition-colors duration-300"></div>
               </div>
             </Link>
             

@@ -66,7 +66,7 @@ const ServicesPage = () => {
             </p>
 
             {/* Key differentiators */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto responsive-grid-small">
               <div className="flex items-start gap-3 text-left backdrop-blur-md bg-white/80 border border-neutral-200/50 rounded-xl p-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-lg flex items-center justify-center border border-primary-400/30">
                   <FiTarget className="w-5 h-5 text-primary-600" />
@@ -125,7 +125,7 @@ const ServicesPage = () => {
             </div>
 
             {/* Enhanced Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto responsive-grid-small">
               {[
                 { number: '25+', label: 'Projects Delivered', icon: FiCheckCircle },
                 { number: '18', label: 'Countries Served', icon: FiGlobe },
@@ -195,7 +195,7 @@ const ServicesPage = () => {
                   </p>
                   
                   {/* Key Features Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 responsive-grid-small">
                     {[
                       { title: "Regulatory Assessments", desc: "Compliance analysis and regulatory landscape mapping" },
                       { title: "Risk Analysis", desc: "Strategic forecasting and future-ready frameworks" },
@@ -383,7 +383,7 @@ const ServicesPage = () => {
                   </p>
                   
                   {/* ESG Categories */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 responsive-grid-small">
                     {[
                       { category: "Environmental", icon: "🌱", desc: "Climate impact & resource management" },
                       { category: "Social", icon: "👥", desc: "Community engagement & workforce" },
@@ -463,7 +463,7 @@ const ServicesPage = () => {
                         <p className="text-neutral-600">Optimize your giving for maximum benefit</p>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-4 responsive-grid-small">
                         {[
                           { label: "Programs Evaluated", value: "150+" },
                           { label: "Efficiency Gain", value: "45%" },
@@ -652,7 +652,7 @@ const ServicesPage = () => {
                         <p className="text-neutral-600">From planning to execution and evaluation</p>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-4 responsive-grid-small">
                         {[
                           { label: "Projects Managed", value: "200+" },
                           { label: "Success Rate", value: "98%" },

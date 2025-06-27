@@ -42,7 +42,7 @@ const ServicesList = () => {
   const [hoveredService, setHoveredService] = useState(null);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 responsive-grid-small">
       {services.map((service, index) => (
         <div
           key={service.id}

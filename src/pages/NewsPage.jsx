@@ -339,7 +339,7 @@ const NewsPage = () => {
                 </div>
                 
                 {searchResults.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 responsive-grid-small">
                     {searchResults.map((article, index) => (
                       <article
                         key={article.id}
@@ -501,7 +501,7 @@ const NewsPage = () => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 responsive-grid-small">
                 {displayArticles.map((article, index) => (
                   <article
                     key={article.id}

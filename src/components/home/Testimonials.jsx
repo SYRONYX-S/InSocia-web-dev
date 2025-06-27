@@ -220,7 +220,7 @@ const Testimonials = () => {
         </div>
         
         {/* Testimonial stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 responsive-grid-small">
           <div className="backdrop-blur-md bg-white/70 p-4 rounded-xl border border-neutral-200/50 text-center">
             <div className="text-2xl md:text-3xl font-bold text-primary-600">240+</div>
             <div className="text-sm text-neutral-600">Partner Organizations</div>
