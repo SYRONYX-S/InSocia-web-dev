@@ -720,7 +720,7 @@ const ResourcesPage = () => {
                     
                     <Link
                       to="/services"
-                      className="inline-flex items-center gap-3 bg-white/90 hover:bg-white text-neutral-900 font-semibold px-8 py-4 rounded-xl border border-neutral-200/50 hover:border-primary-400/50 transition-all duration-300 shadow-lg hover:shadow-primary-500/25"
+                      className="secondary-light-btn"
                     >
                       <FiGrid className="w-5 h-5" />
                       <span>Explore Services</span>

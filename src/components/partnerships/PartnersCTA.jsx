@@ -69,7 +69,7 @@ const PartnersCTA = () => {
                 >
                   <Link 
                     to="/contact" 
-                    className="bg-primary-600/90 hover:bg-primary-500/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center gap-3 group shadow-lg hover:shadow-primary-500/25"
+                    className="primary-btn"
                   >
                     Start Partnership
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

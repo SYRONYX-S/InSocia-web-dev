@@ -17,7 +17,7 @@ const Navbar = () => {
     return path;
   };
   
-  // Navigation structure with dropdowns - 5 main items with all pages covered
+  // Navigation structure with dropdowns - 4 main items with all pages covered
   const navItems = [
     { name: 'Home', path: getPath('/') },
     { 
@@ -27,6 +27,9 @@ const Navbar = () => {
         { name: 'About InSocia', path: getPath('/about') },
         { name: 'Our Team', path: getPath('/about#our-team') },
         { name: 'Careers', path: getPath('/careers') },
+        { name: 'divider', isDivider: true },
+        { name: 'Projects', path: getPath('/projects') },
+        { name: 'News & Insights', path: getPath('/news') },
       ]
     },
     { 
@@ -35,14 +38,6 @@ const Navbar = () => {
       dropdown: [
         { name: 'Services Overview', path: getPath('/services') },
         { name: 'Focus Areas', path: getPath('/focus-areas') },
-      ]
-    },
-    {
-      name: 'Our Work',
-      path: getPath('/projects'),
-      dropdown: [
-        { name: 'Projects', path: getPath('/projects') },
-        { name: 'News & Insights', path: getPath('/news') },
       ]
     },
     { 
@@ -56,8 +51,7 @@ const Navbar = () => {
         { name: 'Policy Innovation Lab', path: getPath('/resources#policy-lab') },
         { name: 'Training Resources', path: getPath('/resources#training') },
       ]
-    },
-    { name: 'Contact', path: getPath('/contact') }
+    }
   ];
   
   // Handle scroll effect - simplified logic
@@ -222,18 +216,12 @@ const Navbar = () => {
           <div className="container mx-auto px-6 flex justify-between items-center">
             {/* Logo - Using SVG logo */}
             <Link to="/" className="flex items-center z-10 group">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center">
                 <img 
-                  src="/images/icon.svg" 
+                  src="/images/logo.svg" 
                   alt="InSocia Logo" 
-                  className="h-10 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
+                  className="h-12 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
                 />
-                <span className="text-3xl font-bold tracking-tight text-neutral-800 group-hover:text-primary-700 transition-colors duration-300">
-                  <span className="relative inline-block">
-                    <span className="relative z-10 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-700 bg-clip-text text-transparent">InSocia</span>
-                    <span className="absolute -inset-1 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  </span>
-                </span>
               </div>
             </Link>
             
@@ -276,20 +264,27 @@ const Navbar = () => {
                             transition={{ duration: 0.15 }}
                             className="absolute top-full left-0 mt-2 w-52 bg-white/95 backdrop-blur-md rounded-lg shadow-xl border border-neutral-200/50 overflow-hidden"
                           >
-                            {item.dropdown.map((dropItem, idx) => (
-                              <Link
-                                key={dropItem.name}
-                                to={dropItem.path}
-                                className={`block px-5 py-3 text-sm transition-colors duration-200 ${
-                                  location.pathname === dropItem.path
-                                    ? 'text-primary-800 bg-primary-500/10'
-                                    : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
-                                }`}
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                {dropItem.name}
-                              </Link>
-                            ))}
+                            {item.dropdown.map((dropItem, idx) => {
+                              if (dropItem.isDivider) {
+                                return (
+                                  <div key={dropItem.name} className="my-1 border-t border-neutral-200"></div>
+                                );
+                              }
+                              return (
+                                <Link
+                                  key={dropItem.name}
+                                  to={dropItem.path}
+                                  className={`block px-5 py-3 text-sm transition-colors duration-200 ${
+                                    location.pathname === dropItem.path
+                                      ? 'text-primary-800 bg-primary-500/10'
+                                      : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                                  }`}
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  {dropItem.name}
+                                </Link>
+                              );
+                            })}
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -312,9 +307,8 @@ const Navbar = () => {
               {/* CTA Button - Colorful and attractive */}
               <Link
                 to="/contact"
-                className="ml-6 px-6 py-3 text-base font-bold text-white bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 hover:from-primary-800 hover:via-secondary-800 hover:to-primary-800 hover:text-white rounded-lg overflow-hidden group transition-all duration-300 backdrop-blur-sm transform hover:translate-y-[-2px] hover:shadow-[0_8px_25px_rgba(59,130,246,0.4)] hover:shadow-primary-600/40"
+                className="cta-btn ml-6 px-6 py-3 text-base"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-secondary-600/30 to-primary-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative z-10 flex items-center">
                   Get in Touch
                   <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -401,23 +395,30 @@ const Navbar = () => {
                                   transition={{ duration: 0.2 }}
                                   className="ml-4 mt-2 border-l-2 border-primary-500/40 bg-neutral-50 rounded-r-lg overflow-hidden"
                                 >
-                                  {item.dropdown.map((dropItem, idx) => (
-                                    <Link
-                                      key={dropItem.name}
-                                      to={dropItem.path}
-                                                                              className={`block px-5 py-3 text-base transition-colors duration-200 ${
+                                  {item.dropdown.map((dropItem, idx) => {
+                                    if (dropItem.isDivider) {
+                                      return (
+                                        <div key={dropItem.name} className="mx-2 my-2 border-t border-neutral-300"></div>
+                                      );
+                                    }
+                                    return (
+                                      <Link
+                                        key={dropItem.name}
+                                        to={dropItem.path}
+                                        className={`block px-5 py-3 text-base transition-colors duration-200 ${
                                           location.pathname === dropItem.path
                                             ? 'text-primary-600 font-medium'
                                             : 'text-neutral-700 hover:text-primary-600'
                                         }`}
-                                      onClick={() => {
-                                        setIsOpen(false);
-                                        setMobileActiveDropdown(null);
-                                      }}
-                                    >
-                                      {dropItem.name}
-                                    </Link>
-                                  ))}
+                                        onClick={() => {
+                                          setIsOpen(false);
+                                          setMobileActiveDropdown(null);
+                                        }}
+                                      >
+                                        {dropItem.name}
+                                      </Link>
+                                    );
+                                  })}
                                 </motion.div>
                               )}
                             </AnimatePresence>
@@ -445,7 +446,7 @@ const Navbar = () => {
                     <Link
                       to="/contact"
                       onClick={() => setIsOpen(false)}
-                      className="block w-full text-center px-4 py-4 font-bold text-white bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 hover:from-primary-700 hover:via-secondary-700 hover:to-primary-700 rounded-lg transition-all duration-300 group"
+                      className="cta-btn block w-full text-center px-4 py-4 group"
                     >
                       <span className="relative z-10 flex items-center justify-center">
                         Get in Touch

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FiGlobe, FiUsers, FiBriefcase, FiBook, FiArrowRight, FiTrendingUp, FiDollarSign } from 'react-icons/fi';
 import SEO from '../utils/seo';
 import PartnersCTA from '../components/partnerships/PartnersCTA';
+import { Link } from 'react-router-dom';
 
 const PartnershipsPage = () => {
   const partnershipTypes = [
@@ -153,17 +154,16 @@ const PartnershipsPage = () => {
             >
               <a 
                 href="#partnerships-overview"
-                className="bg-primary-600/90 hover:bg-primary-500/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 group"
+                className="secondary-btn"
               >
                 Explore Partnerships
-                <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a 
-                href="mailto:partnerships@insocia.in"
-                className="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+              <Link
+                to="/contact"
+                className="primary-btn"
               >
                 Partner With Us
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

@@ -23,7 +23,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative bg-section-light overflow-hidden hero-section min-h-screen">
+    <section className="relative overflow-hidden hero-section min-h-screen">
       {/* Static floating elements - Light theme */}
       <div className="absolute inset-0 z-5 overflow-hidden">
         <div className="absolute top-[10%] left-[10%] w-16 h-16 bg-primary-500/15 rounded-full blur-xl"></div>

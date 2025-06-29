@@ -45,9 +45,9 @@ const AboutHero = () => {
             </div>
             
             <div className="pt-4 flex items-center">
-              <a href="#our-values" className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors shadow-lg shadow-primary-600/20 group">
+              <a href="#our-values" className="secondary-light-btn"
+              >
                 Explore Our Values
-                <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </div>
           </div>

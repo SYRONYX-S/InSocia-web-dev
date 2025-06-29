@@ -543,9 +543,9 @@ const AboutPage = () => {
               
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 bg-white/80 hover:bg-white border border-neutral-300 hover:border-primary-400 text-neutral-700 hover:text-primary-700 font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg backdrop-blur-sm"
+                className="secondary-light-btn"
               >
-                <span>Discuss Your Project</span>
+                Discuss Your Project
               </Link>
             </div>
             

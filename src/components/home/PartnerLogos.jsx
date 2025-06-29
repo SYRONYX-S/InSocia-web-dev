@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionLayout from '../../layouts/SectionLayout';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const PartnerLogos = () => {
   // Updated to include new partner logos from images/partners directory
@@ -73,7 +74,7 @@ const PartnerLogos = () => {
   return (
     <section className="py-16 md:py-20 bg-gradient-to-br from-neutral-50 via-primary-50/30 to-neutral-50 relative overflow-hidden">
       {/* Background grid effect */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <div className="absolute inset-0 opacity-5"></div>
       
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent"></div>
@@ -231,15 +232,12 @@ const PartnerLogos = () => {
           
           {/* Call to action for partnership */}
           <motion.div variants={itemVariants} className="text-center mt-16">
-            <a 
-              href="/contact" 
-              className="secondary-btn text-base backdrop-blur-sm px-6 py-3"
+            <Link 
+              to="/partnerships" 
+              className="primary-btn"
             >
-              Become a Partner
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </a>
+              View Our Partners
+            </Link>
           </motion.div>
         </motion.div>
       </div>

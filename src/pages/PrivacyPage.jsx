@@ -111,10 +111,9 @@ const PrivacyPage = () => {
       {/* Banner Section - Fixed padding for navbar */}
       <section className="relative pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden">
         {/* Background Effects */}
-        <div className="absolute inset-0 bg-section-light"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-gradient-radial from-primary-500/8 to-transparent blur-3xl"></div>
-          <div className="absolute bottom-[30%] left-[15%] w-[35%] h-[35%] rounded-full bg-gradient-radial from-secondary-500/6 to-transparent blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-full h-full object-cover">
+          <div className="absolute inset-0"></div>
+          <img src="/images/banners/privacy.webp" alt="Abstract background" className="w-full h-full object-cover"/>
         </div>
         
         <div className="container mx-auto px-6 relative z-10">

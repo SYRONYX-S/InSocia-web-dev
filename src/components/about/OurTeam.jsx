@@ -80,7 +80,7 @@ const OurTeam = () => {
         </p>
         <a 
           href="/careers" 
-          className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors"
+          className="secondary-light-btn"
         >
           View Current Openings
         </a>

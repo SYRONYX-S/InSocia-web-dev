@@ -121,7 +121,7 @@ const FeaturedProjects = () => {
                 <p className="text-neutral-600 mb-4 flex-grow">{projects[0].description}</p>
                 <Link 
                   to={projects[0].link} 
-                  className="secondary-btn text-sm backdrop-blur-sm hover:translate-x-1 self-start mt-auto"
+                  className="secondary-light-btn text-sm backdrop-blur-sm hover:translate-x-1 self-start mt-auto"
                   aria-label={`View details about ${projects[0].title}`}
                 >
                   View Project
@@ -227,14 +227,10 @@ const FeaturedProjects = () => {
         >
           <Link 
             to="/projects" 
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg transition-all duration-300 group relative"
+            className="primary-btn"
             aria-label="View all InSocia development projects"
           >
-            <span className="absolute inset-0 bg-primary-700/60 backdrop-blur-sm rounded-lg group-hover:bg-primary-600/70 transition-colors duration-300"></span>
-            <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 overflow-hidden">
-              <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 opacity-30"></span>
-            </span>
-            <span className="relative text-white flex items-center z-10">
+            <span className="relative z-10 flex items-center">
               View All Projects
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />

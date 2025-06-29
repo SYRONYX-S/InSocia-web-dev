@@ -23,7 +23,7 @@ const ServicesPage = () => {
   };
 
   return (
-    <>
+    <div className="bg-white">
       <Helmet>
         <title>Our Services | Insocia Consultancy - Evidence-Based Social Impact Solutions</title>
         <meta 
@@ -40,7 +40,7 @@ const ServicesPage = () => {
       </Helmet>
 
       {/* Premium Hero Section - Light Theme */}
-      <section className="relative bg-section-light overflow-hidden hero-section min-h-screen">
+      <section className="relative overflow-hidden hero-section min-h-screen">
         {/* Static background effects - Light theme */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="absolute w-[800px] h-[800px] -top-40 -left-40 bg-gradient-to-br from-primary-500/8 to-secondary-500/6 rounded-full blur-3xl"></div>
@@ -218,7 +218,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-primary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Start Your Project</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -342,7 +342,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-green-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Evaluate Your CSR</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -401,7 +401,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-secondary-600 to-secondary-700 hover:from-secondary-700 hover:to-secondary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-secondary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Get ESG Rating</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -526,7 +526,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-pink-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Assess Your Programs</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -590,7 +590,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-neutral-700 to-neutral-800 hover:from-neutral-800 hover:to-neutral-900 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-neutral-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Request Evaluation</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -715,7 +715,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-primary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Start Your Project</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -779,7 +779,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-secondary-600 to-secondary-700 hover:from-secondary-700 hover:to-secondary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-secondary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Design M&E System</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -891,7 +891,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-primary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Start Research Project</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -957,7 +957,7 @@ const ServicesPage = () => {
                   
                   <Link 
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-secondary-600 to-secondary-700 hover:from-secondary-700 hover:to-secondary-800 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-secondary-500/25 transform hover:scale-105 w-fit"
+                    className="primary-btn"
                   >
                     <span>Drive Policy Change</span>
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1039,7 +1039,7 @@ const ServicesPage = () => {
       <SectionLayout bgColor="bg-transparent" id="get-started">
         <ServiceCTA />
       </SectionLayout>
-    </>
+    </div>
   );
 };
 
