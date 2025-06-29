@@ -142,47 +142,114 @@ const Hero = () => {
                   }
                   .animate-orbit-fast { animation: orbit-fast 20s linear infinite; }
 
-                  @keyframes tree-grow {
+                  @keyframes tree-lifecycle {
+                    /* Phase 1: Start hidden and ready */
                     0% { 
-                      stroke-dasharray: 1000;
-                      stroke-dashoffset: 1000;
-                      opacity: 0;
+                      stroke-dasharray: 2000;
+                      stroke-dashoffset: 2000;
+                      opacity: 1;
+                      transform: scale(1);
+                      fill: transparent;
+                      stroke: #ed572b;
                     }
-                    20% {
-                      stroke-dashoffset: 800;
-                      opacity: 0.3;
-                    }
-                    50% {
-                      stroke-dashoffset: 400;
-                      opacity: 0.7;
-                    }
-                    100% { 
+                    
+                    /* Phase 2: Draw outline (0-20%) */
+                    20% { 
                       stroke-dashoffset: 0;
                       opacity: 1;
+                      transform: scale(1);
+                      fill: transparent;
+                      stroke: #ed572b;
+                    }
+                    
+                    /* Phase 3: Fill the shape (20-30%) */
+                    30% {
+                      stroke-dashoffset: 0;
+                      opacity: 1;
+                      transform: scale(1);
+                      fill: #ed572b;
+                      stroke: #ed572b;
+                    }
+                    
+                    /* Phase 4: Gentle swaying - only rotating, base stays fixed (30-60%) */
+                    35% {
+                      transform: scale(1) rotate(1.5deg);
+                      transform-origin: center bottom;
+                    }
+                    40% {
+                      transform: scale(1) rotate(-1.5deg);
+                      transform-origin: center bottom;
+                    }
+                    45% {
+                      transform: scale(1) rotate(1deg);
+                      transform-origin: center bottom;
+                    }
+                    50% {
+                      transform: scale(1) rotate(-1deg);
+                      transform-origin: center bottom;
+                    }
+                    55% {
+                      transform: scale(1) rotate(0.5deg);
+                      transform-origin: center bottom;
+                    }
+                    60% {
+                      transform: scale(1) rotate(0deg);
+                      transform-origin: center bottom;
+                    }
+                    
+                    /* Phase 5: Unfill (60-70%) */
+                    70% {
+                      stroke-dashoffset: 0;
+                      opacity: 1;
+                      transform: scale(1);
+                      fill: transparent;
+                      stroke: #ed572b;
+                    }
+                    
+                    /* Phase 6: Undraw outline (70-90%) */
+                    90% { 
+                      stroke-dasharray: 2000;
+                      stroke-dashoffset: 2000;
+                      opacity: 1;
+                      transform: scale(1);
+                      fill: transparent;
+                      stroke: #ed572b;
+                    }
+                    
+                    /* Phase 7: Brief pause before restart (90-100%) */
+                    100% { 
+                      stroke-dasharray: 2000;
+                      stroke-dashoffset: 2000;
+                      opacity: 1;
+                      transform: scale(1);
+                      fill: transparent;
+                      stroke: #ed572b;
                     }
                   }
                   
-                  .tree-growing path {
+                  .tree-sprouting path {
                     stroke: #ed572b;
                     stroke-width: 2;
                     fill: transparent;
-                    animation: tree-grow 4s ease-out forwards;
+                    transform-origin: center bottom;
+                    animation: tree-lifecycle 10s ease-in-out infinite;
                   }
                   
-                  .tree-growing path:nth-child(1) { animation-delay: 0s; }
-                  .tree-growing path:nth-child(2) { animation-delay: 0.5s; }
-                  .tree-growing path:nth-child(3) { animation-delay: 1s; }
-                  .tree-growing path:nth-child(4) { animation-delay: 1.5s; }
-                  .tree-growing path:nth-child(5) { animation-delay: 2s; }
-
-                  @keyframes fill-complete {
-                    from { fill: transparent; }
-                    to { fill: #ed572b; }
+                  /* Staggered growth for different parts */
+                  .tree-sprouting path:nth-child(1) { 
+                    animation-delay: 0s; /* Main trunk */
                   }
-                  
-                  .tree-filled path {
-                    animation: fill-complete 1s ease-in forwards;
-                    animation-delay: 4s;
+                  .tree-sprouting path:nth-child(2) { 
+                    animation-delay: 0.8s; /* Top leaf cluster */
+                  }
+                  .tree-sprouting path:nth-child(3) { 
+                    animation-delay: 1.2s; /* Left branch */
+                  }
+                  .tree-sprouting path:nth-child(4) { 
+                    animation-delay: 1.6s; /* Bottom leaves */
+                  }
+                  .tree-sprouting path:nth-child(5) { 
+                    animation-delay: 2s; /* Right branch */
                   }
 
                   @keyframes scale-pulse {
@@ -202,7 +269,7 @@ const Hero = () => {
                   <div className="w-52 h-52 bg-white rounded-full flex items-center justify-center shadow-inner">
                     <div className="relative w-28 h-28">
                       <svg 
-                        className="w-full h-full tree-growing tree-filled" 
+                        className="w-full h-full tree-sprouting" 
                         viewBox="0 0 192.4 244.81" 
                         xmlns="http://www.w3.org/2000/svg"
                       >
