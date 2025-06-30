@@ -35,28 +35,28 @@ const Hero = () => {
       <div className="w-full px-4 md:px-6 relative z-10 flex items-center min-h-screen mt-16 sm:mt-0">
         <div className="max-w-[1500px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 lg:pr-8">
-              <div className="inline-flex items-center px-4 py-2 rounded-md glass-card-hero text-sm font-semibold text-neutral-700 mb-8">
+            <div className="lg:col-span-7 lg:pr-8 lg:text-left text-center">
+              <div className="inline-flex items-center px-4 py-2 rounded-md glass-card-hero text-sm font-semibold text-neutral-700 mb-8 lg:mx-0 mx-auto">
                 <span className="flex h-2 w-2 mr-2">
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
                 </span>
                 DRIVING SOCIAL CHANGE
               </div>
               
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-neutral-900">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-neutral-900">
                 Driving Social Change Through <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Evidence-Based</span> Solutions
               </h1>
               
-              <p className="responsive-desc text-xl md:text-2xl text-neutral-600 mb-8 leading-relaxed max-w-2xl">
+              <p className="responsive-desc text-lg md:text-xl text-neutral-600 mb-6 leading-relaxed max-w-2xl lg:mx-0 mx-auto">
                 Insocia partners with corporations, governments, NGOs, and philanthropic organizations to unlock greater social impact through rigorous research, independent evaluation, and strategic advocacy.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 max-[480px]:flex-col max-[640px]:flex-row lg:justify-start justify-center">
                 <Link 
                   to="/services" 
-                  className="cta-btn px-8 py-3.5 group"
+                  className="cta-btn px-8 py-3.5 group max-[480px]:w-full"
                 >
-                  <span className="relative z-10 flex items-center">
+                  <span className="relative z-10 flex items-center justify-center w-full">
                     Explore Our Services
                     <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -66,9 +66,9 @@ const Hero = () => {
                 
                 <Link 
                   to="/projects" 
-                  className="light-btn px-8 py-3.5 group"
+                  className="light-btn px-8 py-3.5 group max-[480px]:w-full"
                 >
-                  <span className="relative z-10 flex items-center">
+                  <span className="relative z-10 flex items-center justify-center w-full">
                     View Impact Stories
                     <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -78,7 +78,7 @@ const Hero = () => {
               </div>
               
               {/* Stats - Fixed Partners card hover color */}
-              <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 hero-stats">
+              <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 hero-stats max-[640px]:grid-cols-2">
                 <div className="glass-card rounded-lg px-3 py-4 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary-200/50 hover:-translate-y-1 hover:bg-white/80 group">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 transition-all duration-300 group-hover:opacity-100 group-hover:shadow-md group-hover:shadow-primary-400/30"></div>
                   <div className="relative z-10">

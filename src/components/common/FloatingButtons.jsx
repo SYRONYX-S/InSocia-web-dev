@@ -106,7 +106,7 @@ const FloatingButtons = () => {
             <motion.button
               ref={buttonRef}
               onClick={handleScrollToTop}
-              className="group relative w-14 h-14 rounded-full overflow-hidden backdrop-blur-md bg-white/90 border border-neutral-200/50 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
+              className="group relative w-14 h-14 max-[991px]:w-12 max-[991px]:h-12 rounded-full overflow-hidden backdrop-blur-md bg-white/90 border border-neutral-200/50 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
               initial="hidden"
               animate="visible"
               exit="hidden"
@@ -122,7 +122,7 @@ const FloatingButtons = () => {
                 <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
               </div>
               
-              <FiArrowUp className="w-6 h-6 text-primary-600 group-hover:text-primary-700 transition-colors duration-300 relative z-10" />
+              <FiArrowUp className="w-6 h-6 max-[991px]:w-5 max-[991px]:h-5 text-primary-600 group-hover:text-primary-700 transition-colors duration-300 relative z-10" />
               
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-full bg-primary-500/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150" />
@@ -135,14 +135,14 @@ const FloatingButtons = () => {
           <Link 
             to="/contact" 
             aria-label="Contact us"
-            className="group relative w-14 h-14 rounded-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
+            className="group relative w-14 h-14 max-[991px]:w-12 max-[991px]:h-12 rounded-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 shadow-lg hover:shadow-xl hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
           >
             {/* Shimmer effect */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
             </div>
             
-            <FiMail className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            <FiMail className="w-5 h-5 max-[991px]:w-4 max-[991px]:h-4 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
             
             {/* Pulse effect */}
             <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
