@@ -42,10 +42,10 @@ const Footer = () => {
                   alt="InSocia Logo" 
                   className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="relative">
-                  <span className="text-5xl font-heading font-bold text-white bg-clip-text bg-gradient-to-r from-white via-primary-200 to-white">
+              <div className="relative">
+                <span className="text-5xl font-heading font-bold text-white bg-clip-text bg-gradient-to-r from-white via-primary-200 to-white">
                     Insocia
-                  </span>
+                </span>
                 </div>
               </div>
               <div className="flex justify-center">

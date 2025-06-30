@@ -398,34 +398,34 @@ const CareersPage = () => {
             </div>
 
             <div className="relative">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {careerJourney.map((step, index) => (
-                  <div
-                    key={index}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {careerJourney.map((step, index) => (
+                <div
+                  key={index}
                     className="text-center relative"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
-                    <div className="relative mb-6">
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                              >
+                  <div className="relative mb-6">
                       <div className="w-16 h-16 bg-gradient-to-br from-primary-100/80 to-secondary-100/80 rounded-2xl flex items-center justify-center mx-auto border border-primary-200/50 hover:scale-110 transition-transform duration-300 relative z-10">
-                        <step.icon className="w-8 h-8 text-primary-600" />
-                      </div>
-                      {/* Individual connecting line for each step except the last */}
-                      {index < careerJourney.length - 1 && (
-                        <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%+2rem)] h-0.5 bg-gradient-to-r from-primary-500/40 to-primary-500/20"></div>
-                      )}
+                      <step.icon className="w-8 h-8 text-primary-600" />
                     </div>
-                    
-                    <h3 className="text-lg font-bold text-neutral-900 mb-3">
-                      {step.stage}
-                    </h3>
-                    
-                    <p className="text-neutral-600 leading-relaxed">
-                      {step.description}
-                    </p>
+                      {/* Individual connecting line for each step except the last */}
+                    {index < careerJourney.length - 1 && (
+                        <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%+2rem)] h-0.5 bg-gradient-to-r from-primary-500/40 to-primary-500/20"></div>
+                    )}
                   </div>
-                ))}
-              </div>
+                  
+                  <h3 className="text-lg font-bold text-neutral-900 mb-3">
+                    {step.stage}
+                  </h3>
+                  
+                  <p className="text-neutral-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
             </div>
 
 

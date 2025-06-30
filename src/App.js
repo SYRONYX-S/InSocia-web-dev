@@ -21,25 +21,25 @@ function App() {
   return (
     <Router>
       <SmoothScroll>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/focus-areas" element={<FocusAreasPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/partnerships" element={<PartnershipsPage />} />
-            <Route path="/resources" element={<ResourcesPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/careers" element={<CareersPage />} />
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/focus-areas" element={<FocusAreasPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/partnerships" element={<PartnershipsPage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/careers" element={<CareersPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPage />} />
             <Route path="/terms-of-use" element={<TermsPage />} />
             <Route path="/accessibility" element={<AccessibilityPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </MainLayout>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </MainLayout>
       </SmoothScroll>
     </Router>
   );

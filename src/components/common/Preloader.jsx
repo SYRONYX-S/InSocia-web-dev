@@ -17,7 +17,7 @@ const Preloader = () => {
       
       // Remove the preloader after the transition completes
       setTimeout(() => {
-        setLoading(false);
+      setLoading(false);
       }, 800); // Wait for transition to complete
     }, 1200); // Reduced from 1500ms to 1200ms since we add transition time
 

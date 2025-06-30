@@ -54,11 +54,11 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/services" 
-                  className="relative inline-flex items-center justify-center px-8 py-3.5 font-medium rounded-lg transition-colors duration-300 group overflow-hidden bg-primary-600 hover:bg-primary-700 shadow-sm"
+                  className="cta-btn px-8 py-3.5 group"
                 >
-                  <span className="relative z-10 flex items-center text-white">
+                  <span className="relative z-10 flex items-center">
                     Explore Our Services
-                    <svg className="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
@@ -66,11 +66,11 @@ const Hero = () => {
                 
                 <Link 
                   to="/projects" 
-                  className="relative inline-flex items-center justify-center px-8 py-3.5 font-medium rounded-lg transition-colors duration-300 group overflow-hidden glass-card border border-neutral-300 hover:border-neutral-400"
+                  className="light-btn px-8 py-3.5 group"
                 >
-                  <span className="relative z-10 flex items-center text-neutral-800">
+                  <span className="relative z-10 flex items-center">
                     View Impact Stories
-                    <svg className="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
