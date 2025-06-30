@@ -36,17 +36,34 @@ const Footer = () => {
         <div className="container mx-auto px-6 pt-20 pb-16">
           <div className="text-center mb-16">
             <Link to="/" className="inline-block mb-6 group">
-              <div className="flex items-center justify-center space-x-4 mb-2">
+              {/* Add CSS for logo icon swaying animation */}
+              <style>
+                {`
+                  @keyframes logo-sway {
+                    0% { transform: rotate(4deg); }
+                    50% { transform: rotate(-4deg); }
+                    100% { transform: rotate(4deg); }
+                  }
+                  
+                  .logo-icon-sway {
+                    animation: logo-sway 3s ease-in-out infinite;
+                    transform-origin: center bottom;
+                  }
+                `}
+              </style>
+              <div className="flex items-center justify-center space-x-1 mb-2">
+                {/* Icon part with swaying animation */}
                 <img 
-                  src="/images/icon.svg" 
-                  alt="InSocia Logo" 
-                  className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                  src="/images/logo-icon.svg" 
+                  alt="InSocia Icon" 
+                  className="h-16 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg logo-icon-sway"
                 />
-              <div className="relative">
-                <span className="text-5xl font-heading font-bold text-white bg-clip-text bg-gradient-to-r from-white via-primary-200 to-white">
-                    Insocia
-                </span>
-                </div>
+                {/* Text part - static */}
+                <img 
+                  src="/images/logo-text.svg" 
+                  alt="InSocia Text" 
+                  className="h-16 w-auto transition-all duration-300 group-hover:drop-shadow-lg brightness-0 invert"
+                />
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-primary-400 to-transparent group-hover:via-primary-300 transition-colors duration-300"></div>

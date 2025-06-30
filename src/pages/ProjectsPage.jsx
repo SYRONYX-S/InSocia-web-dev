@@ -4,6 +4,7 @@ import SectionLayout from '../layouts/SectionLayout';
 import { Link } from 'react-router-dom';
 import { FiTarget, FiTrendingUp, FiUsers, FiGlobe, FiArrowRight, FiStar, FiHeart, FiZap, FiCheckCircle, FiCalendar, FiMapPin, FiAward, FiCompass, FiBriefcase } from 'react-icons/fi';
 import SEO from '../components/SEO';
+import FeaturedProjects from '../components/home/FeaturedProjects';
 
 const ProjectsPage = () => {
   const projectsSchema = {
@@ -362,6 +363,8 @@ const ProjectsPage = () => {
           </div>
         </div>
       </SectionLayout>
+
+      <FeaturedProjects />
     </>
   );
 };

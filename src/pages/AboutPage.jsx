@@ -18,6 +18,10 @@ import {
 import AboutHero from '../components/about/AboutHero';
 import OurValues from '../components/about/OurValues';
 import TeamSection from '../components/about/TeamSection';
+import MissionStatement from '../components/home/MissionStatement';
+import Testimonials from '../components/home/Testimonials';
+import PartnerLogos from '../components/home/PartnerLogos';
+import FeaturedProjects from '../components/home/FeaturedProjects';
 import SectionLayout from '../layouts/SectionLayout';
 // AOS for animations will be initialized in App.js globally
 
@@ -146,6 +150,9 @@ const AboutPage = () => {
       </Helmet>
 
       <AboutHero />
+      
+      {/* Mission Statement Section - Moved from Home */}
+      <MissionStatement />
       
       {/* Why Insocia Section */}
       <SectionLayout bgColor="bg-transparent" className="py-16 md:py-24">
@@ -565,6 +572,15 @@ const AboutPage = () => {
           </div>
         </motion.div>
       </SectionLayout>
+
+      {/* Featured Projects Section - Moved from Home */}
+      <FeaturedProjects />
+
+      {/* Success Stories Section - Moved from Home */}
+      <Testimonials />
+      
+      {/* Strategic Partners Section - Moved from Home */}
+      <PartnerLogos />
 
       <OurValues />
       <TeamSection />
