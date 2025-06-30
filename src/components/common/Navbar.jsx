@@ -143,6 +143,22 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 flex flex-col font-['Playfair_Display',ui-serif,Georgia,serif]">
+      {/* Add CSS for logo icon swaying animation */}
+      <style>
+        {`
+          @keyframes logo-sway {
+            0% { transform: rotate(4deg); }
+            50% { transform: rotate(-4deg); }
+            100% { transform: rotate(4deg); }
+          }
+          
+          .logo-icon-sway {
+            animation: logo-sway 3s ease-in-out infinite;
+            transform-origin: center bottom;
+          }
+        `}
+      </style>
+
       {/* Top Contact Bar */}
       <AnimatePresence initial={false}>
         {showTopBar && (
@@ -214,13 +230,20 @@ const Navbar = () => {
           </div>
           
           <div className="container mx-auto px-6 flex justify-between items-center">
-            {/* Logo - Using SVG logo */}
+            {/* Logo - Using split SVG logos */}
             <Link to="/" className="flex items-center z-10 group">
-              <div className="flex items-center">
+              <div className="flex items-center space-x-1">
+                {/* Icon part with swaying animation */}
                 <img 
-                  src="/images/logo.svg" 
-                  alt="InSocia Logo" 
-                  className="h-12 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
+                  src="/images/logo-icon.svg" 
+                  alt="InSocia Icon" 
+                  className="h-12 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg logo-icon-sway"
+                />
+                {/* Text part - static */}
+                <img 
+                  src="/images/logo-text.svg" 
+                  alt="InSocia Text" 
+                  className="h-12 w-auto transition-all duration-300 group-hover:drop-shadow-lg"
                 />
               </div>
             </Link>
