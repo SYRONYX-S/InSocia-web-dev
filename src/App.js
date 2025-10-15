@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import SmoothScroll from './components/common/SmoothScroll';
+import MaintenanceOverlay from './components/common/MaintenanceOverlay';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
@@ -17,10 +18,22 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import AccessibilityPage from './pages/AccessibilityPage';
 
-function App() {
+// Secret route for testing - random path that only you and client know
+const SECRET_ROUTE = '/dev-preview-k7x9m2p8';
+
+function AppContent() {
+  const location = useLocation();
+  
+  // Check if current path is the secret route
+  const isSecretRoute = location.pathname === SECRET_ROUTE;
+  
+  // If not secret route, show maintenance overlay
+  if (!isSecretRoute) {
+    return <MaintenanceOverlay />;
+  }
+  
+  // If secret route, show normal website
   return (
-    <Router>
-      <SmoothScroll>
     <MainLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -33,13 +46,21 @@ function App() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/careers" element={<CareersPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPage />} />
-            <Route path="/terms-of-use" element={<TermsPage />} />
-            <Route path="/accessibility" element={<AccessibilityPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPage />} />
+        <Route path="/terms-of-use" element={<TermsPage />} />
+        <Route path="/accessibility" element={<AccessibilityPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </MainLayout>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <SmoothScroll>
+        <AppContent />
       </SmoothScroll>
     </Router>
   );
