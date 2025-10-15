@@ -5,6 +5,20 @@ import { FiMail, FiPhone, FiMapPin, FiClock, FiExternalLink } from 'react-icons/
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
+  // Helper function to get the correct path
+  const getPath = (path) => {
+    // Check if we're in preview mode
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreviewMode = urlParams.get('preview') === 'true';
+    
+    // If in preview mode, add the preview parameter
+    if (isPreviewMode) {
+      return `${path}?preview=true`;
+    }
+    
+    return path;
+  };
+  
   return (
     <footer className="relative bg-neutral-950 text-white overflow-hidden">
       {/* Modern gradient background with subtle effects */}
@@ -119,39 +133,39 @@ const Footer = () => {
                     <div className="absolute -bottom-2 left-0 w-8 h-[2px] bg-gradient-to-r from-primary-400 to-transparent"></div>
                   </h3>
                   <div className="grid grid-cols-3 gap-x-3 gap-y-2">
-                    <Link to="/" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Home
                     </Link>
-                    <Link to="/about" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/about")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       About Us
                     </Link>
-                    <Link to="/services" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/services")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Services
                     </Link>
-                    <Link to="/focus-areas" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/focus-areas")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Focus Areas
                     </Link>
-                    <Link to="/projects" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/projects")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Projects
                     </Link>
-                    <Link to="/resources" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Resources
                     </Link>
-                    <Link to="/news" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/news")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       News & Insights
                     </Link>
-                    <Link to="/careers" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/careers")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Careers
                     </Link>
-                    <Link to="/contact" className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/contact")} className="text-neutral-300 hover:text-primary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-primary-400 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Contact
                     </Link>
@@ -167,27 +181,27 @@ const Footer = () => {
                     <div className="absolute -bottom-2 left-0 w-8 h-[2px] bg-gradient-to-r from-secondary-500 to-transparent"></div>
                   </h3>
                                     <div className="space-y-2">
-                    <Link to="/resources" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                     Resources Overview
                   </Link>
-                    <Link to="/resources#knowledge-hub" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources#knowledge-hub")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                     Knowledge Hub
                   </Link>
-                    <Link to="/resources#data-repository" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources#data-repository")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Data Repository
                     </Link>
-                    <Link to="/resources#methodology-center" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources#methodology-center")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Methodology Center
                     </Link>
-                    <Link to="/resources#policy-lab" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources#policy-lab")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Policy Innovation Lab
                     </Link>
-                    <Link to="/resources#training" className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
+                    <Link to={getPath("/resources#training")} className="text-neutral-300 hover:text-secondary-400 transition-all duration-300 text-sm hover:translate-x-1 flex items-center group">
                       <div className="w-1 h-1 bg-secondary-500 rounded-full mr-2 group-hover:w-2 transition-all duration-300"></div>
                       Training Resources
                     </Link>
@@ -250,17 +264,17 @@ const Footer = () => {
               {/* Legal Links Section */}
               <div className="mt-10 pt-8 border-t border-neutral-700/30">
                 <div className="flex flex-wrap justify-center items-center gap-6">
-                  <Link to="/privacy-policy" className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
+                  <Link to={getPath("/privacy-policy")} className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
                     Privacy Policy
                     <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary-400 group-hover:w-full transition-all duration-300"></div>
                   </Link>
                   <div className="w-1 h-1 bg-neutral-600 rounded-full"></div>
-                  <Link to="/terms-of-use" className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
+                  <Link to={getPath("/terms-of-use")} className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
                     Terms of Use
                     <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary-400 group-hover:w-full transition-all duration-300"></div>
                   </Link>
                   <div className="w-1 h-1 bg-neutral-600 rounded-full"></div>
-                  <Link to="/accessibility" className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
+                  <Link to={getPath("/accessibility")} className="text-neutral-400 hover:text-primary-400 transition-colors text-sm relative group">
                     Accessibility
                     <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary-400 group-hover:w-full transition-all duration-300"></div>
                   </Link>

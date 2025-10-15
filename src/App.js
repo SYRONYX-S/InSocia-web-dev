@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import SmoothScroll from './components/common/SmoothScroll';
 import MaintenanceOverlay from './components/common/MaintenanceOverlay';
@@ -27,12 +27,21 @@ function AppContent() {
   // Check if current path is the secret route
   const isSecretRoute = location.pathname === SECRET_ROUTE;
   
-  // If not secret route, show maintenance overlay
-  if (!isSecretRoute) {
+  // If accessing the secret route, redirect to home page with preview parameter
+  if (isSecretRoute) {
+    return <Navigate to="/?preview=true" replace />;
+  }
+  
+  // Check if we're in preview mode via URL parameter
+  const urlParams = new URLSearchParams(location.search);
+  const isPreviewMode = urlParams.get('preview') === 'true';
+  
+  // If not in preview mode, show maintenance overlay
+  if (!isPreviewMode) {
     return <MaintenanceOverlay />;
   }
   
-  // If secret route, show normal website
+  // If in preview mode, show normal website
   return (
     <MainLayout>
       <Routes>

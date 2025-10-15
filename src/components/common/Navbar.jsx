@@ -14,6 +14,15 @@ const Navbar = () => {
 
   // Helper function to get the correct path
   const getPath = (path) => {
+    // Check if we're in preview mode
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreviewMode = urlParams.get('preview') === 'true';
+    
+    // If in preview mode, add the preview parameter
+    if (isPreviewMode) {
+      return `${path}?preview=true`;
+    }
+    
     return path;
   };
   
