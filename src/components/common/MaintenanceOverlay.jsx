@@ -147,7 +147,7 @@ const MaintenanceOverlay = () => {
                     <FiPhone className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-neutral-900 mb-2 group-hover:text-primary-700 transition-colors duration-300">Call Us</h3>
-                  <p className="text-sm text-neutral-600">+91-701-234-5678</p>
+                  <p className="text-sm text-neutral-600">+91 95262 08742</p>
                 </div>
               </div>
             </motion.div>
@@ -173,7 +173,7 @@ const MaintenanceOverlay = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a
-                    href="mailto:connect@insocia.in"
+                    href="tel:+919526208742"
                     className="inline-flex items-center gap-2 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 ease-out transform hover:scale-105 relative overflow-hidden group"
                     style={{
                       background: 'rgb(237 87 43)',
@@ -185,7 +185,7 @@ const MaintenanceOverlay = () => {
                   </a>
                   
                   <a
-                    href="https://www.linkedin.com/company/insocia-consultancy"
+                    href="https://www.linkedin.com/company/insocia/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="secondary-light-btn  group"
