@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiClock, FiMail, FiPhone, FiArrowRight, FiExternalLink } from 'react-icons/fi';
 
 const MaintenanceOverlay = () => {
   const currentYear = new Date().getFullYear();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, email, phone, subject, message } = formData;
+    const mailSubject = subject ? encodeURIComponent(subject) : encodeURIComponent('New enquiry from maintenance page');
+    const mailBody = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+    );
+
+    window.location.href = `mailto:connect@insocia.in?subject=${mailSubject}&body=${mailBody}`;
+    setStatusMessage('Opening your email client...');
+  };
   
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
@@ -194,6 +222,97 @@ const MaintenanceOverlay = () => {
                     <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </a>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="relative backdrop-blur-md bg-white/90 rounded-3xl border border-neutral-200/50 p-6 md:p-8 mt-10 text-left shadow-lg"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-neutral-50/85 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/6 to-secondary-500/6 rounded-3xl opacity-70"></div>
+              <div className="relative z-10">
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 border border-primary-200/40 rounded-full px-4 py-1.5 mb-3">
+                    <FiMail className="w-4 h-4 text-primary-600" />
+                    <span className="text-xs font-semibold text-primary-700 uppercase tracking-[0.3em]">
+                      Quick Note
+                    </span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-900">
+                    Need to discuss something?
+                  </h3>
+                </div>
+
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Full name"
+                      className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Email address"
+                      className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all"
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="+91 95262 08742"
+                      className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all"
+                    />
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="Subject (optional)"
+                      className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all"
+                    />
+                  </div>
+
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={4}
+                    placeholder="Message"
+                    className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all resize-none"
+                  ></textarea>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <p className="text-xs text-neutral-500">
+                      We’ll respond as soon as the site is back online.
+                    </p>
+                    <button
+                      type="submit"
+                      className="primary-btn px-5 py-3 text-sm font-semibold"
+                    >
+                      Send Message
+                      <FiArrowRight className="ml-2 w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {statusMessage && (
+                    <p className="text-xs text-primary-600 mt-1">{statusMessage}</p>
+                  )}
+                </form>
               </div>
             </motion.div>
 

@@ -55,10 +55,10 @@ function AppContent() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/careers" element={<CareersPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPage />} />
-        <Route path="/terms-of-use" element={<TermsPage />} />
-        <Route path="/accessibility" element={<AccessibilityPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPage />} />
+            <Route path="/terms-of-use" element={<TermsPage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </MainLayout>
