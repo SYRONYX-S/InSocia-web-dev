@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiClock, FiMail, FiPhone, FiArrowRight, FiExternalLink } from 'react-icons/fi';
+import { FiClock, FiMail, FiPhone, FiArrowRight, FiExternalLink, FiCheckCircle } from 'react-icons/fi';
 
 const MaintenanceOverlay = () => {
   const currentYear = new Date().getFullYear();
@@ -12,29 +12,85 @@ const MaintenanceOverlay = () => {
     message: ''
   });
   const [statusMessage, setStatusMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    let { value } = event.target;
+
+    // Ensure phone field only accepts digits, "+" and "-"
+    if (name === 'phone') {
+      value = value.replace(/[^0-9+-]/g, '');
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { name, email, phone, subject, message } = formData;
-    const mailSubject = subject ? encodeURIComponent(subject) : encodeURIComponent('New enquiry from maintenance page');
-    const mailBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
-    );
 
-    window.location.href = `mailto:connect@insocia.in?subject=${mailSubject}&body=${mailBody}`;
-    setStatusMessage('Opening your email client...');
+    // Prevent double submissions
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setStatusMessage('Sending your message...');
+
+    try {
+      const formDataToSend = new FormData();
+
+      // Append form fields expected by Web3Forms
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append(
+        'subject',
+        formData.subject || 'New enquiry from maintenance page'
+      );
+      formDataToSend.append('message', formData.message);
+
+      // Web3Forms access key
+      formDataToSend.append(
+        'access_key',
+        '66aa297a-9ddb-4485-8426-4277a6b1c347'
+      );
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatusMessage('Thank you! Your message has been sent successfully.');
+        // Reset local form state
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setStatusMessage(
+          'Something went wrong while sending your message. Please try again.'
+        );
+      }
+    } catch (error) {
+      console.error('Web3Forms submission error:', error);
+      setStatusMessage(
+        'Unable to send your message right now. Please try again in a moment.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex items-center justify-center px-2 py-4 md:px-4 relative overflow-hidden">
       {/* Background with subtle gradients and effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-neutral-50/30 to-primary-50/20"></div>
       
@@ -49,7 +105,7 @@ const MaintenanceOverlay = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative backdrop-blur-xl bg-white/95 rounded-3xl border border-neutral-200/60 shadow-2xl shadow-primary-200/10 p-12 md:p-16 overflow-hidden"
+          className="relative backdrop-blur-xl bg-white/95 rounded-3xl border border-neutral-200/60 shadow-2xl shadow-primary-200/10 p-4 sm:p-6 lg:p-12 overflow-hidden"
         >
           {/* Enhanced glassmorphism background */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/95 to-neutral-50/90 rounded-3xl"></div>
@@ -151,7 +207,7 @@ const MaintenanceOverlay = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8"
             >
               <div className="group relative backdrop-blur-md bg-white/70 rounded-xl border border-neutral-200/40 p-6 hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-neutral-50/70 rounded-xl"></div>
@@ -185,7 +241,7 @@ const MaintenanceOverlay = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="relative backdrop-blur-md bg-gradient-to-br from-primary-50/60 to-secondary-50/60 rounded-2xl border border-primary-200/40 p-8 shadow-lg overflow-hidden"
+              className="relative backdrop-blur-md bg-gradient-to-br from-primary-50/60 to-secondary-50/60 rounded-2xl border border-primary-200/40 p-4 sm:p-6 lg:p-8 shadow-lg overflow-hidden"
             >
               {/* Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/90 to-neutral-50/80 rounded-2xl"></div>
@@ -230,7 +286,7 @@ const MaintenanceOverlay = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="relative backdrop-blur-md bg-white/90 rounded-3xl border border-neutral-200/50 p-6 md:p-8 mt-10 text-left shadow-lg"
+              className="relative backdrop-blur-md bg-white/90 rounded-3xl border border-neutral-200/50 p-4 sm:p-6 md:p-8 mt-8 md:mt-10 text-left shadow-lg"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-neutral-50/85 rounded-3xl"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/6 to-secondary-500/6 rounded-3xl opacity-70"></div>
@@ -273,6 +329,8 @@ const MaintenanceOverlay = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
+                      inputMode="tel"
+                      pattern="[0-9+-]*"
                       placeholder="+91 95262 08742"
                       className="w-full rounded-2xl border border-neutral-200 bg-white/85 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-primary-400 focus:ring focus:ring-primary-100 outline-none transition-all"
                     />
@@ -297,20 +355,33 @@ const MaintenanceOverlay = () => {
                   ></textarea>
 
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <p className="text-xs text-neutral-500">
-                      We’ll respond as soon as the site is back online.
-                    </p>
+                    {statusMessage && (
+                      <div className="order-2 sm:order-1 inline-flex items-center gap-2 rounded-full border border-primary-200/60 bg-primary-50/80 px-4 py-2 text-xs text-primary-700 shadow-sm shadow-primary-100">
+                        <FiCheckCircle className="w-4 h-4" />
+                        <span>{statusMessage}</span>
+                      </div>
+                    )}
                     <button
+                      className="order-1 sm:order-2 sm:ml-auto primary-btn px-5 py-3 text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
                       type="submit"
-                      className="primary-btn px-5 py-3 text-sm font-semibold"
+                      disabled={isSubmitting}
                     >
-                      Send Message
-                      <FiArrowRight className="ml-2 w-4 h-4" />
+                      {isSubmitting ? (
+                        <>
+                          <span className="mr-2 inline-block w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <FiArrowRight className="ml-2 w-4 h-4" />
+                        </>
+                      )}
                     </button>
                   </div>
 
-                  {statusMessage && (
-                    <p className="text-xs text-primary-600 mt-1">{statusMessage}</p>
+                  {!statusMessage && (
+                    <div className="hidden sm:block h-5" />
                   )}
                 </form>
               </div>
