@@ -57,6 +57,9 @@ const MaintenanceOverlay = () => {
         '66aa297a-9ddb-4485-8426-4277a6b1c347'
       );
 
+      // Set recipient email address
+      formDataToSend.append('to', 'connect@insocia.in');
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formDataToSend
